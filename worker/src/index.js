@@ -26,6 +26,39 @@ const SNRT = {
   'tamazight': '73_tamazight_tccybxt',
 };
 
+// Channels whose CDN checks a Referer or User-Agent on *every* request, segments
+// included. XCIPTV ignores #EXTVLCOPT, so the playlist can't carry the header; this
+// Worker attaches it instead and the player sees plain URLs. Only these four need it
+// — the other header-carrying entries (all the BFM channels, Rai Italia, Tele 7,
+// S Play Event, AXN) were measured to work with no header at all, so they stay direct.
+//
+// Unlike the SNRT routes, segments can't be handed straight to the CDN here: they are
+// protected too, so the video itself passes through the Worker. Checked 2026-10-11.
+const PROXY = {
+  '2m-monde': {
+    url: 'https://cdn-globecast.akamaized.net/live/eds/2m_monde/hls_video_ts_tuhawxpiemz257adfc/2m_monde.m3u8',
+    ref: 'http://www.radio2m.ma/',
+    hosts: ['cdn-globecast.akamaized.net'],
+  },
+  'military-history': {
+    url: 'https://frndly.keralive.workers.dev/v1/master/840a24ccd7c75076211d060179b3ad0c64fdc6ca/militaryhistory_live_nr/ab44a8245afe413db1169317ee5cda08/index.m3u8?type=ae2',
+    ref: 'https://bhoomtv.org/',
+    ua: 'Mozilla/5.0 (Windows NT 10.0 Win64 x64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/154.0.0.0 Safari/537.36',
+    hosts: ['frndly.keralive.workers.dev', 'sr-live-ae2.akamaized.net'],
+  },
+  'press-tv': {
+    url: 'https://cloud.odysee.live/content/26bcbcc342a5b143578f27dbfaf000201f06e417/master.m3u8',
+    ref: 'https://odysee.com/',
+    hosts: ['cloud.odysee.live'],
+  },
+  'music-box': {
+    url: 'http://777905.live.tvstitch.com/playlist.m3u8?source=aHR0cHM6Ly9obHMtY2RuMS5keXZ5YXBwLmNvbS9NdXNpYy1Cb3gvdHJhY2tzLXYxYTEvbW9uby50cy5tM3U4P3Rva2VuPWV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpqYUdGdWJtVnNYMmxrSWpvMU55d2lZMmhoYm01bGJGOXVZVzFsSWpvaVRYVnphV01nUW05NElpd2lhWEFpT2lJeE56Z3VNVE0yTGpReUxqSXlNQ0lzSW1OdmRXNTBjbmtpT2lKVmEzSmhhVzVsSWl3aWRYTmxjbDlwWkNJNk56UXdOeXdpZFhObGNsOXdhRzl1WlNJNklpc3pPREE1TXpBNU5qYzBNak1pTENKMWMyVnlYM0p2YkdWeklqcGJJbU5zYVdWdWRDSmRMQ0p3Y205bWFXeGxYMmxrSWpvMk5EY3hMQ0p6WlhOemFXOXVYMmxrSWpvaVpEQXdPVFppWmpndE1qTmxOUzAwWldVMkxXSmxNelV0Wmpnd09ETTVaV1k1WkRnMElpd2laVzUyYVhKdmJtMWxiblFpT2lKd2NtOWtkV04wYVc5dUlpd2ljR3hoZEdadmNtMGlPaUpFWlhOcmRHOXdJaXdpZFhObGNsOWhaMlZ1ZENJNklrMXZlbWxzYkdGY0x6VXVNQ0FvVjJsdVpHOTNjeUJPVkNBeE1DNHdPeUJYYVc0Mk5Ec2dlRFkwS1NCQmNIQnNaVmRsWWt0cGRGd3ZOVE0zTGpNMklDaExTRlJOVEN3Z2JHbHJaU0JIWldOcmJ5a2dRMmh5YjIxbFhDOHhOVEl1TUM0d0xqQWdVMkZtWVhKcFhDODFNemN1TXpZaUxDSmxlSEFpT2pFM09EZ3hPRFV4TmpkOS5nYUo1WGRxTjJ3djY2SnFxYldnX0dGUzY3V3lZVEVOc0JQa3VpcU1sNTVN&master=57',
+    ref: 'http://live.tvstitch.com/',
+    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
+    hosts: ['777905.live.tvstitch.com', 'hls-cdn1.dyvyapp.com'],
+  },
+};
+
 const tokens = new Map(); // event -> { q, until }
 const events = new Map(); // slug -> event, overrides SNRT after an API refresh
 let teleMaroc = null;     // { url, until }
@@ -100,6 +133,44 @@ async function teleMarocUrl() {
   return url;
 }
 
+// Every URI in a proxied channel's playlists is routed back through here, because the
+// CDN checks the header on segments too. `u` is restricted to the channel's own hosts
+// so this can't be used as an open proxy.
+const proxyUri = (slug, abs) => '/h/' + slug + '/r?u=' + encodeURIComponent(abs);
+
+function rewritePlaylist(text, base, slug) {
+  return text.split('\n').map((line) => {
+    const t = line.trim();
+    if (!t) return line;
+    if (t.startsWith('#')) { // EXT-X-KEY / EXT-X-MAP / EXT-X-MEDIA carry URI="..."
+      return line.replace(/URI="([^"]+)"/g, (_m, u) => 'URI="' + proxyUri(slug, new URL(u, base).href) + '"');
+    }
+    return proxyUri(slug, new URL(t, base).href);
+  }).join('\n');
+}
+
+async function headerProxy(slug, target) {
+  const cfg = PROXY[slug];
+  if (!cfg) return new Response('not found\n', { status: 404 });
+  let url;
+  try { url = new URL(target); } catch { return new Response('bad url\n', { status: 400 }); }
+  if (!cfg.hosts.includes(url.hostname)) return new Response('host not allowed\n', { status: 403 });
+
+  const headers = { 'User-Agent': cfg.ua || UA };
+  if (cfg.ref) headers.Referer = cfg.ref;
+  const r = await fetch(target, { headers, redirect: 'follow' });
+  if (!r.ok) return new Response('upstream ' + r.status + '\n', { status: 502 });
+
+  const type = r.headers.get('content-type') || '';
+  const base = r.url || target;
+  if (/mpegurl|x-mpegurl/i.test(type) || /\.m3u8$/i.test(new URL(base).pathname)) {
+    return new Response(rewritePlaylist(await r.text(), base, slug), { headers: HLS });
+  }
+  return new Response(r.body, { // segment: stream straight through
+    headers: { 'content-type': type || 'video/mp2t', 'cache-control': 'public, max-age=10' },
+  });
+}
+
 export default {
   async fetch(request) {
     const { pathname } = new URL(request.url);
@@ -109,8 +180,17 @@ export default {
       m = pathname.match(/^\/snrt\/([a-z0-9-]+)\/(corp\/[\w-]+\/chunks\.m3u8)$/);
       if (m && SNRT[m[1]]) return await snrt(m[1], m[2]);
       if (pathname === '/telemaroc.m3u8') return Response.redirect(await teleMarocUrl(), 302);
+      m = pathname.match(/^\/h\/([a-z0-9-]+)\.m3u8$/);
+      if (m && PROXY[m[1]]) return await headerProxy(m[1], PROXY[m[1]].url);
+      m = pathname.match(/^\/h\/([a-z0-9-]+)\/r$/);
+      if (m && PROXY[m[1]]) {
+        const u = new URL(request.url).searchParams.get('u');
+        if (!u) return new Response('missing u\n', { status: 400 });
+        return await headerProxy(m[1], u);
+      }
       if (pathname === '/') {
-        const list = Object.keys(SNRT).map((s) => `/snrt/${s}.m3u8`).concat('/telemaroc.m3u8');
+        const list = Object.keys(SNRT).map((s) => `/snrt/${s}.m3u8`).concat('/telemaroc.m3u8')
+          .concat(Object.keys(PROXY).map((s) => `/h/${s}.m3u8`));
         return new Response(list.join('\n') + '\n', { headers: { 'content-type': 'text/plain' } });
       }
       return new Response('not found\n', { status: 404 });
