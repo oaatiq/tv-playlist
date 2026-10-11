@@ -6,11 +6,19 @@ Personal IPTV playlist for OTT Player / OTT Navigator on a MINIX U8K box.
 |---|---|
 | `playlist.m3u` | 1,386 free-to-air channels. The **Maroc** group comes first. |
 | `epg.xml.gz` | XMLTV guide, referenced from the playlist header (`url-tvg`). |
-| `worker/` | Cloudflare Worker at `https://ma-tv.oaatiq.workers.dev` that serves SNRT (1–9) and Télé Maroc (10). |
+| `worker/` | Cloudflare Worker at `https://ma-tv.oaatiq.workers.dev` that serves SNRT (1–9) and Télé Maroc (10), and proxies four channels that need an HTTP header. |
 
 ## Why the Worker exists
 
 SNRT's EasyBroadcast streams need a token on every playlist request, and that token expires after one hour, so a static link stops working. The Worker fetches and renews the token. It serves only the small `.m3u8` playlists; the video segments come straight from the CDN. Télé Maroc's signed Cloudflare Stream link expires after about 12 hours, so the Worker resolves a fresh one from telemaroc.tv.
+
+## The `/h/` header routes
+
+XCIPTV ignores `#EXTVLCOPT`, so channels whose CDN checks a `Referer` or `User-Agent` can't carry the header in the playlist. The Worker attaches it instead, and the player sees a plain URL.
+
+Of the 24 entries that carried headers, only these four actually need one: **2M Monde**, **Military History**, **Press TV** and **Music Box Polska Ukraine**. Every other one — all the BFM channels, Rai Italia, Tele 7, S Play Event, AXN — returns 200 with no header, so they stay direct.
+
+These four are protected on their segments as well as their playlists, so unlike the SNRT routes the video itself passes through the Worker. The `u` parameter is restricted to each channel's own hosts so `/h/` can't be used as an open proxy.
 
 ## Updating
 
