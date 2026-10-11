@@ -17,4 +17,4 @@ SNRT's EasyBroadcast streams need a token on every playlist request, and that to
 - **Playlist:** run `playlists/tivimate/build_tivimate.py` with `--out tv-playlist --out-name playlist.m3u --maroc-worker https://ma-tv.oaatiq.workers.dev --epg-url https://raw.githubusercontent.com/oaatiq/tv-playlist/main/epg.xml.gz`, then commit and push.
 - **Worker:** run `cd worker && npx wrangler deploy`.
 
-Channels 101 and 107 are third-party re-streams, labelled "(backup)", and may disappear without notice.
+Channel 14 (2M) and channel 107 (Al Maghribia HD, labelled "(backup)") are third-party re-streams from Net Sat AB, Sweden, and may disappear without notice. 2M is at 14, next to 2M Monde, because the Globecast 2M Monde feed (15) stutters on the box while this one runs at a steady 25 fps, about 20 s behind live.
