@@ -63,6 +63,15 @@ the order the build emits them.
 **Fill in a missing logo or id** — add to `patch_attrs.by_group_and_name`, keyed
 `"<group>\t<name>"`. It only fills blanks, never overwrites.
 
+**Drop a channel's `#EXTVLCOPT` line** - add its `tvg-id` to `strip_props.tvg_id`.
+XCIPTV hands that line to Cronet in place of the stream URL
+(`net::ERR_INVALID_URL, ErrorCode=11`, raised before anything leaves the box), so a
+channel that does not need its header plays only once the line is gone. Test first -
+fetch the URL with the header and without it - and strip only when both come back as a
+real playlist. The four that genuinely need theirs (Universal Comedy, Universal Crime,
+TV3 Ghana, AXN CEE Romania) keep the line and stay broken in XCIPTV until they are
+routed through the Worker's `/h/` route.
+
 ## 3. Reach the boxes
 
 adb over LAN. Both are already authorised; neither is rooted.
