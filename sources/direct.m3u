@@ -1,0 +1,82 @@
+#EXTM3U
+#EXTINF:-1 tvg-chno="11" tvg-name="Medi1 Maghreb" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/medi1.png" group-title="Maroc",Medi1 Maghreb
+https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-maghreb_jnbspmg/corp/83_medi1tv-maghreb_jnbspmg_1080p/chunks.m3u8
+#EXTINF:-1 tvg-chno="12" tvg-name="Medi1 Arabic" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/medi1.png" group-title="Maroc",Medi1 Arabic
+https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-arabic_g90v4ec/corp/83_medi1tv-arabic_g90v4ec_1080p/chunks.m3u8
+#EXTINF:-1 tvg-chno="13" tvg-name="Medi1 Afrique" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/medi1afrique.png" group-title="Maroc",Medi1 Afrique
+https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/corp/83_medi1tv-afrique_tm7tu45_1080p/chunks.m3u8
+#EXTINF:-1 tvg-chno="14" tvg-name="M24" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/m24.png" group-title="Maroc",M24
+plugin://plugin.video.catchuptvandmore/resources/lib/channels/ma/m24/get_live_url/?item_id=m24
+#EXTINF:-1 tvg-id="2MMonde.ma" tvg-name="2M Monde" tvg-logo="https://i.imgur.com/MvpntzA.png" group-title="Maroc",2M Monde
+https://cdn-globecast.akamaized.net/live/eds/2m_monde/hls_video_ts_tuhawxpiemz257adfc/2m_monde.m3u8|Referer=http%3A%2F%2Fwww.radio2m.ma%2F
+#EXTINF:-1 tvg-id="2MMonde.ma@Plus1" tvg-name="2M Monde HD" tvg-logo="https://i.imgur.com/MvpntzA.png" group-title="Maroc",2M Monde HD
+https://d2qh3gh0k5vp3v.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-n6pess5lwbghr/2M_ES.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera
+https://live-hls-web-aja-gcp.thehlive.com/AJA/index.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera 2" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera 2
+https://live-hls-web-aja2-gcp.thehlive.com/AJA2/index.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera Mubasher" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera Mubasher
+https://live-hls-apps-ajm-ll-bp.thehlive.com/AJM/index.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera Mubasher 2" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera Mubasher 2
+https://live-hls-web-ajm2-gcp.thehlive.com/AJM2/index.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera Mubasher 24" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera Mubasher 24
+https://live-hls-apps-ajm24-ll-gcp.thehlive.com/AJM24/index.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera Documentary" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera Documentary
+https://live-hls-apps-ajd-ll-bp.thehlive.com/AJD/index.m3u8
+#EXTINF:-1 tvg-name="Al Jazeera English" tvg-logo="resource://resource.images.catchuptvandmore/channels/wo/aljazeera.png" group-title="Al Jazeera",Al Jazeera English
+https://live-hls-web-aje-gcp.thehlive.com/AJE/index.m3u8
+#EXTINF:-1 tvg-id="BFMTV.fr@SD" tvg-name="BFM TV" tvg-logo="https://i.imgur.com/YJCcczD.png" group-title="Infos FR",BFM TV
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMBusiness.fr@SD" tvg-name="BFM Business" tvg-logo="https://i.imgur.com/psqIHn4.png" group-title="Infos FR",BFM Business
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_BUSINESS/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFM2.fr@HD" tvg-name="BFM2" tvg-logo="https://alloforfait.fr/wp-content/uploads/2024/03/logo-bfm2-300x200.jpg" group-title="Infos FR",BFM2
+https://d1ib1gsg71oarf.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-scp7wda722jph/BFM2_FR.m3u8
+#EXTINF:-1 tvg-id="France24.fr@French" tvg-name="France 24" tvg-logo="https://i.imgur.com/u8N6uoj.png" group-title="Infos FR",France 24
+https://live.france24.com/hls/live/2037179-b/F24_FR_HI_HLS/master_5000.m3u8
+#EXTINF:-1 tvg-id="TV5MondeInfo.fr@SD" tvg-name="TV5Monde Info" tvg-logo="https://i.imgur.com/AJx5Fy2.png" group-title="Infos FR",TV5Monde Info
+https://ott.tv5monde.com/Content/HLS/Live/channel(info)/variant.m3u8
+#EXTINF:-1 tvg-id="EuronewsFrench.fr@SD" tvg-name="Euronews FR" tvg-logo="https://i.imgur.com/8t9mdg9.png" group-title="Infos FR",Euronews FR
+https://2f6c5bf4.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmxheHhUVi1ldV9FdXJvbmV3c0ZyYW5jYWlzX0hMUw/playlist.m3u8
+#EXTINF:-1 tvg-id="20MinutesTV.fr@SD" tvg-name="20 Minutes TV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/20_Minutes_TV_IDF_logo_%282023%29.png/960px-20_Minutes_TV_IDF_logo_%282023%29.png" group-title="Infos FR",20 Minutes TV
+https://live-20minutestv.digiteka.com/1961167769/index.m3u8
+#EXTINF:-1 tvg-id="Africa24.fr@SD" tvg-name="Africa 24" tvg-logo="https://africa24tv.com/wp-content/uploads/2021/09/logo.png" group-title="Infos FR",Africa 24
+https://africa24.vedge.infomaniak.com/livecast/ik:africa24/manifest.m3u8
+#EXTINF:-1 tvg-id="BFMAlsace.fr@SD" tvg-name="BFM Alsace" tvg-logo="https://i.imgur.com/iRsbEpg.png" group-title="Infos FR",BFM Alsace
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_ALSACE/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMCotedAzur.fr@SD" tvg-name="BFM Cote d'Azur" tvg-logo="https://i.imgur.com/iiVFvIw.png" group-title="Infos FR",BFM Cote d'Azur
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_NICECOTEDAZUR/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMDICIAlpesduSud.fr@SD" tvg-name="BFM DICI Alpes du Sud" tvg-logo="https://i.imgur.com/bV77l68.png" group-title="Infos FR",BFM DICI Alpes du Sud
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_DICI_ALPESDUSUD/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMDICIHauteProvence.fr@SD" tvg-name="BFM DICI Haute-Provence" tvg-logo="https://i.imgur.com/bV77l68.png" group-title="Infos FR",BFM DICI Haute-Provence
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_DICI_HAUTEPROVENCE/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMGrandLille.fr@SD" tvg-name="BFM Grand Lille" tvg-logo="https://i.imgur.com/HE5xP0r.png" group-title="Infos FR",BFM Grand Lille
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFMGRANDLILLE/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMGrandLittoral.fr@SD" tvg-name="BFM Grand Littoral" tvg-logo="https://i.imgur.com/j7F9MwH.png" group-title="Infos FR",BFM Grand Littoral
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFMGRANDLITTORAL/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMLyon.fr@SD" tvg-name="BFM Lyon" tvg-logo="https://i.imgur.com/0uiiZRo.png" group-title="Infos FR",BFM Lyon
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_LYON/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMMarseille.fr@SD" tvg-name="BFM Marseille" tvg-logo="https://i.imgur.com/h7t0l6q.png" group-title="Infos FR",BFM Marseille
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_MARSEILLEPROV/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMNormandie.fr@SD" tvg-name="BFM Normandie" tvg-logo="https://i.imgur.com/WWWQ44G.png" group-title="Infos FR",BFM Normandie
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_NORMANDIE/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="BFMVar.fr@SD" tvg-name="BFM Var" tvg-logo="https://i.imgur.com/vp1oVj3.png" group-title="Infos FR",BFM Var
+https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TOULONVAR/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
+#EXTINF:-1 tvg-id="ChadaTV.ma@SD" tvg-name="Chada TV" tvg-logo="https://freebox.cdn.scw.iliad.fr/medium_Logo_chada_tv_2ee1412d38.png" group-title="Maroc",Chada TV
+https://edge13.vedge.infomaniak.com/livecast/ik:chadatv/manifest.m3u8
+#EXTINF:-1 tvg-id="France24.fr@Arabic" tvg-name="France 24 Arabic" tvg-logo="https://i.imgur.com/u8N6uoj.png" group-title="Infos Arabe",France 24 Arabic
+https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8
+#EXTINF:-1 tvg-id="Alarabiya.ae@SD" tvg-name="Al Arabiya" tvg-logo="https://shahid.mbc.net/mediaObject/a4c125db-ede8-4970-9eed-963948c78651?height=auto&width=512&croppingPoint=&version=1&type=png" group-title="Infos Arabe",Al Arabiya
+https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="SkyNewsArabia.ae@HD" tvg-name="Sky News Arabia" tvg-logo="https://i.imgur.com/SvjU4h6.png" group-title="Infos Arabe",Sky News Arabia
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:mimetype=application/vnd.apple.mpegurl
+https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8
+#EXTINF:-1 tvg-id="AsharqNews.sa@SD" tvg-name="Asharq News" tvg-logo="https://i.imgur.com/bqRC3sl.png" group-title="Infos Arabe",Asharq News
+https://live-news.asharq.com/asharq_1080p30.m3u8
+#EXTINF:-1 tvg-id="DW.de@Arabic" tvg-name="DW Arabic" tvg-logo="https://i.imgur.com/8MRNFb9.png" group-title="Infos Arabe",DW Arabic
+https://dwamdstream103.akamaized.net/hls/live/2015526/dwstream103/master.m3u8
+#EXTINF:-1 tvg-id="BBCArabic.uk@SD" tvg-name="BBC Arabic" tvg-logo="https://i.imgur.com/ScyTG6P.png" group-title="Infos Arabe",BBC Arabic
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:mimetype=application/dash+xml
+#KODIPROP:inputstream.adaptive.stream_selection_type=fixed-res
+https://vs-cmaf-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.mpd

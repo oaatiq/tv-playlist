@@ -1,0 +1,704 @@
+{
+  "_comment": "Post-build overrides for playlist.m3u. apply_overrides.py applies these to the output of build_tivimate.py. Verified to reproduce commit 0a798e6 exactly from the 44b4a44 build output. See BUILD-DURABILITY.md.",
+  "remove": {
+    "tvg_id_country_codes": [
+      "ru",
+      "by"
+    ],
+    "tvg_id": [
+      "3ABNInternational.us@SD",
+      "AngelTV.in@Africa",
+      "AngelTV.in@Arabia",
+      "AngelTV.in@Europe",
+      "AngelTV.in@FarEast",
+      "AngelTV.in@IndoChina",
+      "EWTN.us@AfricaAsia",
+      "EWTN.us@AsiaPacific",
+      "EWTN.us@Europe",
+      "FaithAfrica.za@SD",
+      "HopeChannelAfrica.za@SD",
+      "PeaceTVEnglish.ae@SD",
+      "SBNTVGlobal.us@SD",
+      "SBNTVInternational.us@SD",
+      "ShalomWorld.us@NorthAmerica",
+      "ShalomWorld.us@Europe",
+      "NBTWorld.th@SD",
+      "RaiItalia.it@EuropeAfrica",
+      "TVBRICSAfrica.za@SD"
+    ]
+  },
+  "regroup": {
+    "by_tvg_id": {
+      "AfricanewsEnglish.fr@SD": "Infos Monde",
+      "AfricanewsFrench.fr@SD": "Infos Monde",
+      "ArirangUN.kr@SD": "Infos Monde",
+      "AusbizTV.au": "Infos Monde",
+      "BBCNews.uk@Africa": "Infos Monde",
+      "BBCNews.uk@SouthAsia": "Infos Monde",
+      "BloombergTV.us@Plus": "Infos Monde",
+      "BloombergTV.us@Asia": "Infos Monde",
+      "BloombergTV.us@AsiaLiveEvent": "Infos Monde",
+      "BloombergTV.us@EMEALiveEvent": "Infos Monde",
+      "BloombergTV.us@Europe": "Infos Monde",
+      "CNAInternational.sg@SD": "Infos Monde",
+      "DW.de@English": "Infos Monde",
+      "EbS.be@SD": "Infos Monde",
+      "France24.fr@English": "Infos Monde",
+      "i24NEWSEnglishWorld.il@SD": "Infos Monde",
+      "NHKWorldPremium.jp@SD": "Infos Monde",
+      "NHKWorldJapan.jp@SD": "Infos Monde",
+      "TOIGlobal.in@SD": "Infos Monde",
+      "TRTWorld.tr@SD": "Infos Monde",
+      "UNWebTV.us@SD": "Infos Monde",
+      "WION.in@SD": "Infos Monde",
+      "FloHockey.us@HD": "Sport",
+      "FloRacing.us@HD": "Sport",
+      "FUELTV.pt@EMEA": "Sport",
+      "FUELTV.pt@AU": "Sport",
+      "Motorvision.de@SD": "Sport",
+      "RedBullTV.at@EUMENA": "Sport",
+      "RedBullTV.at@AU": "Sport",
+      "RedBullTV.at@SD": "Sport",
+      "TraceSportStars.fr@SD": "Sport",
+      "WildEarth.za@SD": "Sport",
+      "MBCBollywood.ae@SD": "Musique & Jeunesse",
+      "ducktv.sk@SD": "Musique & Jeunesse",
+      "ZooMoo.sg@SD": "Musique & Jeunesse",
+      "DroneTV.us@SD": "Musique & Jeunesse",
+      "MBCFM.ae@SD": "Musique & Jeunesse",
+      "QwestTV.fr@SD": "Musique & Jeunesse",
+      "SpaceLivepoweredbysen.uk@SD": "Musique & Jeunesse",
+      "StingrayTikTokRadio.ca@HD": "Musique & Jeunesse",
+      "TraceGospel.fr@NigeriaandEastAfrica": "Musique & Jeunesse",
+      "TraceGospel.fr@SouthernAfrica": "Musique & Jeunesse",
+      "TraceNgoma.fr@SD": "Musique & Jeunesse",
+      "TraceUrban.fr@AfricaFranco": "Musique & Jeunesse",
+      "TraceUrban.fr@CaribbeanAndIndianOcean": "Musique & Jeunesse",
+      "TraceUrban.fr@InternationalHD": "Musique & Jeunesse",
+      "TraceUrban.fr@SouthernAfrica": "Musique & Jeunesse",
+      "VantageRock.ee@HD": "Musique & Jeunesse",
+      "ClassicArtsShowcase.us@SD": "Art de vivre",
+      "DocumentaryPlus.us@International": "Art de vivre",
+      "MasterChefsAcademyTV.uk@HD": "Art de vivre",
+      "GustoTV.ca@SD": "Art de vivre",
+      "SuperyachtTV.mc@SD": "Art de vivre",
+      "TV5MONDEChefs.fr@SD": "Art de vivre"
+    }
+  },
+  "patch_attrs": {
+    "by_group_and_name": {
+      "Al Jazeera\tAl Jazeera": {
+        "tvg-id": "AlJazeera.qa@Arabic",
+        "tvg-logo": "https://i.imgur.com/7bRVpnu.png"
+      },
+      "Al Jazeera\tAl Jazeera 2": {
+        "tvg-id": "AlJazeera2.qa@HD",
+        "tvg-logo": "https://i.imgur.com/miq8O1Q.png"
+      },
+      "Al Jazeera\tAl Jazeera Mubasher": {
+        "tvg-id": "AlJazeeraMubasher.qa@SD",
+        "tvg-logo": "https://i.imgur.com/X80DQvF.png"
+      },
+      "Al Jazeera\tAl Jazeera Mubasher 2": {
+        "tvg-logo": "https://i.imgur.com/X80DQvF.png"
+      },
+      "Al Jazeera\tAl Jazeera Mubasher 24": {
+        "tvg-id": "AlJazeeraMubasher24.qa@SD",
+        "tvg-logo": "https://i.imgur.com/LMCcIZ2.png"
+      },
+      "Al Jazeera\tAl Jazeera Documentary": {
+        "tvg-id": "AlJazeeraDocumentary.qa@SD",
+        "tvg-logo": "https://i.imgur.com/5dNJlLo.png"
+      },
+      "Al Jazeera\tAl Jazeera English": {
+        "tvg-id": "AlJazeera.qa@English",
+        "tvg-logo": "https://i.imgur.com/7bRVpnu.png"
+      }
+    }
+  },
+  "renumber": {
+    "Infos FR": 1180,
+    "Infos Arabe": 1200,
+    "Other countries": 3750
+  },
+  "group_order": [
+    "Maroc",
+    "Al Jazeera",
+    "France",
+    "Infos FR",
+    "Infos Arabe",
+    "Arabie Saoudite",
+    "Égypte",
+    "Émirats",
+    "Qatar",
+    "United Kingdom",
+    "United States",
+    "Infos Monde",
+    "Sport",
+    "Musique & Jeunesse",
+    "Art de vivre",
+    "Other countries"
+  ],
+  "add": [
+    {
+      "chno": 1210,
+      "name": "Abdulmajeed Abdullah",
+      "group": "Arabie Saoudite",
+      "url": "https://d2hng5r56zpsbw.cloudfront.net/out/v1/9c4c990f44bb4767bb46271f326dd574/index.m3u8",
+      "tvg-id": "AbdulmajeedAbdullah.sa@SD",
+      "tvg-logo": "https://assets.mbcmood.com/channels/1720184087Abdullah%20Majeed%20Abdullah%20banner.png"
+    },
+    {
+      "chno": 1211,
+      "name": "Aflam",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx001/playlist.m3u8",
+      "tvg-id": "Aflam.sa@SD",
+      "tvg-logo": "https://i.imgur.com/cTLj7Yt.png"
+    },
+    {
+      "chno": 1212,
+      "name": "Al Alam Al Yawm",
+      "group": "Arabie Saoudite",
+      "url": "https://mn-nl.mncdn.com/mekameleen/smil:mekameleentv.smil/chunklist_b928000.m3u8",
+      "tvg-id": "AlAlamAlYawm.sa@SD",
+      "tvg-logo": "https://i.imgur.com/aAGjAoW.png"
+    },
+    {
+      "chno": 1213,
+      "name": "Al Ekhbariya",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-ekhbaria/297b3ef1cd0633ad9cfba7473a686a06/index.m3u8",
+      "tvg-id": "AlEkhbariya.sa@SD",
+      "tvg-logo": "https://i.imgur.com/WcRlHQm.png"
+    },
+    {
+      "chno": 1214,
+      "name": "Al Hadath",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-hadath/2ff87ec4c2f3ede35295a20637d9f8fd/index.m3u8",
+      "tvg-id": "AlHadath.sa@SD",
+      "tvg-logo": "https://i.imgur.com/De4SEWE.png"
+    },
+    {
+      "chno": 1215,
+      "name": "Al Riyadh Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://live.kwikmotion.com/sbrksariyadhradiolive/srpksariyadhradio/playlist.m3u8",
+      "tvg-id": "AlRiyadhRadio.sa@SD",
+      "tvg-logo": "https://aloula.faulio.com/storage/mediagallery/37/1a/fullhd_399eddcc4305f34f41c7fab24c3518fab5d55d97.png"
+    },
+    {
+      "chno": 1216,
+      "name": "Al Saudiya",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-saudi-tv/2ad66056b51fd8c1b624854623112e43/index.m3u8",
+      "tvg-id": "AlSaudiya.sa@SD",
+      "tvg-logo": "https://i.imgur.com/GRQTndk.png"
+    },
+    {
+      "chno": 1217,
+      "name": "Al Saudiya Alaan",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-ksa-now/71ed3aa814c643306c0a8bc4fcc7d17f/index.m3u8",
+      "tvg-id": "AlSaudiyaAlaan.sa@SD",
+      "tvg-logo": "https://i.imgur.com/sEOjApe.png"
+    },
+    {
+      "chno": 1218,
+      "name": "Alkhuzama Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://live.kwikmotion.com/sbrksakhuzamaradiolive/srpkhuzama/playlist.m3u8",
+      "tvg-id": "AlkhuzamaRadio.sa@SD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/61010cbc-91c5-4ce1-94a4-ed40adadb97b"
+    },
+    {
+      "chno": 1219,
+      "name": "Alwesam TV",
+      "group": "Arabie Saoudite",
+      "url": "https://stream.addresses-sat.com/Alwesam/index.m3u8",
+      "tvg-id": "AlwesamTV.sa@SD",
+      "tvg-logo": "https://i.imgur.com/rtqVAxf.png"
+    },
+    {
+      "chno": 1220,
+      "name": "Asharq Discovery",
+      "group": "Arabie Saoudite",
+      "url": "https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8",
+      "tvg-id": "AsharqDiscovery.sa@SD",
+      "tvg-logo": "https://i.imgur.com/Czxi7yk.png"
+    },
+    {
+      "chno": 1221,
+      "name": "Asharq Documentary",
+      "group": "Arabie Saoudite",
+      "url": "https://svs.itworkscdn.net/asharqdocumentarylive/asharqdocumentary.smil/playlist_dvr.m3u8",
+      "tvg-id": "AsharqDocumentary.sa@SD",
+      "tvg-logo": "https://i.imgur.com/v6VsFEt.png"
+    },
+    {
+      "chno": 1222,
+      "name": "Asharq Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://svs.itworkscdn.net/asharqradiovlive/asharqradiov/playlist.m3u8",
+      "tvg-id": "AsharqRadio.sa@SD",
+      "tvg-logo": "https://i.imgur.com/M6K8cD3.jpeg"
+    },
+    {
+      "chno": 1223,
+      "name": "Atfal & Mawaheb TV",
+      "group": "Arabie Saoudite",
+      "url": "https://5aafcc5de91f1.streamlock.net/atfal1.com/atfal2/playlist.m3u8",
+      "tvg-id": "AtfalMawahebTV.sa@SD",
+      "tvg-logo": "https://i.imgur.com/Y2BqP9m.png"
+    },
+    {
+      "chno": 1224,
+      "name": "Bab Al Hara",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx010/playlist.m3u8",
+      "tvg-id": "BabAlHara.sa@SD",
+      "tvg-logo": "https://i.imgur.com/QtlnZbq.png"
+    },
+    {
+      "chno": 1225,
+      "name": "Big Time Plus",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-big-time-plus/924283f994779a311c1389698ff7e736/index.m3u8",
+      "tvg-id": "BigTimePlus.sa@SD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/4e042cb6-500b-4e4c-a8ca-21a5a7a7a71b"
+    },
+    {
+      "chno": 1226,
+      "name": "Fairuz",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx029/playlist.m3u8",
+      "tvg-id": "Fairuz.sa@HD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/f809d51c-e83d-43c9-8236-78731c2216ad?type=png"
+    },
+    {
+      "chno": 1227,
+      "name": "Holy Quran Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8",
+      "tvg-id": "HolyQuranRadio.sa@SD",
+      "tvg-logo": "https://aloula.faulio.com/storage/mediagallery/14/da/fullhd_823bc2fe722ede75410492d57fd6c201208b4224.png"
+    },
+    {
+      "chno": 1228,
+      "name": "Jeddah Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://live.kwikmotion.com/sbrksajeddahradiolive/srpksajeddahradio/chunks.m3u8",
+      "tvg-id": "JeddahRadio.sa@SD",
+      "tvg-logo": "https://aloula.faulio.com/storage/mediagallery/bd/f5/fullhd_527bf54a5adb56ac17f572ac2cd0801304db3baf.png"
+    },
+    {
+      "chno": 1229,
+      "name": "LBC",
+      "group": "Arabie Saoudite",
+      "url": "http://185.9.2.18/chid_327/index.m3u8",
+      "tvg-id": "LBC.sa@SD",
+      "tvg-logo": "https://s3.eu-central-1.amazonaws.com/rotana.website/channels/1688402500.webp"
+    },
+    {
+      "chno": 1230,
+      "name": "Majid Al Mohandis",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx019/playlist.m3u8",
+      "tvg-id": "MajidAlMohandis.sa@SD",
+      "tvg-logo": "https://i.discogs.com/Fk9Bm8gTYJYeVXIJKX-EOGmYQ90sVQPtkIW5ZK4fydo/rs:fit/g:sm/q:90/h:372/w:412/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTE2OTY4/MzMtMTU2ODk0NjI5/MC01Njk2LmpwZWc.jpeg"
+    },
+    {
+      "chno": 1231,
+      "name": "Maraya",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx008/playlist.m3u8",
+      "tvg-id": "Maraya.sa@HD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/d089a559-4f41-4def-a786-f98fcfbf0464?height=auto&width=288&croppingPoint=&version=1&type=png"
+    },
+    {
+      "chno": 1232,
+      "name": "MBC Masr Drama",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-drama/567b703c19ede6598222de81b0e4508b/index.m3u8",
+      "tvg-id": "MBCMasrDrama.sa@SD",
+      "tvg-logo": "https://media0070.elcinema.com/tvguide/1399_1.png"
+    },
+    {
+      "chno": 1233,
+      "name": "MBC Mood",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-mood/78367bf48ccdba501d0d014a10c21031/index.m3u8",
+      "tvg-id": "MBCMood.sa@HD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/c2b6a882-458b-446e-b0fe-f97f7992149a?height=auto&width=144&croppingPoint=&version=1&type=png"
+    },
+    {
+      "chno": 1234,
+      "name": "MBC+ Drama",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-plus-drama/e37251ec2aac8f6c98f75cd0fa37cd28/index.m3u8",
+      "tvg-id": "MBCPlusDrama.sa@SD",
+      "tvg-logo": "https://i.imgur.com/lxWdjXG.png"
+    },
+    {
+      "chno": 1235,
+      "name": "Mohammed Abdo",
+      "group": "Arabie Saoudite",
+      "url": "https://d2ow8h651gs7dx.cloudfront.net/out/v1/371fb663da604e659a2fb99bf89d92d4/index.m3u8",
+      "tvg-id": "MohammedAbdo.sa@SD",
+      "tvg-logo": "https://assets.mbcmood.com/channels/1720184012Mohammed%20Abdo%20banner.png"
+    },
+    {
+      "chno": 1236,
+      "name": "Nidae AlIslam Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://live.kwikmotion.com/sbrksanedaradiolive/srpksanedaradio/playlist.m3u8",
+      "tvg-id": "NidaeAlIslamRadio.sa@SD",
+      "tvg-logo": "https://aloula.faulio.com/storage/mediagallery/0f/c5/fullhd_5da380cdfc304fd7d4672a83aeb6c62bc1d3d3e8.png"
+    },
+    {
+      "chno": 1237,
+      "name": "Panorama FM",
+      "group": "Arabie Saoudite",
+      "url": "https://d6izdil55uftn.cloudfront.net/out/v1/0a06d1d6377c47edbd48721ed724bd08/index.m3u8",
+      "tvg-id": "PanoramaFM.sa@SD",
+      "tvg-logo": "https://i.imgur.com/JkDD3bK.png"
+    },
+    {
+      "chno": 1238,
+      "name": "Rabeh Saqer",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx004/playlist.m3u8",
+      "tvg-id": "RabehSaqer.sa@HD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/b98b0635-c8ed-4a7c-9efa-5856e278f54b?type=png"
+    },
+    {
+      "chno": 1239,
+      "name": "Rashid AlMajed",
+      "group": "Arabie Saoudite",
+      "url": "https://dphwv2ufgnfsq.cloudfront.net/out/v1/59cd80dfe93a479eb8b4d79bc6f225ca/index.m3u8",
+      "tvg-id": "RashidAlMajed.sa@SD",
+      "tvg-logo": "https://assets.mbcmood.com/channels/1720177618Rashid%20AlMajed.webp"
+    },
+    {
+      "chno": 1240,
+      "name": "Saudia Radio",
+      "group": "Arabie Saoudite",
+      "url": "https://live.kwikmotion.com/sbrksasaudiaradiolive/srpksasaudiaradio/playlist.m3u8",
+      "tvg-id": "SaudiaRadio.sa@SD",
+      "tvg-logo": "https://aloula.faulio.com/storage/mediagallery/32/f9/fullhd_4c7e170fe0169d36ed17d45a645d4e69fb961793.png"
+    },
+    {
+      "chno": 1241,
+      "name": "SBC",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-sbc/90e09c0c28db26435799b4a14892a167/index.m3u8",
+      "tvg-id": "SBC.sa@SD",
+      "tvg-logo": "https://i.imgur.com/9JSQglj.png"
+    },
+    {
+      "chno": 1242,
+      "name": "Tarab",
+      "group": "Arabie Saoudite",
+      "url": "https://shd-amg-fast.edgenextcdn.net/tx002/playlist.m3u8",
+      "tvg-id": "Tarab.sa@SD",
+      "tvg-logo": "https://assets.mbcmood.com/channels/1738059679TARAB_Logo.png"
+    },
+    {
+      "chno": 1260,
+      "name": "Al Ghad TV",
+      "group": "Égypte",
+      "url": "https://eazyvwqssi.erbvr.com/alghadtv/alghadtv.m3u8",
+      "tvg-id": "AlGhadTV.eg@SD",
+      "tvg-logo": "https://i.imgur.com/ga6NXb9.png"
+    },
+    {
+      "chno": 1261,
+      "name": "Al Masriyah",
+      "group": "Égypte",
+      "url": "http://185.9.2.18/chid_247/index.m3u8",
+      "tvg-id": "AlMasriyah.eg@SD",
+      "tvg-logo": "https://i.ibb.co/Kx7wmXCQ/almasriya.png"
+    },
+    {
+      "chno": 1262,
+      "name": "El Radio 9090 FM",
+      "group": "Égypte",
+      "url": "https://9090video.mobtada.com/hls/stream.m3u8",
+      "tvg-id": "ElRadio9090FM.eg@SD",
+      "tvg-logo": "https://www.9090.fm/images/logo.png"
+    },
+    {
+      "chno": 1263,
+      "name": "Koogi TV",
+      "group": "Égypte",
+      "url": "https://5d658d7e9f562.streamlock.net/koogi.tv/koogi.smil/playlist.m3u8",
+      "tvg-id": "KoogiTV.eg@SD",
+      "tvg-logo": "https://i.imgur.com/zojMTP9.png"
+    },
+    {
+      "chno": 1264,
+      "name": "MBC 1 Egypt",
+      "group": "Égypte",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1-na/eec141533c90dd34722c503a296dd0d8/index.m3u8",
+      "tvg-id": "MBC1Egypt.eg@HD",
+      "tvg-logo": "https://i.imgur.com/CiA3plN.png"
+    },
+    {
+      "chno": 1265,
+      "name": "MBC Masr",
+      "group": "Égypte",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr/956eac069c78a35d47245db6cdbb1575/index.m3u8",
+      "tvg-id": "MBCMasr.eg@SD",
+      "tvg-logo": "https://i.imgur.com/o2elx0u.png"
+    },
+    {
+      "chno": 1266,
+      "name": "MBC Masr 2",
+      "group": "Égypte",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-2/754931856515075b0aabf0e583495c68/index.m3u8",
+      "tvg-id": "MBCMasr2.eg@SD",
+      "tvg-logo": "https://i.imgur.com/KHo7Gtn.png"
+    },
+    {
+      "chno": 1267,
+      "name": "Mix Hollywood",
+      "group": "Égypte",
+      "url": "https://ml-pull-hwc.myco.io/MixTV/hls/index.m3u8",
+      "tvg-id": "MixHollywood.eg@SD",
+      "tvg-logo": "https://i.imgur.com/1ENdbZn.png"
+    },
+    {
+      "chno": 1268,
+      "name": "Watan TV",
+      "group": "Égypte",
+      "url": "https://rp.tactivemedia.com/watantv_source/live/playlist.m3u8",
+      "tvg-id": "WatanTV.eg@SD",
+      "tvg-logo": "https://i.imgur.com/pZyKaUH.png"
+    },
+    {
+      "chno": 1270,
+      "name": "Al Arabiya Business",
+      "group": "Émirats",
+      "url": "https://live.alarabiya.net/alarabiapublish/aswaaq.smil/playlist.m3u8",
+      "tvg-id": "AlArabiyaBusiness.ae@SD",
+      "tvg-logo": "https://shahid.mbc.net/mediaObject/73142189-aeca-4f65-8977-d769c91e2573?height=auto&width=600&croppingPoint=&version=1&type=png"
+    },
+    {
+      "chno": 1271,
+      "name": "Al Arabiya Programs",
+      "group": "Émirats",
+      "url": "https://live.alarabiya.net/alarabiapublish/aaprograms.smil/playlist.m3u8",
+      "tvg-id": "AlArabiyaPrograms.ae@SD",
+      "tvg-logo": "https://i.imgur.com/Hoc3cfO.png"
+    },
+    {
+      "chno": 1272,
+      "name": "Al Qamar TV",
+      "group": "Émirats",
+      "url": "https://streamer3.premio.link/alqamar/playlist.m3u8",
+      "tvg-id": "AlQamarTV.ae@SD",
+      "tvg-logo": "https://i.imgur.com/zkBT0C8.png"
+    },
+    {
+      "chno": 1273,
+      "name": "Al Shallal TV",
+      "group": "Émirats",
+      "url": "https://amg01480-alshallalfze-alshallal-ono-q0hfg.amagi.tv/playlist.m3u8",
+      "tvg-id": "AlShallalTV.ae@SD",
+      "tvg-logo": "https://i.imgur.com/otAHLRo.png"
+    },
+    {
+      "chno": 1274,
+      "name": "Al Sharqiya Min Kabla",
+      "group": "Émirats",
+      "url": "https://svs.itworkscdn.net/kablatvlive/kabtv1.smil/playlist.m3u8",
+      "tvg-id": "AlSharqiyaMinKabla.ae@SD",
+      "tvg-logo": "https://i.imgur.com/m4qheI4.png"
+    },
+    {
+      "chno": 1275,
+      "name": "Al Wousta TV",
+      "group": "Émirats",
+      "url": "https://svs.itworkscdn.net/alwoustalive/alwoustatv.smil/playlist.m3u8",
+      "tvg-id": "AlWoustaTV.ae@SD",
+      "tvg-logo": "https://i.imgur.com/zgMqQPQ.png"
+    },
+    {
+      "chno": 1276,
+      "name": "Al Yaum TV",
+      "group": "Émirats",
+      "url": "https://hlspackager.akamaized.net/live/DB/ALYAUM_TV/HLS/ALYAUM_TV.m3u8",
+      "tvg-id": "AlYaumTV.ae@SD",
+      "tvg-logo": "https://i.imgur.com/rBixF3P.png"
+    },
+    {
+      "chno": 1277,
+      "name": "CNBC Arabiya",
+      "group": "Émirats",
+      "url": "https://cnbc-live.akamaized.net/cnbc/master.m3u8",
+      "tvg-id": "CNBCArabiya.ae@SD",
+      "tvg-logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/CNBC_Arabia_2025.svg/960px-CNBC_Arabia_2025.svg.png"
+    },
+    {
+      "chno": 1278,
+      "name": "Dubai TV International",
+      "group": "Émirats",
+      "url": "http://185.9.2.18/chid_139/index.m3u8",
+      "tvg-id": "DubaiTVInternational.ae@SD",
+      "tvg-logo": "https://i.imgur.com/UMmbyHv.png"
+    },
+    {
+      "chno": 1279,
+      "name": "MBC 1",
+      "group": "Émirats",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8",
+      "tvg-id": "MBC1.ae@SD",
+      "tvg-logo": "https://i.imgur.com/CiA3plN.png"
+    },
+    {
+      "chno": 1280,
+      "name": "MBC 4",
+      "group": "Émirats",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8",
+      "tvg-id": "MBC4.ae@SD",
+      "tvg-logo": "https://i.imgur.com/BcXASJp.png"
+    },
+    {
+      "chno": 1281,
+      "name": "MBC 5",
+      "group": "Émirats",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8",
+      "tvg-id": "MBC5.ae@SD",
+      "tvg-logo": "https://i.imgur.com/fRWaDyF.png"
+    },
+    {
+      "chno": 1282,
+      "name": "MBC Drama (United Arab Emirates)",
+      "group": "Émirats",
+      "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama/2c28a458e2f3253e678b07ac7d13fe71/index.m3u8",
+      "tvg-id": "MBCDrama.ae@SD",
+      "tvg-logo": "https://i.imgur.com/g5PWnqp.png"
+    },
+    {
+      "chno": 1283,
+      "name": "Sharjah 2",
+      "group": "Émirats",
+      "url": "https://svs.itworkscdn.net/smc2live/smc2tv.smil/playlist.m3u8",
+      "tvg-id": "Sharjah2.ae@SD",
+      "tvg-logo": "https://i.imgur.com/Wd3Xvd1.png"
+    },
+    {
+      "chno": 1284,
+      "name": "Sharjah Radio",
+      "group": "Émirats",
+      "url": "https://svs.itworkscdn.net/smcradiolive/smcradiolive/playlist.m3u8",
+      "tvg-id": "SharjahRadio.ae@SD",
+      "tvg-logo": "https://i.imgur.com/q7GGALe.png"
+    },
+    {
+      "chno": 1285,
+      "name": "Sharjah Radio Quran",
+      "group": "Émirats",
+      "url": "https://live.kwikmotion.com/smcquranlive/quranradiolive/playlist.m3u8",
+      "tvg-id": "SharjahRadioQuran.ae@SD",
+      "tvg-logo": "https://i.imgur.com/MxZlOvc.png"
+    },
+    {
+      "chno": 1286,
+      "name": "Sharjah TV",
+      "group": "Émirats",
+      "url": "https://live.kwikmotion.com/smc1live/smc1tv.smil/playlist.m3u8",
+      "tvg-id": "SharjahTV.ae@SD",
+      "tvg-logo": "https://i.imgur.com/Oz2bPOt.png"
+    },
+    {
+      "chno": 1287,
+      "name": "Sky News Arabia Vertical",
+      "group": "Émirats",
+      "url": "https://live-stream.skynewsarabia.com/c-vertical-channel/vertical-stream/index.m3u8",
+      "tvg-id": "SkyNewsArabiaVertical.ae@HD",
+      "tvg-logo": "https://i.imgur.com/FjtzQQs.png"
+    },
+    {
+      "chno": 1288,
+      "name": "Watar Radio",
+      "group": "Émirats",
+      "url": "https://svs.itworkscdn.net/smcwatarlive/smcwatar/playlist.m3u8",
+      "tvg-id": "WatarRadio.ae@SD",
+      "tvg-logo": "https://sbauae.faulio.com/storage/mediagallery/d2/ad/fullhd_48adf2291d08266c05ed1b0c24f326c86b1095b7.png"
+    },
+    {
+      "chno": 1300,
+      "name": "Al Araby TV",
+      "group": "Qatar",
+      "url": "https://live.kwikmotion.com/alaraby1live/alaraby_abr/playlist.m3u8",
+      "tvg-id": "AlArabyTV.qa@SD",
+      "tvg-logo": "https://i.imgur.com/YMqWEe4.png"
+    },
+    {
+      "chno": 1301,
+      "name": "Al Araby TV 2",
+      "group": "Qatar",
+      "url": "https://live.kwikmotion.com/alaraby2live/alaraby2.smil/playlist.m3u8",
+      "tvg-id": "AlArabyTV2.qa@SD",
+      "tvg-logo": "https://i.imgur.com/Gp5mNea.png"
+    },
+    {
+      "chno": 1302,
+      "name": "Al Jazeera Mubasher Broadcast 2",
+      "group": "Qatar",
+      "url": "https://live-hls-apps-ajm2-fa.getaj.net/AJM2/index.m3u8",
+      "tvg-id": "AlJazeeraMubasherBroadcast2.qa@SD",
+      "tvg-logo": "https://i.imgur.com/nJmi6G6.png"
+    },
+    {
+      "chno": 1303,
+      "name": "Al Maaref TV",
+      "group": "Qatar",
+      "url": "https://bucharest.zeuscdn724.com/lb0/CH-AL-MA/index.m3u8",
+      "tvg-id": "AlMaarefTV.qa@SD",
+      "tvg-logo": "https://i.imgur.com/QFnztgo.png"
+    },
+    {
+      "chno": 1304,
+      "name": "Al Rayyan Old TV",
+      "group": "Qatar",
+      "url": "https://alrayyancdn.vidgyor.com/pub-nooldraybinbdh/liveabr/playlist_dvr.m3u8",
+      "tvg-id": "AlRayyanOldTV.qa@SD",
+      "tvg-logo": "https://i.imgur.com/4qB5iN0.png"
+    },
+    {
+      "chno": 1305,
+      "name": "Al Rayyan TV",
+      "group": "Qatar",
+      "url": "https://alrayyancdn.vidgyor.com/pub-noalrayy3pwz0l/liveabr/playlist_dvr.m3u8",
+      "tvg-id": "AlRayyanTV.qa@SD",
+      "tvg-logo": "https://i.imgur.com/Ts3RjTV.png"
+    },
+    {
+      "chno": 1306,
+      "name": "Qatar Television",
+      "group": "Qatar",
+      "url": "https://live.kwikmotion.com/qtv1live/qtv1.smil/playlist.m3u8",
+      "tvg-id": "QatarTelevision.qa@SD",
+      "tvg-logo": "https://i.imgur.com/N5RB4sp.png"
+    },
+    {
+      "chno": 1307,
+      "name": "Qatar Television 2",
+      "group": "Qatar",
+      "url": "https://live.kwikmotion.com/qtv2live/qtv2.smil/playlist.m3u8",
+      "tvg-id": "QatarTelevision2.qa@SD",
+      "tvg-logo": "https://i.imgur.com/iWJxDUm.png"
+    },
+    {
+      "chno": 1308,
+      "name": "Qatar TV The Holy Quran",
+      "group": "Qatar",
+      "url": "https://qatartv.akamaized.net/hls/live/20000612/qtvquran/master.m3u8",
+      "tvg-id": "QatarTVTheHolyQuran.qa@HD",
+      "tvg-logo": "https://www.qmc.qa/img/LiveChannels/1ca67a44-9290-4b2a-8a16-d8c6e2260816.jpg"
+    }
+  ]
+}

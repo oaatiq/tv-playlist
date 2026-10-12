@@ -1,182 +1,209 @@
-# Build durability: why the playlist will be overwritten, and how to fix it
+# Build durability: why the playlist used to be overwritten, and what fixes it
 
-**Status:** open problem. Nothing here has been done yet.
-**Written:** 2026-10-12, against `main` @ `da7a8cf`.
-**Read this when:** you are at home, the MINIX U8K is reachable over LAN, and you can see both `build_tivimate.py` and the two source lists on the box.
+**Status:** fixed, 2026-10-12. Option C from the original plan.
+**Read this when:** you are about to change how `playlist.m3u` is produced, or a rebuild
+surprises you.
 
-This file is a handoff to a fresh Claude session. It assumes no prior context.
+`playlist.m3u` is generated, but about 150 channels' worth of content, grouping and
+numbering never existed in the build's inputs — it was edited straight into the file. A
+rebuild used to discard all of it, silently and without a conflict. It no longer can:
+those edits now live in `overrides/overrides.json`, and `rebuild.ps1` re-applies them
+after every build.
 
 ---
 
-## 1. The setup
-
-| Thing | Where |
-|---|---|
-| This repo | `github.com/oaatiq/tv-playlist`, branch `main` |
-| Playlist consumed by the player | `https://raw.githubusercontent.com/oaatiq/tv-playlist/main/playlist.m3u` |
-| Guide | `epg.xml.gz` in this repo, referenced from the playlist header |
-| Cloudflare Worker | `https://ma-tv.oaatiq.workers.dev` — source in `worker/src/index.js`, deploy with `cd worker && npx wrangler deploy` |
-| Player | XCIPTV on a MINIX U8K Android TV box (also tested on an Android phone) |
-
-The Worker exists because SNRT's EasyBroadcast streams need an hourly token and Télé Maroc's signed link expires after about 12 hours, so static URLs die. It also hosts `/h/` routes that attach a `Referer`/`User-Agent` for four channels, because XCIPTV ignores `#EXTVLCOPT`. **None of this is affected by the problem below** — the Worker is independent of the build.
-
-### The build (per this repo's README)
-
-`playlist.m3u` is **generated**, not hand-written:
+## 1. The pipeline
 
 ```
-playlists/tivimate/build_tivimate.py \
-  --out tv-playlist --out-name playlist.m3u \
-  --grouping country \
-  --maroc-worker https://ma-tv.oaatiq.workers.dev \
-  --epg-url https://raw.githubusercontent.com/oaatiq/tv-playlist/main/epg.xml.gz
+          hand-curated on the box                generated on the laptop
+        ┌──────────────────────────┐      ┌──────────────────────────────────┐
+        │ box: direct.m3u  (1–48)  │      │ autocheck/master.m3u             │
+        └────────────┬─────────────┘      │   │ recheck.py, scheduled task   │
+                     │                    │   │ every 2 h, full re-check     │
+                     │                    │   │ weekly                       │
+                     │                    │   ▼                              │
+                     │                    │ autocheck/live.m3u ──adb push──┐ │
+                     │                    └────────────────────────────────┼─┘
+                     │                                                     ▼
+                     │                              box: world_fr_en.m3u (1001–3744)
+                     │                                                     │
+                     └──────────────────┬──────────────────────────────────┘
+                                        ▼
+                              sources/*.m3u   (committed snapshots)
+                                        │
+                                        ▼  build_tivimate.py          ← rebuild.ps1
+                              .rebuild/playlist.m3u   (1,386 ch, 9 groups)
+                                        │
+                                        ▼  apply_overrides.py         ← rebuild.ps1
+                                        │  + overrides/overrides.json
+                              .rebuild/playlist.m3u   (1,431 ch, 16 groups)
+                                        │
+                                        ▼  verify_playlist.py         ← rebuild.ps1
+                                        ▼
+                                   playlist.m3u ──git push──► raw.githubusercontent
+                                                                      │
+                                                                      ▼
+                                                            XCIPTV on the box
 ```
 
-Its two inputs live **on the box**, not in this repo, under `/storage/emulated/0/Android/data/org.xbmc.kodi/files/.kodi/userdata/addon_data/pvr.iptvsimple/`:
+Two things worth knowing:
 
-- `direct.m3u` — passed as `--direct`, the curated channels 1–48
-- `world_fr_en.m3u` — passed as `--world`, the numbered world list
+- **The source lists drift on their own.** `recheck.py` runs from a Windows scheduled task
+  (`playlists/autocheck/register-task.ps1`) every two hours, re-checks every channel weekly,
+  drops dead ones, re-resolves Samsung TV Plus URLs and pushes the result to the box. So a
+  rebuild months from now will not see the same world list.
+- **Nothing automated touches this repo.** `recheck.py` never runs the build and never
+  touches `playlist.m3u`, so the overwrite only ever happened by hand. That is still the
+  only way it can happen — and `rebuild.ps1` is now the thing to run by hand.
 
-The README notes that the copies under `playlists/` have no `tvg-chno` and will not build.
-
----
-
-## 2. The constraint
-
-On 2026-10-12 a large set of changes was committed **directly to `playlist.m3u`** and merged to `main`. The two source lists on the box were **not** touched.
-
-So the next time `build_tivimate.py` runs, it regenerates `playlist.m3u` from `direct.m3u` + `world_fr_en.m3u` and **silently discards every change below.** There is no warning and no conflict — the file is simply rewritten.
-
-This is not hypothetical any more: the changes are live on `main` and the box is serving them.
+The Worker (`worker/`) is independent of all of this.
 
 ---
 
-## 3. What exactly gets lost
+## 2. What the overrides hold
 
-Nine commits, `56db85c..da7a8cf`. Net effect **1,386 → 1,431 channels**.
+`overrides/overrides.json`, applied in this order by `apply_overrides.py`:
 
-1. **70 Arab-world channels added** in four new groups, sourced from iptv-org's Arabic list and each probed live: Arabie Saoudite (33), Égypte (9), Émirats (19), Qatar (9). Includes MBC 1/4/5/Drama/Mood, MBC Masr 1/2, Al Ekhbariya, Al Saudiya, SBC, Asharq x3, Qatar TV 1/2, Al Rayyan, Al Araby, KTV x6.
-2. **369 channels renumbered** so that every group's lowest `tvg-chno` ascends in the same order the groups appear in the file. This makes the category order hold whether the player sorts by file position or by channel number. Infos FR moved 24–41 to 1180–1197, Infos Arabe 43–48 to 1200–1205, Other countries to 3750–4024.
-3. **`International` (73) split into four groups** — Infos Monde (22), Sport (10), Musique & Jeunesse (16), Art de vivre (6) — and **19 removed** (16 religious broadcasters, plus NBT World, Rai Italia, TV BRICS Africa).
-4. **6 Russian/Belarusian channels removed** — every entry whose `tvg-id` carried a `.ru` or `.by` country code.
-5. **7 Al Jazeera entries given `tvg-logo` and `tvg-id`** — they were the only entries in the playlist with neither, so XCIPTV showed no logo.
-6. **Group order set** to the 16 groups in section 5's table.
+| Key | Effect | Size |
+|---|---|---|
+| `patch_attrs` | fills in `tvg-id` / `tvg-logo` the build leaves blank — the 7 Al Jazeera entries, which were the only ones in the playlist with neither, so XCIPTV showed no logo | 7 entries, 13 attributes |
+| `renumber` | a base number per group; members are renumbered by their position in the group as the build emitted them | 3 groups |
+| `regroup` | splits the build's one `International` group into Infos Monde / Sport / Musique & Jeunesse / Art de vivre, keyed on `tvg-id` | 54 channels |
+| `remove` | drops any entry whose `tvg-id` carries a `.ru` or `.by` country code (6), plus 19 named `tvg-id`s — 16 religious broadcasters, NBT World, Rai Italia, TV BRICS Africa | 25 channels |
+| `add` | the 70 Arab-world channels, as full entries: Arabie Saoudite 33, Égypte 9, Émirats 19, Qatar 9. Sourced from iptv-org's Arabic list, each probed live | 70 channels |
+| `group_order` | the order the 16 group blocks are written in | 16 groups |
+
+Net effect: **1,386 → 1,431 channels, 9 → 16 groups.**
+
+The renumbering is three numbers, not a table of 294:
+
+| Group | Base | Was |
+|---|---|---|
+| Infos FR | 1180 | 24–41 |
+| Infos Arabe | 1200 | 43–48 |
+| Other countries | 3750 | 1261–3661, sparse |
+
+Everything else keeps the number the build gave it — including the 54 channels that move
+into the four new groups, which is why that split needed no renumbering at all.
+
+### Things it is careful about
+
+- **It never touches a stream URL or an `#EXTVLCOPT` line.** Only `tvg-chno`,
+  `group-title`, `tvg-id`, `tvg-logo`, which entries exist, and the order they are written
+  in. Nothing that decides how a channel plays.
+- **It is idempotent.** Running it twice is a no-op: additions are skipped when the URL is
+  already present, and a group is not renumbered when it already sits at or above its base.
+- **It never silently drops a channel.** If the world list grows a group that
+  `group_order` does not mention, those channels are written at the end and reported, not
+  discarded.
+- **It reports staleness.** An override that matched nothing — a removal for a channel that
+  is already gone, a `tvg-id` that no longer exists — is printed as a warning.
+
+Numbers 1–1308 are pinned by the overrides and will not move. `Other countries`
+(3750+) is positional, so those numbers shift when the upstream list gains or loses
+channels. `verify_playlist.py --compare` is what tells you when that happened.
 
 ---
 
-## 4. What is NOT known yet — investigate first
+## 3. How the build behaves (the questions the original handoff left open)
 
-These could not be answered without the box. **Answer them before choosing a solution; the right fix depends entirely on Q1.**
+Answered by reading `build_tivimate.py` (snapshot in `sources/`) and `playlists/autocheck/recheck.py`.
 
-- **Q1. Where does `group-title` come from?** Does the script compute it from a country code or internal mapping, or copy it from the source entry? If it computes it, writing `group-title="Arabie Saoudite"` into `direct.m3u` will be ignored and those channels will land in `Other countries`.
-- **Q2. Where does `tvg-chno` come from?** Read verbatim from the source lists, or assigned by the script? The README implies the former (the `playlists/` copies "will not build" without `tvg-chno`), but confirm.
-- **Q3. What decides group *order* in the output file?**
-- **Q4. What decides which countries get their own group vs the `Other countries` catch-all** — a hardcoded list, or a channel-count threshold?
-- **Q5. Does the same script also regenerate `epg.xml.gz`,** or is that a separate process?
-- **Q6. Where does `build_tivimate.py` actually live** (the README path is relative to an unknown root), and is it version-controlled anywhere?
-- **Q7. How is the box reached** — adb over LAN, SMB, FTP, a file manager?
+**Q1 — where does `group-title` come from?** Both, depending on the list.
+*Curated* (`direct.m3u`): copied verbatim, except that anything already in `Maroc` or
+carrying a `.ma` `tvg-id` is forced into `Maroc`. *World* (`world_fr_en.m3u`): **computed**
+by `world_group()` from IPTV Simple's `Lang;Country;Genre` syntax — with `--grouping
+country` it takes the first field that is not a language, falling back to `Other countries`
+when there is none. So a literal `group-title="Arabie Saoudite"` in the world list would
+have survived, but writing the four new groups into the sources was never the plan anyway.
+
+**Q2 — where does `tvg-chno` come from?** Read from the source lists. The world list is
+authoritative and the attribute is required there (hence the README's note that the
+`playlists/` copies will not build). In the curated list it is read when present, and
+otherwise continues from the last entry that had one.
+
+**Q3 — what decides group order in the output?** The `Maroc` block is written first,
+sorted by channel number; everything else follows in source-file order, unsorted. That is
+why the build emits `Other countries` in three separate blocks. `apply_overrides.py`
+replaces this with one contiguous block per group in `group_order`.
+
+**Q4 — what decides `Other countries`?** Nothing in `build_tivimate.py` — no hardcoded
+list, no threshold. It is whatever `recheck.py` wrote into the world list's `group-title`;
+it collapsed every country except France, International, United Kingdom and United States
+into `Other countries` on 2026-10-11, deleting 266 channels in the process.
+
+**Q5 — does the build also regenerate `epg.xml.gz`?** No. It writes the `.m3u` and nothing
+else. The guide comes from `playlists/autocheck/epg.py`, which `recheck.py` runs
+separately.
+
+**Q6 — where does `build_tivimate.py` live, and is it version-controlled?**
+`C:\Users\aatiq\MINIX-U8K\playlists\tivimate\build_tivimate.py`. `MINIX-U8K` is not a git
+repository, so it was version-controlled nowhere. There is now a snapshot at
+`sources/build_tivimate.py` — a copy for recovery, not the authoritative one.
+`rebuild.ps1` runs the laptop copy.
+
+**Q7 — how is the box reached?** adb over LAN, `192.168.2.131:5555`. Note that `adb pull`
+**fails** on the Kodi data directory, which is not world-readable on Android 11;
+`adb exec-out cat <path>` works and is what `rebuild.ps1 -PullFromBox` uses.
 
 ---
 
-## 5. Verification baseline
+## 4. Why this is trustworthy
 
-Current, correct state of `main` @ `da7a8cf` (`playlist.m3u`, 438,014 bytes, sha256 starts `8a1da688`):
+`apply_overrides.py` applied to the last pure build output (`44b4a44:playlist.m3u`, 1,386
+channels) reproduces the hand-edited playlist (`0a798e6:playlist.m3u`, 1,431 channels)
+**byte for byte** — sha256 `8a1da688…`, 438,014 bytes. Running it a second time changes
+nothing.
 
-| # | Group | Count | chno range |
-|---|---|---|---|
-| 1 | Maroc | 21 | 1–1422 |
-| 2 | Al Jazeera | 7 | 17–23 |
-| 3 | France | 175 | 1001–1176 |
-| 4 | Infos FR | 18 | 1180–1197 |
-| 5 | Infos Arabe | 6 | 1200–1205 |
-| 6 | Arabie Saoudite | 33 | 1210–1242 |
-| 7 | Égypte | 9 | 1260–1268 |
-| 8 | Émirats | 19 | 1270–1288 |
-| 9 | Qatar | 9 | 1300–1308 |
-| 10 | United Kingdom | 232 | 1471–1702 |
-| 11 | United States | 578 | 1811–2392 |
-| 12 | Infos Monde | 22 | 3671–3692 |
-| 13 | Sport | 10 | 3693–3702 |
-| 14 | Musique & Jeunesse | 16 | 3703–3718 |
-| 15 | Art de vivre | 6 | 3719–3725 |
-| 16 | Other countries | 270 | 3750–4024 |
+Rebuilt from the box's live lists on 2026-10-12, the result was structurally identical —
+same 16 groups, same counts, same channel-number ranges, no duplicate numbers, no
+warnings — and differed from the committed playlist in exactly **one** entry: CNN (UK,
+1475), whose Samsung TV Plus URL `recheck.py` had re-resolved that afternoon. Upstream
+drift, correctly picked up.
 
-**Total: 1,431.** Group order must ascend by minimum `tvg-chno`. No duplicate `tvg-chno`. File is UTF-8, no BOM, LF line endings (see `.gitattributes`).
+Re-run that check any time:
 
-Run this after any rebuild. It must print the table above, `order consistent: True` and `dup chno: none`:
-
-```python
-import re
-from collections import OrderedDict, Counter
-
-txt = open('playlist.m3u', encoding='utf-8').read()
-groups = OrderedDict()
-for line in txt.split('\n'):
-    if line.startswith('#EXTINF'):
-        g = re.search(r'group-title="([^"]*)"', line).group(1)
-        c = int(re.search(r'tvg-chno="(\d+)"', line).group(1))
-        groups.setdefault(g, []).append(c)
-
-prev, ok = -1, True
-for i, (name, chnos) in enumerate(groups.items(), 1):
-    ok &= min(chnos) > prev
-    prev = min(chnos)
-    print(f'{i:3}. {name:20} {len(chnos):4}  {min(chnos)}-{max(chnos)}')
-
-dups = [c for c, n in Counter(re.findall(r'tvg-chno="(\d+)"', txt)).items() if n > 1]
-print('total:', txt.count('#EXTINF'), '| groups:', len(groups), '| order consistent:', ok)
-print('dup chno:', dups or 'none')
+```powershell
+.\rebuild.ps1 -WhatIf
 ```
 
----
+Hard failures (duplicate channel numbers, a group split across the file, group order that
+contradicts the numbering, CRLF, a BOM) abort before `playlist.m3u` is touched.
 
-## 6. Solution options
+### Two corrections to the original handoff
 
-### A — Port the changes back into the source lists on the box
-
-Add the 70 Arabic channels to `direct.m3u` / `world_fr_en.m3u` with the right `tvg-chno`, apply the renumbering and removals there, then rebuild.
-
-*Keeps the existing workflow.* But it only works if the answers to Q1–Q4 are "read from source". If the script computes grouping and ordering, the group split, the group order and the four new groups will not survive. The source lists also stay off-repo, so this is still fragile and unbacked-up.
-
-### B — Stop building; make this repo the source of truth
-
-Retire `build_tivimate.py` and edit `playlist.m3u` here directly.
-
-*Simplest, and makes the playlist versioned and reviewable.* Cost: you lose whatever else the script does — Worker URL injection, EPG URL rewriting, possibly EPG regeneration (Q5). Only safe once Q5 is answered.
-
-### C — Keep the build, add a post-build override step (recommended)
-
-Leave `build_tivimate.py` untouched. Add to this repo:
-
-- `overrides/` — the 70 added channels as data, the removal list (`.ru`/`.by` ids plus the 19 International entries), the group map and group order, the renumbering plan, the Al Jazeera logo/id patches
-- `apply_overrides.py` — reads the freshly built `playlist.m3u`, applies all of the above deterministically, writes it back
-- a one-line wrapper that runs the build and then the overrides
-
-*Survives rebuilds, keeps the script's behaviour, and puts every change under version control in this repo where it is diffable.* Idempotent, so it is safe to run twice. **This works regardless of how Q1–Q4 turn out**, which is why it is the recommendation — it does not depend on the unknowns.
-
-### D — Teach `build_tivimate.py` to read config from this repo
-
-Cleanest end state, one pass instead of two. But it means editing a script that is not version-controlled here and is shared with other outputs (the README mentions a TiviMate target), so a bug breaks more than this playlist.
-
-**Suggested path:** C now, D later if the override file grows unwieldy.
+- It said **369** channels were renumbered. The real figure is **294** surviving channels
+  (299 renumbering operations, 5 of which land on entries that are then removed).
+- It listed **KTV ×6** among the added Arab channels. No Kuwaiti channels were added —
+  there is no Kuwait group. `KTV Sport Plus` is in the "available to add" list below.
 
 ---
 
-## 7. Plan for the session at home
+## 5. If you would rather not keep two steps
 
-1. **Do not rebuild yet.** A rebuild before the fix destroys the current state. If it already happened, `git checkout da7a8cf -- playlist.m3u` restores it.
-2. Locate `build_tivimate.py` and read it. Answer Q1–Q7 in section 4.
-3. Pull `direct.m3u` and `world_fr_en.m3u` off the box and **commit copies to this repo** (for example under `sources/`). Right now they exist in exactly one place, on a TV box, with no backup. Do this even if nothing else gets done.
-4. Implement option C (or A, if Q1–Q4 came back "read from source").
-5. Rebuild into a scratch file, run the section 5 check, and diff against the current `playlist.m3u`. Expect **zero** differences.
-6. Only then overwrite, commit, push, and run *Update Contents* on the box.
+Option D from the original plan — teaching `build_tivimate.py` to read
+`overrides/overrides.json` itself — is still the cleaner end state, and is now a much
+smaller job: the override data is settled and proven, so it is a matter of moving where it
+is applied. The reason not to is unchanged: that script is shared with other outputs and
+lives outside this repo, so a bug there breaks more than this playlist.
 
 ---
 
-## 8. Open items unrelated to this problem
+## 6. Open items, unrelated to the build
 
-- **Channel 14 (2M)** is MPEG-2 video, confirmed by parsing its transport stream (PMT reports stream type 0x02 video + 0x04 audio). Android phones have no MPEG-2 decoder, so it plays audio-only there; the Amlogic box probably does have one. Untested on the box. If it fails there too, switch XCIPTV's player engine to VLC, which bundles a software MPEG-2 decoder.
-- **`epg.xml.gz` has no Arab-world coverage** — 769 channel ids, led by `us` (179), `uk` (34), `ca` (28), `fr` (26). `AlAoula.ma` and `2M.ma` are both absent, so the Maroc group and all four new Arab groups have no guide data at all.
-- **13 entries still have no `tvg-logo`** (12 United States, 1 Other countries), and four Maroc entries have no `tvg-id` (Arryadia TNT, Medi1 x3).
-- **About 45 religious channels** remain scattered across United States, Other countries, United Kingdom and France.
-- **65 further channels** were probed live and are available to add from iptv-org: Series 23, Sports 17, Kids 11, Movies 11, Animation 2. The ones that fit the existing Arab groups are MBC Drama USA, Al Iraqia Sport, KTV Sport Plus and Taha TV.
+- **Channel 14 (2M)** is MPEG-2 video, confirmed by parsing its transport stream (PMT
+  reports stream type 0x02 video + 0x04 audio). Android phones have no MPEG-2 decoder, so
+  it plays audio-only there; the Amlogic box probably does have one. Untested on the box.
+  If it fails there too, switch XCIPTV's player engine to VLC, which bundles a software
+  MPEG-2 decoder.
+- **`epg.xml.gz` has no Arab-world coverage.** 769 channel ids, led by `us` (179), `uk`
+  (34), `ca` (28), `fr` (26). `AlAoula.ma` and `2M.ma` are both absent, so the Maroc group
+  and all four new Arab groups have no guide data at all.
+- **13 entries still have no `tvg-logo`** (12 United States, 1 Other countries), and four
+  Maroc entries have no `tvg-id` (Arryadia TNT, Medi1 ×3).
+- **About 45 religious channels** remain scattered across United States, Other countries,
+  United Kingdom and France.
+- **65 further channels** were probed live and are available to add from iptv-org: Series
+  23, Sports 17, Kids 11, Movies 11, Animation 2. The ones that fit the existing Arab
+  groups are MBC Drama USA, Al Iraqia Sport, KTV Sport Plus and Taha TV. Add them to
+  `overrides/overrides.json` under `add`, with a `chno` inside the right group's range.
