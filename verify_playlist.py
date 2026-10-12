@@ -164,6 +164,22 @@ def main():
             if len(group) > 25:
                 print('    ... and %d more' % (len(group) - 25))
 
+    # A channel carrying a directive line does not play in XCIPTV at all - the line goes to
+    # Cronet in place of the URL (see RUNBOOK section 6). Three are known to have no way
+    # round it; anything else here is new, and is a channel that will silently not play.
+    expected = {'UniversalComedy.us@SD', 'UniversalCrime.us@East', 'AXNCEE.es@Romania'}
+    unexpected = [e for e in entries if e['props'] and e['attr'].get('tvg-id') not in expected]
+    if unexpected:
+        print('\nWARNING: %d channel(s) carry a directive line and will not play in XCIPTV.'
+              % len(unexpected))
+        print('  Test each with and without its header. If it serves the same bare, add its')
+        print('  tvg-id to strip_props; if it needs one, see RUNBOOK section 6.')
+        for e in unexpected[:10]:
+            print('  %6s  %-28s %s' % (e['attr'].get('tvg-chno', '?'), e['name'][:28],
+                                       e['props'][0][:60]))
+        if len(unexpected) > 10:
+            print('  ... and %d more' % (len(unexpected) - 10))
+
     if fails:
         print('\nFAILED (%d):' % len(fails))
         for f in fails[:40]:
