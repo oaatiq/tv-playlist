@@ -41,19 +41,19 @@ https://136044159.r.cdnsun.net/storychannel.m3u8
 https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist.m3u8
 #EXTINF:-1 tvg-chno="1422" tvg-id="Medi1TVMaghreb.ma@SD" tvg-logo="https://i.imgur.com/F5OFQsp.jpeg" group-title="Maroc",Medi1TV Maghreb (alt)
 https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-maghreb_jnbspmg/playlist.m3u8
-#EXTINF:-1 tvg-chno="17" tvg-name="Al Jazeera" group-title="Al Jazeera",Al Jazeera
+#EXTINF:-1 tvg-chno="17" tvg-id="AlJazeera.qa@Arabic" tvg-name="Al Jazeera" tvg-logo="https://i.imgur.com/7bRVpnu.png" group-title="Al Jazeera",Al Jazeera
 https://live-hls-web-aja-gcp.thehlive.com/AJA/index.m3u8
-#EXTINF:-1 tvg-chno="18" tvg-name="Al Jazeera 2" group-title="Al Jazeera",Al Jazeera 2
+#EXTINF:-1 tvg-chno="18" tvg-id="AlJazeera2.qa@HD" tvg-name="Al Jazeera 2" tvg-logo="https://i.imgur.com/miq8O1Q.png" group-title="Al Jazeera",Al Jazeera 2
 https://live-hls-web-aja2-gcp.thehlive.com/AJA2/index.m3u8
-#EXTINF:-1 tvg-chno="19" tvg-name="Al Jazeera Mubasher" group-title="Al Jazeera",Al Jazeera Mubasher
+#EXTINF:-1 tvg-chno="19" tvg-id="AlJazeeraMubasher.qa@SD" tvg-name="Al Jazeera Mubasher" tvg-logo="https://i.imgur.com/X80DQvF.png" group-title="Al Jazeera",Al Jazeera Mubasher
 https://live-hls-apps-ajm-ll-bp.thehlive.com/AJM/index.m3u8
-#EXTINF:-1 tvg-chno="20" tvg-name="Al Jazeera Mubasher 2" group-title="Al Jazeera",Al Jazeera Mubasher 2
+#EXTINF:-1 tvg-chno="20" tvg-name="Al Jazeera Mubasher 2" tvg-logo="https://i.imgur.com/X80DQvF.png" group-title="Al Jazeera",Al Jazeera Mubasher 2
 https://live-hls-web-ajm2-gcp.thehlive.com/AJM2/index.m3u8
-#EXTINF:-1 tvg-chno="21" tvg-name="Al Jazeera Mubasher 24" group-title="Al Jazeera",Al Jazeera Mubasher 24
+#EXTINF:-1 tvg-chno="21" tvg-id="AlJazeeraMubasher24.qa@SD" tvg-name="Al Jazeera Mubasher 24" tvg-logo="https://i.imgur.com/LMCcIZ2.png" group-title="Al Jazeera",Al Jazeera Mubasher 24
 https://live-hls-apps-ajm24-ll-gcp.thehlive.com/AJM24/index.m3u8
-#EXTINF:-1 tvg-chno="22" tvg-name="Al Jazeera Documentary" group-title="Al Jazeera",Al Jazeera Documentary
+#EXTINF:-1 tvg-chno="22" tvg-id="AlJazeeraDocumentary.qa@SD" tvg-name="Al Jazeera Documentary" tvg-logo="https://i.imgur.com/5dNJlLo.png" group-title="Al Jazeera",Al Jazeera Documentary
 https://live-hls-apps-ajd-ll-bp.thehlive.com/AJD/index.m3u8
-#EXTINF:-1 tvg-chno="23" tvg-name="Al Jazeera English" group-title="Al Jazeera",Al Jazeera English
+#EXTINF:-1 tvg-chno="23" tvg-id="AlJazeera.qa@English" tvg-name="Al Jazeera English" tvg-logo="https://i.imgur.com/7bRVpnu.png" group-title="Al Jazeera",Al Jazeera English
 https://live-hls-web-aje-gcp.thehlive.com/AJE/index.m3u8
 #EXTINF:-1 tvg-chno="1001" tvg-id="Africa24English.fr@SD" tvg-logo="https://africa24tv.com/wp-content/uploads/2023/12/logo-Africa24TVEnglish.png" group-title="France",Africa 24 English
 https://edge20.vedge.infomaniak.com/livecast/ik:africa24english/manifest.m3u8
