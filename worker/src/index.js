@@ -35,13 +35,22 @@ const SNRT = {
 // Re-measured 2026-10-12, every header-carrying entry fetched with and without its
 // header: the BFM channels, Rai Italia, Tele 7 and S Play Event answer identically bare
 // and stay direct (their #EXTVLCOPT lines are now stripped in the playlist). AXN CEE
-// does NOT - bare it serves an HTML 301 - but it cannot be proxied either: its origin
-// (cronos.mangora1.cfd) sits behind Cloudflare's own bot protection, which answers a
-// Worker subrequest with "Attention Required!" and a 403 however many times it is asked
-// (deployed and measured 2026-10-12). So AXN CEE stays direct, carrying its header, and
-// is the one channel knowingly left broken in XCIPTV - it plays in Kodi and OTT, which
-// honour #EXTVLCOPT. Universal Comedy, Universal Crime and TV3 Ghana, which all 403
-// without their header, are proxied here and work.
+// does NOT - bare it serves an HTML 301. Of the four only TV3 Ghana could actually be
+// proxied; the other three are here as a warning, because two distinct things make a
+// channel unproxyable and both were met on 2026-10-12:
+//
+//   AXN CEE (cronos.mangora1.cfd) sits behind Cloudflare's own bot protection, which
+//   answers a Worker subrequest with "Attention Required!" and a 403 however often it
+//   is asked - Cloudflare will not let a Worker through to a Cloudflare-protected origin.
+//
+//   Universal Comedy and Universal Crime (bantel-cdn1.iptvperu.tv, Nimble) hand back a
+//   ?nimblesessionid= on the master that is bound to the IP that asked: minted on the LAN
+//   it serves 200 there and 403 from the Worker, and the variant and segments all need
+//   it. Only the master checks the User-Agent, so the box cannot fetch the master itself
+//   and the Worker cannot pass its session to the box. Nothing can stand in the middle.
+//
+// All three therefore stay direct carrying their #EXTVLCOPT: working in Kodi and OTT,
+// which honour it, and knowingly broken in XCIPTV, which does not.
 //
 // Unlike the SNRT routes, segments can't be handed straight to the CDN here: they are
 // protected too, so the video itself passes through the Worker. Checked 2026-10-11.
@@ -67,16 +76,6 @@ const PROXY = {
     ref: 'http://live.tvstitch.com/',
     ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
     hosts: ['777905.live.tvstitch.com', 'hls-cdn1.dyvyapp.com'],
-  },
-  'universal-comedy': {
-    url: 'http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/universalcomedy/playlist.m3u8',
-    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-    hosts: ['bantel-cdn1.iptvperu.tv'],
-  },
-  'universal-crime': {
-    url: 'http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/universalcrime/playlist.m3u8',
-    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-    hosts: ['bantel-cdn1.iptvperu.tv'],
   },
   'tv3-ghana': {
     url: 'https://g2qd3exjy7an-hls-live.5centscdn.com/webtv3/ghanatv.stream/playlist.m3u8',

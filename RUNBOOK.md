@@ -83,15 +83,27 @@ routed through the Worker's `/h/` route.
 hosts), `npx wrangler deploy`, then in `overrides.json` put the channel's `tvg-id` in
 `remove.tvg_id` and re-add it under `add` pointing at
 `https://ma-tv.oaatiq.workers.dev/h/<slug>.m3u8`. Deploy **before** publishing the playlist,
-or the route 404s. Proxied so far: `2m-monde`, `military-history`, `press-tv`, `music-box`,
-`universal-comedy`, `universal-crime`, `tv3-ghana`.
+or the route 404s. Proxied so far: `2m-monde`, `military-history`, `press-tv`, `music-box`, `tv3-ghana`.
 
-**Not every channel can be proxied.** If the origin sits behind Cloudflare's own bot
-protection, a Worker subrequest gets "Attention Required!" and a 403 no matter what, because
-the request arrives from Cloudflare. AXN CEE Romania (`cronos.mangora1.cfd`) is the known
-case: it needs a Referer, cannot be proxied, and so stays direct carrying its `#EXTVLCOPT` -
-the one channel knowingly left broken in XCIPTV, working in Kodi and OTT. The 502 body names
-this itself, which is what the diagnostic text in `headerProxy` is for.
+**Not every channel can be proxied — check before promising one.** Two things make an
+origin unproxyable, both met on 2026-10-12:
+
+- **It sits behind Cloudflare.** A Worker subrequest to a Cloudflare-protected origin gets
+  "Attention Required!" and a 403 however often it is asked. `AXN CEE Romania`
+  (`cronos.mangora1.cfd`).
+- **It issues an IP-bound session.** `Universal Comedy` and `Universal Crime`
+  (`bantel-cdn1.iptvperu.tv`, Nimble) return a `?nimblesessionid=` on the master that only
+  works from the IP that asked for it — minted on the LAN it serves 200 there and 403 from
+  the Worker — and the variant and every segment need it. Only the master checks the
+  User-Agent, so the box cannot fetch the master itself and the Worker cannot hand its
+  session to the box. Nothing can sit in the middle.
+
+Those three stay direct with their `#EXTVLCOPT`: fine in Kodi and OTT, knowingly broken in
+XCIPTV. Both 502s name their own cause now, which is what the diagnostic text in
+`headerProxy` and `snrt` is for — read the body before theorising.
+
+Test before trusting a new `/h/` route: fetch master → variant → first segment, not just the
+master. Both of these failed only at the variant.
 
 Test a route without deploying - the Worker is plain ESM, so node can run it:
 
