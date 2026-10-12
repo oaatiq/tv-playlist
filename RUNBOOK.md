@@ -123,7 +123,29 @@ account instead of adding one.
 
 ## 6. When a channel will not play
 
-Work outwards from the box.
+### Start with the whole group
+
+`check_group.py` play-tests every channel in a group from this PC: it fetches the URL,
+confirms it really is an m3u8 (or a DASH manifest), and for a master playlist fetches one
+variant and confirms it has segments. That is what a player does on tune-in, so OK means
+the stream was serving seconds ago.
+
+```powershell
+python -I check_group.py --list                 # group names and counts
+python -I check_group.py France                 # one group
+python -I check_group.py Maroc "Infos FR"       # several
+python -I check_group.py --all --quiet          # everything, failures only (~3 min)
+python -I check_group.py France --url https://raw.githubusercontent.com/oaatiq/tv-playlist/main/playlist.m3u
+```
+
+It exits 1 if anything failed. Statuses: `DEAD` (no answer or an HTTP error), `VARIANT`
+(master loads, the variant does not), `EMPTY` (a playlist with no segments), `NOTM3U`
+(answered with something else), `NOURL` (playlist bug - no stream line).
+
+A channel that is OK here but dead on the TV is **not** a playlist problem - it is the path
+from that device or the decoder. Work outwards from the box with the steps below.
+
+### Then work outwards from the box
 
 ```bash
 # 1. does the box reach the host at all?
