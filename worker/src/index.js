@@ -100,6 +100,7 @@ async function token(event) {
     { headers: { 'User-Agent': UA } });
   if (!r.ok) throw new Error('token service ' + r.status);
   const q = (await r.text()).trim();
+  if (!q.startsWith('token=')) throw new Error('token service said ' + JSON.stringify(q.slice(0, 120)));
   const expires = Number(new URLSearchParams(q).get('expires')) * 1000 || Date.now() + 3600e3;
   tokens.set(event, { q, until: expires - 5 * 60e3 });
   return q;
@@ -114,6 +115,16 @@ async function refreshEvents() {
   }
 }
 
+// Every SNRT event serves the same three renditions - checked across aloula, arryadia-tnt,
+// arrabia and arryadia-hd1 on 2026-10-12, identical resolutions, frame rate and codecs, only
+// the bandwidths differ (and those are advisory). That makes a master playlist reproducible
+// without fetching one, which is what fallbackMaster below relies on.
+const LADDER = [
+  { h: 480, resolution: '854x480', codecs: 'avc1.4d401f,mp4a.40.2', bandwidth: 2000000 },
+  { h: 360, resolution: '640x360', codecs: 'avc1.4d401f,mp4a.40.2', bandwidth: 1100000 },
+  { h: 240, resolution: '426x240', codecs: 'avc1.4d4016,mp4a.40.2', bandwidth: 600000 },
+];
+
 async function upstream(event, path) {
   return fetch(CDN + event + '/' + path + '?' + (await token(event)), { headers: { 'User-Agent': UA } });
 }
@@ -121,33 +132,56 @@ async function upstream(event, path) {
 async function snrt(slug, variant) {
   const path = variant || 'playlist.m3u8';
   let event = events.get(slug) || SNRT[slug];
-  let r = await upstream(event, path);
-  // The CDN refuses a perfectly good token on some requests - measured 2026-10-12, when
-  // arryadia-tnt and athaqafia 502'd through here while the same event served 200 from
-  // the LAN and from a third network, and a token minted on one network worked on
-  // another. So it is neither the token nor geo: it is which egress the request leaves
-  // on. Each pass re-mints and goes out again, which gets past it in practice.
-  for (let i = 0; i < 3 && r.status === 403; i++) {
-    tokens.delete(event);
-    r = await upstream(event, path);
+
+  // Judge the answer by what is in it, not only by its status. The CDN has been seen
+  // returning a perfectly good playlist under a 403 (athaqafia, 2026-10-12), and a 403
+  // HTML block page for an event that serves fine from everywhere else (arryadia-tnt).
+  const attempt = async () => {
+    const r = await upstream(event, path);
+    const text = await r.text();
+    return { status: r.status, text, usable: r.ok || text.startsWith('#EXTM3U') };
+  };
+
+  let res = await attempt();
+  for (let i = 0; i < 3 && !res.usable && res.status === 403; i++) {
+    tokens.delete(event); // a fresh token, and a fresh roll of the egress dice
+    res = await attempt();
   }
-  if (!variant && (r.status === 404 || r.status === 410)) { // event renamed
+  if (!variant && !res.usable && (res.status === 404 || res.status === 410)) { // event renamed
     await refreshEvents();
     event = events.get(slug) || event;
-    r = await upstream(event, path);
+    res = await attempt();
   }
-  if (!r.ok) { // carry the CDN's own words out, so a 502 from here is diagnosable
-    const why = (await r.text().catch(() => '')).trim().slice(0, 200);
-    return new Response('upstream ' + r.status + (why ? ': ' + why : '') + '\n', { status: 502 });
+
+  if (!res.usable) {
+    // The CDN refuses some Cloudflare egress outright, so no number of retries from this
+    // colo will get the master. The player's own network is not blocked, so hand it a
+    // master it can follow by itself: the standard ladder, pointing straight at the CDN
+    // with the token attached. Costs the live token refresh - the URLs stop working when
+    // the token expires, about an hour - so it is a fallback, never the normal path.
+    if (!variant) return new Response(await fallbackMaster(event), { headers: HLS });
+    const why = res.text.trim().slice(0, 200);
+    return new Response('upstream ' + res.status + (why ? ': ' + why : '') + '\n', { status: 502 });
   }
 
   const base = CDN + event + '/' + path;
-  const lines = (await r.text()).split('\n').map((line) => {
+  const lines = res.text.split('\n').map((line) => {
     if (!line || line.startsWith('#')) return line;
     // master: variant -> this Worker (relative to /snrt/<slug>.m3u8); media: segment -> CDN
     return variant ? new URL(line.trim(), base).href : slug + '/' + line.trim();
   });
   return new Response(lines.join('\n'), { headers: HLS });
+}
+
+async function fallbackMaster(event) {
+  const q = await token(event);
+  const out = ['#EXTM3U', '#EXT-X-VERSION:3'];
+  for (const v of LADDER) {
+    out.push('#EXT-X-STREAM-INF:BANDWIDTH=' + v.bandwidth + ',FRAME-RATE=50,RESOLUTION='
+      + v.resolution + ',CODECS="' + v.codecs + '"');
+    out.push(CDN + event + '/corp/' + event + '_' + v.h + 'p/chunks.m3u8?' + q);
+  }
+  return out.join('\n') + '\n';
 }
 
 async function teleMarocUrl() {
@@ -193,8 +227,12 @@ async function headerProxy(slug, target) {
 
   const headers = { 'User-Agent': cfg.ua || UA };
   if (cfg.ref) headers.Referer = cfg.ref;
-  const r = await fetch(target, { headers, redirect: 'follow' });
-  if (!r.ok) return new Response('upstream ' + r.status + '\n', { status: 502 });
+  let r = await fetch(target, { headers, redirect: 'follow' });
+  for (let i = 0; i < 2 && r.status === 403; i++) r = await fetch(target, { headers, redirect: 'follow' });
+  if (!r.ok) { // say what the host said, so a 502 here names its own cause
+    const why = (await r.text().catch(() => '')).trim().replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').slice(0, 160);
+    return new Response('upstream ' + r.status + (why ? ': ' + why : '') + '\n', { status: 502 });
+  }
 
   const type = r.headers.get('content-type') || '';
   const base = r.url || target;
