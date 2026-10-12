@@ -6,8 +6,9 @@ the next build. This script keeps those edits as data in this repo and re-applie
 after every build, so a rebuild is no longer destructive.
 
 What it may change: tvg-chno, group-title, tvg-id, tvg-logo, which entries are present,
-and the order entries are written in. What it never touches: stream URLs and #EXTVLCOPT
-lines, i.e. nothing that decides how a channel plays.
+the order entries are written in, and - only through an explicit `rewrite_url` rule -
+literal substrings of the stream URLs. What it never touches: #EXTVLCOPT lines, and any
+URL no rewrite rule names.
 
 Idempotent - running it twice on the same file is a no-op.
 
@@ -148,7 +149,23 @@ def apply_overrides(entries, ov, warn):
         for tid in stale_removals:
             warn('remove: tvg-id %r was already absent' % tid)
 
-    # 6. write out one contiguous block per group, groups in the configured order and
+    # 6. URL rewrites - literal substring swaps, applied to added entries too. These
+    #    exist for players that choke on a URL the upstream list is happy with; a swap
+    #    that is already in place simply finds nothing, which is what keeps this
+    #    idempotent.
+    for rule in ov.get('rewrite_url', []):
+        find, repl = rule['find'], rule['replace']
+        hits = 0
+        for e in entries:
+            if find in e['url']:
+                e['url'] = e['url'].replace(find, repl)
+                hits += 1
+        stats['urls_rewritten'] += hits
+        if not hits and not any(repl in e['url'] for e in entries):
+            warn('rewrite_url: nothing contains %r (nor %r) - rule is stale'
+                 % (find, repl))
+
+    # 7. write out one contiguous block per group, groups in the configured order and
     #    entries inside a group by channel number. A group the order does not mention
     #    keeps its channels: it goes last and is reported, never dropped.
     order = ov.get('group_order', [])

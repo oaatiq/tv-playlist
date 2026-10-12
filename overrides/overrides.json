@@ -30,6 +30,13 @@
       "TMC.fr@HD"
     ]
   },
+  "rewrite_url": [
+    {
+      "find": "LIVE$",
+      "replace": "LIVE%24",
+      "why": "XCIPTV plays through Cronet, which rejects a literal $ in the path outright: net::ERR_INVALID_URL, before any request leaves the box. SFR serves the percent-encoded form identically (HTTP 200, same redirect). Affects the 13 ncdn-live-bfm.pfd.sfr.net channels - BFM Tech & Co in France and the 12 BFM channels in Infos FR. Kodi plays either form, so the Kodi source lists are left alone."
+    }
+  ],
   "regroup": {
     "by_tvg_id": {
       "AfricanewsEnglish.fr@SD": "Infos Monde",
