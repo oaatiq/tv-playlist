@@ -105,6 +105,14 @@ XCIPTV. Both 502s name their own cause now, which is what the diagnostic text in
 Test before trusting a new `/h/` route: fetch master → variant → first segment, not just the
 master. Both of these failed only at the variant.
 
+**The SNRT fallback.** When the CDN block-pages this Worker for an event (arryadia-tnt), the
+master is synthesised from the fixed 480/360/240 ladder and its variants point at
+`/snrt/<slug>/v/<h>p.m3u8`, which answers with a **302** to the CDN carrying a token minted at
+that moment. The redirect costs no subrequest — which is the whole point, since the CDN will
+not answer this Worker — and because the player re-reads the media playlist every few seconds,
+the token renews itself instead of dying an hour in. Your box follows the redirect; it is not
+blocked. Nothing to configure: the normal proxied path is used whenever it works.
+
 Test a route without deploying - the Worker is plain ESM, so node can run it:
 
 ```powershell

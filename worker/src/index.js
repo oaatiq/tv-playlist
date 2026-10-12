@@ -157,7 +157,7 @@ async function snrt(slug, variant) {
     // master it can follow by itself: the standard ladder, pointing straight at the CDN
     // with the token attached. Costs the live token refresh - the URLs stop working when
     // the token expires, about an hour - so it is a fallback, never the normal path.
-    if (!variant) return new Response(await fallbackMaster(event), { headers: HLS });
+    if (!variant) return new Response(await fallbackMaster(slug), { headers: HLS });
     const why = res.text.trim().slice(0, 200);
     return new Response('upstream ' + res.status + (why ? ': ' + why : '') + '\n', { status: 502 });
   }
@@ -171,13 +171,18 @@ async function snrt(slug, variant) {
   return new Response(lines.join('\n'), { headers: HLS });
 }
 
-async function fallbackMaster(event) {
-  const q = await token(event);
+// The variants point back here rather than carrying a token of their own: a token pasted
+// into the master would be stale within the hour and the stream would stop mid-programme.
+// /snrt/<slug>/v/<h>p.m3u8 answers with a 302 to the CDN and a token minted right then, so
+// every reload of the media playlist - every few seconds on a live stream - renews it. The
+// redirect costs no subrequest, which is the point: this path exists precisely because the
+// CDN will not answer this Worker.
+async function fallbackMaster(slug) {
   const out = ['#EXTM3U', '#EXT-X-VERSION:3'];
   for (const v of LADDER) {
     out.push('#EXT-X-STREAM-INF:BANDWIDTH=' + v.bandwidth + ',FRAME-RATE=50,RESOLUTION='
       + v.resolution + ',CODECS="' + v.codecs + '"');
-    out.push(CDN + event + '/corp/' + event + '_' + v.h + 'p/chunks.m3u8?' + q);
+    out.push(slug + '/v/' + v.h + 'p.m3u8'); // relative to /snrt/<slug>.m3u8
   }
   return out.join('\n') + '\n';
 }
@@ -250,6 +255,12 @@ export default {
       if (m && SNRT[m[1]]) return await snrt(m[1]);
       m = pathname.match(/^\/snrt\/([a-z0-9-]+)\/(corp\/[\w-]+\/chunks\.m3u8)$/);
       if (m && SNRT[m[1]]) return await snrt(m[1], m[2]);
+      m = pathname.match(/^\/snrt\/([a-z0-9-]+)\/v\/(\d+)p\.m3u8$/); // fallback variant
+      if (m && SNRT[m[1]]) {
+        const event = events.get(m[1]) || SNRT[m[1]];
+        return Response.redirect(CDN + event + '/corp/' + event + '_' + m[2]
+          + 'p/chunks.m3u8?' + (await token(event)), 302);
+      }
       if (pathname === '/telemaroc.m3u8') return Response.redirect(await teleMarocUrl(), 302);
       m = pathname.match(/^\/h\/([a-z0-9-]+)\.m3u8$/);
       if (m && PROXY[m[1]]) return await headerProxy(m[1], PROXY[m[1]].url);
