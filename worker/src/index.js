@@ -35,8 +35,13 @@ const SNRT = {
 // Re-measured 2026-10-12, every header-carrying entry fetched with and without its
 // header: the BFM channels, Rai Italia, Tele 7 and S Play Event answer identically bare
 // and stay direct (their #EXTVLCOPT lines are now stripped in the playlist). AXN CEE
-// does NOT - bare it serves an HTML 301 - so it joins the proxy here, with Universal
-// Comedy, Universal Crime and TV3 Ghana, which all 403 without their header.
+// does NOT - bare it serves an HTML 301 - but it cannot be proxied either: its origin
+// (cronos.mangora1.cfd) sits behind Cloudflare's own bot protection, which answers a
+// Worker subrequest with "Attention Required!" and a 403 however many times it is asked
+// (deployed and measured 2026-10-12). So AXN CEE stays direct, carrying its header, and
+// is the one channel knowingly left broken in XCIPTV - it plays in Kodi and OTT, which
+// honour #EXTVLCOPT. Universal Comedy, Universal Crime and TV3 Ghana, which all 403
+// without their header, are proxied here and work.
 //
 // Unlike the SNRT routes, segments can't be handed straight to the CDN here: they are
 // protected too, so the video itself passes through the Worker. Checked 2026-10-11.
@@ -77,12 +82,6 @@ const PROXY = {
     url: 'https://g2qd3exjy7an-hls-live.5centscdn.com/webtv3/ghanatv.stream/playlist.m3u8',
     ref: 'https://liveghanatv.com/',
     hosts: ['g2qd3exjy7an-hls-live.5centscdn.com'],
-  },
-  'axn-cee': {
-    url: 'https://cronos.mangora1.cfd/axy/usergend3h5jkc9rnd.m3u8',
-    ref: 'https://cool-tv.net/',
-    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18',
-    hosts: ['cronos.mangora1.cfd'],
   },
 };
 

@@ -34,6 +34,12 @@ that is every channel that moved, changed URL or disappeared. Then publish (sect
 Hard failures — duplicate channel numbers, a group split across the file, group order that
 contradicts the numbering, CRLF, a BOM — abort before `playlist.m3u` is touched.
 
+**Expect one spurious diff every time:** CNN (1475). The published playlist carries the
+resolved CloudFront URL that `recheck.py` wrote on the box, while `sources/world_fr_en.m3u`
+still has the `sis-global` one, so a rebuild "reverts" it. Both work (the sis-global URL is
+a 307 to the same place). Either keep the published line or let it change - it is not a
+fault. `-PullFromBox` makes it go away, at the cost of whatever else drifted on the box.
+
 ## 2. Change what is in the playlist
 
 Everything that is not in the Kodi source lists lives in `overrides/overrides.json`.
@@ -71,6 +77,28 @@ fetch the URL with the header and without it - and strip only when both come bac
 real playlist. The four that genuinely need theirs (Universal Comedy, Universal Crime,
 TV3 Ghana, AXN CEE Romania) keep the line and stay broken in XCIPTV until they are
 routed through the Worker's `/h/` route.
+
+**Give a channel the Worker's header proxy** - add it to `PROXY` in `worker/src/index.js`
+(`url`, `ref` and/or `ua`, and a `hosts` allowlist covering its master, variant and segment
+hosts), `npx wrangler deploy`, then in `overrides.json` put the channel's `tvg-id` in
+`remove.tvg_id` and re-add it under `add` pointing at
+`https://ma-tv.oaatiq.workers.dev/h/<slug>.m3u8`. Deploy **before** publishing the playlist,
+or the route 404s. Proxied so far: `2m-monde`, `military-history`, `press-tv`, `music-box`,
+`universal-comedy`, `universal-crime`, `tv3-ghana`.
+
+**Not every channel can be proxied.** If the origin sits behind Cloudflare's own bot
+protection, a Worker subrequest gets "Attention Required!" and a 403 no matter what, because
+the request arrives from Cloudflare. AXN CEE Romania (`cronos.mangora1.cfd`) is the known
+case: it needs a Referer, cannot be proxied, and so stays direct carrying its `#EXTVLCOPT` -
+the one channel knowingly left broken in XCIPTV, working in Kodi and OTT. The 502 body names
+this itself, which is what the diagnostic text in `headerProxy` is for.
+
+Test a route without deploying - the Worker is plain ESM, so node can run it:
+
+```powershell
+copy worker\src\index.js $env:TEMP\worker.mjs
+node -e "const {pathToFileURL}=require('url'); import(pathToFileURL(process.env.TEMP+'/worker.mjs')).then(async m => { const r = await m.default.fetch(new Request('https://x/h/tv3-ghana.m3u8')); console.log(r.status, (await r.text()).slice(0,120)); })"
+```
 
 ## 3. Reach the boxes
 
