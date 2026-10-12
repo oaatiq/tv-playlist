@@ -27,10 +27,16 @@ const SNRT = {
 };
 
 // Channels whose CDN checks a Referer or User-Agent on *every* request, segments
-// included. XCIPTV ignores #EXTVLCOPT, so the playlist can't carry the header; this
-// Worker attaches it instead and the player sees plain URLs. Only these four need it
-// — the other header-carrying entries (all the BFM channels, Rai Italia, Tele 7,
-// S Play Event, AXN) were measured to work with no header at all, so they stay direct.
+// included. XCIPTV does worse than ignore #EXTVLCOPT: it hands the line to Cronet in
+// place of the URL and the tune-in dies with net::ERR_INVALID_URL, so a playlist that
+// carries the header breaks the channel outright. This Worker attaches it instead and
+// the player sees plain URLs.
+//
+// Re-measured 2026-10-12, every header-carrying entry fetched with and without its
+// header: the BFM channels, Rai Italia, Tele 7 and S Play Event answer identically bare
+// and stay direct (their #EXTVLCOPT lines are now stripped in the playlist). AXN CEE
+// does NOT - bare it serves an HTML 301 - so it joins the proxy here, with Universal
+// Comedy, Universal Crime and TV3 Ghana, which all 403 without their header.
 //
 // Unlike the SNRT routes, segments can't be handed straight to the CDN here: they are
 // protected too, so the video itself passes through the Worker. Checked 2026-10-11.
@@ -56,6 +62,27 @@ const PROXY = {
     ref: 'http://live.tvstitch.com/',
     ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
     hosts: ['777905.live.tvstitch.com', 'hls-cdn1.dyvyapp.com'],
+  },
+  'universal-comedy': {
+    url: 'http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/universalcomedy/playlist.m3u8',
+    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    hosts: ['bantel-cdn1.iptvperu.tv'],
+  },
+  'universal-crime': {
+    url: 'http://bantel-cdn1.iptvperu.tv:1935/btnscrtn/universalcrime/playlist.m3u8',
+    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    hosts: ['bantel-cdn1.iptvperu.tv'],
+  },
+  'tv3-ghana': {
+    url: 'https://g2qd3exjy7an-hls-live.5centscdn.com/webtv3/ghanatv.stream/playlist.m3u8',
+    ref: 'https://liveghanatv.com/',
+    hosts: ['g2qd3exjy7an-hls-live.5centscdn.com'],
+  },
+  'axn-cee': {
+    url: 'https://cronos.mangora1.cfd/axy/usergend3h5jkc9rnd.m3u8',
+    ref: 'https://cool-tv.net/',
+    ua: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18',
+    hosts: ['cronos.mangora1.cfd'],
   },
 };
 
@@ -95,7 +122,12 @@ async function snrt(slug, variant) {
   const path = variant || 'playlist.m3u8';
   let event = events.get(slug) || SNRT[slug];
   let r = await upstream(event, path);
-  if (r.status === 403) { // token revoked early
+  // The CDN refuses a perfectly good token on some requests - measured 2026-10-12, when
+  // arryadia-tnt and athaqafia 502'd through here while the same event served 200 from
+  // the LAN and from a third network, and a token minted on one network worked on
+  // another. So it is neither the token nor geo: it is which egress the request leaves
+  // on. Each pass re-mints and goes out again, which gets past it in practice.
+  for (let i = 0; i < 3 && r.status === 403; i++) {
     tokens.delete(event);
     r = await upstream(event, path);
   }
@@ -104,7 +136,10 @@ async function snrt(slug, variant) {
     event = events.get(slug) || event;
     r = await upstream(event, path);
   }
-  if (!r.ok) return new Response('upstream ' + r.status + '\n', { status: 502 });
+  if (!r.ok) { // carry the CDN's own words out, so a 502 from here is diagnosable
+    const why = (await r.text().catch(() => '')).trim().slice(0, 200);
+    return new Response('upstream ' + r.status + (why ? ': ' + why : '') + '\n', { status: 502 });
+  }
 
   const base = CDN + event + '/' + path;
   const lines = (await r.text()).split('\n').map((line) => {
