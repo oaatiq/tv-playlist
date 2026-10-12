@@ -51,7 +51,9 @@ then **Update Contents** in XCIPTV on the box.
 | `apply_overrides.py <playlist>` | re-applies `overrides/overrides.json`; idempotent |
 | `verify_playlist.py <playlist> [--compare old]` | checks numbering/grouping/encoding, lists what drifted |
 
-See [BUILD-DURABILITY.md](BUILD-DURABILITY.md) for what lives in the overrides and why.
+See [RUNBOOK.md](RUNBOOK.md) for step-by-step procedures — rebuilding, editing the overrides,
+reaching the boxes, adding this playlist to another XCIPTV device, and diagnosing a channel that
+will not play. See [BUILD-DURABILITY.md](BUILD-DURABILITY.md) for what lives in the overrides and why.
 
 **Worker:** run `cd worker && npx wrangler deploy`.
 
