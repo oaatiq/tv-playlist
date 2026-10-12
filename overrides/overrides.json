@@ -30,13 +30,26 @@
       "TMC.fr@HD"
     ]
   },
-  "rewrite_url": [
-    {
-      "find": "LIVE$",
-      "replace": "LIVE%24",
-      "why": "XCIPTV plays through Cronet, which rejects a literal $ in the path outright: net::ERR_INVALID_URL, before any request leaves the box. SFR serves the percent-encoded form identically (HTTP 200, same redirect). Affects the 13 ncdn-live-bfm.pfd.sfr.net channels - BFM Tech & Co in France and the 12 BFM channels in Infos FR. Kodi plays either form, so the Kodi source lists are left alone."
-    }
-  ],
+  "strip_props": {
+    "why": "XCIPTV plays through Cronet and feeds it the #EXTVLCOPT line in place of the stream URL: net::ERR_INVALID_URL, ErrorCode=11, raised on the box before any request goes out. Measured on the MiTV 2026-10-12 on BFM Tech & Co and, on a different host entirely, Universal Comedy - the directive line is the common factor, not the stream. Every id below was tested with and without its header on the same day and serves identically without one, so the line only costs them the channel. Universal Comedy, Universal Crime and TV3 (Ghana) really do 403 without theirs and keep it until they are routed through the Worker, which is also why this is a list and not a blanket strip. Kodi reads its own lists on the box and is unaffected.",
+    "tvg_id": [
+      "BFMTechCo.fr@SD",
+      "BFMTV.fr@SD",
+      "BFMBusiness.fr@SD",
+      "BFMAlsace.fr@SD",
+      "BFMCotedAzur.fr@SD",
+      "BFMDICIAlpesduSud.fr@SD",
+      "BFMDICIHauteProvence.fr@SD",
+      "BFMGrandLille.fr@SD",
+      "BFMGrandLittoral.fr@SD",
+      "BFMLyon.fr@SD",
+      "BFMMarseille.fr@SD",
+      "BFMNormandie.fr@SD",
+      "BFMVar.fr@SD",
+      "SPlayEvent.us@HD",
+      "Tele7.es@SD"
+    ]
+  },
   "regroup": {
     "by_tvg_id": {
       "AfricanewsEnglish.fr@SD": "Infos Monde",
