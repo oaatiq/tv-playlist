@@ -238,7 +238,45 @@ moment, and the box reaches `1.1.1.1` and the Worker's Cloudflare IP (12.9 ms, 0
 normally. No VPN is active on the box and the route is the normal default. That points at
 per-device filtering on the router, not at the stream. Unresolved.
 
-## 7. The automated re-check
+## 7. The health check that keeps this playlist alive
+
+`watch_playlist.py` is the one that matters for the TVs, because they read **this** playlist
+and nobody at the house can diagnose a dead channel. Register it once:
+
+```powershell
+cd C:\Users\aatiq\MINIX-U8K\tv-playlist
+.\register-watch-task.ps1          # daily 05:30 and 13:30, plus at logon
+python -I watch_playlist.py --dry-run   # see what it would do, change nothing
+```
+
+Each run tests every channel the way a player does, remembers what failed, rebuilds without
+whatever has failed **three runs in a row**, and pushes. XCIPTV re-reads the list on launch
+once its copy is more than about six hours old, so a repair reaches the TV without anyone
+touching it.
+
+It refuses to act when acting would be worse than waiting:
+
+| Guard | Why |
+|---|---|
+| more than 40 % failing -> abort | that is this connection, not the channels |
+| three consecutive failures before removal | one bad reading is weather, not death |
+| more than 40 removals at once -> abort | wants a human; `--force` overrides |
+| `verify_playlist.py` must pass | never commit a playlist that does not hold together |
+| a channel returns on its first good reading | outages are usually temporary |
+
+Its findings live in `overrides/auto_dead.json`, **not** `overrides.json` - that stays a
+human document. It probes each channel with that channel's own `#EXTVLCOPT` headers, so a
+channel that needs a Referer is not mistaken for a dead one and deleted.
+
+Channels it removed come back by themselves. To force one back now, delete its entry from
+`auto_dead.json` and rebuild.
+
+## 8. The Kodi re-check (`recheck.py`)
+
+
+**This one maintains Kodi's lists, which nothing reads any more** - the boxes run XCIPTV.
+It is left running because it also keeps `master.m3u` honest, and that is where the world
+channels come from on the next rebuild.
 
 `playlists/autocheck/recheck.py` runs from a Windows scheduled task
 (`MINIX U8K - weekly channel re-check`) every two hours from 07:00 to 23:00, and at logon.
@@ -255,7 +293,7 @@ python -I C:\Users\aatiq\MINIX-U8K\playlists\autocheck\recheck.py --force --no-p
 Get-Content C:\Users\aatiq\MINIX-U8K\playlists\autocheck\logs\*.log -Tail 20
 ```
 
-## 8. Recovery
+## 9. Recovery
 
 - **A rebuild produced something wrong:** `git checkout -- playlist.m3u`, or
   `git checkout <commit> -- playlist.m3u` for an older one. The playlist is versioned;

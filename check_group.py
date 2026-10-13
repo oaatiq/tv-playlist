@@ -26,8 +26,10 @@ CTX.check_hostname = False
 CTX.verify_mode = ssl.CERT_NONE
 
 
-def fetch(url, timeout, maxbytes=8192):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+def fetch(url, timeout, maxbytes=8192, extra=None):
+    headers = {"User-Agent": UA, "Accept": "*/*"}
+    headers.update(extra or {})   # a channel with #EXTVLCOPT only answers if asked its way
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
         body = r.read(maxbytes)
         if r.headers.get("Content-Encoding") == "gzip":
@@ -46,12 +48,20 @@ def parse(text):
         if not line.startswith("#EXTINF"):
             continue
         url = next((x for x in lines[i + 1:i + 8] if x and not x.startswith("#")), "")
+        headers = {}
+        for extra in lines[i + 1:i + 8]:
+            if not extra.startswith("#"):
+                break
+            if "http-user-agent=" in extra:
+                headers["User-Agent"] = extra.split("http-user-agent=", 1)[1].strip()
+            elif "http-referrer=" in extra:
+                headers["Referer"] = extra.split("http-referrer=", 1)[1].strip()
         m = re.search(r'group-title="([^"]*)"', line)
         c = re.search(r'tvg-chno="([^"]*)"', line)
         out.append(dict(chno=c.group(1) if c else "",
                         name=line.split(",", 1)[-1].strip(),
                         group=m.group(1) if m else "",
-                        url=url))
+                        url=url, headers=headers))
     return out
 
 
@@ -62,7 +72,7 @@ def check(chan, timeout):
     if not chan["url"]:
         return done("NOURL", "no stream line follows the #EXTINF")
     try:
-        status, final, text = fetch(chan["url"], timeout)
+        status, final, text = fetch(chan["url"], timeout, extra=chan["headers"])
     except Exception as e:
         return done("DEAD", f"{type(e).__name__}: {str(e)[:90]}")
     if status != 200:
@@ -76,7 +86,8 @@ def check(chan, timeout):
         if not variant:
             return done("EMPTY", "master playlist lists no variant")
         try:
-            vstatus, _, vtext = fetch(urllib.parse.urljoin(final, variant), timeout)
+            vstatus, _, vtext = fetch(urllib.parse.urljoin(final, variant), timeout,
+                                      extra=chan["headers"])
         except Exception as e:
             return done("VARIANT", f"{type(e).__name__}: {str(e)[:80]}")
         if vstatus != 200 or "#EXTM3U" not in vtext[:200]:

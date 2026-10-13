@@ -84,6 +84,35 @@ const PROXY = {
   },
 };
 
+// Channels with more than one place to get them. /f/<slug>.m3u8 probes these in order and
+// redirects to the first that answers with a playlist, so a provider rotating a hostname
+// does not take the channel off air and the viewer sees nothing happen. A redirect, not a
+// proxy: the video never touches this Worker.
+//
+// These are the Moroccan channels that were pinned to a single CDN URL, which is how
+// Canal+ Sport, Golf + and TMC died unnoticed on 2026-10-12. Second sources checked the
+// same day. 2M (chid_218), Al Maghribia HD (chid_205), 2M Monde HD and StoryChannel have
+// no second source anywhere I could find - they stay direct, and the health check in
+// watch_playlist.py is what will catch them.
+const FAILOVER = {
+  'chada': [
+    'https://edge13.vedge.infomaniak.com/livecast/ik:chadatv/manifest.m3u8',
+    'https://edge19.vedge.infomaniak.com/livecast/ik:chadatv/playlist.m3u8',
+  ],
+  'medi1-maghreb': [
+    'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-maghreb_jnbspmg/playlist.m3u8',
+    'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-maghreb_jnbspmg/playlist_dvr.m3u8',
+  ],
+  'medi1-arabic': [
+    'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-arabic_g90v4ec/playlist.m3u8',
+    'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-arabic_g90v4ec/playlist_dvr.m3u8',
+  ],
+  'medi1-afrique': [
+    'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist.m3u8',
+    'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist_dvr.m3u8',
+  ],
+};
+
 const tokens = new Map(); // event -> { q, until }
 const events = new Map(); // slug -> event, overrides SNRT after an API refresh
 let teleMaroc = null;     // { url, until }
@@ -187,6 +216,22 @@ async function fallbackMaster(slug) {
   return out.join('\n') + '\n';
 }
 
+async function failover(slug) {
+  const sources = FAILOVER[slug];
+  for (const url of sources) {
+    try {
+      const r = await fetch(url, { headers: { 'User-Agent': UA } });
+      if (r.ok && (await r.text()).slice(0, 200).includes('#EXTM3U')) {
+        return Response.redirect(url, 302);
+      }
+    } catch { /* next */ }
+  }
+  // None of them answered *here*. That is not the same as none of them working: a CDN can
+  // refuse this Worker and serve the box perfectly well (arryadia-tnt, 2026-10-12). So the
+  // box gets the primary anyway and decides for itself.
+  return Response.redirect(sources[0], 302);
+}
+
 async function teleMarocUrl() {
   if (teleMaroc && teleMaroc.until > Date.now()) return teleMaroc.url;
   const headers = { 'User-Agent': UA };
@@ -262,6 +307,8 @@ export default {
           + 'p/chunks.m3u8?' + (await token(event)), 302);
       }
       if (pathname === '/telemaroc.m3u8') return Response.redirect(await teleMarocUrl(), 302);
+      m = pathname.match(/^\/f\/([a-z0-9-]+)\.m3u8$/);
+      if (m && FAILOVER[m[1]]) return await failover(m[1]);
       m = pathname.match(/^\/h\/([a-z0-9-]+)\.m3u8$/);
       if (m && PROXY[m[1]]) return await headerProxy(m[1], PROXY[m[1]].url);
       m = pathname.match(/^\/h\/([a-z0-9-]+)\/r$/);
@@ -272,7 +319,8 @@ export default {
       }
       if (pathname === '/') {
         const list = Object.keys(SNRT).map((s) => `/snrt/${s}.m3u8`).concat('/telemaroc.m3u8')
-          .concat(Object.keys(PROXY).map((s) => `/h/${s}.m3u8`));
+          .concat(Object.keys(PROXY).map((s) => `/h/${s}.m3u8`))
+          .concat(Object.keys(FAILOVER).map((s) => `/f/${s}.m3u8`));
         return new Response(list.join('\n') + '\n', { headers: { 'content-type': 'text/plain' } });
       }
       return new Response('not found\n', { status: 404 });

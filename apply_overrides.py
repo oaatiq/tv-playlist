@@ -104,10 +104,14 @@ def apply_overrides(entries, ov, warn):
         if tid not in hit:
             warn('regroup: no entry with tvg-id %r' % tid)
 
-    # 4. removals: by country code in the tvg-id, plus an explicit id list.
+    # 4. removals: by country code in the tvg-id, plus an explicit id list, plus whatever
+    #    the health check has found dead (overrides/auto_dead.json - machine-written, so it
+    #    is kept out of overrides.json where a human would have to read past it).
     codes = ov.get('remove', {}).get('tvg_id_country_codes', [])
     code_re = re.compile(r'\.(%s)(@|$)' % '|'.join(codes)) if codes else None
     drop_ids = set(ov.get('remove', {}).get('tvg_id', []))
+    auto_dead = set(ov.get('_auto_dead', []))
+    drop_ids |= auto_dead
     kept, dropped_ids = [], set()
     for e in entries:
         tid = e['attr'].get('tvg-id', '')
@@ -116,11 +120,11 @@ def apply_overrides(entries, ov, warn):
             continue
         if tid and tid in drop_ids:
             dropped_ids.add(tid)
-            stats['removed_by_id'] += 1
+            stats['removed_dead' if tid in auto_dead else 'removed_by_id'] += 1
             continue
         kept.append(e)
     entries = kept
-    stale_removals = sorted(drop_ids - dropped_ids)
+    stale_removals = sorted(drop_ids - dropped_ids - auto_dead)
 
     # 5. additions - skipped when the URL is already there, so a second run is a no-op.
     have = set(e['url'] for e in entries)
@@ -199,6 +203,12 @@ def main():
 
     text = io.open(args.playlist, encoding='utf-8').read()
     ov = json.load(io.open(args.overrides, encoding='utf-8'))
+    # The health check's findings live in their own file so that overrides.json stays a
+    # human document. Absent file = nothing has been found dead, which is the right
+    # default for a fresh clone.
+    auto = os.path.join(os.path.dirname(os.path.abspath(args.overrides)), 'auto_dead.json')
+    if os.path.exists(auto):
+        ov['_auto_dead'] = sorted(json.load(io.open(auto, encoding='utf-8')).get('dead', {}))
     header, before = parse(text)
     entries, stats = apply_overrides(before, ov, warnings.append)
 
@@ -215,8 +225,8 @@ def main():
     if not args.quiet:
         print('applied overrides: %s -> %s' % (args.playlist, out_path))
         print('  channels     : %d in, %d out' % (len(before), len(entries)))
-        print('  removed      : %d by country code, %d by id'
-              % (stats['removed_by_code'], stats['removed_by_id']))
+        print('  removed      : %d by country code, %d by id, %d found dead'
+              % (stats['removed_by_code'], stats['removed_by_id'], stats['removed_dead']))
         print('  added        : %d (%d already present)' % (stats['added'], stats['add_skipped']))
         print('  renumbered   : %d (%d groups already numbered)'
               % (stats['renumbered'], stats['renumber_skipped']))
