@@ -271,6 +271,34 @@ channel that needs a Referer is not mistaken for a dead one and deleted.
 Channels it removed come back by themselves. To force one back now, delete its entry from
 `auto_dead.json` and rebuild.
 
+### Where it runs, and why there
+
+On the **router** (GL.iNet Flint 2, OpenWrt 25.12.5, `ssh root@192.168.2.1 -p 2222`), not
+on the laptop and not in CI. Where you test from decides what looks alive: SNRT's CDN serves
+this LAN a 200 and hands Cloudflare a 403 block page for the same channel, and 2M lives on a
+Moroccan host. A GitHub Actions runner in a datacentre would call a chunk of the Maroc group
+dead and, after three runs, delete channels that work perfectly at the TVs. The router is the
+boxes' own network and public IP, and unlike the laptop it is always on.
+
+```sh
+ssh root@192.168.2.1 -p 2222          # note the port; 22 is refused
+cat /root/tv-playlist-check.sh        # the cron wrapper (pull, then run)
+tail -40 /root/tv-playlist/logs/watch-*.log
+```
+
+Set up there with `apk add python3 git-http ca-bundle` (OpenWrt 25.x uses **apk**, not opkg)
+and a clone in `/root/tv-playlist`. Tunables come from the environment, so the checkout stays
+byte-identical to this one and `git pull` never fights a local edit:
+`TVWATCH_WORKERS=6` because the box is carrying the household's traffic - measured at load
+average 0.45 on four cores during a full run.
+
+**Do not schedule it at 04:00 or 05:00**: that router reboots itself at 04:00 and runs
+`apk update` at 05:00, both already in root's crontab.
+
+**Only one machine may hold the push.** If the router is doing it, disable the laptop task
+(`Disable-ScheduledTask -TaskName 'tv-playlist - channel health check'`) or the two will race
+and collide on push.
+
 ## 8. The Kodi re-check (`recheck.py`)
 
 
