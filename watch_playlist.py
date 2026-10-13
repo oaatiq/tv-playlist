@@ -59,13 +59,24 @@ LOGDIR = os.path.join(HERE, 'logs')
 WORKER = 'https://ma-tv.oaatiq.workers.dev'
 EPG_URL = 'https://raw.githubusercontent.com/oaatiq/tv-playlist/main/epg.xml.gz'
 
-DROP_AFTER = 3          # consecutive failing runs before a channel leaves the playlist
-MAX_FAIL_RATIO = 0.40   # above this, assume the fault is here and do nothing
-MAX_REMOVALS = 40       # a bigger cull than this wants a human first
-RETRY_PAUSE = 120       # seconds before giving failures a second chance
-FROZEN_PAUSE = 25       # seconds before re-reading a live playlist to see it move
-TIMEOUT = 15
-WORKERS = 24
+# Tunables. Environment overrides exist because this also runs on the household router,
+# which is the honest place to test from - it is the boxes' own network and public IP, and
+# a channel that is geo-locked to Morocco looks alive there and dead from anywhere else.
+# It is also a router carrying everyone's traffic, so it runs with fewer threads.
+def _env(name, default, cast=int):
+    try:
+        return cast(os.environ[name])
+    except (KeyError, ValueError):
+        return default
+
+
+DROP_AFTER = _env('TVWATCH_DROP_AFTER', 3)       # failing runs in a row before removal
+MAX_FAIL_RATIO = _env('TVWATCH_MAX_FAIL', 0.40, float)   # above this, do nothing at all
+MAX_REMOVALS = _env('TVWATCH_MAX_REMOVALS', 40)  # a bigger cull than this wants a human
+RETRY_PAUSE = _env('TVWATCH_RETRY_PAUSE', 120)   # before giving failures a second chance
+FROZEN_PAUSE = _env('TVWATCH_FROZEN_PAUSE', 25)  # before re-reading a live playlist
+TIMEOUT = _env('TVWATCH_TIMEOUT', 15)
+WORKERS = _env('TVWATCH_WORKERS', 24)
 UA = 'VLC/3.0.20 LibVLC/3.0.20'
 
 CTX = ssl.create_default_context()
