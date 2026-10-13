@@ -1,0 +1,265 @@
+{
+ "dead": {
+  "ADOTV.bj@SD": {
+   "chno": "3759",
+   "name": "ADO TV",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "AbdulmajeedAbdullah.sa@SD": {
+   "chno": "1210",
+   "name": "Abdulmajeed Abdullah",
+   "since": "2026-10-13",
+   "why": "variant HTTPError"
+  },
+  "AlGhadTV.eg@SD": {
+   "chno": "1260",
+   "name": "Al Ghad TV",
+   "since": "2026-10-13",
+   "why": "frozen"
+  },
+  "K24.ke@SD": {
+   "chno": "3904",
+   "name": "K24",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "MiracleTVPlus.ci@SD": {
+   "chno": "3799",
+   "name": "Miracle TV+",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "MohammedAbdo.sa@SD": {
+   "chno": "1235",
+   "name": "Mohammed Abdo",
+   "since": "2026-10-13",
+   "why": "variant HTTPError"
+  },
+  "MyCinemaEurope.ch@SD": {
+   "chno": "3819",
+   "name": "My Cinema Europe",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWEconomie.tg@SD": {
+   "chno": "3823",
+   "name": "NW Economie",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWInfo.tg@SD": {
+   "chno": "3824",
+   "name": "NW Info",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWInfo2.tg@SD": {
+   "chno": "3825",
+   "name": "NW Info 2",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWMagazine.tg@SD": {
+   "chno": "3827",
+   "name": "NW Magazine",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NorCastWeather.us@HD": {
+   "chno": "1863",
+   "name": "NorCast Weather",
+   "since": "2026-10-13",
+   "why": "variant HTTP 200"
+  },
+  "PanafricanMediaTV.cm@SD": {
+   "chno": "3764",
+   "name": "Panafrican Media TV",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RashidAlMajed.sa@SD": {
+   "chno": "1239",
+   "name": "Rashid AlMajed",
+   "since": "2026-10-13",
+   "why": "variant HTTPError"
+  },
+  "TeleTchad.td@SD": {
+   "chno": "3769",
+   "name": "Tele Tchad",
+   "since": "2026-10-13",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  }
+ },
+ "failing": {
+  "ADOTV.bj@SD": {
+   "chno": "3759",
+   "name": "ADO TV",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "AbdulmajeedAbdullah.sa@SD": {
+   "chno": "1210",
+   "name": "Abdulmajeed Abdullah",
+   "runs": 3,
+   "why": "variant HTTPError"
+  },
+  "AfrobeatTVEntertainment.uk@SD": {
+   "chno": "1607",
+   "name": "Afrobeat TV Entertainment",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "AlGhadTV.eg@SD": {
+   "chno": "1260",
+   "name": "Al Ghad TV",
+   "runs": 3,
+   "why": "frozen"
+  },
+  "DBSTV.lc@SD": {
+   "chno": "3965",
+   "name": "DBS TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "FlowersTVUSA.us@SD": {
+   "chno": "2156",
+   "name": "Flowers TV USA",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 504: Gateway Time-out"
+  },
+  "HardKnocksFightingChampionship.pl@SD": {
+   "chno": "3935",
+   "name": "Hard Knocks Fighting Championship",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "K24.ke@SD": {
+   "chno": "3904",
+   "name": "K24",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "MTV.de@SD": {
+   "chno": "3871",
+   "name": "MTV (Germany)",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "MiracleTVPlus.ci@SD": {
+   "chno": "3799",
+   "name": "Miracle TV+",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "MohammedAbdo.sa@SD": {
+   "chno": "1235",
+   "name": "Mohammed Abdo",
+   "runs": 3,
+   "why": "variant HTTPError"
+  },
+  "MyCinemaEurope.ch@SD": {
+   "chno": "3819",
+   "name": "My Cinema Europe",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWEconomie.tg@SD": {
+   "chno": "3823",
+   "name": "NW Economie",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWInfo.tg@SD": {
+   "chno": "3824",
+   "name": "NW Info",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWInfo2.tg@SD": {
+   "chno": "3825",
+   "name": "NW Info 2",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NWMagazine.tg@SD": {
+   "chno": "3827",
+   "name": "NW Magazine",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NorCastWeather.us@HD": {
+   "chno": "1863",
+   "name": "NorCast Weather",
+   "runs": 3,
+   "why": "variant HTTP 200"
+  },
+  "PanafricanMediaTV.cm@SD": {
+   "chno": "3764",
+   "name": "Panafrican Media TV",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RadioTeleGinen.ht@SD": {
+   "chno": "3784",
+   "name": "Radio Tele Ginen",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVComedyMovies.es@Finland": {
+   "chno": "3865",
+   "name": "Rakuten TV Comedy Movies Finland",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVDramaMovies.es@Finland": {
+   "chno": "3866",
+   "name": "Rakuten TV Drama Movies Finland",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVFamilyMovies.es@Finland": {
+   "chno": "3868",
+   "name": "Rakuten TV Family Movies Finland",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVTopMovies.es@Finland": {
+   "chno": "3867",
+   "name": "Rakuten TV Top Movies Finland",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RashidAlMajed.sa@SD": {
+   "chno": "1239",
+   "name": "Rashid AlMajed",
+   "runs": 3,
+   "why": "variant HTTPError"
+  },
+  "TeleTchad.td@SD": {
+   "chno": "3769",
+   "name": "Tele Tchad",
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "WhiplashCinema.us@SD": {
+   "chno": "2028",
+   "name": "Whiplash Cinema",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "i24NEWSEnglishWorld.il@SD": {
+   "chno": "3686",
+   "name": "i24NEWS English World",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 502: Bad Gateway"
+  },
+  "i24NEWSFrench.il@SD": {
+   "chno": "3790",
+   "name": "i24NEWS French",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 502: Bad Gateway"
+  }
+ },
+ "last_run": "2026-10-13T14:38:27"
+}
