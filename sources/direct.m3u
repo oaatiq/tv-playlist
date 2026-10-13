@@ -1,10 +1,10 @@
 #EXTM3U
 #EXTINF:-1 tvg-chno="11" tvg-name="Medi1 Maghreb" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/medi1.png" group-title="Maroc",Medi1 Maghreb
-https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-maghreb_jnbspmg/corp/83_medi1tv-maghreb_jnbspmg_1080p/chunks.m3u8
+https://ma-tv.oaatiq.workers.dev/f/medi1-maghreb.m3u8
 #EXTINF:-1 tvg-chno="12" tvg-name="Medi1 Arabic" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/medi1.png" group-title="Maroc",Medi1 Arabic
-https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-arabic_g90v4ec/corp/83_medi1tv-arabic_g90v4ec_1080p/chunks.m3u8
+https://ma-tv.oaatiq.workers.dev/f/medi1-arabic.m3u8
 #EXTINF:-1 tvg-chno="13" tvg-name="Medi1 Afrique" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/medi1afrique.png" group-title="Maroc",Medi1 Afrique
-https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/corp/83_medi1tv-afrique_tm7tu45_1080p/chunks.m3u8
+https://ma-tv.oaatiq.workers.dev/f/medi1-afrique.m3u8
 #EXTINF:-1 tvg-chno="14" tvg-name="M24" tvg-logo="resource://resource.images.catchuptvandmore/channels/ma/m24.png" group-title="Maroc",M24
 plugin://plugin.video.catchuptvandmore/resources/lib/channels/ma/m24/get_live_url/?item_id=m24
 #EXTINF:-1 tvg-id="2MMonde.ma" tvg-name="2M Monde" tvg-logo="https://i.imgur.com/MvpntzA.png" group-title="Maroc",2M Monde
@@ -62,7 +62,7 @@ https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_NORMANDIE/index.m3u8?end=END&sta
 #EXTINF:-1 tvg-id="BFMVar.fr@SD" tvg-name="BFM Var" tvg-logo="https://i.imgur.com/vp1oVj3.png" group-title="Infos FR",BFM Var
 https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TOULONVAR/index.m3u8?end=END&start=LIVE|User-Agent=Mozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F108.0.0.0%20Safari%2F537.36
 #EXTINF:-1 tvg-id="ChadaTV.ma@SD" tvg-name="Chada TV" tvg-logo="https://freebox.cdn.scw.iliad.fr/medium_Logo_chada_tv_2ee1412d38.png" group-title="Maroc",Chada TV
-https://edge13.vedge.infomaniak.com/livecast/ik:chadatv/manifest.m3u8
+https://ma-tv.oaatiq.workers.dev/f/chada.m3u8
 #EXTINF:-1 tvg-id="France24.fr@Arabic" tvg-name="France 24 Arabic" tvg-logo="https://i.imgur.com/u8N6uoj.png" group-title="Infos Arabe",France 24 Arabic
 https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8
 #EXTINF:-1 tvg-id="Alarabiya.ae@SD" tvg-name="Al Arabiya" tvg-logo="https://shahid.mbc.net/mediaObject/a4c125db-ede8-4970-9eed-963948c78651?height=auto&width=512&croppingPoint=&version=1&type=png" group-title="Infos Arabe",Al Arabiya
