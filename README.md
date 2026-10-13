@@ -10,6 +10,7 @@ Personal IPTV playlist for OTT Player / OTT Navigator on a MINIX U8K box.
 | `sources/` | Committed snapshots of the two Kodi lists the build reads, and of the build script. |
 | `overrides/` | Everything the build cannot produce: added channels, removals, grouping, numbering. |
 | `rebuild.ps1` | Build → apply overrides → verify → replace. **The only safe way to rebuild.** |
+| `add_channel.py` | Add one channel, or a whole `.m3u`, without touching the JSON or rebuilding. |
 
 ## Why the Worker exists
 
@@ -46,8 +47,22 @@ git add -A; git commit -m "Rebuild playlist"; git push
 
 then **Update Contents** in XCIPTV on the box.
 
+**One new channel — no rebuild needed.** Adding does not disturb anything else, so
+`add_channel.py` writes the override and re-applies it to `playlist.m3u` directly:
+
+```powershell
+python -I add_channel.py --groups                   # group names, ranges, next free number
+python -I add_channel.py --group Maroc --name "Chaine X" --url https://host/x.m3u8 --apply
+python -I add_channel.py --from-m3u new.m3u --group "Other countries" --apply
+```
+
+It picks the channel number, generates the `tvg-id`, probes the stream, and reverts
+`overrides.json` and leaves `playlist.m3u` alone if the result does not verify. Drop
+`--apply` to write the override only. See RUNBOOK §2 for the flags.
+
 | Script | On its own |
 |---|---|
+| `add_channel.py --group G --name N --url U` | appends to `overrides/overrides.json`'s `add`, probes, verifies |
 | `apply_overrides.py <playlist>` | re-applies `overrides/overrides.json`; idempotent |
 | `verify_playlist.py <playlist> [--compare old]` | checks numbering/grouping/encoding, lists what drifted |
 

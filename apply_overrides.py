@@ -127,8 +127,16 @@ def apply_overrides(entries, ov, warn):
     stale_removals = sorted(drop_ids - dropped_ids - auto_dead)
 
     # 5. additions - skipped when the URL is already there, so a second run is a no-op.
+    #    Also skipped when the health check has found the channel dead: step 4 removed it,
+    #    and re-adding it here would undo that silently. These entries are the only ones
+    #    the removal pass cannot win against, because nothing else in the playlist is put
+    #    back after being taken out - and watch_playlist.py only publishes on a *change*
+    #    in the dead set, so without this they would sit in the list dead for good.
     have = set(e['url'] for e in entries)
     for rec in ov.get('add', []):
+        if rec.get('tvg-id') in auto_dead:
+            stats['add_dead'] += 1
+            continue
         if rec['url'] in have:
             stats['add_skipped'] += 1
             continue
@@ -227,7 +235,8 @@ def main():
         print('  channels     : %d in, %d out' % (len(before), len(entries)))
         print('  removed      : %d by country code, %d by id, %d found dead'
               % (stats['removed_by_code'], stats['removed_by_id'], stats['removed_dead']))
-        print('  added        : %d (%d already present)' % (stats['added'], stats['add_skipped']))
+        print('  added        : %d (%d already present, %d held back as dead)'
+              % (stats['added'], stats['add_skipped'], stats['add_dead']))
         print('  renumbered   : %d (%d groups already numbered)'
               % (stats['renumbered'], stats['renumber_skipped']))
         print('  regrouped    : %d' % stats['regrouped'])

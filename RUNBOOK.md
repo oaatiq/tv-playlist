@@ -45,7 +45,36 @@ fault. `-PullFromBox` makes it go away, at the cost of whatever else drifted on 
 Everything that is not in the Kodi source lists lives in `overrides/overrides.json`.
 Edit it, then run `.\rebuild.ps1`.
 
-**Add a channel** — append to `add`. `chno` must fall inside the group's range so the
+**Add a channel** — use `add_channel.py` rather than editing the JSON by hand. It picks a
+free number inside the group, generates the `tvg-id`, tests the stream, writes the
+override and then re-runs `apply_overrides.py` + `verify_playlist.py` to prove the result
+is still sound. If anything fails, `overrides.json` is restored byte-for-byte and
+`playlist.m3u` is never touched.
+
+```powershell
+python -I add_channel.py --groups                       # group names, ranges, next number
+python -I add_channel.py --group Maroc --name "Chaine X" `
+        --url https://host/x.m3u8 --logo https://host/logo.png --apply
+python -I add_channel.py --from-m3u new.m3u --group "Other countries" --apply
+```
+
+It refuses to run while this clone is behind the remote, because the health check on the
+router pushes a repaired playlist by itself and adding on top of a stale copy would put
+back whatever it had just removed. `git pull` first; `--no-fetch` skips the check when you
+are offline.
+
+`--apply` updates `playlist.m3u` too, which is enough on its own — a full `rebuild.ps1` is
+only needed when the Kodi source lists changed. Without it the override is written and the
+playlist is left alone. Other flags: `--chno` to force a number, `--dry-run`,
+`--no-probe` (a channel geo-locked to Morocco fails the probe from the laptop and is still
+fine on the box), `--force` to add past a failed probe or a duplicate name,
+`--keep-headers` to keep an `#EXTVLCOPT` line from an imported list (off by default,
+because that line stops the channel playing in XCIPTV — see section 6).
+
+Then publish as in section 4: `git add -A; git commit; git push`, then **Update Contents**
+in XCIPTV.
+
+By hand, if you prefer: append to `add`. `chno` must fall inside the group's range so the
 ordering check passes (see the table in BUILD-DURABILITY.md §2):
 
 ```json
@@ -270,6 +299,19 @@ channel that needs a Referer is not mistaken for a dead one and deleted.
 
 Channels it removed come back by themselves. To force one back now, delete its entry from
 `auto_dead.json` and rebuild.
+
+**It only publishes when the dead set changes.** A run where nothing newly died and nothing
+came back stops at "nothing to publish" — so a fix to the *build* (as opposed to a channel
+dying) does not reach the playlist by itself. Apply it locally and push.
+
+**A channel in the `add` list was immune to it until 2026-10-13.** `apply_overrides.py`
+removes before it adds, so a dead channel that the overrides put there was dropped by the
+removal pass and re-added by the addition pass in the same run. The health check reported
+it gone, the dead set recorded it, and the channel stayed in the playlist — permanently,
+because the set never changed again. It cost four channels (Abdulmajeed Abdullah 1210,
+Mohammed Abdo 1235, Rashid AlMajed 1239, Al Ghad TV 1260: declared dead on 2026-10-13 and
+still published after the run that said "15 gone"). The addition pass now holds back
+anything in `auto_dead.json`, so `add` and the health check agree.
 
 ### Where it runs, and why there
 
