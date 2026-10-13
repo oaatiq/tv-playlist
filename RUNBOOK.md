@@ -297,7 +297,23 @@ average 0.45 on four cores during a full run.
 
 **Only one machine may hold the push.** If the router is doing it, disable the laptop task
 (`Disable-ScheduledTask -TaskName 'tv-playlist - channel health check'`) or the two will race
-and collide on push.
+and collide on push.  The router holds it as of 2026-10-13 and the laptop task is **disabled**.
+
+The push credential is a fine-grained GitHub token (that repo's Contents: read and write, and
+nothing else) in `/root/.git-credentials`, mode 600, with `credential.helper store`. To replace
+it, run this from PowerShell - it prompts on the router, so the token never reaches a command
+line, a shell history or a screenshot:
+
+```sh
+ssh -t root@192.168.2.1 -p 2222 'stty -echo; printf "Paste token then Enter: "; read T; stty echo; echo; echo "https://oaatiq:$T@github.com" > /root/.git-credentials; chmod 600 /root/.git-credentials; echo STORED'
+```
+
+**Use `echo`, not `printf ...
+`.** A backslash-n does not survive the trip from PowerShell
+through ssh to the router's shell: it arrives as a literal `n`, the file ends `@github.comn`,
+and git then fails with `could not read Username for 'https://github.com'` - which looks like a
+missing credential rather than a malformed one. Check with
+`grep -c '@github\.com$' /root/.git-credentials`, which prints 1 when the line is right.
 
 ## 8. The Kodi re-check (`recheck.py`)
 
