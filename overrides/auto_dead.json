@@ -18,6 +18,12 @@
    "since": "2026-10-13",
    "why": "frozen"
   },
+  "DBSTV.lc@SD": {
+   "chno": "3965",
+   "name": "DBS TV",
+   "since": "2026-10-14",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "K24.ke@SD": {
    "chno": "3904",
    "name": "K24",
@@ -84,6 +90,30 @@
    "since": "2026-10-14",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RakutenTVComedyMovies.es@Finland": {
+   "chno": "3865",
+   "name": "Rakuten TV Comedy Movies Finland",
+   "since": "2026-10-14",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVDramaMovies.es@Finland": {
+   "chno": "3866",
+   "name": "Rakuten TV Drama Movies Finland",
+   "since": "2026-10-14",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVFamilyMovies.es@Finland": {
+   "chno": "3868",
+   "name": "Rakuten TV Family Movies Finland",
+   "since": "2026-10-14",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RakutenTVTopMovies.es@Finland": {
+   "chno": "3867",
+   "name": "Rakuten TV Top Movies Finland",
+   "since": "2026-10-14",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RashidAlMajed.sa@SD": {
    "chno": "1239",
    "name": "Rashid AlMajed",
@@ -95,6 +125,12 @@
    "name": "Tele Tchad",
    "since": "2026-10-13",
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "WhiplashCinema.us@SD": {
+   "chno": "2028",
+   "name": "Whiplash Cinema",
+   "since": "2026-10-14",
+   "why": "frozen"
   }
  },
  "failing": {
@@ -119,62 +155,38 @@
   "BetterHealthTV.us@SD": {
    "chno": "2190",
    "name": "Better Health TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "BetterLifeNatureChannel.us@SD": {
    "chno": "2110",
    "name": "Better Life Nature Channel",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "BetterLifeTV.us@SD": {
    "chno": "2230",
    "name": "Better Life TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "D3TV.ml@SD": {
-   "chno": "3801",
-   "name": "D3 TV",
+  "ChandelTV.tg@SD": {
+   "chno": "3826",
+   "name": "Chandel TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DBSTV.lc@SD": {
    "chno": "3965",
    "name": "DBS TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
-   "runs": 1,
-   "why": "variant HTTPError"
-  },
-  "Evtele.cg@SD": {
-   "chno": "3808",
-   "name": "Ev-tele",
+  "GreatCommissionTV.ke@SD": {
+   "chno": "3902",
+   "name": "Great Commission TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "4017",
-   "name": "FORT TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "GodStandsTV.pk@Main": {
-   "chno": "3925",
-   "name": "God Stands TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: "
   },
   "K24.ke@SD": {
    "chno": "3904",
@@ -182,17 +194,23 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LacrosseTV.us@SD": {
-   "chno": "1903",
-   "name": "Lacrosse TV",
+  "KassouaTV.bj@SD": {
+   "chno": "3760",
+   "name": "KassouaTV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LatestTV.uk@SD": {
-   "chno": "1693",
-   "name": "Latest TV",
+  "LCP.fr@SD": {
+   "chno": "1010",
+   "name": "LCP",
    "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "why": "frozen"
+  },
+  "LougaTV.sn@SD": {
+   "chno": "3813",
+   "name": "Louga TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -248,6 +266,18 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RHTGuadeloupe.gp@SD": {
+   "chno": "3775",
+   "name": "RHT Guadeloupe",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RTLZwee.lu@SD": {
+   "chno": "3910",
+   "name": "RTL Zwee",
+   "runs": 1,
+   "why": "frozen"
+  },
   "RadioTeleGinen.ht@SD": {
    "chno": "3784",
    "name": "Radio Tele Ginen",
@@ -257,25 +287,25 @@
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
    "name": "Rakuten TV Comedy Movies Finland",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVDramaMovies.es@Finland": {
    "chno": "3866",
    "name": "Rakuten TV Drama Movies Finland",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVFamilyMovies.es@Finland": {
    "chno": "3868",
    "name": "Rakuten TV Family Movies Finland",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVTopMovies.es@Finland": {
    "chno": "3867",
    "name": "Rakuten TV Top Movies Finland",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RashidAlMajed.sa@SD": {
@@ -284,9 +314,9 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "TVSAPublicChannel.us@SD": {
-   "chno": "2383",
-   "name": "TVSA Public Channel",
+  "ScottsdaleChannel11.us@SD": {
+   "chno": "2369",
+   "name": "Scottsdale Channel 11",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -299,15 +329,9 @@
   "WhiplashCinema.us@SD": {
    "chno": "2028",
    "name": "Whiplash Cinema",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
-  },
-  "XPTV1.es@SD": {
-   "chno": "3991",
-   "name": "XPTV1",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-10-14T02:37:25"
+ "last_run": "2026-10-14T14:38:36"
 }
