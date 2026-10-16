@@ -39,6 +39,7 @@ import io
 import json
 import os
 import re
+import shutil
 import ssl
 import subprocess
 import sys
@@ -49,6 +50,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PLAYLIST = os.path.join(HERE, 'playlist.m3u')
+PLAYLIST8 = os.path.join(HERE, 'playlist.m3u8')
 SOURCES = os.path.join(HERE, 'sources')
 BUILD = os.path.join(SOURCES, 'build_tivimate.py')
 OVERRIDES_DIR = os.path.join(HERE, 'overrides')
@@ -384,6 +386,7 @@ def main():
         log('  kept %d published URL(s) the source lists have not caught up with' % kept)
 
     os.replace(staged, PLAYLIST)
+    shutil.copyfile(PLAYLIST, PLAYLIST8)
     gone = ', '.join('%s (%s)' % (c['name'], c['chno']) for c in newly_dead[:6])
     back = ', '.join('%s (%s)' % (c['name'], c['chno']) for c in revived[:6])
     summary = []
