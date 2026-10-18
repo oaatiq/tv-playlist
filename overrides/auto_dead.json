@@ -1,5 +1,11 @@
 {
  "dead": {
+  "30AGolfKingdom.us@SD": {
+   "chno": "1894",
+   "name": "30A Golf Kingdom",
+   "since": "2026-10-18",
+   "why": "variant RemoteDisconnected"
+  },
   "ACTV.us@SD": {
    "chno": "1813",
    "name": "ACTV (United States)",
@@ -209,7 +215,7 @@
   "30AGolfKingdom.us@SD": {
    "chno": "1894",
    "name": "30A Golf Kingdom",
-   "runs": 2,
+   "runs": 3,
    "why": "variant RemoteDisconnected"
   },
   "ACTV.us@SD": {
@@ -254,17 +260,17 @@
    "runs": 4,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "CFMTVChannel98.us@SD": {
-   "chno": "1829",
-   "name": "CFM TV Channel 98",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ChandelTV.tg@SD": {
-   "chno": "3826",
-   "name": "Chandel TV",
+  "BPXTVRadio.us@SD": {
+   "chno": "3781",
+   "name": "BPX TV Radio",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CAM10TV.cm@SD": {
+   "chno": "3767",
+   "name": "CAM 10 TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "ChannelS.bd@SD": {
    "chno": "3842",
@@ -278,21 +284,21 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "DerTV.uk@SD": {
+   "chno": "1691",
+   "name": "Der TV",
+   "runs": 1,
+   "why": "frozen"
+  },
   "DiyaTV.us@SD": {
    "chno": "2356",
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
+  "Esaie45Tele.cg@SD": {
+   "chno": "3809",
+   "name": "Esaie 45 Tele",
    "runs": 1,
    "why": "frozen"
   },
@@ -317,12 +323,6 @@
   "GodsLearningChannel.us@KPCBDT": {
    "chno": "2242",
    "name": "God's Learning Channel KPCB-DT",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "GreatCommissionTV.ke@SD": {
-   "chno": "3902",
-   "name": "Great Commission TV",
    "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -335,7 +335,7 @@
   "JeddahRadio.sa@SD": {
    "chno": "1228",
    "name": "Jeddah Radio",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "K24.ke@SD": {
@@ -347,7 +347,7 @@
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LBFDRTV.cd@SD": {
@@ -356,15 +356,15 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LatestTV.uk@SD": {
-   "chno": "1693",
-   "name": "Latest TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
    "name": "Laura Dave Media TV",
+   "runs": 2,
+   "why": "frozen"
+  },
+  "LollywoodHDTV.cd@SD": {
+   "chno": "3771",
+   "name": "Lollywood HD TV",
    "runs": 1,
    "why": "frozen"
   },
@@ -385,12 +385,6 @@
    "name": "My Cinema Europe",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "NMBTV.us@SD": {
-   "chno": "1862",
-   "name": "NMBTV",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NWEconomie.tg@SD": {
    "chno": "3823",
@@ -434,6 +428,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RaajjeTV.mv@SD": {
+   "chno": "3912",
+   "name": "Raajje TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RadioTeleGinen.ht@SD": {
    "chno": "3784",
    "name": "Radio Tele Ginen",
@@ -470,16 +470,16 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "SPTV.us@SD": {
-   "chno": "1879",
-   "name": "SPTV",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+  "TR24Television.cm@SD": {
+   "chno": "3765",
+   "name": "TR24 Television",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 502: Bad Gateway"
   },
   "TeleTchad.td@SD": {
@@ -493,19 +493,7 @@
    "name": "Whiplash Cinema",
    "runs": 3,
    "why": "frozen"
-  },
-  "XPTV2.es@SD": {
-   "chno": "3987",
-   "name": "XPTV2",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "XPTVUS.es@SD": {
-   "chno": "3988",
-   "name": "XPTV US",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-10-18T02:37:02"
+ "last_run": "2026-10-18T14:37:31"
 }
