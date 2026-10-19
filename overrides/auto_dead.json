@@ -60,6 +60,12 @@
    "since": "2026-10-14",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "DerTV.uk@SD": {
+   "chno": "1691",
+   "name": "Der TV",
+   "since": "2026-10-19",
+   "why": "frozen"
+  },
   "DiyaTV.us@SD": {
    "chno": "2356",
    "name": "Diya TV",
@@ -257,7 +263,7 @@
   "AdinkraTV.gh@SD": {
    "chno": "3876",
    "name": "Adinkra TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AfroMagicChannel.ci@SD": {
@@ -284,18 +290,6 @@
    "runs": 4,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "CaribbeanGospelTV.jm@SD": {
-   "chno": "3895",
-   "name": "Caribbean Gospel TV",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "ChandelTV.tg@SD": {
-   "chno": "3826",
-   "name": "Chandel TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "ChannelS.bd@SD": {
    "chno": "3842",
    "name": "Channel S (Bangladesh)",
@@ -308,10 +302,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "DRTVInternational.cg@SD": {
+   "chno": "3810",
+   "name": "DRTV International",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
   "DerTV.uk@SD": {
    "chno": "1691",
    "name": "Der TV",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
   },
   "DiyaTV.us@SD": {
@@ -319,18 +319,6 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
-  },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
-   "runs": 1,
-   "why": "frozen"
   },
   "FORTTV.ug@SD": {
    "chno": "4017",
@@ -349,6 +337,24 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
+  },
+  "GodStandsKidsClubTV.pk@English": {
+   "chno": "3922",
+   "name": "God Stands Kids Club TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -3] Try again>"
+  },
+  "GodStandsTV.pk@English": {
+   "chno": "3926",
+   "name": "God Stands TV English",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -3] Try again>"
+  },
+  "GodStandsTV.pk@Main": {
+   "chno": "3925",
+   "name": "God Stands TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
@@ -374,11 +380,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LatestTV.uk@SD": {
-   "chno": "1693",
-   "name": "Latest TV",
+  "LCP.fr@SD": {
+   "chno": "1010",
+   "name": "LCP",
    "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "why": "frozen"
   },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
@@ -428,10 +434,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "NidaeAlIslamRadio.sa@SD": {
+   "chno": "1236",
+   "name": "Nidae AlIslam Radio",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "NoorTV.uk@SD": {
    "chno": "1685",
    "name": "Noor TV (United Kingdom)",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NorCastWeather.us@HD": {
@@ -450,6 +462,18 @@
    "chno": "1869",
    "name": "Pasco TV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "PentTV.gh@SD": {
+   "chno": "3875",
+   "name": "Pent TV",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "PointeTV.ag@SD": {
+   "chno": "3833",
+   "name": "Pointe TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RadioTeleGinen.ht@SD": {
@@ -488,12 +512,6 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "SBNTV.us@SD": {
-   "chno": "2261",
-   "name": "SBN TV",
-   "runs": 1,
-   "why": "frozen"
-  },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
@@ -503,14 +521,20 @@
   "TVFamille.mq@SD": {
    "chno": "3802",
    "name": "TV Famille",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "runs": 2,
+   "why": "TimeoutError: The read operation timed out"
   },
   "TeleTchad.td@SD": {
    "chno": "3769",
    "name": "Tele Tchad",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "TerraMaterWILD.de@English": {
+   "chno": "1648",
+   "name": "Terra Mater WILD English",
+   "runs": 1,
+   "why": "not a playlist"
   },
   "WhiplashCinema.us@SD": {
    "chno": "2028",
@@ -519,5 +543,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-19T02:37:18"
+ "last_run": "2026-10-19T14:37:11"
 }
