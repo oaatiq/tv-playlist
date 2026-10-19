@@ -90,6 +90,12 @@
    "since": "2026-10-17",
    "why": "frozen"
   },
+  "JeddahRadio.sa@SD": {
+   "chno": "1228",
+   "name": "Jeddah Radio",
+   "since": "2026-10-19",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "K24.ke@SD": {
    "chno": "3904",
    "name": "K24",
@@ -101,6 +107,12 @@
    "name": "LBFD RTV",
    "since": "2026-10-18",
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LauraDaveMediaTV.cm@SD": {
+   "chno": "3768",
+   "name": "Laura Dave Media TV",
+   "since": "2026-10-19",
+   "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -198,6 +210,12 @@
    "since": "2026-10-13",
    "why": "variant HTTPError"
   },
+  "TV3.gh@SD": {
+   "chno": "3877",
+   "name": "TV3 (Ghana)",
+   "since": "2026-10-19",
+   "why": "HTTPError: HTTP Error 502: Bad Gateway"
+  },
   "TeleTchad.td@SD": {
    "chno": "3769",
    "name": "Tele Tchad",
@@ -236,6 +254,12 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
+  "AdinkraTV.gh@SD": {
+   "chno": "3876",
+   "name": "Adinkra TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "AfroMagicChannel.ci@SD": {
    "chno": "3796",
    "name": "Afro Magic Channel",
@@ -260,17 +284,17 @@
    "runs": 4,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "BPXTVRadio.us@SD": {
-   "chno": "3781",
-   "name": "BPX TV Radio",
+  "CaribbeanGospelTV.jm@SD": {
+   "chno": "3895",
+   "name": "Caribbean Gospel TV",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "ChandelTV.tg@SD": {
+   "chno": "3826",
+   "name": "Chandel TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "CAM10TV.cm@SD": {
-   "chno": "3767",
-   "name": "CAM 10 TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
   },
   "ChannelS.bd@SD": {
    "chno": "3842",
@@ -287,7 +311,7 @@
   "DerTV.uk@SD": {
    "chno": "1691",
    "name": "Der TV",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "DiyaTV.us@SD": {
@@ -296,9 +320,15 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "Esaie45Tele.cg@SD": {
-   "chno": "3809",
-   "name": "Esaie 45 Tele",
+  "EbS.be@SD": {
+   "chno": "3684",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "Europe1TV.fr@HD": {
+   "chno": "1009",
+   "name": "Europe 1 TV",
    "runs": 1,
    "why": "frozen"
   },
@@ -320,12 +350,6 @@
    "runs": 3,
    "why": "frozen"
   },
-  "GodsLearningChannel.us@KPCBDT": {
-   "chno": "2242",
-   "name": "God's Learning Channel KPCB-DT",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
@@ -335,7 +359,7 @@
   "JeddahRadio.sa@SD": {
    "chno": "1228",
    "name": "Jeddah Radio",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "K24.ke@SD": {
@@ -344,28 +368,22 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "KassouaTV.bj@SD": {
-   "chno": "3760",
-   "name": "KassouaTV",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "LBFDRTV.cd@SD": {
    "chno": "3772",
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "LatestTV.uk@SD": {
+   "chno": "1693",
+   "name": "Latest TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
+  },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
    "name": "Laura Dave Media TV",
-   "runs": 2,
-   "why": "frozen"
-  },
-  "LollywoodHDTV.cd@SD": {
-   "chno": "3771",
-   "name": "Lollywood HD TV",
-   "runs": 1,
+   "runs": 3,
    "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
@@ -410,6 +428,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "NoorTV.uk@SD": {
+   "chno": "1685",
+   "name": "Noor TV (United Kingdom)",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "NorCastWeather.us@HD": {
    "chno": "1863",
    "name": "NorCast Weather",
@@ -426,12 +450,6 @@
    "chno": "1869",
    "name": "Pasco TV",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RaajjeTV.mv@SD": {
-   "chno": "3912",
-   "name": "Raajje TV",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RadioTeleGinen.ht@SD": {
@@ -470,17 +488,23 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "TR24Television.cm@SD": {
-   "chno": "3765",
-   "name": "TR24 Television",
+  "SBNTV.us@SD": {
+   "chno": "2261",
+   "name": "SBN TV",
    "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "why": "frozen"
   },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 502: Bad Gateway"
+  },
+  "TVFamille.mq@SD": {
+   "chno": "3802",
+   "name": "TV Famille",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "TeleTchad.td@SD": {
    "chno": "3769",
@@ -495,5 +519,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-18T14:37:31"
+ "last_run": "2026-10-19T02:37:18"
 }
