@@ -391,7 +391,7 @@ https://tv7.live-kd.com/live/tv7/livestream/playlist.m3u8
 https://5dd226f8f01e8.streamlock.net/via-matele-live/matelelive_1080/playlist.m3u8
 #EXTINF:-1 tvg-chno="1176" tvg-id="viaTelePaese.fr@SD" tvg-logo="https://i.imgur.com/TLZsAKK.png" group-title="France",viaTelePaese
 https://srv.webtvmanager.fr:3970/live/viatelepaeselive.m3u8
-#EXTINF:-1 tvg-chno="1177" tvg-id="TF1.fr" group-title="France",TF1
+#EXTINF:-1 tvg-chno="1177" tvg-id="TF1.fr" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/france/tf1-fr.png" group-title="France",TF1
 http://tv.streambox.fr/live/testlivestream/testlivestream/41.m3u8
 #EXTINF:-1 tvg-chno="1180" tvg-id="BFMTV.fr@SD" tvg-name="BFM TV" tvg-logo="https://i.imgur.com/YJCcczD.png" group-title="Infos FR",BFM TV
 https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE

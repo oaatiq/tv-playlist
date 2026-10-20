@@ -169,7 +169,8 @@
       "name": "TF1",
       "group": "France",
       "url": "http://tv.streambox.fr/live/testlivestream/testlivestream/41.m3u8",
-      "tvg-id": "TF1.fr"
+      "tvg-id": "TF1.fr",
+      "tvg-logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/france/tf1-fr.png"
     },
     {
       "chno": 1210,
