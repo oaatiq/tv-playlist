@@ -165,6 +165,13 @@
   ],
   "add": [
     {
+      "chno": 1177,
+      "name": "TF1",
+      "group": "France",
+      "url": "http://tv.streambox.fr/live/testlivestream/testlivestream/41.m3u8",
+      "tvg-id": "TF1.fr"
+    },
+    {
       "chno": 1210,
       "name": "Abdulmajeed Abdullah",
       "group": "Arabie Saoudite",
