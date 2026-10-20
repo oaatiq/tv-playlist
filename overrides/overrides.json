@@ -166,11 +166,11 @@
   "add": [
     {
       "chno": 1177,
-      "name": "TF1",
+      "name": "Canal+",
       "group": "France",
       "url": "http://tv.streambox.fr/live/testlivestream/testlivestream/41.m3u8",
-      "tvg-id": "TF1.fr",
-      "tvg-logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/france/tf1-fr.png"
+      "tvg-id": "CanalPlus.fr",
+      "tvg-logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/france/canal-plus-fr.png"
     },
     {
       "chno": 1210,
