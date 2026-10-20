@@ -24,6 +24,12 @@
    "since": "2026-10-13",
    "why": "variant HTTPError"
   },
+  "AdinkraTV.gh@SD": {
+   "chno": "3876",
+   "name": "Adinkra TV",
+   "since": "2026-10-20",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "AfroMagicChannel.ci@SD": {
    "chno": "3796",
    "name": "Afro Magic Channel",
@@ -161,6 +167,12 @@
    "name": "NW Magazine",
    "since": "2026-10-13",
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NoorTV.uk@SD": {
+   "chno": "1685",
+   "name": "Noor TV (United Kingdom)",
+   "since": "2026-10-20",
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NorCastWeather.us@HD": {
    "chno": "1863",
@@ -263,7 +275,7 @@
   "AdinkraTV.gh@SD": {
    "chno": "3876",
    "name": "Adinkra TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AfroMagicChannel.ci@SD": {
@@ -290,6 +302,30 @@
    "runs": 4,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "CameraSmileTV.us@SD": {
+   "chno": "1943",
+   "name": "Camera Smile TV",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "CapuchinTV.ke@SD": {
+   "chno": "3900",
+   "name": "Capuchin TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CelebritySceneTV.us@SD": {
+   "chno": "2354",
+   "name": "Celebrity Scene TV",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "ChandelTV.tg@SD": {
+   "chno": "3826",
+   "name": "Chandel TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "ChannelS.bd@SD": {
    "chno": "3842",
    "name": "Channel S (Bangladesh)",
@@ -302,12 +338,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "DRTVInternational.cg@SD": {
-   "chno": "3810",
-   "name": "DRTV International",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
-  },
   "DerTV.uk@SD": {
    "chno": "1691",
    "name": "Der TV",
@@ -319,6 +349,18 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
+  },
+  "EbS.be@SD": {
+   "chno": "3684",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "Europe1TV.fr@HD": {
+   "chno": "1009",
+   "name": "Europe 1 TV",
+   "runs": 1,
+   "why": "frozen"
   },
   "FORTTV.ug@SD": {
    "chno": "4017",
@@ -341,19 +383,19 @@
   "GodStandsKidsClubTV.pk@English": {
    "chno": "3922",
    "name": "God Stands Kids Club TV",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
   "GodStandsTV.pk@English": {
    "chno": "3926",
    "name": "God Stands TV English",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
   "GodStandsTV.pk@Main": {
    "chno": "3925",
    "name": "God Stands TV",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
   "HardKnocksFightingChampionship.pl@SD": {
@@ -383,8 +425,14 @@
   "LCP.fr@SD": {
    "chno": "1010",
    "name": "LCP",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
+  },
+  "LatestTV.uk@SD": {
+   "chno": "1693",
+   "name": "Latest TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
@@ -437,13 +485,13 @@
   "NidaeAlIslamRadio.sa@SD": {
    "chno": "1236",
    "name": "Nidae AlIslam Radio",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NoorTV.uk@SD": {
    "chno": "1685",
    "name": "Noor TV (United Kingdom)",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NorCastWeather.us@HD": {
@@ -464,15 +512,9 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "PentTV.gh@SD": {
-   "chno": "3875",
-   "name": "Pent TV",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "PointeTV.ag@SD": {
-   "chno": "3833",
-   "name": "Pointe TV",
+  "RadioTeleFullGospel.ht@SD": {
+   "chno": "3783",
+   "name": "Radio Tele Full Gospel",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -512,16 +554,178 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
+  "SGTN49.us@SD": {
+   "chno": "2371",
+   "name": "SGTN-49",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
    "runs": 3,
    "why": "HTTPError: HTTP Error 502: Bad Gateway"
   },
-  "TVFamille.mq@SD": {
-   "chno": "3802",
-   "name": "TV Famille",
-   "runs": 2,
+  "TVSBowlingNetwork.us@SD": {
+   "chno": "1920",
+   "name": "TVS Bowling Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSBoxing.us@SD": {
+   "chno": "1921",
+   "name": "TVS Boxing",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSCipherNetwork.us@SD": {
+   "chno": "1982",
+   "name": "TVS Cipher Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSClassicMovies.us@SD": {
+   "chno": "2022",
+   "name": "TVS Classic Movies",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSClassicSports.us@SD": {
+   "chno": "1922",
+   "name": "TVS Classic Sports",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSComedyNetwork.us@SD": {
+   "chno": "1983",
+   "name": "TVS Comedy Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSConsumerDirect.us@SD": {
+   "chno": "2222",
+   "name": "TVS Consumer Direct",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSDriveInMovie.us@SD": {
+   "chno": "2023",
+   "name": "TVS Drive In Movie",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSFamilyChannel.us@SD": {
+   "chno": "2104",
+   "name": "TVS Family Channel",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSFlashbackNetwork.us@SD": {
+   "chno": "1984",
+   "name": "TVS Flashback Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSHiTops.us@SD": {
+   "chno": "2105",
+   "name": "TVS Hi Tops",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSHollywoodHistory.us@SD": {
+   "chno": "2176",
+   "name": "TVS Hollywood History",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSMusicNetwork.us@SD": {
+   "chno": "2137",
+   "name": "TVS Music Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSNostalgia.us@SD": {
+   "chno": "1985",
+   "name": "TVS Nostalgia",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSNostalgiaMovies.us@SD": {
+   "chno": "2024",
+   "name": "TVS Nostalgia Movies",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSPetParadeNetwork.us@SD": {
+   "chno": "2223",
+   "name": "TVS Pet Parade Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSPinballNetwork.us@SD": {
+   "chno": "1923",
+   "name": "TVS Pinball Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSQuizShowNetwork.us@SD": {
+   "chno": "1986",
+   "name": "TVS Quiz Show Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSSelectNetwork.us@SD": {
+   "chno": "2381",
+   "name": "TVS Select Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSSportsBureau.us@SD": {
+   "chno": "1924",
+   "name": "TVS Sports Bureau",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSTalkNetwork.us@SD": {
+   "chno": "1987",
+   "name": "TVS Talk Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSTallyHo.us@SD": {
+   "chno": "1988",
+   "name": "TVS Tally Ho",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSTavern.us@SD": {
+   "chno": "1989",
+   "name": "TVS Tavern",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSTurbo.us@SD": {
+   "chno": "1925",
+   "name": "TVS Turbo",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSVintageNetwork.us@SD": {
+   "chno": "1990",
+   "name": "TVS Vintage Network",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSWesternMovie.us@SD": {
+   "chno": "2025",
+   "name": "TVS Western Movie",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
+  },
+  "TVSWomenSports.us@SD": {
+   "chno": "1926",
+   "name": "TVS Women Sports",
+   "runs": 1,
    "why": "TimeoutError: The read operation timed out"
   },
   "TeleTchad.td@SD": {
@@ -530,11 +734,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "TerraMaterWILD.de@English": {
-   "chno": "1648",
-   "name": "Terra Mater WILD English",
+  "ToonamiAftermath.us@West": {
+   "chno": "2103",
+   "name": "Toonami Aftermath West",
    "runs": 1,
-   "why": "not a playlist"
+   "why": "HTTPError: HTTP Error 503: Service Unavailable"
   },
   "WhiplashCinema.us@SD": {
    "chno": "2028",
@@ -543,5 +747,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-19T14:37:11"
+ "last_run": "2026-10-20T02:40:33"
 }
