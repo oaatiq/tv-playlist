@@ -156,11 +156,29 @@
    "since": "2026-10-13",
    "why": "variant HTTPError"
   },
+  "MoozLove.ro@SD": {
+   "chno": "3954",
+   "name": "Mooz Love",
+   "since": "2026-10-21",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "MoozRetro.ro@SD": {
+   "chno": "3955",
+   "name": "Mooz Retro",
+   "since": "2026-10-21",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
   "MyCinemaEurope.ch@SD": {
    "chno": "3819",
    "name": "My Cinema Europe",
    "since": "2026-10-13",
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "MyZenTV.fr@SD": {
+   "chno": "1110",
+   "name": "MyZen TV",
+   "since": "2026-10-21",
+   "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "NWEconomie.tg@SD": {
    "chno": "3823",
@@ -270,6 +288,12 @@
    "since": "2026-10-13",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "TerraMaterWILD.de@English": {
+   "chno": "1648",
+   "name": "Terra Mater WILD English",
+   "since": "2026-10-21",
+   "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
+  },
   "WhiplashCinema.us@SD": {
    "chno": "2028",
    "name": "Whiplash Cinema",
@@ -326,22 +350,16 @@
    "runs": 3,
    "why": "frozen"
   },
+  "AlMaarefTV.qa@SD": {
+   "chno": "1303",
+   "name": "Al Maaref TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "AlMaghribia.ma": {
    "chno": "107",
    "name": "Al Maghribia HD (backup)",
    "runs": 4,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "CapuchinTV.ke@SD": {
-   "chno": "3900",
-   "name": "Capuchin TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ChandelTV.tg@SD": {
-   "chno": "3826",
-   "name": "Chandel TV",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ChannelS.bd@SD": {
@@ -359,7 +377,7 @@
   "DRTVInternational.cg@SD": {
    "chno": "3810",
    "name": "DRTV International",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DerTV.uk@SD": {
@@ -373,24 +391,6 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
-  },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
-   "runs": 1,
-   "why": "variant HTTPError"
-  },
-  "Evtele.cg@SD": {
-   "chno": "3808",
-   "name": "Ev-tele",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FORTTV.ug@SD": {
    "chno": "4017",
@@ -434,6 +434,12 @@
    "runs": 3,
    "why": "frozen"
   },
+  "IsaacTV.pk@SD": {
+   "chno": "3928",
+   "name": "Isaac TV",
+   "runs": 1,
+   "why": "variant HTTPError"
+  },
   "JeddahRadio.sa@SD": {
    "chno": "1228",
    "name": "Jeddah Radio",
@@ -446,29 +452,29 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "KassouaTV.bj@SD": {
-   "chno": "3760",
-   "name": "KassouaTV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "LBFDRTV.cd@SD": {
    "chno": "3772",
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LatestTV.uk@SD": {
-   "chno": "1693",
-   "name": "Latest TV",
+  "LCP.fr@SD": {
+   "chno": "1010",
+   "name": "LCP",
    "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "why": "frozen"
   },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
    "name": "Laura Dave Media TV",
    "runs": 3,
    "why": "frozen"
+  },
+  "LougaTV.sn@SD": {
+   "chno": "3813",
+   "name": "Louga TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -485,13 +491,13 @@
   "MoozLove.ro@SD": {
    "chno": "3954",
    "name": "Mooz Love",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "MoozRetro.ro@SD": {
    "chno": "3955",
    "name": "Mooz Retro",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "MyCinemaEurope.ch@SD": {
@@ -503,7 +509,7 @@
   "MyZenTV.fr@SD": {
    "chno": "1110",
    "name": "MyZen TV",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "NWEconomie.tg@SD": {
@@ -528,6 +534,12 @@
    "chno": "3827",
    "name": "NW Magazine",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "NaxcivanTV.az@SD": {
+   "chno": "3839",
+   "name": "Naxcivan TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "NidaeAlIslamRadio.sa@SD": {
@@ -558,6 +570,12 @@
    "chno": "1869",
    "name": "Pasco TV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "PointeTV.ag@SD": {
+   "chno": "3833",
+   "name": "Pointe TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RadioTeleFullGospel.ht@SD": {
@@ -602,12 +620,6 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "SangatTV.uk@SD": {
-   "chno": "1700",
-   "name": "Sangat TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
@@ -623,20 +635,26 @@
   "TerraMaterWILD.de@English": {
    "chno": "1648",
    "name": "Terra Mater WILD English",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "UniversalCrime.us@East": {
    "chno": "2061",
    "name": "Universal Crime",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "W14DKD141.us@HD": {
+   "chno": "2265",
+   "name": "W14DK-D 14.1",
+   "runs": 1,
+   "why": "variant HTTPError"
   },
   "WhiplashCinema.us@SD": {
    "chno": "2028",
@@ -645,5 +663,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-21T02:37:07"
+ "last_run": "2026-10-21T14:36:59"
 }
