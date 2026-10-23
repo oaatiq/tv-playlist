@@ -162,6 +162,12 @@
    "since": "2026-10-23",
    "why": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occur"
   },
+  "MTV.de@SD": {
+   "chno": "3871",
+   "name": "MTV (Germany)",
+   "since": "2026-10-23",
+   "why": "frozen"
+  },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
    "name": "Miracle TV+",
@@ -416,6 +422,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "DeluxeDance.de@SD": {
+   "chno": "3870",
+   "name": "Deluxe Dance",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "DerTV.uk@SD": {
    "chno": "1691",
    "name": "Der TV",
@@ -428,22 +440,10 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
-   "runs": 1,
-   "why": "variant HTTPError"
-  },
   "Evtele.cg@SD": {
    "chno": "3808",
    "name": "Ev-tele",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FORTTV.ug@SD": {
@@ -506,12 +506,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LatestTV.uk@SD": {
-   "chno": "1693",
-   "name": "Latest TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
    "name": "Laura Dave Media TV",
@@ -527,7 +521,7 @@
   "MTV.de@SD": {
    "chno": "3871",
    "name": "MTV (Germany)",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
@@ -626,6 +620,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "Power1017FM.aw@SD": {
+   "chno": "3836",
+   "name": "Power 101.7 FM",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RadioTeleFullGospel.ht@SD": {
    "chno": "3783",
    "name": "Radio Tele Full Gospel",
@@ -668,6 +668,12 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
+  "TV1.rw@SD": {
+   "chno": "3961",
+   "name": "TV1 (Rwanda)",
+   "runs": 1,
+   "why": "frozen"
+  },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
@@ -703,13 +709,7 @@
    "name": "Whiplash Cinema",
    "runs": 3,
    "why": "frozen"
-  },
-  "iHolyfieldTV.us@WHPSCD": {
-   "chno": "2312",
-   "name": "iHolyfield TV WHPS-CD",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-10-23T02:37:03"
+ "last_run": "2026-10-23T14:36:42"
 }
