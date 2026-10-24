@@ -78,6 +78,12 @@
    "since": "2026-10-22",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "DeluxeDance.de@SD": {
+   "chno": "3870",
+   "name": "Deluxe Dance",
+   "since": "2026-10-24",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "DerTV.uk@SD": {
    "chno": "1691",
    "name": "Der TV",
@@ -410,12 +416,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "ChandelTV.tg@SD": {
-   "chno": "3826",
-   "name": "Chandel TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "ChannelS.bd@SD": {
    "chno": "3842",
    "name": "Channel S (Bangladesh)",
@@ -437,7 +437,7 @@
   "DeluxeDance.de@SD": {
    "chno": "3870",
    "name": "Deluxe Dance",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DerTV.uk@SD": {
@@ -451,18 +451,6 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
-  },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
-   "runs": 1,
-   "why": "variant HTTPError"
   },
   "Evtele.cg@SD": {
    "chno": "3808",
@@ -506,12 +494,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
-  "GreatCommissionTV.ke@SD": {
-   "chno": "3902",
-   "name": "Great Commission TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
@@ -530,16 +512,10 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "KTOO360TV.us@KTOOTV": {
-   "chno": "2315",
-   "name": "KTOO 360TV KTOO-TV",
-   "runs": 1,
-   "why": "variant HTTP 200"
-  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LBFDRTV.cd@SD": {
@@ -547,12 +523,6 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "LatestTV.uk@SD": {
-   "chno": "1693",
-   "name": "Latest TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
   },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
@@ -563,7 +533,7 @@
   "LeNouveauManagerTV.bj@SD": {
    "chno": "3758",
    "name": "Le Nouveau Manager TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MMTV.mv@SD": {
@@ -716,18 +686,6 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "SBNTV.us@SD": {
-   "chno": "2261",
-   "name": "SBN TV",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "TV1.rw@SD": {
-   "chno": "3961",
-   "name": "TV1 (Rwanda)",
-   "runs": 2,
-   "why": "frozen"
-  },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
@@ -765,5 +723,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-24T02:37:09"
+ "last_run": "2026-10-24T14:37:02"
 }
