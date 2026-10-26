@@ -276,6 +276,12 @@
    "since": "2026-10-13",
    "why": "variant HTTP 200"
   },
+  "OANPlus.us@KPVMLD": {
+   "chno": "1866",
+   "name": "OAN Plus KPVM-LD",
+   "since": "2026-10-26",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "PanafricanMediaTV.cm@SD": {
    "chno": "3764",
    "name": "Panafrican Media TV",
@@ -336,6 +342,12 @@
    "since": "2026-10-19",
    "why": "HTTPError: HTTP Error 502: Bad Gateway"
   },
+  "Tele7.es@SD": {
+   "chno": "3992",
+   "name": "Tele 7",
+   "since": "2026-10-26",
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
   "TeleTchad.td@SD": {
    "chno": "3769",
    "name": "Tele Tchad",
@@ -386,12 +398,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "AWEPlus.us@KPVMLD": {
-   "chno": "2285",
-   "name": "AWE Plus KPVM-LD",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AbdulmajeedAbdullah.sa@SD": {
    "chno": "1210",
    "name": "Abdulmajeed Abdullah",
@@ -428,34 +434,46 @@
    "runs": 4,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "AtlantaChannel.us@SD": {
+   "chno": "2348",
+   "name": "Atlanta Channel",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
+  },
+  "BeachTVFloridaAlabama.us@SD": {
+   "chno": "2186",
+   "name": "Beach TV Florida & Alabama",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
+  },
+  "BeachTVKeyWestFloridaKeys.us@SD": {
+   "chno": "2187",
+   "name": "Beach TV Key West & Florida Keys",
+   "runs": 1,
+   "why": "URLError: <urlopen error _ssl.c:1015: The handshake operation timed ou"
+  },
+  "BeachTVMyrtleBeachTheGrandStrand.us@SD": {
+   "chno": "2188",
+   "name": "Beach TV Myrtle Beach & The Grand Strand",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
+  },
+  "BeachTVPanamaCity.us@SD": {
+   "chno": "2189",
+   "name": "Beach TV Panama City",
+   "runs": 1,
+   "why": "TimeoutError: timed out"
+  },
   "CanalPlus.fr": {
    "chno": "1177",
    "name": "Canal+",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "ChampionTV.ci@SD": {
-   "chno": "3792",
-   "name": "Champion TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 500: Internal Server Error"
-  },
-  "ChandelTV.tg@SD": {
-   "chno": "3826",
-   "name": "Chandel TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "ChannelS.bd@SD": {
    "chno": "3842",
    "name": "Channel S (Bangladesh)",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "D3TV.ml@SD": {
-   "chno": "3801",
-   "name": "D3 TV",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DBSTV.lc@SD": {
@@ -494,18 +512,6 @@
    "runs": 1,
    "why": "frozen"
   },
-  "Esaie45Tele.cg@SD": {
-   "chno": "3809",
-   "name": "Esaie 45 Tele",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 500: Internal Server Error"
-  },
-  "Europe1TV.fr@HD": {
-   "chno": "1009",
-   "name": "Europe 1 TV",
-   "runs": 1,
-   "why": "frozen"
-  },
   "Evtele.cg@SD": {
    "chno": "3808",
    "name": "Ev-tele",
@@ -530,6 +536,18 @@
    "runs": 3,
    "why": "frozen"
   },
+  "Francophonie24.fr@SD": {
+   "chno": "1145",
+   "name": "Francophonie24",
+   "runs": 2,
+   "why": "URLError: <urlopen error timed out>"
+  },
+  "GexTV.cr@HD": {
+   "chno": "3850",
+   "name": "Gex TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 503: Service Temporarily Unavailable"
+  },
   "GodStandsKidsClubTV.pk@English": {
    "chno": "3922",
    "name": "God Stands Kids Club TV",
@@ -548,17 +566,17 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
+  "GreatCommissionTV.ke@SD": {
+   "chno": "3902",
+   "name": "Great Commission TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
-  },
-  "IsaacTV.pk@SD": {
-   "chno": "3928",
-   "name": "Isaac TV",
-   "runs": 1,
-   "why": "variant HTTPError"
   },
   "JeddahRadio.sa@SD": {
    "chno": "1228",
@@ -571,6 +589,12 @@
    "name": "K24",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "KNOVCD411.us@HD": {
+   "chno": "2207",
+   "name": "KNOV-CD 41.1",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -595,12 +619,6 @@
    "name": "Le Nouveau Manager TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "LollywoodHDTV.cd@SD": {
-   "chno": "3771",
-   "name": "Lollywood HD TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 500: Internal Server Error"
   },
   "MMTV.mv@SD": {
    "chno": "3911",
@@ -680,12 +698,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "Newsmax2.us@KPVMLD": {
-   "chno": "1859",
-   "name": "Newsmax 2 KPVM-LD",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "NidaeAlIslamRadio.sa@SD": {
    "chno": "1236",
    "name": "Nidae AlIslam Radio",
@@ -707,7 +719,7 @@
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
-   "runs": 1,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "PanafricanMediaTV.cm@SD": {
@@ -764,10 +776,22 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "RealAmericasVoice.us@KPVMLD": {
-   "chno": "2336",
-   "name": "Real America's Voice KPVM-LD",
-   "runs": 1,
+  "SCorbyTV.us@HD": {
+   "chno": "2093",
+   "name": "S Corby TV",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "SMetroTV.us@HD": {
+   "chno": "2367",
+   "name": "S Metro TV",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "SPlayEvent.us@HD": {
+   "chno": "2094",
+   "name": "S Play Event",
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TV3.gh@SD": {
@@ -779,7 +803,7 @@
   "Tele7.es@SD": {
    "chno": "3992",
    "name": "Tele 7",
-   "runs": 1,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "TeleTchad.td@SD": {
@@ -813,5 +837,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-25T02:36:39"
+ "last_run": "2026-10-26T02:37:49"
 }
