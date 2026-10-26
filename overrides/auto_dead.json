@@ -120,6 +120,12 @@
    "since": "2026-10-17",
    "why": "frozen"
   },
+  "Francophonie24.fr@SD": {
+   "chno": "1145",
+   "name": "Francophonie24",
+   "since": "2026-10-26",
+   "why": "URLError: <urlopen error timed out>"
+  },
   "GodStandsKidsClubTV.pk@English": {
    "chno": "3922",
    "name": "God Stands Kids Club TV",
@@ -336,6 +342,24 @@
    "since": "2026-10-13",
    "why": "variant HTTPError"
   },
+  "SCorbyTV.us@HD": {
+   "chno": "2093",
+   "name": "S Corby TV",
+   "since": "2026-10-26",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "SMetroTV.us@HD": {
+   "chno": "2367",
+   "name": "S Metro TV",
+   "since": "2026-10-26",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "SPlayEvent.us@HD": {
+   "chno": "2094",
+   "name": "S Play Event",
+   "since": "2026-10-26",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "TV3.gh@SD": {
    "chno": "3877",
    "name": "TV3 (Ghana)",
@@ -437,38 +461,50 @@
   "AtlantaChannel.us@SD": {
    "chno": "2348",
    "name": "Atlanta Channel",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error timed out>"
   },
   "BeachTVFloridaAlabama.us@SD": {
    "chno": "2186",
    "name": "Beach TV Florida & Alabama",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "runs": 2,
+   "why": "TimeoutError: timed out"
   },
   "BeachTVKeyWestFloridaKeys.us@SD": {
    "chno": "2187",
    "name": "Beach TV Key West & Florida Keys",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error _ssl.c:1015: The handshake operation timed ou"
   },
   "BeachTVMyrtleBeachTheGrandStrand.us@SD": {
    "chno": "2188",
    "name": "Beach TV Myrtle Beach & The Grand Strand",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error timed out>"
   },
   "BeachTVPanamaCity.us@SD": {
    "chno": "2189",
    "name": "Beach TV Panama City",
-   "runs": 1,
+   "runs": 2,
    "why": "TimeoutError: timed out"
+  },
+  "Canaf54TV.uk@SD": {
+   "chno": "1690",
+   "name": "Canaf54 TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CanalPlus.fr": {
    "chno": "1177",
    "name": "Canal+",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "CapuchinTV.ke@SD": {
+   "chno": "3900",
+   "name": "Capuchin TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "ChannelS.bd@SD": {
    "chno": "3842",
@@ -506,12 +542,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "EbS.be@SD": {
-   "chno": "3684",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
   "Evtele.cg@SD": {
    "chno": "3808",
    "name": "Ev-tele",
@@ -539,14 +569,8 @@
   "Francophonie24.fr@SD": {
    "chno": "1145",
    "name": "Francophonie24",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error timed out>"
-  },
-  "GexTV.cr@HD": {
-   "chno": "3850",
-   "name": "Gex TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 503: Service Temporarily Unavailable"
   },
   "GodStandsKidsClubTV.pk@English": {
    "chno": "3922",
@@ -566,12 +590,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
-  "GreatCommissionTV.ke@SD": {
-   "chno": "3902",
-   "name": "Great Commission TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
@@ -590,10 +608,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "KIIOLD104.us@SD": {
+   "chno": "2162",
+   "name": "KIIO-LD 10.4",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
   "KNOVCD411.us@HD": {
    "chno": "2207",
    "name": "KNOV-CD 41.1",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error timed out>"
   },
   "KassouaTV.bj@SD": {
@@ -607,6 +631,12 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LCP.fr@SD": {
+   "chno": "1010",
+   "name": "LCP",
+   "runs": 1,
+   "why": "frozen"
   },
   "LauraDaveMediaTV.cm@SD": {
    "chno": "3768",
@@ -734,6 +764,18 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "QVCStyleUK.uk": {
+   "chno": "1697",
+   "name": "QVC Style Ⓢ",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "QVCUK.uk": {
+   "chno": "1698",
+   "name": "QVC UK Ⓢ",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RadioTeleFullGospel.ht@SD": {
    "chno": "3783",
    "name": "Radio Tele Full Gospel",
@@ -779,19 +821,19 @@
   "SCorbyTV.us@HD": {
    "chno": "2093",
    "name": "S Corby TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "SMetroTV.us@HD": {
    "chno": "2367",
    "name": "S Metro TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "SPlayEvent.us@HD": {
    "chno": "2094",
    "name": "S Play Event",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TV3.gh@SD": {
@@ -799,6 +841,12 @@
    "name": "TV3 (Ghana)",
    "runs": 3,
    "why": "HTTPError: HTTP Error 502: Bad Gateway"
+  },
+  "TVCBenin.bj@SD": {
+   "chno": "3761",
+   "name": "TVC Benin",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Tele7.es@SD": {
    "chno": "3992",
@@ -837,5 +885,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-26T02:37:49"
+ "last_run": "2026-10-26T14:37:59"
 }
