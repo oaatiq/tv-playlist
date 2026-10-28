@@ -52,7 +52,8 @@ COUNTRY_FILES = {
     'Switzerland': ['CH1'], 'South Africa': ['ZA1'],
 }
 FAST_FILES = ['RAKUTEN1', 'PLEX1', 'DISTROTV1']
-# playlist channel name -> (guide file, guide channel id) where names differ too much to match automatically
+# playlist channel name or tvg-id -> (guide file, guide channel id), where the names differ too much to
+# match automatically or the country has no file of its own (.qa, .sa, .ma)
 ALIASES = {'LCP': ('FR1', 'LCP-AN-PS.fr'),
            'Euronews FR': ('FR1', 'Euronews.fr'), 'BFM Var': ('FR1', 'BFM.TOULON.VAR.fr'),
            'BFM Marseille': ('FR1', 'BFM.MARSEILLE.PROVENCE.fr'),
@@ -60,7 +61,28 @@ ALIASES = {'LCP': ('FR1', 'LCP-AN-PS.fr'),
            # ids ending .qa (Qatar) have no country file to search; guide_maroc.py takes Al Jazeera
            # English from aljazeera.com, and this keeps the last one if that fails
            'Al Jazeera English': ('FR1', 'Al.Jazeera.English.fr'),
-           'Al Jazeera Documentary': ('BE2', 'Al.Jazeera.Documentary.be')}
+           'Al Jazeera Documentary': ('BE2', 'Al.Jazeera.Documentary.be'),
+           # EPGShare's UAE file lists channels from all over the Arab world, Morocco included. Only
+           # these, checked one by one against their programmes: it also lists channels that look right
+           # and are not ("Chada TV" and "BBC Arabic" carry BBC News; Watan TV, Al Qamar TV, Al Wousta TV,
+           # Al Maaref TV and Sharjah Radio all carry the same schedule), so no automatic matching.
+           'AlAoula.ma': ('AE1', 'Al.Aoula.ae'),
+           'SkyNewsArabia.ae@HD': ('AE1', 'Sky.News.Arabia.HD.ae'),
+           'CNBCArabiya.ae@SD': ('AE1', 'CNBC.Arabiya.ae'),
+           'KoogiTV.eg@SD': ('AE1', 'Koogi.TV.ae'),
+           'AlMasriyah.eg@SD': ('AE1', 'Al.Masriyah.ae'),
+           'SharjahTV.ae@SD': ('AE1', 'Sharjah.HD.ae'),
+           'AlArabyTV.qa@SD': ('AE1', 'Al.Araby.HD.ae'),
+           'AlArabyTV2.qa@SD': ('AE1', 'Al.Araby.2.HD.ae'),
+           'AlRayyanTV.qa@SD': ('AE1', 'Al.Rayyan.HD.ae'),
+           'AlRayyanOldTV.qa@SD': ('AE1', 'Al.Rayyan.Al.Qadeem.HD.ae'),
+           'QatarTelevision.qa@SD': ('AE1', 'Qatar.TV.HD.ae'),
+           'QatarTelevision2.qa@SD': ('AE1', 'Qatar.2.HD.ae')}
+
+
+def alias_of(e):
+    return ALIASES.get(e['id']) or ALIASES.get(e['name'])
+
 # the country code that ends a tvg-id ("BFMBusiness.fr@SD") -> the country, for channels whose
 # group-title says nothing about it
 CC_COUNTRY = {'us': 'United States', 'uk': 'United Kingdom', 'fr': 'France', 'ca': 'Canada', 'ie': 'Ireland',
@@ -223,7 +245,7 @@ def match(ents, guides):
             continue
         if samsung and e['id'] in samsung.channels:
             matches[e['id']] = ('samsung', e['id']); how['samsung id'] += 1; continue
-        alias = ALIASES.get(e['name'])
+        alias = alias_of(e)
         if alias and alias[0] in guides and alias[1] in guides[alias[0]].channels:
             matches[e['id']] = alias; how['alias'] += 1; continue
         files = COUNTRY_FILES.get(e['country'], ['UK1', 'US2', 'FR1'] if e['country'] == 'International' else [])
@@ -268,7 +290,7 @@ def main():
         ents += extra
         log('%s: %d more channels' % (os.path.basename(path), len(extra)))
     needed = set(FAST_FILES) | {f for e in ents for f in COUNTRY_FILES.get(e['country'], [])}
-    needed |= {ALIASES[e['name']][0] for e in ents if e['name'] in ALIASES and ALIASES[e['name']][0] != 'samsung'}
+    needed |= {alias_of(e)[0] for e in ents if alias_of(e) and alias_of(e)[0] != 'samsung'}
     if any(e['country'] == 'International' for e in ents):
         needed |= {'UK1', 'US2', 'FR1'}
     sources = [SAMSUNG] + [('epgshare_' + f, EPGSHARE.format(f)) for f in sorted(needed)]

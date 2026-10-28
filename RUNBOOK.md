@@ -402,7 +402,7 @@ the one on GitHub). A run takes about 100 s of one core at the lowest priority; 
 process peaked at 200 MB (measured 2026-10-28, 767 MB free). The downloads, about 30 MB, go to
 `/tmp`, which is RAM, and are removed afterwards.
 
-The guide covers the 615 or so channels some source has a schedule for, out of 1,354 ids. The
+The guide covers the 627 or so channels some source has a schedule for, out of 1,354 ids. The
 rest have no source: most of Maroc and the Arab groups (below). A channel added to the playlist
 is picked up on the next run if its tvg-id ends in a country a source covers (US, UK, FR, CA,
 IE, AU, NZ, IN, NG, BE, CH, ZA) or it is on a Samsung TV Plus or FAST list; a name that differs
@@ -451,6 +451,8 @@ under the ids the playlist already uses, so every player picks them up with noth
 | Chada TV | `ChadaTV.ma@SD` | SFR (a real schedule; chada.ma itself no longer has one in its HTML) |
 | Asharq News | `AsharqNews.sa@SD` | Shahid, else SFR |
 | Al Jazeera, Al Jazeera English, Al Jazeera 2 | `AlJazeera.qa@Arabic`, `AlJazeera.qa@English`, `AlJazeera2.qa@HD` | aljazeera.com's own schedule, the GraphQL query its page makes: a week or more in one request each, Arabic titles (English for the English channel), slot times in UTC, a slot never runs past its day (the last Friday entry says 23:59:59) |
+| Al Aoula | `AlAoula.ma` | snrt.ma when it answers; otherwise EPGShare's UAE file (`AE1`), through `ALIASES` in `guide_world.py` |
+| Sky News Arabia, CNBC Arabiya, Koogi TV, Al Masriyah, Sharjah TV, Al Araby TV and 2, Al Rayyan TV and Old TV, Qatar Television and 2 | as in the playlist | EPGShare `AE1`, through `ALIASES` (by tvg-id, each checked against its programmes) |
 | 22 Arab channels: MBC 1, 3 USA, 4, 5, Bollywood, Drama, Masr, Masr 2, MBC+ Drama, MBC Masr Drama, Al Arabiya (and Business), Al Hadath, Asharq Discovery and Documentary, Fairuz, Rabeh Saqer, Maraya, Bab Al Hara, Aflam, Movies Action, MBC 1 USA | as in the playlist (`SHAHID` in the script) | Shahid (`api2.shahid.net`, Arabic titles, UTC): one request a day, about 1 MB, for every Shahid id at once |
 
 The Shahid ids come from iptv-org's `guides.json`. A Shahid channel whose slots all read
@@ -458,6 +460,12 @@ The Shahid ids come from iptv-org's `guides.json`. A Shahid channel whose slots 
 Al Ekhbariya and MBC 1 Egypt) counts as unanswered and is skipped; those slots are also left out
 of channels that do have a schedule. The SFR "one title repeated" test is not applied to
 Shahid, whose real channels repeat titles (news bulletins).
+
+`AE1` is a UAE guide that also lists channels of the whole Arab world, Morocco included, but
+not all of it can be trusted, so nothing is matched automatically: "Chada TV" and "BBC Arabic"
+carry BBC News's programmes; Watan TV, Al Qamar TV, Al Wousta TV, Al Maaref TV and Sharjah Radio
+all carry one and the same schedule; LBC, SBC, MBC 1 Egypt and Dubai TV International could not
+be confirmed. Its Moroccan times agree with SFR's (no one-hour shift).
 
 Not covered, because no source has them or none can be read from here: 2M (the terrestrial
 feed), Arryadia HD1 and TNT, Télé Maroc, StoryChannel, Medi1 Maghreb and Arabic, the three Al
