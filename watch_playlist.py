@@ -26,7 +26,8 @@ What it will not do, because an unattended job that is wrong is worse than no jo
   * commit a playlist that verify_playlist.py rejects
   * touch overrides.json, which stays a human document - its findings go to
     overrides/auto_dead.json, and a channel that comes back is restored on the first
-    good reading
+    good reading. A dead channel is no longer in playlist.m3u, so each run also builds
+    the list with the dead kept in and tests those again, at their current URLs
 
 Borrowed from recheck.py, which has been doing this for the Kodi lists for a while:
 the fail-ratio abort, the second chance after a pause, and the frozen-stream check -
@@ -46,6 +47,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -243,24 +245,50 @@ def run(cmd, **kw):
     return subprocess.run(cmd, cwd=HERE, capture_output=True, text=True, **kw)
 
 
-def rebuild():
-    """build -> overrides -> verify, into a staging dir. -> (ok, staged path, report)."""
-    if os.path.isdir(STAGE):
-        for n in os.listdir(STAGE):
-            os.remove(os.path.join(STAGE, n))
-    else:
-        os.makedirs(STAGE)
+def build(name, *apply_flags):
+    """build -> overrides, into STAGE/<name>. -> (staged path or None, error)."""
+    os.makedirs(STAGE, exist_ok=True)
+    staged = os.path.join(STAGE, name)
+    if os.path.exists(staged):
+        os.remove(staged)
     r = run([sys.executable, '-I', BUILD,
              '--direct', os.path.join(SOURCES, 'direct.m3u'),
              '--world', os.path.join(SOURCES, 'world_fr_en.m3u'),
-             '--out', STAGE, '--out-name', 'playlist.m3u',
+             '--out', STAGE, '--out-name', name,
              '--grouping', 'country', '--maroc-worker', WORKER, '--epg-url', EPG_URL])
     if r.returncode:
-        return False, None, 'build failed:\n' + r.stdout + r.stderr
-    staged = os.path.join(STAGE, 'playlist.m3u')
-    r = run([sys.executable, '-I', os.path.join(HERE, 'apply_overrides.py'), staged, '--quiet'])
+        return None, 'build failed:\n' + r.stdout + r.stderr
+    r = run([sys.executable, '-I', os.path.join(HERE, 'apply_overrides.py'), staged, '--quiet']
+            + list(apply_flags))
     if r.returncode:
-        return False, None, 'overrides failed:\n' + r.stdout + r.stderr
+        return None, 'overrides failed:\n' + r.stdout + r.stderr
+    return staged, None
+
+
+def dead_candidates(dead):
+    """The dead channels as the sources describe them today, so they can be tested again.
+
+    They are not in playlist.m3u - that is what being dead means - so without this nothing
+    would ever probe them and none could come back. Built rather than remembered, so a
+    channel whose URL upstream has since replaced is tested at the new one."""
+    if not dead:
+        return []
+    staged, err = build('with-dead.m3u', '--ignore-dead')
+    if not staged:
+        log('  could not build the dead channels for a re-test, skipping it:\n' + err)
+        return []
+    found = [c for c in parse(staged) if key(c) in dead]
+    missing = len(set(dead) - set(key(c) for c in found))
+    if missing:
+        log('  %d dead channel(s) are no longer in the sources at all' % missing)
+    return found
+
+
+def rebuild():
+    """build -> overrides -> verify, into a staging dir. -> (ok, staged path, report)."""
+    staged, err = build('playlist.m3u')
+    if not staged:
+        return False, None, err
     r = run([sys.executable, '-I', os.path.join(HERE, 'verify_playlist.py'), staged,
              '--compare', PLAYLIST])
     if r.returncode:
@@ -318,8 +346,12 @@ def main():
     args = ap.parse_args()
 
     channels = parse(PLAYLIST)
-    log('checking %d channels in %s' % (len(channels), os.path.basename(PLAYLIST)))
-    results = run_checks(channels)
+    st = load_state()
+    failing, dead = dict(st.get('failing', {})), dict(st.get('dead', {}))
+    buried = dead_candidates(dead)
+    log('checking %d channels in %s, and %d found dead before'
+        % (len(channels), os.path.basename(PLAYLIST), len(buried)))
+    results = run_checks(channels + buried)
 
     bad = [c for c in channels if not results[key(c)][0]]
     ratio = len(bad) / max(len(channels), 1)
@@ -329,9 +361,14 @@ def main():
             % (ratio * 100))
         return 2
 
-    st = load_state()
-    failing, dead = dict(st.get('failing', {})), dict(st.get('dead', {}))
-    revived = []
+    # A dead channel that answers is back. One that still fails changes nothing: it is
+    # already out, and its failures are not counted against the connection above.
+    #    Two entries can share a key (Al Maghribia and its backup share a tvg-id), and
+    #    removal goes by tvg-id, so they leave together and come back together.
+    revived = list(OrderedDict((key(c), c) for c in buried if results[key(c)][0]).values())
+    for c in revived:
+        dead.pop(key(c), None)
+        failing.pop(key(c), None)        # back with a clean slate: three strikes again
     for c in channels:
         k, (ok, why, _, _) = key(c), results[key(c)]
         if ok:
@@ -359,7 +396,7 @@ def main():
         rec = failing[key(c)]
         log('    failing x%d  %5s  %-28s %s' % (rec['runs'], c['chno'], c['name'][:28], rec['why']))
     for c in revived:
-        log('    back      %5s  %s' % (c['chno'], c['name']))
+        log('    back             %s' % c['name'])
 
     if len(newly_dead) > MAX_REMOVALS and not args.force:
         log('ABORT: %d channels would be removed at once (limit %d). Run with --force if that '
@@ -387,8 +424,10 @@ def main():
 
     os.replace(staged, PLAYLIST)
     shutil.copyfile(PLAYLIST, PLAYLIST8)
+    # a returning channel's number is the one it has now, not the one it was tested under
+    now = dict((key(c), c['chno']) for c in parse(PLAYLIST))
     gone = ', '.join('%s (%s)' % (c['name'], c['chno']) for c in newly_dead[:6])
-    back = ', '.join('%s (%s)' % (c['name'], c['chno']) for c in revived[:6])
+    back = ', '.join('%s (%s)' % (c['name'], now.get(key(c), '?')) for c in revived[:6])
     summary = []
     if newly_dead:
         summary.append('%d gone: %s%s' % (len(newly_dead), gone,

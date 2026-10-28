@@ -16,7 +16,7 @@ number on the remote always matches the order on screen.
 Idempotent - running it twice on the same file is a no-op.
 
 usage: python -I apply_overrides.py <playlist.m3u> [--overrides overrides/overrides.json]
-                                    [--out FILE] [--quiet]
+                                    [--out FILE] [--quiet] [--ignore-dead]
        (default --out is the input path, i.e. rewrite in place)
 """
 
@@ -210,6 +210,9 @@ def main():
         os.path.dirname(os.path.abspath(__file__)), 'overrides', 'overrides.json'))
     ap.add_argument('--out', default=None)
     ap.add_argument('--quiet', action='store_true')
+    ap.add_argument('--ignore-dead', action='store_true',
+                    help='keep channels the health check has found dead (it builds this '
+                         'way to find their current URLs and test them again)')
     args = ap.parse_args()
 
     warnings = []
@@ -220,7 +223,7 @@ def main():
     # human document. Absent file = nothing has been found dead, which is the right
     # default for a fresh clone.
     auto = os.path.join(os.path.dirname(os.path.abspath(args.overrides)), 'auto_dead.json')
-    if os.path.exists(auto):
+    if os.path.exists(auto) and not args.ignore_dead:
         ov['_auto_dead'] = sorted(json.load(io.open(auto, encoding='utf-8')).get('dead', {}))
     header, before = parse(text)
     entries, stats = apply_overrides(before, ov, warnings.append)

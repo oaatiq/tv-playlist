@@ -317,6 +317,14 @@ Mohammed Abdo 1235, Rashid AlMajed 1239, Al Ghad TV 1260: declared dead on 2026-
 still published after the run that said "15 gone"). The addition pass now holds back
 anything in `auto_dead.json`, so `add` and the health check agree.
 
+**Nothing ever came back until 2026-10-28.** The check tested only what was in
+`playlist.m3u`, and a dead channel is by definition not in it, so no channel was ever
+probed again once removed - 26 runs, 72 channels out, none back. Each run now also builds
+the list with the dead kept in (`apply_overrides.py --ignore-dead`), tests those at the
+URLs the sources give today, and restores any that answer. A returning channel takes its
+old place in its group and everything below it moves down one number again. The first run
+after this change re-tests all 72 at once.
+
 ### Where it runs, and why there
 
 On the **router** (GL.iNet Flint 2, OpenWrt 25.12.5, `ssh root@192.168.2.1 -p 2222`), not
