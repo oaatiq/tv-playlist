@@ -10,6 +10,7 @@ the result.
 Sources, per channel, in order; the first that answers wins:
   * snrt.ma        the SNRT channels' own schedule pages (Arabic titles)
   * shahid.net     MBC's streaming service: one request a day for all its channels (Arabic titles)
+  * aljazeera.com  Al Jazeera's own schedule page: a week or more in one request per channel
   * tv.sfr.fr      SFR's web guide, one file a day for all its channels (French titles)
   * orange.fr      Orange's guide API, one channel a day at a time (French titles)
 They are the ones iptv-org/epg uses for these channels (sites/<site>/<site>.config.js there),
@@ -38,6 +39,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -60,6 +62,9 @@ CHANNELS = [
      'also': [('Medi1TVAfrique.ma@SD', 0)]},
     {'id': 'ChadaTV.ma@SD', 'name': 'Chada TV', 'sources': [('sfr', '3774')]},
     {'id': 'AsharqNews.sa@SD', 'name': 'Asharq News', 'sources': [('shahid', '862837'), ('sfr', '3726')]},
+    {'id': 'AlJazeera.qa@Arabic', 'name': 'Al Jazeera', 'sources': [('aljazeera', 'aja#')]},
+    {'id': 'AlJazeera.qa@English', 'name': 'Al Jazeera English', 'sources': [('aljazeera', 'aje#')]},
+    {'id': 'AlJazeera2.qa@HD', 'name': 'Al Jazeera 2', 'sources': [('aljazeera', 'aja#aj2')]},
 ]
 
 # The Arab channels Shahid has the schedule of: (tvg-id, name, Shahid channel id), from
@@ -317,7 +322,46 @@ def shahid(site_id, ctx):
     return out
 
 
-SOURCES = {'snrt': snrt, 'shahid': shahid, 'sfr': sfr, 'orange': orange}
+# ---------- aljazeera.com ----------
+
+def aljazeera_parse(data, lang):
+    items = []
+    for it in ((data.get('data') or {}).get('post') or {}).get('schedule') or []:
+        try:
+            day = int(it['startDate'])                  # midnight UTC of the day, in seconds
+            hour, minute = it['showTimeslot'].split(':')
+            start = day + int(hour) * 3600 + int(minute) * 60
+            d = re.match(r'(\d+):(\d+)(?::(\d+))?', it['duration'])
+            # the last slot of a Friday says 23:59:59: no slot runs past its own day
+            stop = min(start + int(d.group(1)) * 3600 + int(d.group(2)) * 60 + int(d.group(3) or 0),
+                       day + 86400)
+        except (KeyError, TypeError, ValueError, AttributeError):
+            continue
+        title = clean(it.get('showName'))
+        if title:
+            items.append({'start': start, 'stop': stop, 'title': title, 'lang': lang,
+                          'desc': clean(it.get('showDescription')), 'category': ''})
+    items.sort(key=lambda p: p['start'])
+    items = [p for i, p in enumerate(items) if i == 0 or p['start'] != items[i - 1]['start']]
+    for i, p in enumerate(items[:-1]):
+        p['stop'] = min(p['stop'], items[i + 1]['start'])
+    return [p for p in items if p['stop'] > p['start']]
+
+
+def aljazeera(site_id, ctx):
+    """The query aljazeera.com's own schedule page makes: GraphQL over GET, a week or more in
+    one request per channel. `site_id` is "<site>#<suffix>" as in iptv-org's grabber (aja is
+    Arabic, aje English, aja#aj2 the second channel). The slot times are UTC."""
+    site, suffix = site_id.split('#')
+    variables = json.dumps({'postName': 'schedule-' + suffix if suffix else 'schedule', 'preview': ''},
+                           separators=(',', ':'))
+    url = ('https://www.aljazeera.com/graphql?wp-site=%s&operationName=ArchipelagoSchedulePageQuery'
+           '&variables=%s&extensions=%%7B%%7D' % (site, urllib.parse.quote(variables)))
+    data = json.loads(get(url, {'wp-site': site, 'Accept': 'application/json'}).decode('utf-8'))
+    return aljazeera_parse(data, 'en' if site == 'aje' else 'ar')
+
+
+SOURCES = {'snrt': snrt, 'shahid': shahid, 'aljazeera': aljazeera, 'sfr': sfr, 'orange': orange}
 
 
 def placeholder(programmes):
@@ -345,7 +389,8 @@ def fetch_all(now):
                 continue
             # A source that answers with nothing current is no better than one that fails.
             got = [p for p in got if p['stop'] > now - KEEP_PAST_HOURS * 3600]
-            if site != 'shahid' and placeholder(got):
+            # SFR's blocks are one title all day; Shahid's and Al Jazeera's real channels repeat theirs
+            if site not in ('shahid', 'aljazeera') and placeholder(got):
                 log('  %-22s %-6s only a placeholder ("%s")' % (ch['id'], site, got[0]['title'][:40]))
                 continue
             if any(p['stop'] > now for p in got):

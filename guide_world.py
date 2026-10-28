@@ -56,7 +56,11 @@ FAST_FILES = ['RAKUTEN1', 'PLEX1', 'DISTROTV1']
 ALIASES = {'LCP': ('FR1', 'LCP-AN-PS.fr'),
            'Euronews FR': ('FR1', 'Euronews.fr'), 'BFM Var': ('FR1', 'BFM.TOULON.VAR.fr'),
            'BFM Marseille': ('FR1', 'BFM.MARSEILLE.PROVENCE.fr'),
-           "BFM Cote d'Azur": ('FR1', "BFM.NICE.COTE.D'AZUR.fr")}
+           "BFM Cote d'Azur": ('FR1', "BFM.NICE.COTE.D'AZUR.fr"),
+           # ids ending .qa (Qatar) have no country file to search; guide_maroc.py takes Al Jazeera
+           # English from aljazeera.com, and this keeps the last one if that fails
+           'Al Jazeera English': ('FR1', 'Al.Jazeera.English.fr'),
+           'Al Jazeera Documentary': ('BE2', 'Al.Jazeera.Documentary.be')}
 # the country code that ends a tvg-id ("BFMBusiness.fr@SD") -> the country, for channels whose
 # group-title says nothing about it
 CC_COUNTRY = {'us': 'United States', 'uk': 'United Kingdom', 'fr': 'France', 'ca': 'Canada', 'ie': 'Ireland',
@@ -263,7 +267,8 @@ def main():
         seen |= {e['id'] for e in extra}
         ents += extra
         log('%s: %d more channels' % (os.path.basename(path), len(extra)))
-    needed =set(FAST_FILES) | {f for e in ents for f in COUNTRY_FILES.get(e['country'], [])}
+    needed = set(FAST_FILES) | {f for e in ents for f in COUNTRY_FILES.get(e['country'], [])}
+    needed |= {ALIASES[e['name']][0] for e in ents if e['name'] in ALIASES and ALIASES[e['name']][0] != 'samsung'}
     if any(e['country'] == 'International' for e in ents):
         needed |= {'UK1', 'US2', 'FR1'}
     sources = [SAMSUNG] + [('epgshare_' + f, EPGSHARE.format(f)) for f in sorted(needed)]
