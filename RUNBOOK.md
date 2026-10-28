@@ -394,7 +394,7 @@ nothing is pushed to `main`.
    and no swap cannot spare. A channel it matched replaces what the guide had; every other
    channel is carried over (the Maroc channels, and any whose source failed that night), so a
    bad night costs nothing. Programmes that ended over 12 hours ago are dropped.
-3. `guide_maroc.py`: the Maroc channels, below.
+3. `guide_maroc.py`: the Maroc channels and the Arab ones the world sources do not have, below.
 4. Publish, only if the file changed.
 
 The last guide is kept in `/root/tv-guide/` between runs (`published` there holds the md5 of
@@ -402,8 +402,8 @@ the one on GitHub). A run takes about 100 s of one core at the lowest priority; 
 process peaked at 200 MB (measured 2026-10-28, 767 MB free). The downloads, about 30 MB, go to
 `/tmp`, which is RAM, and are removed afterwards.
 
-The guide covers the 580 or so channels some source has a schedule for, out of 1,354 ids. The
-rest have no source: the Arab groups, and most of Maroc (below). A channel added to the playlist
+The guide covers the 610 or so channels some source has a schedule for, out of 1,354 ids. The
+rest have no source: most of Maroc and the Arab groups (below). A channel added to the playlist
 is picked up on the next run if its tvg-id ends in a country a source covers (US, UK, FR, CA,
 IE, AU, NZ, IN, NG, BE, CH, ZA) or it is on a Samsung TV Plus or FAST list; a name that differs
 too much from the source's needs a line in `ALIASES` in `guide_world.py`. The laptop's `epg.py` still builds `world_epg.xml.gz`
@@ -437,20 +437,32 @@ curl -sL https://raw.githubusercontent.com/oaatiq/tv-playlist/guide/epg.xml.gz |
 `epg.xml.gz` is still on `main`, no longer updated, for any player that has not re-read the
 playlist since 2026-10-28. Delete it when none does.
 
-### The Maroc channels (`guide_maroc.py`)
+### The Maroc and Arab channels (`guide_maroc.py`)
 
-The world guide has no Moroccan channel in it, so on its own the Maroc group has no guide.
-`guide_maroc.py` fetches the schedules that exist and merges them in, under the ids the
-playlist already uses, so every player picks them up with nothing to set:
+The world guide has no Moroccan channel and almost no Arab one in it, so on its own those
+groups have no guide. `guide_maroc.py` fetches the schedules that exist and merges them in,
+under the ids the playlist already uses, so every player picks them up with nothing to set:
 
 | Channel | tvg-id(s) in the guide | Source |
 |---|---|---|
 | Al Aoula, Laâyoune, Arryadia, Athaqafia, Assadissa, Tamazight | as in the playlist | snrt.ma (Arabic titles) |
 | 2M Monde | `2MMonde.ma`, and `2MMonde.ma@Plus1` one hour later for the +1h feed | SFR, else Orange |
 | Medi1 Afrique | `Medi1TVAfrique.ma`, `Medi1TVAfrique.ma@SD` | Orange, if it has a real schedule (SFR only has a placeholder); `--dry-run` says |
+| Chada TV | `ChadaTV.ma@SD` | SFR (a real schedule; chada.ma itself no longer has one in its HTML) |
+| Asharq News | `AsharqNews.sa@SD` | Shahid, else SFR |
+| 22 Arab channels: MBC 1, 3 USA, 4, 5, Bollywood, Drama, Masr, Masr 2, MBC+ Drama, MBC Masr Drama, Al Arabiya (and Business), Al Hadath, Asharq Discovery and Documentary, Fairuz, Rabeh Saqer, Maraya, Bab Al Hara, Aflam, Movies Action, MBC 1 USA | as in the playlist (`SHAHID` in the script) | Shahid (`api2.shahid.net`, Arabic titles, UTC): one request a day, about 1 MB, for every Shahid id at once |
 
-Not covered, because no source has them: 2M (the terrestrial feed), Arryadia HD1 and TNT, Télé
-Maroc, Chada, StoryChannel, and Medi1 Maghreb and Arabic. Their tvg-ids are set, so a source
+The Shahid ids come from iptv-org's `guides.json`. A Shahid channel whose slots all read
+"schedule not available" (`emptySlot`: 15 channels on 2026-10-28, among them Al Saudiya, SBC,
+Al Ekhbariya and MBC 1 Egypt) counts as unanswered and is skipped; those slots are also left out
+of channels that do have a schedule. The SFR "one title repeated" test is not applied to
+Shahid, whose real channels repeat titles (news bulletins).
+
+Not covered, because no source has them or none can be read from here: 2M (the terrestrial
+feed), Arryadia HD1 and TNT, Télé Maroc, StoryChannel, Medi1 Maghreb and Arabic, Al Jazeera,
+and most Arab channels outside Shahid. sat.tv lists several of them (2M, Arryadia, Athaqafia,
+Tamazight, BBC Arabic, Sharjah TV, Qatar TV) but answers a plain script with 403; osn.com is
+AES-encrypted; Orange refuses Moroccan addresses (451). Their tvg-ids are set, so a source
 found later only needs a line in `CHANNELS`.
 
 It replaces only the channels it fetched; one that no source answered for keeps what the file
@@ -458,8 +470,8 @@ had. A source whose schedule is one title repeated all day (SFR's "Chaîne natio
 marocaine") is skipped: that would show as *what is on now*, which is worse than nothing.
 Morocco has been on plain UTC since 2026-09-20 (no +1, no Ramadan change), so the schedules'
 local times are read as UTC and no tz database is needed. It runs here and not on the laptop
-because snrt.ma answers this network. As of 2026-10-28 only 2M Monde comes back: snrt.ma
-returns 503 (maintenance) and Orange 451.
+because snrt.ma answers this network. As of 2026-10-28 snrt.ma returns 503 (maintenance), so
+the six SNRT channels have no guide until it is back, and Orange returns 451.
 
 ## 8. The Kodi re-check (`recheck.py`)
 

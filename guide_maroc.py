@@ -1,13 +1,15 @@
-"""Keep the programme guide current for the Maroc group.
+"""Keep the programme guide current for the Maroc group and the Arab channels.
 
 The world channels' guide (guide_world.py) has no Arab-world channels at all, so nothing in the
-Maroc group ever had a guide. This fetches the schedules of the Maroc channels that have one
-somewhere, and merges them into the guide under the playlist's own tvg-ids, so every player
-matches them without anything to configure: the playlist header already points at that file.
-The wrapper (router/tv-guide-update.sh) runs it after guide_world.py and publishes the result.
+Maroc group, and no Arab channel, ever had a guide. This fetches the schedules of the channels
+that have one somewhere, and merges them into the guide under the playlist's own tvg-ids, so
+every player matches them without anything to configure: the playlist header already points at
+that file. The wrapper (router/tv-guide-update.sh) runs it after guide_world.py and publishes
+the result.
 
 Sources, per channel, in order; the first that answers wins:
   * snrt.ma        the SNRT channels' own schedule pages (Arabic titles)
+  * shahid.net     MBC's streaming service: one request a day for all its channels (Arabic titles)
   * tv.sfr.fr      SFR's web guide, one file a day for all its channels (French titles)
   * orange.fr      Orange's guide API, one channel a day at a time (French titles)
 They are the ones iptv-org/epg uses for these channels (sites/<site>/<site>.config.js there),
@@ -56,7 +58,54 @@ CHANNELS = [
     {'id': 'Medi1TVAfrique.ma', 'name': 'Medi1 Afrique',
      'sources': [('sfr', '665'), ('orange', '90242')],
      'also': [('Medi1TVAfrique.ma@SD', 0)]},
+    {'id': 'ChadaTV.ma@SD', 'name': 'Chada TV', 'sources': [('sfr', '3774')]},
+    {'id': 'AsharqNews.sa@SD', 'name': 'Asharq News', 'sources': [('shahid', '862837'), ('sfr', '3726')]},
 ]
+
+# The Arab channels Shahid has the schedule of: (tvg-id, name, Shahid channel id), from
+# iptv-org's guides.json. A channel Shahid lists but has nothing for (a slot that reads
+# "schedule not available") is skipped like any other source that does not answer, so those stay
+# until Shahid has something for them.
+SHAHID = [
+    ('Aflam.sa@SD', 'Aflam', '989622'),
+    ('AlArabiyaBusiness.ae@SD', 'Al Arabiya Business', '1003218'),
+    ('AlArabiyaPrograms.ae@SD', 'Al Arabiya Programs', '49923733029294'),
+    ('AlEkhbariya.sa@SD', 'Al Ekhbariya', '946948'),
+    ('AlHadath.sa@SD', 'Al Hadath', '387288'),
+    ('AlSaudiya.sa@SD', 'Al Saudiya', '946938'),
+    ('AlSaudiyaAlaan.sa@SD', 'Al Saudiya Alaan', '999927'),
+    ('Alarabiya.ae@SD', 'Al Arabiya', '387286'),
+    ('AlkhuzamaRadio.sa@SD', 'Alkhuzama Radio', '1029746'),
+    ('AsharqDiscovery.sa@SD', 'Asharq Discovery', '1001845'),
+    ('AsharqDocumentary.sa@SD', 'Asharq Documentary', '997605'),
+    ('BabAlHara.sa@SD', 'Bab Al Hara', '975435'),
+    ('BigTimePlus.sa@SD', 'Big Time Plus', '49922904934759'),
+    ('FIFAPlus.uk@French', 'FIFA+ French', '49923446898171'),
+    ('Fairuz.sa@HD', 'Fairuz', '49923172215352'),
+    ('MBC1.ae@SD', 'MBC 1', '387238'),
+    ('MBC1Egypt.eg@HD', 'MBC 1 Egypt', '387248'),
+    ('MBC1USA.us@SD', 'MBC 1 USA', '816764'),
+    ('MBC3USA.us@SD', 'MBC 3 USA', '816771'),
+    ('MBC4.ae@SD', 'MBC 4', '400919'),
+    ('MBC5.ae@SD', 'MBC 5', '387937'),
+    ('MBCBollywood.ae@SD', 'MBC Bollywood', '409387'),
+    ('MBCDrama.ae@SD', 'MBC Drama (United Arab Emirates)', '387251'),
+    ('MBCFM.ae@SD', 'MBC FM', '388567'),
+    ('MBCMasr.eg@SD', 'MBC Masr', '387290'),
+    ('MBCMasr2.eg@SD', 'MBC Masr 2', '387293'),
+    ('MBCMasrDrama.sa@SD', 'MBC Masr Drama', '49923122575716'),
+    ('MBCPlusDrama.sa@SD', 'MBC+ Drama', '387296'),
+    ('MajidAlMohandis.sa@SD', 'Majid Al Mohandis', '49922763891977'),
+    ('Maraya.sa@HD', 'Maraya', '988045'),
+    ('MoviesAction.sa@SD', 'Movies Action', '986064'),
+    ('MoviesThriller.sa@SD', 'Movies Thriller', '986069'),
+    ('PanoramaFM.sa@SD', 'Panorama FM', '388566'),
+    ('RabehSaqer.sa@HD', 'Rabeh Saqer', '49923172117967'),
+    ('SBC.sa@SD', 'SBC', '946940'),
+    ('SaudiThaqafiyaTV.sa@SD', 'Saudi Thaqafiya TV', '995495'),
+    ('Tarab.sa@SD', 'Tarab', '49922763510387'),
+]
+CHANNELS += [{'id': i, 'name': n, 'sources': [('shahid', s)]} for i, n, s in SHAHID]
 
 KEEP_PAST_HOURS = 12
 DAYS = 2                    # today and tomorrow
@@ -217,7 +266,58 @@ def orange(site_id, ctx):
     return out
 
 
-SOURCES = {'snrt': snrt, 'sfr': sfr, 'orange': orange}
+# ---------- api2.shahid.net ----------
+
+def shahid_parse(day_json, site_id):
+    out = []
+    for ch in day_json.get('items') or []:
+        if str(ch.get('channelId')) != site_id:
+            continue
+        for item in ch.get('items') or []:
+            if item.get('emptySlot'):           # "schedule not available", not a programme
+                continue
+            try:
+                start = datetime.datetime.fromisoformat(item['actualFrom']).timestamp()
+                stop = datetime.datetime.fromisoformat(item['actualTo']).timestamp()
+            except (KeyError, TypeError, ValueError):
+                continue
+            title = clean(item.get('title'))
+            if not title or stop <= start:
+                continue
+            genres = [g for g in item.get('genres') or [] if g]
+            out.append({'start': start, 'stop': stop, 'title': title, 'lang': 'ar',
+                        'desc': clean(item.get('description')),
+                        'category': clean(genres[0]) if genres else ''})
+    return out
+
+
+def shahid(site_id, ctx):
+    """One request a day holds every Shahid channel the guide wants (about 1 MB): fetched once
+    a run and shared. The times are UTC."""
+    ids = ','.join(sid for ch in CHANNELS for site, sid in ch['sources'] if site == 'shahid')
+    seen, out = set(), []
+    for day in ctx['days']:
+        key = 'shahid:' + day
+        if key not in ctx['cache']:
+            try:
+                d = datetime.datetime.strptime(day, '%Y%m%d').strftime('%Y-%m-%d')
+                url = ('https://api2.shahid.net/proxy/v2.1/shahid-epg-api/?csvChannelIds=%s'
+                       '&from=%sT00:00:00.000Z&to=%sT23:59:59.999Z&country=SA&language=ar'
+                       '&Accept-Language=ar' % (ids, d, d))
+                ctx['cache'][key] = json.loads(get(url, {'Accept': 'application/json'}).decode('utf-8'))
+            except Exception as e:
+                ctx['cache'][key] = e
+        data = ctx['cache'][key]
+        if isinstance(data, Exception):
+            raise data
+        for p in shahid_parse(data, site_id):
+            if (p['start'], p['stop']) not in seen:     # a programme over midnight is in both days
+                seen.add((p['start'], p['stop']))
+                out.append(p)
+    return out
+
+
+SOURCES = {'snrt': snrt, 'shahid': shahid, 'sfr': sfr, 'orange': orange}
 
 
 def placeholder(programmes):
@@ -245,7 +345,7 @@ def fetch_all(now):
                 continue
             # A source that answers with nothing current is no better than one that fails.
             got = [p for p in got if p['stop'] > now - KEEP_PAST_HOURS * 3600]
-            if placeholder(got):
+            if site != 'shahid' and placeholder(got):
                 log('  %-22s %-6s only a placeholder ("%s")' % (ch['id'], site, got[0]['title'][:40]))
                 continue
             if any(p['stop'] > now for p in got):
