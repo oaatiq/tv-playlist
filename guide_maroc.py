@@ -407,17 +407,23 @@ def main():
     r = git('push')
     if r.returncode:
         # Something reached GitHub since the pull (the health check, or the laptop's guide):
-        # put this commit on top of it and try once more.
+        # put this commit on top of it and try once more. --autostash because this clone is
+        # rarely clean: the health check rewrites overrides/auto_dead.json (its failure
+        # counts) on every run and commits it only when the playlist changes.
         log('push refused, rebasing: ' + (r.stdout + r.stderr).strip()[:200])
-        r = git('pull', '--rebase', '-q')
+        r = git('pull', '--rebase', '--autostash', '-q')
         if r.returncode == 0:
             r = git('push')
     if r.returncode:
         # Never leave this clone ahead of GitHub: the health check shares it, and its own
-        # `git pull --ff-only` would fail from then on. The next run fetches again anyway.
+        # `git pull --ff-only` would fail from then on. --keep, not --hard: it takes back this
+        # commit and leaves the health check's uncommitted state alone. The next run fetches
+        # again anyway.
         git('rebase', '--abort')
-        git('reset', '-q', '--hard', before)
-        log('push failed, commit dropped: ' + (r.stdout + r.stderr).strip()[:300])
+        k = git('reset', '-q', '--keep', before)
+        log('push failed, commit %s: %s' % ('dropped' if k.returncode == 0 else
+                                            'NOT dropped (%s)' % k.stderr.strip()[:200],
+                                            (r.stdout + r.stderr).strip()[:300]))
         return 1
     log('pushed')
     return 0

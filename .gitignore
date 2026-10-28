@@ -4,3 +4,4 @@ node_modules/
 .watch/
 __pycache__/
 logs/
+*.tmp

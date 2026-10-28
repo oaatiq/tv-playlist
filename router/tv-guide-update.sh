@@ -10,11 +10,15 @@
 #
 #   20 6,18 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
 
+DIR=${TVPLAYLIST_DIR:-/root/tv-playlist}
 LOCK=/tmp/tv-playlist.lock
+# A run takes minutes. A lock older than three hours was left by one that was killed (a power
+# cut clears /tmp anyway): take it over rather than stop running for good.
+find "$LOCK" -maxdepth 0 -mmin +180 -exec rmdir {} \; 2>/dev/null
 mkdir "$LOCK" 2>/dev/null || { echo "another tv-playlist job is running" >&2; exit 0; }
 trap 'rmdir "$LOCK"' EXIT
 
-cd /root/tv-playlist || exit 1
+cd "$DIR" || exit 1
 mkdir -p logs
 LOG=logs/guide-$(date +%Y%m%d).log
 {
@@ -23,4 +27,4 @@ LOG=logs/guide-$(date +%Y%m%d).log
 } >>"$LOG" 2>&1
 
 # A month of logs, no more.
-find /root/tv-playlist/logs -name 'guide-*.log' -mtime +30 -delete 2>/dev/null
+find "$DIR/logs" -name 'guide-*.log' -mtime +30 -delete 2>/dev/null

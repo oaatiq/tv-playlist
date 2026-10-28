@@ -408,7 +408,9 @@ crontab -e                          # add the line below
 The wrapper takes a lock, pulls, runs and logs to `logs/guide-YYYYMMDD.log`. Keep its times
 away from the health check's, the 04:00 reboot and the 05:00 `apk update`. If a push is
 refused it rebases once and tries again; if that fails it drops its commit, so the clone the
-health check shares never ends up ahead of GitHub.
+health check shares never ends up ahead of GitHub. Both steps leave the health check's
+uncommitted `overrides/auto_dead.json` alone (`--autostash`, `reset --keep`): that file holds
+its failure counts between runs and is only committed when the playlist changes.
 
 ```sh
 tail -30 /root/tv-playlist/logs/guide-*.log
