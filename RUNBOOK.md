@@ -416,11 +416,12 @@ echo root >> /etc/crontabs/cron.update                      # crond re-reads it
 ```
 
 ```
-45 1,4,7,10,13,16,19,22 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
+15 3 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
+45 5,8,11,14,17,20,23 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
 ```
 
-Keep its times away from the health check's (02:30 and 14:30), the 04:00 reboot and the 05:00
-`apk update`. A source that cannot be read leaves its channels as they were; if no source can,
+Nothing runs between 03:45 and 05:30 (the 04:00 reboot, the 05:00 `apk update`), and no run
+overlaps the health check's, at 02:30 and 14:30 (6-8 minutes). A source that cannot be read leaves its channels as they were; if no source can,
 or the push is refused, nothing is published and the last guide stays up. The log is
 `logs/guide-YYYYMMDD.log` in the clone, a month of them. To see what is published:
 

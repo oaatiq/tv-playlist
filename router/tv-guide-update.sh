@@ -13,10 +13,12 @@
 # over from it). The main clone is only read, and updated with a fast-forward pull so that a
 # `git pull` brings these scripts' updates too. A lock keeps two runs from overlapping.
 #
-# Every three hours, because the Samsung TV Plus listings reach only about five hours ahead.
-# Not at 04:00 or 05:00: this router reboots at 04:00 and runs apk update at 05:00.
+# Every three hours or so, because the Samsung TV Plus listings reach only about five hours
+# ahead. Nothing between 03:45 and 05:30: this router reboots at 04:00 and runs apk update at
+# 05:00. The health check runs at 02:30 and 14:30 and takes 6-8 minutes.
 #
-#   45 1,4,7,10,13,16,19,22 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
+#   15 3 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
+#   45 5,8,11,14,17,20,23 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
 
 DIR=${TVPLAYLIST_DIR:-/root/tv-playlist}
 STATE=${TVGUIDE_STATE:-/root/tv-guide}
