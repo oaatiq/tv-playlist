@@ -133,8 +133,8 @@ it collapsed every country except France, International, United Kingdom and Unit
 into `Other countries` on 2026-10-11, deleting 266 channels in the process.
 
 **Q5 — does the build also regenerate `epg.xml.gz`?** No. It writes the `.m3u` and nothing
-else. The guide comes from `playlists/autocheck/epg.py`, which `recheck.py` runs
-separately.
+else. The guide is built on the router by `guide_world.py` and `guide_maroc.py` and
+published to the `guide` branch (RUNBOOK §7a).
 
 **Q6 — where does `build_tivimate.py` live, and is it version-controlled?**
 `C:\Users\aatiq\MINIX-U8K\playlists\tivimate\build_tivimate.py`. `MINIX-U8K` is not a git

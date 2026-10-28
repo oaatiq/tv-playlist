@@ -6,7 +6,7 @@ see [BUILD-DURABILITY.md](BUILD-DURABILITY.md).
 | | |
 |---|---|
 | Playlist URL (what players use) | `https://raw.githubusercontent.com/oaatiq/tv-playlist/main/playlist.m3u` |
-| Guide URL | `https://raw.githubusercontent.com/oaatiq/tv-playlist/main/epg.xml.gz` |
+| Guide URL | `https://raw.githubusercontent.com/oaatiq/tv-playlist/guide/epg.xml.gz` |
 | Worker | `https://ma-tv.oaatiq.workers.dev` |
 | MINIX U8K (test box) | `192.168.2.131:5555` |
 | MiTV (paid Xtream + this playlist) | `192.168.2.135:5555` |
@@ -369,11 +369,73 @@ and git then fails with `could not read Username for 'https://github.com'` - whi
 missing credential rather than a malformed one. Check with
 `grep -c '@github\.com$' /root/.git-credentials`, which prints 1 when the line is right.
 
-## 7a. The Maroc programme guide (`guide_maroc.py`)
+## 7a. The programme guide (`guide_world.py`, `guide_maroc.py`)
 
-`epg.xml.gz` comes from the laptop's `epg.py` and has no Moroccan channel in it, so on its own
-the Maroc group has no guide. `guide_maroc.py` fetches the schedules that exist and merges them
-in, under the ids the playlist already uses, so every player picks them up with nothing to set:
+The guide is built **on the router**, every three hours, and published as `epg.xml.gz` on the
+`guide` branch of this repo, which the playlist header's `url-tvg` points at:
+`https://raw.githubusercontent.com/oaatiq/tv-playlist/guide/epg.xml.gz`. It is on a branch of
+its own because the file is 1.6 MB and different on every run: on `main` it would add some
+400 MB of history a month. The branch is a single commit with no parent, force-pushed each
+time, so nothing piles up on GitHub or on the router. Nothing else is pushed from there, and
+nothing is pushed to `main`.
+
+`router/tv-guide-update.sh` runs, in order:
+
+1. `git pull --ff-only` on the clone: the scripts, and `sources/world_fr_en.m3u`, the list the
+   playlist is built from. The clone is only read.
+2. `guide_world.py`: the world channels, from Samsung TV Plus and EPGShare, with the ids
+   rewritten to the playlist's tvg-ids. It is the laptop's `playlists/autocheck/epg.py` (same
+   sources, same matching; checked on the same inputs it gives the same 600 channels and
+   32,660 programmes, identical down to each start, stop and title) but read as a stream:
+   `epg.py` holds every source guide whole in memory, about 600 MB, which a router with 1 GB
+   and no swap cannot spare. A channel it matched replaces what the guide had; every other
+   channel is carried over (the Maroc channels, and any whose source failed that night), so a
+   bad night costs nothing. Programmes that ended over 12 hours ago are dropped.
+3. `guide_maroc.py`: the Maroc channels, below.
+4. Publish, only if the file changed.
+
+The last guide is kept in `/root/tv-guide/` between runs (`published` there holds the md5 of
+the one on GitHub). A run takes about 100 s of one core at the lowest priority; the largest
+process peaked at 200 MB (measured 2026-10-28, 767 MB free). The downloads, about 30 MB, go to
+`/tmp`, which is RAM, and are removed afterwards.
+
+The guide covers the 569 or so channels some source has a schedule for, out of 1,354 ids. A
+channel added to the playlist gets a guide once `sources/world_fr_en.m3u` has it
+(`.\rebuild.ps1 -PullFromBox`, then push). The laptop's `epg.py` still builds `world_epg.xml.gz`
+for Kodi, but it no longer feeds this repo.
+
+Every three hours because the Samsung TV Plus listings (about 340 channels) only reach some five
+hours ahead; the EPGShare ones reach days. Set up once:
+
+```sh
+ssh root@192.168.2.1 -p 2222
+cd /root/tv-playlist && git pull
+sh router/tv-guide-update.sh && tail -30 logs/guide-*.log   # one run by hand
+crontab -e                                                  # add the line below
+echo root >> /etc/crontabs/cron.update                      # crond re-reads it
+```
+
+```
+45 1,4,7,10,13,16,19,22 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
+```
+
+Keep its times away from the health check's (02:30 and 14:30), the 04:00 reboot and the 05:00
+`apk update`. A source that cannot be read leaves its channels as they were; if no source can,
+or the push is refused, nothing is published and the last guide stays up. The log is
+`logs/guide-YYYYMMDD.log` in the clone, a month of them. To see what is published:
+
+```sh
+curl -sL https://raw.githubusercontent.com/oaatiq/tv-playlist/guide/epg.xml.gz | gzip -dc | head -c 600
+```
+
+`epg.xml.gz` is still on `main`, no longer updated, for any player that has not re-read the
+playlist since 2026-10-28. Delete it when none does.
+
+### The Maroc channels (`guide_maroc.py`)
+
+The world guide has no Moroccan channel in it, so on its own the Maroc group has no guide.
+`guide_maroc.py` fetches the schedules that exist and merges them in, under the ids the
+playlist already uses, so every player picks them up with nothing to set:
 
 | Channel | tvg-id(s) in the guide | Source |
 |---|---|---|
@@ -386,36 +448,12 @@ Maroc, Chada, StoryChannel, and Medi1 Maghreb and Arabic. Their tvg-ids are set,
 found later only needs a line in `CHANNELS`.
 
 It replaces only the channels it fetched; one that no source answered for keeps what the file
-had. It also drops every programme that ended more than 12 hours ago, the laptop's included,
-so a stale laptop guide shrinks to its channel list instead of shipping weeks of old listings.
-A source whose schedule is one title repeated all day (SFR's "Chaîne nationale marocaine") is
-skipped: that would show as *what is on now*, which is worse than nothing.
-
-It runs **on the router**, from the clone, twice a day, and commits `epg.xml.gz` only. Morocco
-has been on plain UTC since 2026-09-20 (no +1, no Ramadan change), so the schedules' local times
-are read as UTC and no tz database is needed. Set up once:
-
-```sh
-ssh root@192.168.2.1 -p 2222
-cd /root/tv-playlist && git pull
-python3 -I guide_maroc.py --dry-run # what it can fetch from here, writes nothing
-crontab -e                          # add the line below
-```
-
-```
-20 6,18 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
-```
-
-The wrapper takes a lock, pulls, runs and logs to `logs/guide-YYYYMMDD.log`. Keep its times
-away from the health check's, the 04:00 reboot and the 05:00 `apk update`. If a push is
-refused it rebases once and tries again; if that fails it drops its commit, so the clone the
-health check shares never ends up ahead of GitHub. Both steps leave the health check's
-uncommitted `overrides/auto_dead.json` alone (`--autostash`, `reset --keep`): that file holds
-its failure counts between runs and is only committed when the playlist changes.
-
-```sh
-tail -30 /root/tv-playlist/logs/guide-*.log
-```
+had. A source whose schedule is one title repeated all day (SFR's "Chaîne nationale
+marocaine") is skipped: that would show as *what is on now*, which is worse than nothing.
+Morocco has been on plain UTC since 2026-09-20 (no +1, no Ramadan change), so the schedules'
+local times are read as UTC and no tz database is needed. It runs here and not on the laptop
+because snrt.ma answers this network. As of 2026-10-28 only 2M Monde comes back: snrt.ma
+returns 503 (maintenance) and Orange 451.
 
 ## 8. The Kodi re-check (`recheck.py`)
 

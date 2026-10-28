@@ -61,7 +61,7 @@ STAGE = os.path.join(HERE, '.watch')
 LOGDIR = os.path.join(HERE, 'logs')
 
 WORKER = 'https://ma-tv.oaatiq.workers.dev'
-EPG_URL = 'https://raw.githubusercontent.com/oaatiq/tv-playlist/main/epg.xml.gz'
+EPG_URL = 'https://raw.githubusercontent.com/oaatiq/tv-playlist/guide/epg.xml.gz'
 
 # Tunables. Environment overrides exist because this also runs on the household router,
 # which is the honest place to test from - it is the boxes' own network and public IP, and

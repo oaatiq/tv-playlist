@@ -67,4 +67,4 @@ publish() {
 } >>"$LOG" 2>&1
 
 # A month of logs, no more.
-find "$DIR/logs" -name 'guide-*.log' -mtime +30 -delete 2>/dev/null
+find "$DIR/logs" -name 'guide-*.log' -mtime +30 -exec rm -f {} \; 2>/dev/null

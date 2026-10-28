@@ -28,7 +28,7 @@ if (-not $BuildScript) {
 }
 
 $worker  = 'https://ma-tv.oaatiq.workers.dev'
-$epgUrl  = 'https://raw.githubusercontent.com/oaatiq/tv-playlist/main/epg.xml.gz'
+$epgUrl  = 'https://raw.githubusercontent.com/oaatiq/tv-playlist/guide/epg.xml.gz'
 $boxDir  = '/storage/emulated/0/Android/data/org.xbmc.kodi/files/.kodi/userdata/addon_data/pvr.iptvsimple'
 $srcDir  = Join-Path $repo 'sources'
 $live    = Join-Path $repo 'playlist.m3u'
