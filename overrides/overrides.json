@@ -111,6 +111,15 @@
   },
   "patch_attrs": {
     "by_group_and_name": {
+      "Maroc\tMedi1 Maghreb": {
+        "tvg-id": "Medi1TVMaghreb.ma"
+      },
+      "Maroc\tMedi1 Arabic": {
+        "tvg-id": "Medi1TVArabic.ma"
+      },
+      "Maroc\tMedi1 Afrique": {
+        "tvg-id": "Medi1TVAfrique.ma"
+      },
       "Al Jazeera\tAl Jazeera": {
         "tvg-id": "AlJazeera.qa@Arabic",
         "tvg-logo": "https://i.imgur.com/7bRVpnu.png"

@@ -196,7 +196,8 @@ lives outside this repo, so a bug there breaks more than this playlist.
   it plays audio-only there; the Amlogic box probably does have one. Untested on the box.
   If it fails there too, switch XCIPTV's player engine to VLC, which bundles a software
   MPEG-2 decoder.
-- **`epg.xml.gz` has no Arab-world coverage.** 769 channel ids, led by `us` (179), `uk`
+- **`epg.xml.gz` has no Arab-world coverage** (the Maroc group now has a guide from
+  `guide_maroc.py`, RUNBOOK §7a; the other Arab groups still have none). 769 channel ids, led by `us` (179), `uk`
   (34), `ca` (28), `fr` (26). `AlAoula.ma` and `2M.ma` are both absent, so the Maroc group
   and all four new Arab groups have no guide data at all.
 - **13 entries still have no `tvg-logo`** (12 United States, 1 Other countries), and four

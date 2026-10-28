@@ -369,6 +369,51 @@ and git then fails with `could not read Username for 'https://github.com'` - whi
 missing credential rather than a malformed one. Check with
 `grep -c '@github\.com$' /root/.git-credentials`, which prints 1 when the line is right.
 
+## 7a. The Maroc programme guide (`guide_maroc.py`)
+
+`epg.xml.gz` comes from the laptop's `epg.py` and has no Moroccan channel in it, so on its own
+the Maroc group has no guide. `guide_maroc.py` fetches the schedules that exist and merges them
+in, under the ids the playlist already uses, so every player picks them up with nothing to set:
+
+| Channel | tvg-id(s) in the guide | Source |
+|---|---|---|
+| Al Aoula, Laâyoune, Arryadia, Athaqafia, Assadissa, Tamazight | as in the playlist | snrt.ma (Arabic titles) |
+| 2M Monde | `2MMonde.ma`, and `2MMonde.ma@Plus1` one hour later for the +1h feed | SFR, else Orange |
+| Medi1 Afrique | `Medi1TVAfrique.ma`, `Medi1TVAfrique.ma@SD` | Orange, if it has a real schedule (SFR only has a placeholder); `--dry-run` says |
+
+Not covered, because no source has them: 2M (the terrestrial feed), Arryadia HD1 and TNT, Télé
+Maroc, Chada, StoryChannel, and Medi1 Maghreb and Arabic. Their tvg-ids are set, so a source
+found later only needs a line in `CHANNELS`.
+
+It replaces only the channels it fetched; one that no source answered for keeps what the file
+had. It also drops every programme that ended more than 12 hours ago, the laptop's included,
+so a stale laptop guide shrinks to its channel list instead of shipping weeks of old listings.
+A source whose schedule is one title repeated all day (SFR's "Chaîne nationale marocaine") is
+skipped: that would show as *what is on now*, which is worse than nothing.
+
+It runs **on the router**, from the clone, twice a day, and commits `epg.xml.gz` only. Set up once:
+
+```sh
+ssh root@192.168.2.1 -p 2222
+apk add zoneinfo-africa             # Morocco's Ramadan clock change; without it, +1 all year
+cd /root/tv-playlist && git pull
+python3 -I guide_maroc.py --dry-run # what it can fetch from here, writes nothing
+crontab -e                          # add the line below
+```
+
+```
+20 6,18 * * * /bin/sh /root/tv-playlist/router/tv-guide-update.sh
+```
+
+The wrapper takes a lock, pulls, runs and logs to `logs/guide-YYYYMMDD.log`. Keep its times
+away from the health check's, the 04:00 reboot and the 05:00 `apk update`. If a push is
+refused it rebases once and tries again; if that fails it drops its commit, so the clone the
+health check shares never ends up ahead of GitHub.
+
+```sh
+tail -30 /root/tv-playlist/logs/guide-*.log
+```
+
 ## 8. The Kodi re-check (`recheck.py`)
 
 

@@ -17,11 +17,11 @@ https://ma-tv.oaatiq.workers.dev/snrt/assadissa.m3u8
 https://ma-tv.oaatiq.workers.dev/snrt/tamazight.m3u8
 #EXTINF:-1 tvg-chno="9" tvg-id="TeleMaroc.ma" tvg-logo="https://freebox.cdn.scw.iliad.fr/medium_Tele_Maroc_900x800_ffdee4d2e4.png" group-title="Maroc",Télé Maroc
 https://ma-tv.oaatiq.workers.dev/telemaroc.m3u8
-#EXTINF:-1 tvg-chno="10" tvg-name="Medi1 Maghreb" tvg-logo="https://i.imgur.com/F5OFQsp.jpeg" group-title="Maroc",Medi1 Maghreb
+#EXTINF:-1 tvg-chno="10" tvg-id="Medi1TVMaghreb.ma" tvg-name="Medi1 Maghreb" tvg-logo="https://i.imgur.com/F5OFQsp.jpeg" group-title="Maroc",Medi1 Maghreb
 https://ma-tv.oaatiq.workers.dev/f/medi1-maghreb.m3u8
-#EXTINF:-1 tvg-chno="11" tvg-name="Medi1 Arabic" tvg-logo="https://i.imgur.com/3YsZPY6.jpeg" group-title="Maroc",Medi1 Arabic
+#EXTINF:-1 tvg-chno="11" tvg-id="Medi1TVArabic.ma" tvg-name="Medi1 Arabic" tvg-logo="https://i.imgur.com/3YsZPY6.jpeg" group-title="Maroc",Medi1 Arabic
 https://ma-tv.oaatiq.workers.dev/f/medi1-arabic.m3u8
-#EXTINF:-1 tvg-chno="12" tvg-name="Medi1 Afrique" tvg-logo="https://i.imgur.com/a20DHnj.png" group-title="Maroc",Medi1 Afrique
+#EXTINF:-1 tvg-chno="12" tvg-id="Medi1TVAfrique.ma" tvg-name="Medi1 Afrique" tvg-logo="https://i.imgur.com/a20DHnj.png" group-title="Maroc",Medi1 Afrique
 https://ma-tv.oaatiq.workers.dev/f/medi1-afrique.m3u8
 #EXTINF:-1 tvg-chno="13" tvg-id="2M.ma" tvg-logo="https://i.imgur.com/PJYTfHi.png" group-title="Maroc",2M
 http://185.9.2.18/chid_218/index.m3u8
