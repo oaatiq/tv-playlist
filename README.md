@@ -6,11 +6,20 @@ Personal IPTV playlist for OTT Player / OTT Navigator on a MINIX U8K box.
 |---|---|
 | `playlist.m3u` | 1,431 free-to-air channels in 16 groups. **Generated** — see [Updating](#updating). The **Maroc** group comes first. |
 | `epg.xml.gz` | XMLTV guide, referenced from the playlist header (`url-tvg`). Built separately, by `playlists/autocheck/epg.py`. |
-| `worker/` | Cloudflare Worker at `https://ma-tv.oaatiq.workers.dev` that serves SNRT (1–9) and Télé Maroc (10), and proxies four channels that need an HTTP header. |
+| `worker/` | Cloudflare Worker at `https://ma-tv.oaatiq.workers.dev` that serves the SNRT channels and Télé Maroc, and proxies four channels that need an HTTP header. |
 | `sources/` | Committed snapshots of the two Kodi lists the build reads, and of the build script. |
-| `overrides/` | Everything the build cannot produce: added channels, removals, grouping, numbering. |
+| `overrides/` | Everything the build cannot produce: added channels, removals, grouping, group order. |
 | `rebuild.ps1` | Build → apply overrides → verify → replace. **The only safe way to rebuild.** |
 | `add_channel.py` | Add one channel, or a whole `.m3u`, without touching the JSON or rebuilding. |
+
+## Channel numbers
+
+Channel numbers are the order on screen, 1 to N. They are not stored anywhere:
+`apply_overrides.py` numbers the finished list top to bottom on every build. When the health
+check removes a dead channel, everything below it moves up by one; when the channel comes
+back, it returns to its old place and everything below moves down again. Nothing else
+keys on the number — the guide matches on `tvg-id`, the health check remembers channels by
+`tvg-id`, and the Worker by URL — so a shift costs nothing but the number on the remote.
 
 ## Why the Worker exists
 
@@ -51,12 +60,12 @@ then **Update Contents** in XCIPTV on the box.
 `add_channel.py` writes the override and re-applies it to `playlist.m3u` directly:
 
 ```powershell
-python -I add_channel.py --groups                   # group names, ranges, next free number
+python -I add_channel.py --groups                   # group names, sizes, current numbers
 python -I add_channel.py --group Maroc --name "Chaine X" --url https://host/x.m3u8 --apply
 python -I add_channel.py --from-m3u new.m3u --group "Other countries" --apply
 ```
 
-It picks the channel number, generates the `tvg-id`, probes the stream, and reverts
+It puts the channel at the end of its group, generates the `tvg-id`, probes the stream, and reverts
 `overrides.json` and leaves `playlist.m3u` alone if the result does not verify. Drop
 `--apply` to write the override only. See RUNBOOK §2 for the flags.
 
@@ -72,4 +81,4 @@ will not play. See [BUILD-DURABILITY.md](BUILD-DURABILITY.md) for what lives in 
 
 **Worker:** run `cd worker && npx wrangler deploy`.
 
-Channel 14 (2M) and channel 107 (Al Maghribia HD, labelled "(backup)") are third-party re-streams from Net Sat AB, Sweden, and may disappear without notice. 2M is at 14, next to 2M Monde, because the Globecast 2M Monde feed (15) stutters on the box while this one runs at a steady 25 fps, about 20 s behind live.
+2M and Al Maghribia HD (labelled "(backup)") are third-party re-streams from Net Sat AB, Sweden, and may disappear without notice. 2M sits just before 2M Monde because the Globecast 2M Monde feed stutters on the box while this one runs at a steady 25 fps, about 20 s behind live.

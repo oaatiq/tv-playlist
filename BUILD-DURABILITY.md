@@ -67,7 +67,6 @@ The Worker (`worker/`) is independent of all of this.
 | Key | Effect | Size |
 |---|---|---|
 | `patch_attrs` | fills in `tvg-id` / `tvg-logo` the build leaves blank — the 7 Al Jazeera entries, which were the only ones in the playlist with neither, so XCIPTV showed no logo | 7 entries, 13 attributes |
-| `renumber` | a base number per group; members are renumbered by their position in the group as the build emitted them | 3 groups |
 | `regroup` | splits the build's one `International` group into Infos Monde / Sport / Musique & Jeunesse / Art de vivre, keyed on `tvg-id` | 54 channels |
 | `remove` | drops any entry whose `tvg-id` carries a `.ru` or `.by` country code (6), plus 19 named `tvg-id`s — 16 religious broadcasters, NBT World, Rai Italia, TV BRICS Africa | 25 channels |
 | `add` | the 70 Arab-world channels, as full entries: Arabie Saoudite 33, Égypte 9, Émirats 19, Qatar 9. Sourced from iptv-org's Arabic list, each probed live | 70 channels |
@@ -75,16 +74,12 @@ The Worker (`worker/`) is independent of all of this.
 
 Net effect: **1,386 → 1,431 channels, 9 → 16 groups.**
 
-The renumbering is three numbers, not a table of 294:
-
-| Group | Base | Was |
-|---|---|---|
-| Infos FR | 1180 | 24–41 |
-| Infos Arabe | 1200 | 43–48 |
-| Other countries | 3750 | 1261–3661, sparse |
-
-Everything else keeps the number the build gave it — including the 54 channels that move
-into the four new groups, which is why that split needed no renumbering at all.
+**Numbering is not an override.** After everything above, the list is written one group
+at a time in `group_order` — inside a group, the build's channels in the order the build
+emitted them, then that group's `add` records in list order — and numbered 1..N from the
+top. Until 2026-10-28 it kept the source lists' numbers plus a per-group base (`renumber`),
+which left Maroc running 1–16, 42, 1252, 1421 and Al Jazeera restarting at 17. The order
+on screen did not change when that was replaced; only the numbers did.
 
 ### Things it is careful about
 
@@ -92,16 +87,20 @@ into the four new groups, which is why that split needed no renumbering at all.
   `group-title`, `tvg-id`, `tvg-logo`, which entries exist, and the order they are written
   in. Nothing that decides how a channel plays.
 - **It is idempotent.** Running it twice is a no-op: additions are skipped when the URL is
-  already present, and a group is not renumbered when it already sits at or above its base.
+  already present, and the order it writes is the order it reads, so the numbers come out
+  the same. That is also why the order comes from arrival, not from the incoming numbers:
+  it runs on fresh builds (source numbers) and on `playlist.m3u` itself (already 1..N).
 - **It never silently drops a channel.** If the world list grows a group that
   `group_order` does not mention, those channels are written at the end and reported, not
   discarded.
 - **It reports staleness.** An override that matched nothing — a removal for a channel that
   is already gone, a `tvg-id` that no longer exists — is printed as a warning.
 
-Numbers 1–1308 are pinned by the overrides and will not move. `Other countries`
-(3750+) is positional, so those numbers shift when the upstream list gains or loses
-channels. `verify_playlist.py --compare` is what tells you when that happened.
+No number is pinned. A channel removed — by an override, by upstream or by the health
+check — shifts everything below it up by one, and one that returns shifts them back. Nothing
+keys on the number (the guide and the health check use `tvg-id`), so that is safe.
+`verify_playlist.py --compare` counts those shifts in one line and lists only channels
+whose place in the order changed.
 
 ---
 
@@ -117,7 +116,8 @@ country` it takes the first field that is not a language, falling back to `Other
 when there is none. So a literal `group-title="Arabie Saoudite"` in the world list would
 have survived, but writing the four new groups into the sources was never the plan anyway.
 
-**Q2 — where does `tvg-chno` come from?** Read from the source lists. The world list is
+**Q2 — where does `tvg-chno` come from?** In the build output, read from the source lists
+(`apply_overrides.py` then replaces it with the position in the final list). The world list is
 authoritative and the attribute is required there (hence the README's note that the
 `playlists/` copies will not build). In the curated list it is read when present, and
 otherwise continues from the last entry that had one.
@@ -191,7 +191,7 @@ lives outside this repo, so a bug there breaks more than this playlist.
 
 ## 6. Open items, unrelated to the build
 
-- **Channel 14 (2M)** is MPEG-2 video, confirmed by parsing its transport stream (PMT
+- **2M** is MPEG-2 video, confirmed by parsing its transport stream (PMT
   reports stream type 0x02 video + 0x04 audio). Android phones have no MPEG-2 decoder, so
   it plays audio-only there; the Amlogic box probably does have one. Untested on the box.
   If it fails there too, switch XCIPTV's player engine to VLC, which bundles a software
@@ -206,4 +206,4 @@ lives outside this repo, so a bug there breaks more than this playlist.
 - **65 further channels** were probed live and are available to add from iptv-org: Series
   23, Sports 17, Kids 11, Movies 11, Animation 2. The ones that fit the existing Arab
   groups are MBC Drama USA, Al Iraqia Sport, KTV Sport Plus and Taha TV. Add them to
-  `overrides/overrides.json` under `add`, with a `chno` inside the right group's range.
+  `overrides/overrides.json` under `add` (or with `add_channel.py`).

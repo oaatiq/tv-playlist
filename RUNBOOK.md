@@ -31,10 +31,10 @@ It runs build → `apply_overrides.py` → `verify_playlist.py`, and only replac
 `playlist.m3u` once the check passes. Read the "against playlist.m3u" section it prints:
 that is every channel that moved, changed URL or disappeared. Then publish (section 4).
 
-Hard failures — duplicate channel numbers, a group split across the file, group order that
-contradicts the numbering, CRLF, a BOM — abort before `playlist.m3u` is touched.
+Hard failures — duplicate channel numbers, numbers that do not run 1..N down the file, a
+group split across the file, group order that contradicts the numbering, CRLF, a BOM — abort before `playlist.m3u` is touched.
 
-**Expect one spurious diff every time:** CNN (1475). The published playlist carries the
+**Expect one spurious diff every time:** CNN. The published playlist carries the
 resolved CloudFront URL that `recheck.py` wrote on the box, while `sources/world_fr_en.m3u`
 still has the `sis-global` one, so a rebuild "reverts" it. Both work (the sis-global URL is
 a 307 to the same place). Either keep the published line or let it change - it is not a
@@ -45,14 +45,14 @@ fault. `-PullFromBox` makes it go away, at the cost of whatever else drifted on 
 Everything that is not in the Kodi source lists lives in `overrides/overrides.json`.
 Edit it, then run `.\rebuild.ps1`.
 
-**Add a channel** — use `add_channel.py` rather than editing the JSON by hand. It picks a
-free number inside the group, generates the `tvg-id`, tests the stream, writes the
+**Add a channel** — use `add_channel.py` rather than editing the JSON by hand. It puts the
+channel at the end of its group, generates the `tvg-id`, tests the stream, writes the
 override and then re-runs `apply_overrides.py` + `verify_playlist.py` to prove the result
 is still sound. If anything fails, `overrides.json` is restored byte-for-byte and
 `playlist.m3u` is never touched.
 
 ```powershell
-python -I add_channel.py --groups                       # group names, ranges, next number
+python -I add_channel.py --groups                       # group names, sizes, current numbers
 python -I add_channel.py --group Maroc --name "Chaine X" `
         --url https://host/x.m3u8 --logo https://host/logo.png --apply
 python -I add_channel.py --from-m3u new.m3u --group "Other countries" --apply
@@ -65,7 +65,7 @@ are offline.
 
 `--apply` updates `playlist.m3u` too, which is enough on its own — a full `rebuild.ps1` is
 only needed when the Kodi source lists changed. Without it the override is written and the
-playlist is left alone. Other flags: `--chno` to force a number, `--dry-run`,
+playlist is left alone. Other flags: `--dry-run`,
 `--no-probe` (a channel geo-locked to Morocco fails the probe from the laptop and is still
 fine on the box), `--force` to add past a failed probe or a duplicate name,
 `--keep-headers` to keep an `#EXTVLCOPT` line from an imported list (off by default,
@@ -74,11 +74,12 @@ because that line stops the channel playing in XCIPTV — see section 6).
 Then publish as in section 4: `git add -A; git commit; git push`, then **Update Contents**
 in XCIPTV.
 
-By hand, if you prefer: append to `add`. `chno` must fall inside the group's range so the
-ordering check passes (see the table in BUILD-DURABILITY.md §2):
+By hand, if you prefer: append to `add`. There is no number to choose — an added channel
+goes after the build's channels in its group, in the order the `add` list gives, so move
+the record up or down the list to move the channel within its group:
 
 ```json
-{ "chno": 1243, "name": "MBC Drama USA", "group": "Arabie Saoudite",
+{ "name": "MBC Drama USA", "group": "Arabie Saoudite",
   "url": "https://example.com/stream.m3u8",
   "tvg-id": "MBCDramaUSA.sa@SD", "tvg-logo": "https://example.com/logo.png" }
 ```
@@ -89,11 +90,14 @@ its code to `remove.tvg_id_country_codes` (currently `ru`, `by`).
 **Move channels between groups** — add `"<tvg-id>": "<group name>"` to
 `regroup.by_tvg_id`.
 
-**Renumber a group** — set its base in `renumber`. Members are numbered from that base in
-the order the build emits them.
+**Channel numbers** — not configurable, on purpose. `apply_overrides.py` numbers the
+finished list 1..N from top to bottom, so the number on the remote always matches the
+order on screen. A removed channel closes its gap and every number below it drops by one;
+when it comes back it takes its old place and they move back. `verify --compare` reports
+that as one "renumbered: N, order unchanged" line and lists only channels whose place in
+the order actually changed.
 
-**Reorder the groups** — reorder `group_order`. It must stay consistent with the numbering
-(each group's lowest number ascending), or verification fails.
+**Reorder the groups** — reorder `group_order`. The numbers follow.
 
 **Fill in a missing logo or id** — add to `patch_attrs.by_group_and_name`, keyed
 `"<group>\t<name>"`. It only fills blanks, never overwrites.
@@ -256,10 +260,10 @@ Other things to check:
 
 - **Kodi's log:** `adb exec-out "tail -40 /storage/emulated/0/Android/data/org.xbmc.kodi/files/.kodi/temp/kodi.log"`
 - **What the player is actually connected to:** `adb shell "ss -tn state established"`
-- **Is it the decoder, not the network?** Channel 14 (2M) is MPEG-2; Android phones have no
+- **Is it the decoder, not the network?** 2M is MPEG-2; Android phones have no
   MPEG-2 decoder and play it audio-only. Switching XCIPTV's engine to VLC works around it.
 
-### Known: channel 14 (2M) does not play on the U8K
+### Known: 2M does not play on the U8K
 
 Measured 2026-10-12. The box reaches `185.9.2.18` by ICMP (428 ms, 33% loss) but gets zero
 bytes over TCP 80, while the laptop on the same LAN gets HTTP 200 in ~1 s at the same

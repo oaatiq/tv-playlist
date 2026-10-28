@@ -2,14 +2,14 @@
 
 A channel typed straight into playlist.m3u is gone on the next build. The durable place
 is the `add` list in overrides/overrides.json, and this is that edit done for you: it
-picks a free channel number inside the group, fills in a tvg-id, checks the stream
+puts the channel at the end of its group, fills in a tvg-id, checks the stream
 actually serves, writes the override, and then *proves* the result still passes
 verify_playlist.py before keeping it. If the check fails, overrides.json is put back the
 way it was and playlist.m3u is never touched.
 
     python -I add_channel.py --groups
-        the group table: how many channels, their number range, the number a new
-        channel would get. Read this first when you are not sure where it goes.
+        the group table: how many channels and their current numbers. Read this first
+        when you are not sure which group it goes in.
 
     python -I add_channel.py --group Maroc --name "Al Aoula 4K" --url https://host/x.m3u8
         stage one channel: probe it, write the override, verify. playlist.m3u unchanged.
@@ -19,12 +19,15 @@ way it was and playlist.m3u is never touched.
         apply_overrides.py is idempotent and an addition does not disturb anything else.
 
     python -I add_channel.py --from-m3u new.m3u --group "Other countries" --apply
-        every channel in new.m3u, numbered consecutively. Already-present URLs are
-        skipped, so re-running the same file adds nothing.
+        every channel in new.m3u, in file order. Already-present URLs are skipped, so
+        re-running the same file adds nothing.
+
+Channel numbers are not chosen here: the playlist is numbered 1..N down the file every
+time it is built, so a new channel takes the number after its group's last one and every
+channel below it moves up by one.
 
 Useful flags:
     --logo URL --id Foo.ma@HD   set them yourself instead of letting it guess
-    --chno 1423                 force a number (it is still checked for collisions)
     --no-probe                  skip the stream test (a geo-locked channel that only
                                 answers from the box's network will fail from here)
     --keep-headers              keep #EXTVLCOPT lines from --from-m3u. Off by default:
@@ -103,42 +106,6 @@ def group_table(entries, order):
     for g in by_group:
         by_group[g].sort()
     return by_group
-
-
-def next_free(group, table, order, used):
-    """A number for a new member of `group`: free everywhere, and above the group's
-    lowest number so the group-order check still holds (that check only looks at each
-    group's lowest, which is why a high number in a low group is legal - Maroc has
-    carried 1421/1422 for a while).
-
-    First choice is one past the group's own highest. Then a gap inside its own span.
-    Then the first free number that is not inside some other group's span, so a new
-    channel never lands in the middle of another group's numbering.
-    """
-    mine = table.get(group) or []
-    if not mine:
-        return None, 'group %r has no channels yet - pass --chno to say where it starts' % group
-    lo, hi = mine[0], mine[-1]
-
-    later = [min(table[g]) for g in order[order.index(group) + 1:] if table.get(g)]
-    ceiling = min(later) if later else hi + 1000
-
-    if hi + 1 < ceiling and hi + 1 not in used:
-        return hi + 1, None
-    for n in range(lo + 1, ceiling):
-        if n not in used:
-            return n, 'no room after %d; using the free number %d inside the group' % (hi, n)
-
-    spans = [(min(v), max(v)) for g, v in table.items() if g != group and v]
-    outside = lambda n: not any(a <= n <= b for a, b in spans)
-    n = hi + 1
-    while n < hi + 2000:
-        if n not in used and outside(n):
-            return n, ('%s has no free number of its own; %d is the first clear one above '
-                       'it (legal, and it sorts last inside the group)' % (group, n))
-        n += 1
-    n = max(used) + 1
-    return n, '%s and everything after it is packed; falling back to %d' % (group, n)
 
 
 def make_id(name, group, taken):
@@ -225,17 +192,13 @@ def stage_and_verify():
 
 # ---------- the records to add ----------
 
-def records_from_args(args, playlist, ov, used, ids):
-    """-> ([record], [note]). Numbers are handed out as we go, so a batch stays
-    consecutive and cannot collide with itself."""
-    table = group_table(playlist, ov['group_order'])
-    # pending adds the live playlist has not picked up yet still own their numbers
+def records_from_args(args, playlist, ov, ids):
+    """-> ([record], [note]). Records come out in the order given, which is the order
+    they will have at the end of the group."""
+    # pending adds the live playlist has not picked up yet still own their ids
     live_urls = set(e['url'] for e in playlist)
     for rec in ov.get('add', []):
         if rec['url'] not in live_urls:
-            used.add(int(rec['chno']))
-            table.setdefault(rec['group'], []).append(int(rec['chno']))
-            table[rec['group']].sort()
             ids.add(rec.get('tvg-id', ''))
 
     if args.from_m3u:
@@ -254,7 +217,7 @@ def records_from_args(args, playlist, ov, used, ids):
         names_in_group.setdefault(e['attr'].get('group-title', ''), set()).add(e['name'])
 
     recs, notes = [], []
-    for i, c in enumerate(incoming):
+    for c in incoming:
         if c['url'] in live_urls or any(r['url'] == c['url'] for r in ov.get('add', [])):
             notes.append('skipped (already in the playlist): %s' % c['name'])
             continue
@@ -265,24 +228,12 @@ def records_from_args(args, playlist, ov, used, ids):
                 continue
             notes.append(msg + ' - added anyway (--force)')
 
-        if args.chno and i == 0:
-            if args.chno in used:
-                return [], ['--chno %d is already taken' % args.chno]
-            chno, note = args.chno, None
-        else:
-            chno, note = next_free(args.group, table, ov['group_order'], used)
-            if chno is None:
-                return [], [note]
-        if note:
-            notes.append(note)
-
         tid = c['id'] or make_id(c['name'], args.group, ids)
         if tid in ids:
             notes.append('tvg-id %r is already used; generating another' % tid)
             tid = make_id(c['name'], args.group, ids)
 
         rec = OrderedDict()
-        rec['chno'] = chno
         rec['name'] = c['name']
         rec['group'] = args.group
         rec['url'] = c['url']
@@ -298,9 +249,6 @@ def records_from_args(args, playlist, ov, used, ids):
                 notes.append('%s: dropped %d header line(s); test it, and if it needs them '
                              'see RUNBOOK section 6' % (c['name'], len(c['props'])))
         recs.append(rec)
-        used.add(chno)
-        table.setdefault(args.group, []).append(chno)
-        table[args.group].sort()
         ids.add(tid)
         names_in_group.setdefault(args.group, set()).add(c['name'])
     return recs, notes
@@ -314,7 +262,6 @@ def main():
     ap.add_argument('--url')
     ap.add_argument('--logo', default='')
     ap.add_argument('--id', default='', help='tvg-id; generated when left out')
-    ap.add_argument('--chno', type=int, help='force a channel number')
     ap.add_argument('--from-m3u', help='add every channel in this .m3u instead')
     ap.add_argument('--apply', action='store_true', help='also update playlist.m3u')
     ap.add_argument('--no-probe', action='store_true')
@@ -332,14 +279,10 @@ def main():
 
     if args.groups:
         table = group_table(playlist, order)
-        used = set(int(e['attr']['tvg-chno']) for e in playlist)
-        print('%-22s %5s  %-13s %s' % ('group', 'chans', 'numbers', 'a new one gets'))
+        print('%-22s %5s  %s' % ('group', 'chans', 'numbers'))
         for g in order:
             n = table.get(g) or []
-            nxt, note = next_free(g, table, order, used) if n else (None, '')
-            print('%-22s %5d  %-13s %s%s'
-                  % (g, len(n), '%d-%d' % (n[0], n[-1]) if n else '-',
-                     nxt if nxt else '(pass --chno)', '  [%s]' % note if note else ''))
+            print('%-22s %5d  %s' % (g, len(n), '%d-%d' % (n[0], n[-1]) if n else '-'))
         print('\n%d channels. Group names are exact - copy one as --group.' % len(playlist))
         return 0
 
@@ -366,9 +309,8 @@ def main():
             print('        since. Run `git pull` first (or --force if you know better).')
             return 1
 
-    used = set(int(e['attr']['tvg-chno']) for e in playlist)
     ids = set(e['attr'].get('tvg-id', '') for e in playlist)
-    recs, notes = records_from_args(args, playlist, ov, used, ids)
+    recs, notes = records_from_args(args, playlist, ov, ids)
 
     for n in notes:
         print('  note: %s' % n)
@@ -382,7 +324,7 @@ def main():
         bad = []
         for rec in recs:
             ok, why = probe(rec['url'])
-            print('  %-5s %-28s %s' % (rec['chno'], rec['name'][:28],
+            print('  %-28s %s' % (rec['name'][:28],
                                        ('ok, ' + why) if ok else ('FAILED: ' + why)))
             if not ok:
                 bad.append(rec)
@@ -400,10 +342,9 @@ def main():
         print('\n--dry-run: nothing written.')
         return 0
 
-    # 2. write the override, keeping the add list in channel-number order so the diff
-    #    lands next to its neighbours instead of at the bottom of the file.
+    # 2. write the override. Appended, not sorted: an addition's place in the list is its
+    #    place in its group, so the new one goes last.
     ov.setdefault('add', []).extend(recs)
-    ov['add'].sort(key=lambda r: int(r['chno']))
     io.open(OVERRIDES, 'w', encoding='utf-8', newline='\n').write(
         json.dumps(ov, indent=2, ensure_ascii=False) + '\n')
 

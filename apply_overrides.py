@@ -9,6 +9,10 @@ What it may change: tvg-chno, group-title, tvg-id, tvg-logo, which entries are p
 the order entries are written in, and the directive lines (#EXTVLCOPT and friends) of
 entries named in `strip_props`. What it never touches: stream URLs.
 
+Channel numbers are not data: they are the entry's position in the file, 1..N, assigned
+last. So a channel that is removed closes its gap, one that comes back reopens it, and the
+number on the remote always matches the order on screen.
+
 Idempotent - running it twice on the same file is a no-op.
 
 usage: python -I apply_overrides.py <playlist.m3u> [--overrides overrides/overrides.json]
@@ -74,23 +78,10 @@ def apply_overrides(entries, ov, warn):
         if key not in seen_patch:
             warn('patch_attrs: no entry matches %r' % key.replace('\t', ' / '))
 
-    # 2. renumbering, by position inside the group as the build emitted it.
-    #    Done before removals, so removed entries leave their numbers as gaps - that is
-    #    what the committed playlist has. Skipped when the group is already numbered at
-    #    or above its base, which is what makes a second run a no-op.
-    for group, base in ov.get('renumber', {}).items():
-        members = [e for e in entries if e['attr'].get('group-title') == group]
-        if not members:
-            warn('renumber: group %r not present' % group)
-            continue
-        if min(int(e['attr']['tvg-chno']) for e in members) >= base:
-            stats['renumber_skipped'] += 1
-            continue
-        for i, e in enumerate(members):
-            e['attr']['tvg-chno'] = str(base + i)
-            stats['renumbered'] += 1
+    if 'renumber' in ov:
+        warn('renumber is obsolete and ignored: channels are numbered 1..N in file order')
 
-    # 3. regrouping (the International split), keyed on tvg-id.
+    # 2. regrouping (the International split), keyed on tvg-id.
     regroup = ov.get('regroup', {}).get('by_tvg_id', {})
     hit = set()
     for e in entries:
@@ -104,7 +95,7 @@ def apply_overrides(entries, ov, warn):
         if tid not in hit:
             warn('regroup: no entry with tvg-id %r' % tid)
 
-    # 4. removals: by country code in the tvg-id, plus an explicit id list, plus whatever
+    # 3. removals: by country code in the tvg-id, plus an explicit id list, plus whatever
     #    the health check has found dead (overrides/auto_dead.json - machine-written, so it
     #    is kept out of overrides.json where a human would have to read past it).
     codes = ov.get('remove', {}).get('tvg_id_country_codes', [])
@@ -126,14 +117,19 @@ def apply_overrides(entries, ov, warn):
     entries = kept
     stale_removals = sorted(drop_ids - dropped_ids - auto_dead)
 
-    # 5. additions - skipped when the URL is already there, so a second run is a no-op.
-    #    Also skipped when the health check has found the channel dead: step 4 removed it,
+    # 4. additions - skipped when the URL is already there, so a second run is a no-op.
+    #    They are appended, so each one lands after the build's channels in its group, in
+    #    the order the `add` list gives. Its number comes from step 6 like everyone else's.
+    #    Also skipped when the health check has found the channel dead: step 3 removed it,
     #    and re-adding it here would undo that silently. These entries are the only ones
     #    the removal pass cannot win against, because nothing else in the playlist is put
     #    back after being taken out - and watch_playlist.py only publishes on a *change*
     #    in the dead set, so without this they would sit in the list dead for good.
     have = set(e['url'] for e in entries)
     for rec in ov.get('add', []):
+        if 'chno' in rec:
+            warn('add: %r carries a chno, which is ignored (its place in the list decides)'
+                 % rec['name'])
         if rec.get('tvg-id') in auto_dead:
             stats['add_dead'] += 1
             continue
@@ -141,7 +137,7 @@ def apply_overrides(entries, ov, warn):
             stats['add_skipped'] += 1
             continue
         attr = OrderedDict()
-        attr['tvg-chno'] = str(rec['chno'])
+        attr['tvg-chno'] = ''
         for k in ('tvg-id', 'tvg-name', 'tvg-logo'):
             if rec.get(k):
                 attr[k] = rec[k]
@@ -160,7 +156,7 @@ def apply_overrides(entries, ov, warn):
         for tid in stale_removals:
             warn('remove: tvg-id %r was already absent' % tid)
 
-    # 6. drop the directive lines of entries that do not need them. XCIPTV plays
+    # 5. drop the directive lines of entries that do not need them. XCIPTV plays
     #    through Cronet and hands it the #EXTVLCOPT line as if it were the URL, which
     #    fails every time with net::ERR_INVALID_URL - so for a channel that serves fine
     #    without its header, carrying the line costs the channel. Entries that genuinely
@@ -177,9 +173,14 @@ def apply_overrides(entries, ov, warn):
         if not any(e['attr'].get('tvg-id') == tid for e in entries):
             warn('strip_props: no entry with tvg-id %r' % tid)
 
-    # 7. write out one contiguous block per group, groups in the configured order and
-    #    entries inside a group by channel number. A group the order does not mention
-    #    keeps its channels: it goes last and is reported, never dropped.
+    # 6. write out one contiguous block per group, groups in the configured order and
+    #    entries inside a group in the order they arrived (the build's, then additions),
+    #    then number the result 1..N. A group the order does not mention keeps its
+    #    channels: it goes last and is reported, never dropped.
+    #
+    #    Arrival order, not the incoming numbers, because this runs on two kinds of input:
+    #    a fresh build, numbered by the source lists, and playlist.m3u itself (add_channel
+    #    --apply), already numbered 1..N. The two orders agree; the two numberings do not.
     order = ov.get('group_order', [])
     by_group = OrderedDict((g, []) for g in order)
     for e in entries:
@@ -194,7 +195,11 @@ def apply_overrides(entries, ov, warn):
 
     out = []
     for es in by_group.values():
-        out.extend(sorted(es, key=lambda e: int(e['attr']['tvg-chno'])))
+        out.extend(es)
+    for n, e in enumerate(out, 1):
+        if e['attr'].get('tvg-chno') != str(n):
+            e['attr']['tvg-chno'] = str(n)
+            stats['renumbered'] += 1
     return out, stats
 
 
@@ -237,8 +242,7 @@ def main():
               % (stats['removed_by_code'], stats['removed_by_id'], stats['removed_dead']))
         print('  added        : %d (%d already present, %d held back as dead)'
               % (stats['added'], stats['add_skipped'], stats['add_dead']))
-        print('  renumbered   : %d (%d groups already numbered)'
-              % (stats['renumbered'], stats['renumber_skipped']))
+        print('  numbered     : 1-%d (%d changed)' % (len(entries), stats['renumbered']))
         print('  regrouped    : %d' % stats['regrouped'])
         print('  attrs filled : %d' % stats['patched'])
     if warnings:

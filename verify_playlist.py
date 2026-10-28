@@ -2,7 +2,8 @@
 
 Run this on the output of apply_overrides.py before replacing the playlist the box
 streams from. Hard failures are things that would confuse the player - duplicate channel
-numbers, a group split across the file, group order that does not match the numbering.
+numbers, numbers that do not run 1..N down the file, a group split across the file, group
+order that does not match the numbering.
 Everything else is reported for a human to approve, because a channel appearing,
 vanishing or changing URL is usually the upstream list drifting, not a bug.
 
@@ -11,6 +12,7 @@ exit status: 0 = sound, 1 = a hard failure
 """
 
 import argparse
+import difflib
 import io
 import re
 import sys
@@ -79,6 +81,13 @@ def check(entries):
         who = [e['name'] for e in entries if e['attr']['tvg-chno'] == c]
         fails.append('duplicate tvg-chno %s: %s' % (c, ', '.join(who)))
 
+    # the number is the position: 1..N down the file, no gaps (apply_overrides.py step 6)
+    for i, e in enumerate(entries, 1):
+        if int(e['attr']['tvg-chno']) != i:
+            fails.append('channel numbers do not run 1..N in file order: entry %d (%s) is '
+                         'numbered %s' % (i, e['name'], e['attr']['tvg-chno']))
+            break
+
     # one contiguous run per group
     runs = []
     for e in entries:
@@ -103,7 +112,12 @@ def check(entries):
 
 
 def compare(old, new):
-    """Report how `new` drifted from `old`, matched on channel identity."""
+    """Report how `new` drifted from `old`, matched on channel identity.
+
+    A channel added or removed shifts the number of everything after it, which is
+    expected and only counted (`shifted`). `moved` lists channels whose place in the order
+    changed - those that fall outside the longest run of channels both lists keep in the
+    same order."""
     o = OrderedDict((ident(e), e) for e in old)
     n = OrderedDict((ident(e), e) for e in new)
     notes = []
@@ -115,14 +129,22 @@ def compare(old, new):
         if k not in n:
             notes.append('- gone    %5s  %-22s %s'
                          % (e['attr']['tvg-chno'], e['attr']['group-title'], e['name']))
-    moved, regrouped, rehomed = [], [], []
+    common_old = [k for k in o if k in n]
+    common_new = [k for k in n if k in o]
+    sm = difflib.SequenceMatcher(None, common_old, common_new, autojunk=False)
+    in_place = set()
+    for b in sm.get_matching_blocks():
+        in_place.update(common_new[b.b:b.b + b.size])
+    moved, shifted, regrouped, rehomed = [], 0, [], []
     for k, e in n.items():
         if k not in o:
             continue
         was = o[k]
-        if was['attr']['tvg-chno'] != e['attr']['tvg-chno']:
-            moved.append('  number  %s -> %-6s %s'
+        if k not in in_place:
+            moved.append('  moved   %s -> %-6s %s'
                          % (was['attr']['tvg-chno'], e['attr']['tvg-chno'], e['name']))
+        elif was['attr']['tvg-chno'] != e['attr']['tvg-chno']:
+            shifted += 1
         if was['attr'].get('group-title') != e['attr'].get('group-title'):
             regrouped.append('  group   %-20s -> %-20s %s'
                              % (was['attr']['group-title'], e['attr']['group-title'], e['name']))
@@ -130,7 +152,7 @@ def compare(old, new):
             rehomed.append('  url     %5s  %s' % (e['attr']['tvg-chno'], e['name']))
         if was['props'] != e['props']:
             rehomed.append('  headers %5s  %s' % (e['attr']['tvg-chno'], e['name']))
-    return notes, moved, regrouped, rehomed
+    return notes, moved, shifted, regrouped, rehomed
 
 
 def main():
@@ -151,11 +173,14 @@ def main():
 
     if args.compare:
         old, _ = parse(args.compare)
-        notes, moved, regrouped, rehomed = compare(old, entries)
+        notes, moved, shifted, regrouped, rehomed = compare(old, entries)
         print('\nagainst %s (%d channels):' % (args.compare, len(old)))
-        if not (notes or moved or regrouped or rehomed):
+        if not (notes or moved or shifted or regrouped or rehomed):
             print('  no differences')
-        for group, label in ((notes, None), (moved, 'renumbered'),
+        if shifted:
+            print('  renumbered: %d, order unchanged (channels added or removed ahead of them)'
+                  % shifted)
+        for group, label in ((notes, None), (moved, 'moved in the order'),
                              (regrouped, 'regrouped'), (rehomed, 'stream changed')):
             if group and label:
                 print('  %s: %d' % (label, len(group)))
