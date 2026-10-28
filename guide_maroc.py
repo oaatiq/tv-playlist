@@ -1,10 +1,10 @@
-"""Keep the programme guide (epg.xml.gz) current for the Maroc group.
+"""Keep the programme guide current for the Maroc group.
 
-epg.xml.gz is built elsewhere (playlists/autocheck/epg.py on the laptop) and has no Arab-world
-channels at all, so nothing in the Maroc group ever had a guide. This fetches the schedules of
-the Maroc channels that have one somewhere, and merges them into epg.xml.gz under the playlist's
-own tvg-ids, so every player matches them without anything to configure: the playlist header
-already points at that file.
+The world channels' guide (guide_world.py) has no Arab-world channels at all, so nothing in the
+Maroc group ever had a guide. This fetches the schedules of the Maroc channels that have one
+somewhere, and merges them into the guide under the playlist's own tvg-ids, so every player
+matches them without anything to configure: the playlist header already points at that file.
+The wrapper (router/tv-guide-update.sh) runs it after guide_world.py and publishes the result.
 
 Sources, per channel, in order; the first that answers wins:
   * snrt.ma        the SNRT channels' own schedule pages (Arabic titles)
@@ -18,13 +18,12 @@ What the merge does to the rest of the file:
   * a channel this run fetched replaces what the file had for it;
   * a channel no source answered for keeps what the file had, so a bad night costs nothing;
   * programmes that ended more than KEEP_PAST_HOURS ago are dropped, everyone's: a guide
-    file is for what is on now and next, and the laptop's part can be weeks old.
+    file is for what is on now and next.
 The output is gzipped without a timestamp, so a run that changes nothing writes the same
-bytes and there is nothing to commit.
+bytes and there is nothing to publish.
 
-usage: python3 -I guide_maroc.py               # fetch, merge, commit, push
-       python3 -I guide_maroc.py --dry-run     # fetch and report, write nothing
-       python3 -I guide_maroc.py --no-push     # write and commit, stay local
+usage: python3 -I guide_maroc.py GUIDE             # fetch and merge into GUIDE (epg.xml.gz)
+       python3 -I guide_maroc.py GUIDE --dry-run   # fetch and report, write nothing
 """
 
 import argparse
@@ -35,14 +34,10 @@ import io
 import json
 import os
 import re
-import subprocess
 import sys
 import time
 import urllib.request
 import xml.etree.ElementTree as ET
-
-HERE = os.path.dirname(os.path.abspath(__file__))
-GUIDE = os.path.join(HERE, 'epg.xml.gz')
 
 # The guide ids are the playlist's tvg-ids, so players match them exactly. `also` are further
 # ids the same schedule is published under: other entries of the playlist that show the same
@@ -333,17 +328,12 @@ def gz(data):
     return buf.getvalue()
 
 
-# ---------- publishing ----------
-
-def git(*args):
-    return subprocess.run(['git'] + list(args), cwd=HERE, capture_output=True, text=True)
-
-
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument('guide', help='the guide to merge into (epg.xml.gz)')
     ap.add_argument('--dry-run', action='store_true', help='fetch and report, write nothing')
-    ap.add_argument('--no-push', action='store_true', help='write and commit, stay local')
     args = ap.parse_args()
+    guide = args.guide
 
     now = time.time()
     log('guide_maroc %s' % datetime.datetime.now().isoformat(timespec='seconds'))
@@ -353,8 +343,8 @@ def main():
     log('fetched %d of %d channels' % (len(got), len(main_ids)))
 
     old = b''
-    if os.path.exists(GUIDE):
-        with open(GUIDE, 'rb') as f:
+    if os.path.exists(guide):
+        with open(guide, 'rb') as f:
             old = f.read()
         try:
             old = gzip.decompress(old)
@@ -376,49 +366,17 @@ def main():
         % (st['channels'], st['kept'], st['dropped'], st['added']))
 
     data = gz(xml)
-    if data == (open(GUIDE, 'rb').read() if os.path.exists(GUIDE) else None):
+    if data == (open(guide, 'rb').read() if os.path.exists(guide) else None):
         log('nothing changed')
         return 0
     if args.dry_run:
         log('dry run: %d bytes not written' % len(data))
         return 0
-    before = git('rev-parse', 'HEAD').stdout.strip()
-    tmp = GUIDE + '.tmp'
+    tmp = guide + '.tmp'
     with open(tmp, 'wb') as f:
         f.write(data)
-    os.replace(tmp, GUIDE)
-
-    msg = 'Guide: Maroc %d of %d channels, %d programmes' % (len(got), len(main_ids), st['added'])
-    r = git('commit', '-m', msg, '--', 'epg.xml.gz')
-    if r.returncode:
-        log('commit failed: ' + (r.stdout + r.stderr).strip())
-        git('checkout', '--', 'epg.xml.gz')
-        return 1
-    log('committed: ' + msg)
-    if args.no_push:
-        return 0
-    r = git('push')
-    if r.returncode:
-        # Something reached GitHub since the pull (the health check, or the laptop's guide):
-        # put this commit on top of it and try once more. --autostash because this clone is
-        # rarely clean: the health check rewrites overrides/auto_dead.json (its failure
-        # counts) on every run and commits it only when the playlist changes.
-        log('push refused, rebasing: ' + (r.stdout + r.stderr).strip()[:200])
-        r = git('pull', '--rebase', '--autostash', '-q')
-        if r.returncode == 0:
-            r = git('push')
-    if r.returncode:
-        # Never leave this clone ahead of GitHub: the health check shares it, and its own
-        # `git pull --ff-only` would fail from then on. --keep, not --hard: it takes back this
-        # commit and leaves the health check's uncommitted state alone. The next run fetches
-        # again anyway.
-        git('rebase', '--abort')
-        k = git('reset', '-q', '--keep', before)
-        log('push failed, commit %s: %s' % ('dropped' if k.returncode == 0 else
-                                            'NOT dropped (%s)' % k.stderr.strip()[:200],
-                                            (r.stdout + r.stderr).strip()[:300]))
-        return 1
-    log('pushed')
+    os.replace(tmp, guide)
+    log('written: Maroc %d of %d channels, %d programmes' % (len(got), len(main_ids), st['added']))
     return 0
 
 
