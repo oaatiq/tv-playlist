@@ -63,7 +63,7 @@ publish() {
     git pull -q --ff-only || { echo "git pull failed: the clone has diverged, fix by hand"; exit 1; }
     # A source that fails leaves the world part as it was; one that is unreadable stops here.
     nice -n 19 python3 -I guide_world.py sources/world_fr_en.m3u "$STATE/epg.xml.gz" \
-        --keep "$STATE/epg.xml.gz" || { echo "guide_world.py failed: nothing published"; exit 1; }
+        --also playlist.m3u --keep "$STATE/epg.xml.gz" || { echo "guide_world.py failed: nothing published"; exit 1; }
     nice -n 19 python3 -I guide_maroc.py "$STATE/epg.xml.gz" || echo "guide_maroc.py failed: Maroc as it was"
     publish
 } >>"$LOG" 2>&1

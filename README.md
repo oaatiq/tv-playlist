@@ -5,7 +5,7 @@ Personal IPTV playlist for OTT Player / OTT Navigator on a MINIX U8K box.
 | File | What |
 |---|---|
 | `playlist.m3u` | 1,431 free-to-air channels in 16 groups. **Generated** — see [Updating](#updating). The **Maroc** group comes first. |
-| `guide_world.py` | Builds the world channels' programme guide (Samsung TV Plus, EPGShare) from `sources/world_fr_en.m3u`, read as a stream so it fits on the router. RUNBOOK §7a. |
+| `guide_world.py` | Builds the programme guide (Samsung TV Plus, EPGShare) for `sources/world_fr_en.m3u` and the rest of `playlist.m3u`, read as a stream so it fits on the router. RUNBOOK §7a. |
 | `guide_maroc.py` | Fetches the Maroc channels' schedules (snrt.ma, SFR, Orange) and merges them into the guide under the playlist's own tvg-ids. RUNBOOK §7a. |
 | `router/tv-guide-update.sh` | Runs both on the router every three hours and publishes `epg.xml.gz` to the **`guide` branch**, which the playlist header's `url-tvg` points at: one force-pushed commit, so the history does not grow. |
 | `worker/` | Cloudflare Worker at `https://ma-tv.oaatiq.workers.dev` that serves the SNRT channels and Télé Maroc, and proxies four channels that need an HTTP header. |

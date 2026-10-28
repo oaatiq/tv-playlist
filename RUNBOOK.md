@@ -384,7 +384,10 @@ nothing is pushed to `main`.
 1. `git pull --ff-only` on the clone: the scripts, and `sources/world_fr_en.m3u`, the list the
    playlist is built from. The clone is only read.
 2. `guide_world.py`: the world channels, from Samsung TV Plus and EPGShare, with the ids
-   rewritten to the playlist's tvg-ids. It is the laptop's `playlists/autocheck/epg.py` (same
+   rewritten to the playlist's tvg-ids. It takes the channels of `sources/world_fr_en.m3u` and,
+   with `--also playlist.m3u`, every other channel of the playlist (those added by overrides or
+   from `direct.m3u`: Infos FR, the Arab groups), whose country it reads from the code that
+   ends its tvg-id (`BFMBusiness.fr@SD` is French). It is the laptop's `playlists/autocheck/epg.py` (same
    sources, same matching; checked on the same inputs it gives the same 600 channels and
    32,660 programmes, identical down to each start, stop and title) but read as a stream:
    `epg.py` holds every source guide whole in memory, about 600 MB, which a router with 1 GB
@@ -399,9 +402,11 @@ the one on GitHub). A run takes about 100 s of one core at the lowest priority; 
 process peaked at 200 MB (measured 2026-10-28, 767 MB free). The downloads, about 30 MB, go to
 `/tmp`, which is RAM, and are removed afterwards.
 
-The guide covers the 569 or so channels some source has a schedule for, out of 1,354 ids. A
-channel added to the playlist gets a guide once `sources/world_fr_en.m3u` has it
-(`.\rebuild.ps1 -PullFromBox`, then push). The laptop's `epg.py` still builds `world_epg.xml.gz`
+The guide covers the 580 or so channels some source has a schedule for, out of 1,354 ids. The
+rest have no source: the Arab groups, and most of Maroc (below). A channel added to the playlist
+is picked up on the next run if its tvg-id ends in a country a source covers (US, UK, FR, CA,
+IE, AU, NZ, IN, NG, BE, CH, ZA) or it is on a Samsung TV Plus or FAST list; a name that differs
+too much from the source's needs a line in `ALIASES` in `guide_world.py`. The laptop's `epg.py` still builds `world_epg.xml.gz`
 for Kodi, but it no longer feeds this repo.
 
 Every three hours because the Samsung TV Plus listings (about 340 channels) only reach some five

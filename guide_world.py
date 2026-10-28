@@ -14,11 +14,16 @@ What it does with the guide that is already there (--keep):
   * programmes that ended more than KEEP_PAST_HOURS ago are left out, everyone's.
 
 The list is the one the playlist is generated from (sources/world_fr_en.m3u), whose group-title
-is "language;country;category": the country picks the EPGShare files to search.
+is "language;country;category": the country picks the EPGShare files to search. The playlist
+itself has more channels than that list (added by overrides, or from direct.m3u: Infos FR, the
+Arab groups), and its group-titles are not countries ("Infos FR"), so --also takes it too and
+reads each extra channel's country from the code that ends its tvg-id ("BFMBusiness.fr@SD").
 
-usage: python3 -I guide_world.py LIST OUT [--keep PREVIOUS] [--cache DIR [--max-age HOURS]]
+usage: python3 -I guide_world.py LIST OUT [--also PLAYLIST] [--keep PREVIOUS]
+                                 [--cache DIR [--max-age HOURS]]
        LIST      sources/world_fr_en.m3u
        OUT       the guide to write (gzipped XMLTV); may be the same file as PREVIOUS
+       --also    playlist.m3u: its channels that LIST does not have are matched too
        --cache   keep the downloads in DIR and reuse those younger than --max-age (default 20);
                  without it they go to a temporary directory that is removed afterwards
 """
@@ -48,7 +53,15 @@ COUNTRY_FILES = {
 }
 FAST_FILES = ['RAKUTEN1', 'PLEX1', 'DISTROTV1']
 # playlist channel name -> (guide file, guide channel id) where names differ too much to match automatically
-ALIASES = {'LCP': ('FR1', 'LCP-AN-PS.fr')}
+ALIASES = {'LCP': ('FR1', 'LCP-AN-PS.fr'),
+           'Euronews FR': ('FR1', 'Euronews.fr'), 'BFM Var': ('FR1', 'BFM.TOULON.VAR.fr'),
+           'BFM Marseille': ('FR1', 'BFM.MARSEILLE.PROVENCE.fr'),
+           "BFM Cote d'Azur": ('FR1', "BFM.NICE.COTE.D'AZUR.fr")}
+# the country code that ends a tvg-id ("BFMBusiness.fr@SD") -> the country, for channels whose
+# group-title says nothing about it
+CC_COUNTRY = {'us': 'United States', 'uk': 'United Kingdom', 'fr': 'France', 'ca': 'Canada', 'ie': 'Ireland',
+              'au': 'Australia', 'nz': 'New Zealand', 'in': 'India', 'ng': 'Nigeria', 'be': 'Belgium',
+              'ch': 'Switzerland', 'za': 'South Africa'}
 
 KEEP_PAST_HOURS = 12
 ATTEMPTS = 3
@@ -180,14 +193,20 @@ def carried_over(path, matched, cutoff):
 
 # ---------- matching ----------
 
-def read_list(path):
+def read_list(path, country_from_id=False):
+    """The channels of an m3u. The country is the middle part of the group-title, or with
+    `country_from_id` the code that ends the tvg-id: the playlist's own group-titles are
+    countries only in some groups ("France") and not in others ("Infos FR")."""
     ents = []
     for l in open(path, encoding='utf-8').read().split('\n'):
         if l.startswith('#EXTINF'):
             a = dict(re.findall(r'([\w-]+)="([^"]*)"', l))
             groups = a.get('group-title', '').split(';')
-            ents.append({'id': a.get('tvg-id', ''), 'name': l.rsplit(',', 1)[1],
-                         'country': groups[-2] if len(groups) >= 2 else ''})
+            country = groups[-2] if len(groups) >= 2 else ''
+            if country_from_id:
+                m = re.search(r'\.([a-z]{2})(@.*)?$', a.get('tvg-id', ''))
+                country = CC_COUNTRY.get(m.group(1), '') if m else ''
+            ents.append({'id': a.get('tvg-id', ''), 'name': l.rsplit(',', 1)[1], 'country': country})
     return ents
 
 
@@ -225,6 +244,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('list')
     ap.add_argument('out')
+    ap.add_argument('--also', action='append', default=[], metavar='PLAYLIST',
+                    help='a playlist whose other channels (those LIST does not have) get a guide too')
     ap.add_argument('--keep', help='the previous guide: its other channels are carried over')
     ap.add_argument('--cache')
     ap.add_argument('--max-age', type=float, default=20, help='hours a cached download is reused')
@@ -236,7 +257,13 @@ def main():
     cutoff = now - args.past_hours * 3600
     log('guide_world %s' % datetime.datetime.now().isoformat(timespec='seconds'))
     ents = read_list(args.list)
-    needed = set(FAST_FILES) | {f for e in ents for f in COUNTRY_FILES.get(e['country'], [])}
+    seen = {e['id'] for e in ents}
+    for path in args.also:
+        extra = [e for e in read_list(path, country_from_id=True) if e['id'] and e['id'] not in seen]
+        seen |= {e['id'] for e in extra}
+        ents += extra
+        log('%s: %d more channels' % (os.path.basename(path), len(extra)))
+    needed =set(FAST_FILES) | {f for e in ents for f in COUNTRY_FILES.get(e['country'], [])}
     if any(e['country'] == 'International' for e in ents):
         needed |= {'UK1', 'US2', 'FR1'}
     sources = [SAMSUNG] + [('epgshare_' + f, EPGSHARE.format(f)) for f in sorted(needed)]
