@@ -77,16 +77,9 @@ def log(msg):
 # ---------- time ----------
 
 def casablanca():
-    """Morocco's time zone. Its offset is +1, except during Ramadan, when it is +0; only the
-    tz database knows those dates. OpenWrt ships without it unless zoneinfo-africa is
-    installed, and then +1 is right for eleven months of the year."""
-    try:
-        from zoneinfo import ZoneInfo
-        return ZoneInfo('Africa/Casablanca')
-    except Exception:
-        log('  no tz database for Africa/Casablanca (apk add zoneinfo-africa): using +01:00,'
-            ' which is an hour out during Ramadan')
-        return datetime.timezone(datetime.timedelta(hours=1))
+    """Morocco's time zone: plain UTC, all year. It left +1 (and the Ramadan change) for UTC on
+    2026-09-20, so the schedules' local times are UTC and no tz database is needed."""
+    return datetime.timezone.utc
 
 
 def xmltv_time(ts):

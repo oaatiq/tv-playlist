@@ -391,11 +391,12 @@ so a stale laptop guide shrinks to its channel list instead of shipping weeks of
 A source whose schedule is one title repeated all day (SFR's "Chaîne nationale marocaine") is
 skipped: that would show as *what is on now*, which is worse than nothing.
 
-It runs **on the router**, from the clone, twice a day, and commits `epg.xml.gz` only. Set up once:
+It runs **on the router**, from the clone, twice a day, and commits `epg.xml.gz` only. Morocco
+has been on plain UTC since 2026-09-20 (no +1, no Ramadan change), so the schedules' local times
+are read as UTC and no tz database is needed. Set up once:
 
 ```sh
 ssh root@192.168.2.1 -p 2222
-apk add zoneinfo-africa             # Morocco's Ramadan clock change; without it, +1 all year
 cd /root/tv-playlist && git pull
 python3 -I guide_maroc.py --dry-run # what it can fetch from here, writes nothing
 crontab -e                          # add the line below
