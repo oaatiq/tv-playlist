@@ -150,6 +150,12 @@
    "since": "2026-10-17",
    "why": "frozen"
   },
+  "HudaTV.eg": {
+   "chno": "3857",
+   "name": "Huda TV",
+   "since": "2026-10-28",
+   "why": "frozen"
+  },
   "JeddahRadio.sa@SD": {
    "chno": "1228",
    "name": "Jeddah Radio",
@@ -422,16 +428,16 @@
    "runs": 3,
    "why": "variant RemoteDisconnected"
   },
-  "30ATheBeachShow.us@SD": {
-   "chno": "2182",
-   "name": "30A The Beach Show",
-   "runs": 2,
-   "why": "variant RemoteDisconnected"
+  "ABC.us@WMARTV": {
+   "chno": "2277",
+   "name": "ABC WMAR-TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ABC.us@WMURTV": {
    "chno": "2278",
    "name": "ABC WMUR-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ACTV.us@SD": {
@@ -470,6 +476,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "AhlulbaytTV.uk@SD": {
+   "chno": "1675",
+   "name": "Ahlulbayt TV",
+   "runs": 1,
+   "why": "no segments"
+  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
@@ -485,6 +497,18 @@
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CBS.us@KMTVTV": {
+   "chno": "2111",
+   "name": "CBS KMTV-TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "Canaf54TV.uk@SD": {
+   "chno": "1690",
+   "name": "Canaf54 TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -494,10 +518,28 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "ChandelTV.tg@SD": {
+   "chno": "3826",
+   "name": "Chandel TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "ChannelS.bd@SD": {
    "chno": "3842",
    "name": "Channel S (Bangladesh)",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CityTVChannel341.us@SD": {
+   "chno": "1834",
+   "name": "City TV Channel 3/41",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "D3TV.ml@SD": {
+   "chno": "3801",
+   "name": "D3 TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DBSTV.lc@SD": {
@@ -529,6 +571,12 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
+  },
+  "EbS.be@SD": {
+   "chno": "3684",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
   },
   "Evtele.cg@SD": {
    "chno": "3808",
@@ -587,8 +635,14 @@
   "HudaTV.eg": {
    "chno": "3857",
    "name": "Huda TV",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
+  },
+  "IsaacTV.pk@SD": {
+   "chno": "3928",
+   "name": "Isaac TV",
+   "runs": 1,
+   "why": "variant HTTPError"
   },
   "JeddahRadio.sa@SD": {
    "chno": "1228",
@@ -617,7 +671,7 @@
   "LatestTV.uk@SD": {
    "chno": "1693",
    "name": "Latest TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LauraDaveMediaTV.cm@SD": {
@@ -643,6 +697,12 @@
    "name": "MTV (Germany)",
    "runs": 3,
    "why": "frozen"
+  },
+  "MahaasinTV.tz@SD": {
+   "chno": "3994",
+   "name": "Mahaasin TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -821,7 +881,7 @@
   "TV1.rw@SD": {
    "chno": "3961",
    "name": "TV1 (Rwanda)",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "TV3.gh@SD": {
@@ -867,5 +927,5 @@
    "why": "frozen"
   }
  },
- "last_run": "2026-10-27T14:37:02"
+ "last_run": "2026-10-28T02:36:41"
 }
