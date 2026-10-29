@@ -78,12 +78,6 @@
    "since": "2026-10-17",
    "why": "URLError: <urlopen error timed out>"
   },
-  "Evtele.cg@SD": {
-   "chno": "3808",
-   "name": "Ev-tele",
-   "since": "2026-10-24",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "FRBC4700001XG": {
    "chno": "1072",
    "name": "Génération Sitcoms",
@@ -95,6 +89,12 @@
    "name": "Alerte à Malibu",
    "since": "2026-10-17",
    "why": "frozen"
+  },
+  "Fox.us@KCPQ": {
+   "chno": "990",
+   "name": "Fox (United States) KCPQ",
+   "since": "2026-10-29",
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Francophonie24.fr@SD": {
    "chno": "1145",
@@ -192,6 +192,12 @@
    "since": "2026-10-22",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "News12NewYork.us@SD": {
+   "chno": "560",
+   "name": "News12 New York",
+   "since": "2026-10-29",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
@@ -270,6 +276,12 @@
    "since": "2026-10-21",
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "TheIslamicNetwork.tt@SD": {
+   "chno": "1372",
+   "name": "The Islamic Network",
+   "since": "2026-10-29",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -333,9 +345,9 @@
    "why": "frozen"
   },
   "AlRiyadhRadio.sa@SD": {
-   "chno": "223",
+   "chno": "225",
    "name": "Al Riyadh Radio",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
@@ -349,12 +361,6 @@
    "name": "CBS KMTV-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "CNews.fr@SD": {
-   "chno": "31",
-   "name": "CNews",
-   "runs": 1,
-   "why": "frozen"
   },
   "CanalPlus.fr": {
    "chno": "1177",
@@ -374,18 +380,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "EbS.be@SD": {
-   "chno": "1087",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Evtele.cg@SD": {
-   "chno": "3808",
-   "name": "Ev-tele",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "FRBC4700001XG": {
    "chno": "1072",
    "name": "Génération Sitcoms",
@@ -399,9 +393,9 @@
    "why": "frozen"
   },
   "Fox.us@KCPQ": {
-   "chno": "983",
+   "chno": "990",
    "name": "Fox (United States) KCPQ",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Francophonie24.fr@SD": {
@@ -410,29 +404,29 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
+  "GodStandsKidsClubTV.pk@English": {
+   "chno": "1286",
+   "name": "God Stands Kids Club TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: "
+  },
+  "GodStandsTV.pk@English": {
+   "chno": "1289",
+   "name": "God Stands TV English",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: "
+  },
   "GodStandsTV.pk@Main": {
    "chno": "3925",
    "name": "God Stands TV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
-  "GreatCommissionTV.ke@SD": {
-   "chno": "1248",
-   "name": "Great Commission TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
-  },
-  "HolyQuranRadio.sa@SD": {
-   "chno": "235",
-   "name": "Holy Quran Radio",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -447,15 +441,15 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LollywoodHDTV.cd@SD": {
-   "chno": "1143",
+   "chno": "1153",
    "name": "Lollywood HD TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MasterChefsAcademyTV.uk@HD": {
-   "chno": "1124",
+   "chno": "1131",
    "name": "Master Chefs Academy TV",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
@@ -525,9 +519,9 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "News12NewYork.us@SD": {
-   "chno": "555",
+   "chno": "560",
    "name": "News12 New York",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "OANPlus.us@KPVMLD": {
@@ -609,9 +603,9 @@
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "TheIslamicNetwork.tt@SD": {
-   "chno": "1348",
+   "chno": "1372",
    "name": "The Islamic Network",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "UniversalComedy.us@SD": {
@@ -627,5 +621,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-10-29T02:37:08"
+ "last_run": "2026-10-29T14:37:33"
 }
