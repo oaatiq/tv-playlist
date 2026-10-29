@@ -1,10 +1,10 @@
 {
  "dead": {
-  "30AGolfKingdom.us@SD": {
-   "chno": "1894",
-   "name": "30A Golf Kingdom",
-   "since": "2026-10-18",
-   "why": "variant RemoteDisconnected"
+  "ABC.us@WMARTV": {
+   "chno": "963",
+   "name": "ABC WMAR-TV",
+   "since": "2026-10-29",
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ABC.us@WMURTV": {
    "chno": "2278",
@@ -42,28 +42,22 @@
    "since": "2026-10-16",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfrocultureTV.ci@SD": {
-   "chno": "3797",
-   "name": "Afroculture TV",
-   "since": "2026-10-16",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
    "since": "2026-10-13",
    "why": "frozen"
   },
-  "AlMaghribia.ma": {
-   "chno": "107",
-   "name": "Al Maghribia HD (backup)",
-   "since": "2026-10-16",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
    "since": "2026-10-28",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CBS.us@KMTVTV": {
+   "chno": "798",
+   "name": "CBS KMTV-TV",
+   "since": "2026-10-29",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CanalPlus.fr": {
@@ -72,35 +66,11 @@
    "since": "2026-10-23",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "ChannelS.bd@SD": {
-   "chno": "3842",
-   "name": "Channel S (Bangladesh)",
-   "since": "2026-10-18",
+  "CityTVChannel341.us@SD": {
+   "chno": "532",
+   "name": "City TV Channel 3/41",
+   "since": "2026-10-29",
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DBSTV.lc@SD": {
-   "chno": "3965",
-   "name": "DBS TV",
-   "since": "2026-10-14",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DRTVInternational.cg@SD": {
-   "chno": "3810",
-   "name": "DRTV International",
-   "since": "2026-10-22",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DeluxeDance.de@SD": {
-   "chno": "3870",
-   "name": "Deluxe Dance",
-   "since": "2026-10-24",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DerTV.uk@SD": {
-   "chno": "1691",
-   "name": "Der TV",
-   "since": "2026-10-19",
-   "why": "frozen"
   },
   "DiyaTV.us@SD": {
    "chno": "2356",
@@ -112,12 +82,6 @@
    "chno": "3808",
    "name": "Ev-tele",
    "since": "2026-10-24",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "4017",
-   "name": "FORT TV",
-   "since": "2026-10-16",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
@@ -138,18 +102,6 @@
    "since": "2026-10-26",
    "why": "URLError: <urlopen error timed out>"
   },
-  "GodStandsKidsClubTV.pk@English": {
-   "chno": "3922",
-   "name": "God Stands Kids Club TV",
-   "since": "2026-10-20",
-   "why": "URLError: <urlopen error [Errno -3] Try again>"
-  },
-  "GodStandsTV.pk@English": {
-   "chno": "3926",
-   "name": "God Stands TV English",
-   "since": "2026-10-20",
-   "why": "URLError: <urlopen error [Errno -3] Try again>"
-  },
   "GodStandsTV.pk@Main": {
    "chno": "3925",
    "name": "God Stands TV",
@@ -162,24 +114,6 @@
    "since": "2026-10-17",
    "why": "frozen"
   },
-  "HudaTV.eg": {
-   "chno": "3857",
-   "name": "Huda TV",
-   "since": "2026-10-28",
-   "why": "frozen"
-  },
-  "JeddahRadio.sa@SD": {
-   "chno": "1228",
-   "name": "Jeddah Radio",
-   "since": "2026-10-19",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "K24.ke@SD": {
-   "chno": "3904",
-   "name": "K24",
-   "since": "2026-10-13",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
@@ -191,30 +125,6 @@
    "name": "LBFD RTV",
    "since": "2026-10-18",
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "LauraDaveMediaTV.cm@SD": {
-   "chno": "3768",
-   "name": "Laura Dave Media TV",
-   "since": "2026-10-19",
-   "why": "frozen"
-  },
-  "LeNouveauManagerTV.bj@SD": {
-   "chno": "3758",
-   "name": "Le Nouveau Manager TV",
-   "since": "2026-10-25",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "MMTV.mv@SD": {
-   "chno": "3911",
-   "name": "MMTV",
-   "since": "2026-10-23",
-   "why": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occur"
-  },
-  "MTV.de@SD": {
-   "chno": "3871",
-   "name": "MTV (Germany)",
-   "since": "2026-10-23",
-   "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -282,40 +192,10 @@
    "since": "2026-10-22",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "NidaeAlIslamRadio.sa@SD": {
-   "chno": "1236",
-   "name": "Nidae AlIslam Radio",
-   "since": "2026-10-20",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "NoorTV.uk@SD": {
-   "chno": "1685",
-   "name": "Noor TV (United Kingdom)",
-   "since": "2026-10-20",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "NorCastWeather.us@HD": {
-   "chno": "1863",
-   "name": "NorCast Weather",
-   "since": "2026-10-13",
-   "why": "variant HTTP 200"
-  },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
    "since": "2026-10-26",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "PanafricanMediaTV.cm@SD": {
-   "chno": "3764",
-   "name": "Panafrican Media TV",
-   "since": "2026-10-13",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "PascoTV.us@SD": {
-   "chno": "1869",
-   "name": "Pasco TV",
-   "since": "2026-10-16",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "QVCStyleUK.uk": {
@@ -328,18 +208,6 @@
    "chno": "1698",
    "name": "QVC UK Ⓢ",
    "since": "2026-10-27",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RadioTeleFullGospel.ht@SD": {
-   "chno": "3783",
-   "name": "Radio Tele Full Gospel",
-   "since": "2026-10-21",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RadioTeleGinen.ht@SD": {
-   "chno": "3784",
-   "name": "Radio Tele Ginen",
-   "since": "2026-10-14",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVComedyMovies.es@Finland": {
@@ -390,18 +258,6 @@
    "since": "2026-10-26",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "TV3.gh@SD": {
-   "chno": "3877",
-   "name": "TV3 (Ghana)",
-   "since": "2026-10-19",
-   "why": "HTTPError: HTTP Error 502: Bad Gateway"
-  },
-  "Tele7.es@SD": {
-   "chno": "3992",
-   "name": "Tele 7",
-   "since": "2026-10-26",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
   "TeleTchad.td@SD": {
    "chno": "3769",
    "name": "Tele Tchad",
@@ -425,25 +281,13 @@
    "name": "Universal Crime",
    "since": "2026-10-22",
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "WhiplashCinema.us@SD": {
-   "chno": "2028",
-   "name": "Whiplash Cinema",
-   "since": "2026-10-14",
-   "why": "frozen"
   }
  },
  "failing": {
-  "30AGolfKingdom.us@SD": {
-   "chno": "1894",
-   "name": "30A Golf Kingdom",
-   "runs": 3,
-   "why": "variant RemoteDisconnected"
-  },
   "ABC.us@WMARTV": {
-   "chno": "2277",
+   "chno": "963",
    "name": "ABC WMAR-TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ABC.us@WMURTV": {
@@ -482,22 +326,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfrocultureTV.ci@SD": {
-   "chno": "3797",
-   "name": "Afroculture TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
    "runs": 3,
    "why": "frozen"
   },
-  "AlMaghribia.ma": {
-   "chno": "107",
-   "name": "Al Maghribia HD (backup)",
-   "runs": 4,
+  "AlRiyadhRadio.sa@SD": {
+   "chno": "223",
+   "name": "Al Riyadh Radio",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
@@ -507,10 +345,16 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KMTVTV": {
-   "chno": "2111",
+   "chno": "798",
    "name": "CBS KMTV-TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CNews.fr@SD": {
+   "chno": "31",
+   "name": "CNews",
+   "runs": 1,
+   "why": "frozen"
   },
   "CanalPlus.fr": {
    "chno": "1177",
@@ -518,41 +362,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "ChannelS.bd@SD": {
-   "chno": "3842",
-   "name": "Channel S (Bangladesh)",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "CityTVChannel341.us@SD": {
-   "chno": "1834",
+   "chno": "532",
    "name": "City TV Channel 3/41",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DBSTV.lc@SD": {
-   "chno": "3965",
-   "name": "DBS TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DRTVInternational.cg@SD": {
-   "chno": "3810",
-   "name": "DRTV International",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DeluxeDance.de@SD": {
-   "chno": "3870",
-   "name": "Deluxe Dance",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DerTV.uk@SD": {
-   "chno": "1691",
-   "name": "Der TV",
-   "runs": 3,
-   "why": "frozen"
   },
   "DiyaTV.us@SD": {
    "chno": "2356",
@@ -560,15 +374,15 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
+  "EbS.be@SD": {
+   "chno": "1087",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
   "Evtele.cg@SD": {
    "chno": "3808",
    "name": "Ev-tele",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "4017",
-   "name": "FORT TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -585,9 +399,9 @@
    "why": "frozen"
   },
   "Fox.us@KCPQ": {
-   "chno": "2299",
+   "chno": "983",
    "name": "Fox (United States) KCPQ",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Francophonie24.fr@SD": {
@@ -596,23 +410,17 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "GodStandsKidsClubTV.pk@English": {
-   "chno": "3922",
-   "name": "God Stands Kids Club TV",
-   "runs": 3,
-   "why": "URLError: <urlopen error [Errno -3] Try again>"
-  },
-  "GodStandsTV.pk@English": {
-   "chno": "3926",
-   "name": "God Stands TV English",
-   "runs": 3,
-   "why": "URLError: <urlopen error [Errno -3] Try again>"
-  },
   "GodStandsTV.pk@Main": {
    "chno": "3925",
    "name": "God Stands TV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
+  },
+  "GreatCommissionTV.ke@SD": {
+   "chno": "1248",
+   "name": "Great Commission TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
@@ -621,27 +429,9 @@
    "why": "frozen"
   },
   "HolyQuranRadio.sa@SD": {
-   "chno": "1227",
+   "chno": "235",
    "name": "Holy Quran Radio",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "HudaTV.eg": {
-   "chno": "3857",
-   "name": "Huda TV",
-   "runs": 3,
-   "why": "frozen"
-  },
-  "JeddahRadio.sa@SD": {
-   "chno": "1228",
-   "name": "Jeddah Radio",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "K24.ke@SD": {
-   "chno": "3904",
-   "name": "K24",
-   "runs": 3,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "KassouaTV.bj@SD": {
@@ -656,28 +446,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LauraDaveMediaTV.cm@SD": {
-   "chno": "3768",
-   "name": "Laura Dave Media TV",
-   "runs": 3,
-   "why": "frozen"
-  },
-  "LeNouveauManagerTV.bj@SD": {
-   "chno": "3758",
-   "name": "Le Nouveau Manager TV",
-   "runs": 3,
+  "LollywoodHDTV.cd@SD": {
+   "chno": "1143",
+   "name": "Lollywood HD TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "MMTV.mv@SD": {
-   "chno": "3911",
-   "name": "MMTV",
-   "runs": 3,
-   "why": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occur"
-  },
-  "MTV.de@SD": {
-   "chno": "3871",
-   "name": "MTV (Germany)",
-   "runs": 3,
+  "MasterChefsAcademyTV.uk@HD": {
+   "chno": "1124",
+   "name": "Master Chefs Academy TV",
+   "runs": 1,
    "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
@@ -747,44 +525,14 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "News12NewYork.us@SD": {
-   "chno": "1857",
+   "chno": "555",
    "name": "News12 New York",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "NidaeAlIslamRadio.sa@SD": {
-   "chno": "1236",
-   "name": "Nidae AlIslam Radio",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "NoorTV.uk@SD": {
-   "chno": "1685",
-   "name": "Noor TV (United Kingdom)",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "NorCastWeather.us@HD": {
-   "chno": "1863",
-   "name": "NorCast Weather",
-   "runs": 3,
-   "why": "variant HTTP 200"
   },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "PanafricanMediaTV.cm@SD": {
-   "chno": "3764",
-   "name": "Panafrican Media TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "PascoTV.us@SD": {
-   "chno": "1869",
-   "name": "Pasco TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -797,18 +545,6 @@
   "QVCUK.uk": {
    "chno": "1698",
    "name": "QVC UK Ⓢ",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RadioTeleFullGospel.ht@SD": {
-   "chno": "3783",
-   "name": "Radio Tele Full Gospel",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RadioTeleGinen.ht@SD": {
-   "chno": "3784",
-   "name": "Radio Tele Ginen",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -842,12 +578,6 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "SBNTV.us@SD": {
-   "chno": "2261",
-   "name": "SBN TV",
-   "runs": 1,
-   "why": "frozen"
-  },
   "SCorbyTV.us@HD": {
    "chno": "2093",
    "name": "S Corby TV",
@@ -866,18 +596,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "TV3.gh@SD": {
-   "chno": "3877",
-   "name": "TV3 (Ghana)",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 502: Bad Gateway"
-  },
-  "Tele7.es@SD": {
-   "chno": "3992",
-   "name": "Tele 7",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
   "TeleTchad.td@SD": {
    "chno": "3769",
    "name": "Tele Tchad",
@@ -891,9 +609,9 @@
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "TheIslamicNetwork.tt@SD": {
-   "chno": "4015",
+   "chno": "1348",
    "name": "The Islamic Network",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "UniversalComedy.us@SD": {
@@ -907,19 +625,7 @@
    "name": "Universal Crime",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "WhiplashCinema.us@SD": {
-   "chno": "2028",
-   "name": "Whiplash Cinema",
-   "runs": 3,
-   "why": "frozen"
-  },
-  "X1027FM.aw@SD": {
-   "chno": "3837",
-   "name": "X 102.7 FM",
-   "runs": 1,
-   "why": "variant HTTPError"
   }
  },
- "last_run": "2026-10-28T14:36:39"
+ "last_run": "2026-10-29T02:37:08"
 }
