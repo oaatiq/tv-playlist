@@ -48,6 +48,12 @@
    "since": "2026-10-13",
    "why": "frozen"
   },
+  "AlRiyadhRadio.sa@SD": {
+   "chno": "225",
+   "name": "Al Riyadh Radio",
+   "since": "2026-10-30",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
@@ -65,12 +71,6 @@
    "name": "Canal+",
    "since": "2026-10-23",
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "CityTVChannel341.us@SD": {
-   "chno": "532",
-   "name": "City TV Channel 3/41",
-   "since": "2026-10-29",
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DiyaTV.us@SD": {
    "chno": "2356",
@@ -125,6 +125,18 @@
    "name": "LBFD RTV",
    "since": "2026-10-18",
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LollywoodHDTV.cd@SD": {
+   "chno": "1151",
+   "name": "Lollywood HD TV",
+   "since": "2026-10-30",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "MasterChefsAcademyTV.uk@HD": {
+   "chno": "1129",
+   "name": "Master Chefs Academy TV",
+   "since": "2026-10-30",
+   "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -275,12 +287,6 @@
    "name": "Terra Mater WILD English",
    "since": "2026-10-21",
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
-  },
-  "TheIslamicNetwork.tt@SD": {
-   "chno": "1372",
-   "name": "The Islamic Network",
-   "since": "2026-10-29",
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "UniversalComedy.us@SD": {
    "chno": "2026",
@@ -347,7 +353,7 @@
   "AlRiyadhRadio.sa@SD": {
    "chno": "225",
    "name": "Al Riyadh Radio",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
@@ -368,10 +374,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "CityTVChannel341.us@SD": {
-   "chno": "532",
-   "name": "City TV Channel 3/41",
-   "runs": 3,
+  "DRTVInternational.cg@SD": {
+   "chno": "1187",
+   "name": "DRTV International",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "DaystarTV.us@SD": {
+   "chno": "929",
+   "name": "Daystar TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DiyaTV.us@SD": {
@@ -379,6 +391,18 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
+  },
+  "EbS.be@SD": {
+   "chno": "1092",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "FORTTV.ug@SD": {
+   "chno": "1372",
+   "name": "FORT TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -405,16 +429,16 @@
    "why": "URLError: <urlopen error timed out>"
   },
   "GodStandsKidsClubTV.pk@English": {
-   "chno": "1286",
+   "chno": "1285",
    "name": "God Stands Kids Club TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: "
+   "runs": 2,
+   "why": "URLError: <urlopen error timed out>"
   },
   "GodStandsTV.pk@English": {
-   "chno": "1289",
+   "chno": "1288",
    "name": "God Stands TV English",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: "
+   "runs": 2,
+   "why": "URLError: <urlopen error timed out>"
   },
   "GodStandsTV.pk@Main": {
    "chno": "3925",
@@ -428,6 +452,18 @@
    "runs": 3,
    "why": "frozen"
   },
+  "InooroTV.ke@SD": {
+   "chno": "1266",
+   "name": "Inooro TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 504: Gateway Timeout"
+  },
+  "KRCTV.ug@SD": {
+   "chno": "1373",
+   "name": "KRC TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
@@ -440,16 +476,22 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "LCP.fr@SD": {
+   "chno": "38",
+   "name": "LCP",
+   "runs": 1,
+   "why": "frozen"
+  },
   "LollywoodHDTV.cd@SD": {
-   "chno": "1153",
+   "chno": "1151",
    "name": "Lollywood HD TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MasterChefsAcademyTV.uk@HD": {
-   "chno": "1131",
+   "chno": "1129",
    "name": "Master Chefs Academy TV",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
   },
   "MiracleTVPlus.ci@SD": {
@@ -524,6 +566,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "NorCastWeather.us@HD": {
+   "chno": "565",
+   "name": "NorCast Weather",
+   "runs": 1,
+   "why": "variant HTTP 200"
+  },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
@@ -572,6 +620,12 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
+  "SBNTV.us@SD": {
+   "chno": "954",
+   "name": "SBN TV",
+   "runs": 1,
+   "why": "frozen"
+  },
   "SCorbyTV.us@HD": {
    "chno": "2093",
    "name": "S Corby TV",
@@ -602,12 +656,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "TheIslamicNetwork.tt@SD": {
-   "chno": "1372",
-   "name": "The Islamic Network",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -621,5 +669,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-10-29T14:37:33"
+ "last_run": "2026-10-30T02:37:47"
 }
