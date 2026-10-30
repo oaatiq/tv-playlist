@@ -102,6 +102,18 @@
    "since": "2026-10-26",
    "why": "URLError: <urlopen error timed out>"
   },
+  "GodStandsKidsClubTV.pk@English": {
+   "chno": "1283",
+   "name": "God Stands Kids Club TV",
+   "since": "2026-10-30",
+   "why": "URLError: <urlopen error timed out>"
+  },
+  "GodStandsTV.pk@English": {
+   "chno": "1286",
+   "name": "God Stands TV English",
+   "since": "2026-10-30",
+   "why": "URLError: <urlopen error timed out>"
+  },
   "GodStandsTV.pk@Main": {
    "chno": "3925",
    "name": "God Stands TV",
@@ -375,34 +387,22 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "DRTVInternational.cg@SD": {
-   "chno": "1187",
+   "chno": "1185",
    "name": "DRTV International",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "DaystarTV.us@SD": {
-   "chno": "929",
-   "name": "Daystar TV",
+  "DeluxeDance.de@SD": {
+   "chno": "1233",
+   "name": "Deluxe Dance",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "why": "frozen"
   },
   "DiyaTV.us@SD": {
    "chno": "2356",
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
-  },
-  "EbS.be@SD": {
-   "chno": "1092",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "1372",
-   "name": "FORT TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -429,15 +429,15 @@
    "why": "URLError: <urlopen error timed out>"
   },
   "GodStandsKidsClubTV.pk@English": {
-   "chno": "1285",
+   "chno": "1283",
    "name": "God Stands Kids Club TV",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
   "GodStandsTV.pk@English": {
-   "chno": "1288",
+   "chno": "1286",
    "name": "God Stands TV English",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
   "GodStandsTV.pk@Main": {
@@ -452,18 +452,6 @@
    "runs": 3,
    "why": "frozen"
   },
-  "InooroTV.ke@SD": {
-   "chno": "1266",
-   "name": "Inooro TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 504: Gateway Timeout"
-  },
-  "KRCTV.ug@SD": {
-   "chno": "1373",
-   "name": "KRC TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
@@ -475,12 +463,6 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "LCP.fr@SD": {
-   "chno": "38",
-   "name": "LCP",
-   "runs": 1,
-   "why": "frozen"
   },
   "LollywoodHDTV.cd@SD": {
    "chno": "1151",
@@ -569,7 +551,7 @@
   "NorCastWeather.us@HD": {
    "chno": "565",
    "name": "NorCast Weather",
-   "runs": 1,
+   "runs": 2,
    "why": "variant HTTP 200"
   },
   "OANPlus.us@KPVMLD": {
@@ -589,6 +571,18 @@
    "name": "QVC UK Ⓢ",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RHTGuadeloupe.gp@SD": {
+   "chno": "1152",
+   "name": "RHT Guadeloupe",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RaajjeTV.mv@SD": {
+   "chno": "1273",
+   "name": "Raajje TV",
+   "runs": 1,
+   "why": "variant HTTPError"
   },
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
@@ -620,12 +614,6 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "SBNTV.us@SD": {
-   "chno": "954",
-   "name": "SBN TV",
-   "runs": 1,
-   "why": "frozen"
-  },
   "SCorbyTV.us@HD": {
    "chno": "2093",
    "name": "S Corby TV",
@@ -642,6 +630,12 @@
    "chno": "2094",
    "name": "S Play Event",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "TBNArmenia.us@SD": {
+   "chno": "1061",
+   "name": "TBN Armenia",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TeleTchad.td@SD": {
@@ -669,5 +663,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-10-30T02:37:47"
+ "last_run": "2026-10-30T14:37:51"
 }
