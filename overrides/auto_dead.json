@@ -72,6 +72,12 @@
    "since": "2026-10-23",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "DeluxeDance.de@SD": {
+   "chno": "1233",
+   "name": "Deluxe Dance",
+   "since": "2026-10-31",
+   "why": "frozen"
+  },
   "DiyaTV.us@SD": {
    "chno": "2356",
    "name": "Diya TV",
@@ -240,6 +246,12 @@
    "since": "2026-10-27",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RaajjeTV.mv@SD": {
+   "chno": "1273",
+   "name": "Raajje TV",
+   "since": "2026-10-31",
+   "why": "HTTPError: HTTP Error 429: Too Many Requests"
+  },
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
    "name": "Rakuten TV Comedy Movies Finland",
@@ -286,6 +298,12 @@
    "chno": "2094",
    "name": "S Play Event",
    "since": "2026-10-26",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "TBNArmenia.us@SD": {
+   "chno": "1061",
+   "name": "TBN Armenia",
+   "since": "2026-10-31",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TeleTchad.td@SD": {
@@ -368,6 +386,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "AusbizTV.au": {
+   "chno": "1082",
+   "name": "Ausbiz",
+   "runs": 2,
+   "why": "frozen"
+  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
@@ -386,16 +410,10 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "DRTVInternational.cg@SD": {
-   "chno": "1185",
-   "name": "DRTV International",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "DeluxeDance.de@SD": {
    "chno": "1233",
    "name": "Deluxe Dance",
-   "runs": 1,
+   "runs": 3,
    "why": "frozen"
   },
   "DiyaTV.us@SD": {
@@ -403,6 +421,12 @@
    "name": "Diya TV",
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
+  },
+  "DocumentaryPlus.us@International": {
+   "chno": "1128",
+   "name": "Documentary+ International",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -415,6 +439,18 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
+  },
+  "FaithUK.uk@SD": {
+   "chno": "491",
+   "name": "Faith UK",
+   "runs": 2,
+   "why": "frozen"
+  },
+  "ForYouTV.cm@SD": {
+   "chno": "1143",
+   "name": "For You TV",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -446,10 +482,22 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -3] Try again>"
   },
+  "GreatCommissionTV.ke@SD": {
+   "chno": "1263",
+   "name": "Great Commission TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
+   "why": "frozen"
+  },
+  "HudaTV.eg": {
+   "chno": "1224",
+   "name": "Huda TV",
+   "runs": 1,
    "why": "frozen"
   },
   "KassouaTV.bj@SD": {
@@ -463,6 +511,12 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LatestTV.uk@SD": {
+   "chno": "507",
+   "name": "Latest TV",
+   "runs": 2,
+   "why": "URLError: <urlopen error timed out>"
   },
   "LollywoodHDTV.cd@SD": {
    "chno": "1151",
@@ -548,10 +602,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "NidaeAlIslamRadio.sa@SD": {
+   "chno": "244",
+   "name": "Nidae AlIslam Radio",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "NorCastWeather.us@HD": {
    "chno": "565",
    "name": "NorCast Weather",
-   "runs": 2,
+   "runs": 1,
    "why": "variant HTTP 200"
   },
   "OANPlus.us@KPVMLD": {
@@ -572,17 +632,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "RHTGuadeloupe.gp@SD": {
-   "chno": "1152",
-   "name": "RHT Guadeloupe",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "RaajjeTV.mv@SD": {
    "chno": "1273",
    "name": "Raajje TV",
-   "runs": 1,
-   "why": "variant HTTPError"
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 429: Too Many Requests"
   },
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
@@ -632,10 +686,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "SpektraTV.es@SD": {
+   "chno": "1342",
+   "name": "SpektraTV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "TBNArmenia.us@SD": {
    "chno": "1061",
    "name": "TBN Armenia",
-   "runs": 1,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TeleTchad.td@SD": {
@@ -663,5 +723,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-10-30T14:37:51"
+ "last_run": "2026-10-31T14:37:43"
 }
