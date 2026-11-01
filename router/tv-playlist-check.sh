@@ -13,7 +13,7 @@
 # MODE is --dry-run until a push credential exists. With a token in /root/.git-credentials,
 # drop the flag and it repairs the playlist by itself; XCIPTV re-reads the list on launch
 # once its copy is ~6 h old, so the fix reaches the TVs with nobody touching anything.
-MODE="--dry-run"
+MODE=""
 
 cd /root/tv-playlist || exit 1
 git pull -q --ff-only 2>/dev/null
