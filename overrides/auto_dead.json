@@ -126,28 +126,22 @@
    "since": "2026-10-26",
    "why": "URLError: <urlopen error timed out>"
   },
-  "GodStandsKidsClubTV.pk@English": {
-   "chno": "1283",
-   "name": "God Stands Kids Club TV",
-   "since": "2026-10-30",
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "GodStandsTV.pk@English": {
-   "chno": "1286",
-   "name": "God Stands TV English",
-   "since": "2026-10-30",
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "GodStandsTV.pk@Main": {
-   "chno": "3925",
-   "name": "God Stands TV",
-   "since": "2026-10-20",
-   "why": "URLError: <urlopen error [Errno -3] Try again>"
+  "GreatCommissionTV.ke@SD": {
+   "chno": "1257",
+   "name": "Great Commission TV",
+   "since": "2026-11-01",
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "since": "2026-10-17",
+   "why": "frozen"
+  },
+  "HudaTV.eg": {
+   "chno": "1219",
+   "name": "Huda TV",
+   "since": "2026-11-01",
    "why": "frozen"
   },
   "KassouaTV.bj@SD": {
@@ -252,6 +246,12 @@
    "since": "2026-10-29",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "NidaeAlIslamRadio.sa@SD": {
+   "chno": "244",
+   "name": "Nidae AlIslam Radio",
+   "since": "2026-11-01",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
@@ -269,12 +269,6 @@
    "name": "QVC UK Ⓢ",
    "since": "2026-10-27",
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RaajjeTV.mv@SD": {
-   "chno": "1273",
-   "name": "Raajje TV",
-   "since": "2026-10-31",
-   "why": "HTTPError: HTTP Error 429: Too Many Requests"
   },
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
@@ -435,9 +429,9 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "DBSTV.lc@SD": {
-   "chno": "1314",
+   "chno": "1310",
    "name": "DBS TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DeluxeDance.de@SD": {
@@ -461,18 +455,12 @@
   "DubaiTVInternational.ae@SD": {
    "chno": "266",
    "name": "Dubai TV International",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "EbS.be@SD": {
-   "chno": "1091",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "Evtele.cg@SD": {
-   "chno": "1182",
-   "name": "Ev-tele",
+  "FORTTV.ug@SD": {
+   "chno": "1362",
+   "name": "FORT TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -506,28 +494,16 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "GodStandsKidsClubTV.pk@English": {
-   "chno": "1283",
-   "name": "God Stands Kids Club TV",
-   "runs": 3,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "GodStandsTV.pk@English": {
-   "chno": "1286",
-   "name": "God Stands TV English",
-   "runs": 3,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "GodStandsTV.pk@Main": {
-   "chno": "3925",
-   "name": "God Stands TV",
-   "runs": 3,
-   "why": "URLError: <urlopen error [Errno -3] Try again>"
-  },
   "GreatCommissionTV.ke@SD": {
-   "chno": "1261",
+   "chno": "1257",
    "name": "Great Commission TV",
-   "runs": 2,
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "GuardianTalkRadio.bs@SD": {
+   "chno": "1204",
+   "name": "Guardian Talk Radio",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "HardKnocksFightingChampionship.pl@SD": {
@@ -537,9 +513,9 @@
    "why": "frozen"
   },
   "HudaTV.eg": {
-   "chno": "1223",
+   "chno": "1219",
    "name": "Huda TV",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
   },
   "KassouaTV.bj@SD": {
@@ -552,6 +528,12 @@
    "chno": "3772",
    "name": "LBFD RTV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LacrosseTV.us@SD": {
+   "chno": "603",
+   "name": "Lacrosse TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LatestTV.uk@SD": {
@@ -647,8 +629,14 @@
   "NidaeAlIslamRadio.sa@SD": {
    "chno": "244",
    "name": "Nidae AlIslam Radio",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "NorCastWeather.us@HD": {
+   "chno": "564",
+   "name": "NorCast Weather",
+   "runs": 1,
+   "why": "not a playlist"
   },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
@@ -667,12 +655,6 @@
    "name": "QVC UK Ⓢ",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "RaajjeTV.mv@SD": {
-   "chno": "1273",
-   "name": "Raajje TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 429: Too Many Requests"
   },
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
@@ -728,6 +710,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "TelePam.us@SD": {
+   "chno": "1161",
+   "name": "Tele Pam",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
   "TeleTchad.td@SD": {
    "chno": "3769",
    "name": "Tele Tchad",
@@ -753,5 +741,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-11-01T02:37:57"
+ "last_run": "2026-11-01T14:37:36"
 }
