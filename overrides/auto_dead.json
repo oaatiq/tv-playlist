@@ -12,12 +12,6 @@
    "since": "2026-10-28",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "ACTV.us@SD": {
-   "chno": "1813",
-   "name": "ACTV (United States)",
-   "since": "2026-10-16",
-   "why": "frozen"
-  },
   "ADOTV.bj@SD": {
    "chno": "3759",
    "name": "ADO TV",
@@ -344,9 +338,9 @@
   }
  },
  "failing": {
-  "30AGolfKingdom.us@SD": {
-   "chno": "592",
-   "name": "30A Golf Kingdom",
+  "30AWeLoveCars.us@SD": {
+   "chno": "873",
+   "name": "30A We Love Cars",
    "runs": 1,
    "why": "variant RemoteDisconnected"
   },
@@ -361,12 +355,6 @@
    "name": "ABC WMUR-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ACTV.us@SD": {
-   "chno": "1813",
-   "name": "ACTV (United States)",
-   "runs": 3,
-   "why": "frozen"
   },
   "ADOTV.bj@SD": {
    "chno": "3759",
@@ -389,19 +377,13 @@
   "AfrikInfoTV.gn@SD": {
    "chno": "1149",
    "name": "Afrik Info TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AfroMagicChannel.ci@SD": {
    "chno": "3796",
    "name": "Afro Magic Channel",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "AfrocultureTV.ci@SD": {
-   "chno": "1167",
-   "name": "Afroculture TV",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AlGhadTV.eg@SD": {
@@ -414,42 +396,6 @@
    "chno": "225",
    "name": "Al Riyadh Radio",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "AtlantaChannel.us@SD": {
-   "chno": "1034",
-   "name": "Atlanta Channel",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "BeachTVFloridaAlabama.us@SD": {
-   "chno": "876",
-   "name": "Beach TV Florida & Alabama",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "BeachTVKeyWestFloridaKeys.us@SD": {
-   "chno": "877",
-   "name": "Beach TV Key West & Florida Keys",
-   "runs": 1,
-   "why": "URLError: <urlopen error _ssl.c:1015: The handshake operation timed ou"
-  },
-  "BeachTVMyrtleBeachTheGrandStrand.us@SD": {
-   "chno": "878",
-   "name": "Beach TV Myrtle Beach & The Grand Strand",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "BeachTVPanamaCity.us@SD": {
-   "chno": "879",
-   "name": "Beach TV Panama City",
-   "runs": 1,
-   "why": "TimeoutError: timed out"
-  },
-  "CAM10TV.cm@SD": {
-   "chno": "1141",
-   "name": "CAM 10 TV",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
@@ -471,15 +417,21 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "ChandelTV.tg@SD": {
-   "chno": "1191",
+   "chno": "1190",
    "name": "Chandel TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DBSTV.lc@SD": {
    "chno": "1311",
    "name": "DBS TV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "DRTVInternational.cg@SD": {
+   "chno": "1178",
+   "name": "DRTV International",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DiyaTV.us@SD": {
@@ -503,14 +455,14 @@
   "DuckDynasty.us@UK": {
    "chno": "391",
    "name": "Duck Dynasty",
-   "runs": 1,
+   "runs": 2,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "Evtele.cg@SD": {
-   "chno": "1177",
-   "name": "Ev-tele",
+  "EbS.be@SD": {
+   "chno": "1088",
+   "name": "EbS",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "why": "frozen"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -522,6 +474,12 @@
    "chno": "1067",
    "name": "Alerte à Malibu",
    "runs": 3,
+   "why": "frozen"
+  },
+  "FaithUK.uk@SD": {
+   "chno": "489",
+   "name": "Faith UK",
+   "runs": 1,
    "why": "frozen"
   },
   "ForYouTV.cm@SD": {
@@ -542,35 +500,11 @@
    "runs": 3,
    "why": "URLError: <urlopen error timed out>"
   },
-  "GodStandsTV.pk@Main": {
-   "chno": "1279",
-   "name": "God Stands TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: "
-  },
-  "HANDICAPTV.fr@SD": {
-   "chno": "176",
-   "name": "HANDICAP TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
-  },
-  "JeddahRadio.sa@SD": {
-   "chno": "237",
-   "name": "Jeddah Radio",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "KNOVCD411.us@HD": {
-   "chno": "897",
-   "name": "KNOV-CD 41.1",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -593,7 +527,7 @@
   "LittoralFMTV.fr@SD": {
    "chno": "130",
    "name": "Littoral FM TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LollywoodHDTV.cd@SD": {
@@ -602,11 +536,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "MahaasinTV.tz@SD": {
-   "chno": "1341",
-   "name": "Mahaasin TV",
+  "MTV.de@SD": {
+   "chno": "1227",
+   "name": "MTV (Germany)",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "why": "frozen"
   },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
@@ -695,7 +629,7 @@
   "NorCastWeather.us@HD": {
    "chno": "562",
    "name": "NorCast Weather",
-   "runs": 1,
+   "runs": 2,
    "why": "variant HTTP 200"
   },
   "OANPlus.us@KPVMLD": {
@@ -764,12 +698,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "T18.fr@HD": {
-   "chno": "190",
-   "name": "T18",
-   "runs": 1,
-   "why": "frozen"
-  },
   "TBNArmenia.us@SD": {
    "chno": "1061",
    "name": "TBN Armenia",
@@ -779,7 +707,7 @@
   "TR24Television.cm@SD": {
    "chno": "1139",
    "name": "TR24 Television",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TelePam.us@SD": {
@@ -793,12 +721,6 @@
    "name": "Tele Tchad",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TelevisionCaribbean.kn@SD": {
-   "chno": "1311",
-   "name": "Television Caribbean",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
   },
   "TerraMaterWILD.de@English": {
    "chno": "1648",
@@ -817,7 +739,13 @@
    "name": "Universal Crime",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "VantageMusic.ee@UK": {
+   "chno": "436",
+   "name": "Vantage Music UK",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-02T14:38:49"
+ "last_run": "2026-11-03T02:37:33"
 }
