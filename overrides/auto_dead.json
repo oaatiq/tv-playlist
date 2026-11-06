@@ -36,6 +36,12 @@
    "since": "2026-10-16",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "AfrocultureTV.ci@SD": {
+   "chno": "1141",
+   "name": "Afroculture TV",
+   "since": "2026-11-06",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
@@ -107,12 +113,6 @@
    "name": "Alerte à Malibu",
    "since": "2026-10-17",
    "why": "frozen"
-  },
-  "FaithUK.uk@SD": {
-   "chno": "488",
-   "name": "Faith UK",
-   "since": "2026-11-04",
-   "why": "variant HTTPError"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -300,6 +300,12 @@
    "since": "2026-10-13",
    "why": "variant HTTPError"
   },
+  "RiddimHopeTV.tt@SD": {
+   "chno": "1334",
+   "name": "Riddim & Hope TV",
+   "since": "2026-11-06",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "SCorbyTV.us@HD": {
    "chno": "2093",
    "name": "S Corby TV",
@@ -354,138 +360,6 @@
    "since": "2026-10-21",
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "TraceAfrica.fr@SD": {
-   "chno": "141",
-   "name": "Trace Africa",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceAfrikora.fr@SD": {
-   "chno": "142",
-   "name": "Trace Afrikora",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceAyiti.fr@SD": {
-   "chno": "143",
-   "name": "Trace Ayiti",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceCaribbean.fr@SD": {
-   "chno": "144",
-   "name": "Trace Caribbean",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceGospel.fr@NigeriaandEastAfrica": {
-   "chno": "1113",
-   "name": "Trace Gospel Nigeria and East Africa",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceGospel.fr@SD": {
-   "chno": "145",
-   "name": "Trace Gospel",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceGospel.fr@SouthernAfrica": {
-   "chno": "1114",
-   "name": "Trace Gospel Southern Africa",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceIvoire.fr@SD": {
-   "chno": "1163",
-   "name": "Trace Ivoire",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceJama.fr@SD": {
-   "chno": "146",
-   "name": "Trace Jama",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceKitoko.fr@SD": {
-   "chno": "147",
-   "name": "Trace Kitoko",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceLatina.fr@SD": {
-   "chno": "148",
-   "name": "Trace Latina",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceMboa.fr@SD": {
-   "chno": "149",
-   "name": "Trace Mboa",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceMuzika.fr@SD": {
-   "chno": "150",
-   "name": "Trace Muzika",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceNaija.fr@SD": {
-   "chno": "151",
-   "name": "Trace Naija",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceNgoma.fr@SD": {
-   "chno": "1115",
-   "name": "Trace Ngoma",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceSportStars.fr@SD": {
-   "chno": "1103",
-   "name": "Trace Sport Stars SD",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@AfricaFranco": {
-   "chno": "1116",
-   "name": "Trace Urban Africa Franco",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@CaribbeanAndIndianOcean": {
-   "chno": "1117",
-   "name": "Trace Urban Caribbean And Indian Ocean",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@HD": {
-   "chno": "153",
-   "name": "Trace Urban HD",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@InternationalHD": {
-   "chno": "1118",
-   "name": "Trace Urban International HD",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@SouthernAfrica": {
-   "chno": "1119",
-   "name": "Trace Urban Southern Africa",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceVanillaIslands.fr@SD": {
-   "chno": "154",
-   "name": "Trace Vanilla Islands",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -537,9 +411,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AfrocultureTV.ci@SD": {
-   "chno": "1164",
+   "chno": "1141",
    "name": "Afroculture TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AlGhadTV.eg@SD": {
@@ -554,12 +428,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "BizzTV.tt@SD": {
-   "chno": "1357",
-   "name": "Bizz TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 502: Bad Gateway"
-  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
@@ -573,9 +441,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Canaf54TV.uk@SD": {
-   "chno": "499",
+   "chno": "485",
    "name": "Canaf54 TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CanalPlus.fr": {
@@ -588,12 +456,6 @@
    "chno": "1311",
    "name": "DBS TV",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DeluxeDance.de@SD": {
-   "chno": "1224",
-   "name": "Deluxe Dance",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DiyaTV.us@SD": {
@@ -620,6 +482,18 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "EbS.be@SD": {
+   "chno": "1072",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "Evtele.cg@SD": {
+   "chno": "1150",
+   "name": "Ev-tele",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 502: Bad Gateway"
+  },
   "FRBC4700001XG": {
    "chno": "1072",
    "name": "Génération Sitcoms",
@@ -631,18 +505,6 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
-  },
-  "FaithTV.us@SD": {
-   "chno": "928",
-   "name": "Faith TV",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "FaithUK.uk@SD": {
-   "chno": "488",
-   "name": "Faith UK",
-   "runs": 3,
-   "why": "variant HTTPError"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -668,11 +530,11 @@
    "runs": 3,
    "why": "frozen"
   },
-  "KTOO360TV.us@KTOOTV": {
-   "chno": "999",
-   "name": "KTOO 360TV KTOO-TV",
+  "KRCTV.ug@SD": {
+   "chno": "1339",
+   "name": "KRC TV",
    "runs": 1,
-   "why": "variant HTTP 200"
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -734,12 +596,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "MuslimNetworkTV.us@SD": {
-   "chno": "946",
-   "name": "Muslim Network TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "MyCinemaEurope.ch@SD": {
    "chno": "3819",
    "name": "My Cinema Europe",
@@ -795,9 +651,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NorCastWeather.us@HD": {
-   "chno": "561",
+   "chno": "547",
    "name": "NorCast Weather",
-   "runs": 1,
+   "runs": 2,
    "why": "variant HTTP 200"
   },
   "OANPlus.us@KPVMLD": {
@@ -849,9 +705,9 @@
    "why": "variant HTTPError"
   },
   "RiddimHopeTV.tt@SD": {
-   "chno": "1358",
+   "chno": "1334",
    "name": "Riddim & Hope TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "SCorbyTV.us@HD": {
@@ -908,138 +764,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "TraceAfrica.fr@SD": {
-   "chno": "141",
-   "name": "Trace Africa",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceAfrikora.fr@SD": {
-   "chno": "142",
-   "name": "Trace Afrikora",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceAyiti.fr@SD": {
-   "chno": "143",
-   "name": "Trace Ayiti",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceCaribbean.fr@SD": {
-   "chno": "144",
-   "name": "Trace Caribbean",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceGospel.fr@NigeriaandEastAfrica": {
-   "chno": "1113",
-   "name": "Trace Gospel Nigeria and East Africa",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceGospel.fr@SD": {
-   "chno": "145",
-   "name": "Trace Gospel",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceGospel.fr@SouthernAfrica": {
-   "chno": "1114",
-   "name": "Trace Gospel Southern Africa",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceIvoire.fr@SD": {
-   "chno": "1163",
-   "name": "Trace Ivoire",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceJama.fr@SD": {
-   "chno": "146",
-   "name": "Trace Jama",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceKitoko.fr@SD": {
-   "chno": "147",
-   "name": "Trace Kitoko",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceLatina.fr@SD": {
-   "chno": "148",
-   "name": "Trace Latina",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceMboa.fr@SD": {
-   "chno": "149",
-   "name": "Trace Mboa",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceMuzika.fr@SD": {
-   "chno": "150",
-   "name": "Trace Muzika",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceNaija.fr@SD": {
-   "chno": "151",
-   "name": "Trace Naija",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceNgoma.fr@SD": {
-   "chno": "1115",
-   "name": "Trace Ngoma",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceSportStars.fr@SD": {
-   "chno": "1103",
-   "name": "Trace Sport Stars SD",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@AfricaFranco": {
-   "chno": "1116",
-   "name": "Trace Urban Africa Franco",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@CaribbeanAndIndianOcean": {
-   "chno": "1117",
-   "name": "Trace Urban Caribbean And Indian Ocean",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@HD": {
-   "chno": "153",
-   "name": "Trace Urban HD",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@InternationalHD": {
-   "chno": "1118",
-   "name": "Trace Urban International HD",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceUrban.fr@SouthernAfrica": {
-   "chno": "1119",
-   "name": "Trace Urban Southern Africa",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "TraceVanillaIslands.fr@SD": {
-   "chno": "154",
-   "name": "Trace Vanilla Islands",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -1053,5 +777,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-11-05T14:37:47"
+ "last_run": "2026-11-06T02:37:48"
 }
