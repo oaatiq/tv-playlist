@@ -162,12 +162,6 @@
    "since": "2026-11-05",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LollywoodHDTV.cd@SD": {
-   "chno": "1151",
-   "name": "Lollywood HD TV",
-   "since": "2026-10-30",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
    "name": "Master Chefs Academy TV",
@@ -452,6 +446,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "D3TV.ml@SD": {
+   "chno": "1165",
+   "name": "D3 TV",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "DBSTV.lc@SD": {
    "chno": "1311",
    "name": "DBS TV",
@@ -482,16 +482,10 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "EstrellaTV.us@WMBCTV": {
-   "chno": "644",
-   "name": "Estrella TV WMBC-TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 401: Unauthorized"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "1359",
-   "name": "FORT TV",
-   "runs": 1,
+  "Evtele.cg@SD": {
+   "chno": "1171",
+   "name": "Ev-tele",
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
@@ -530,11 +524,17 @@
    "runs": 3,
    "why": "frozen"
   },
-  "IsaacTV.pk@SD": {
-   "chno": "1278",
-   "name": "Isaac TV",
+  "HolyQuranRadio.sa@SD": {
+   "chno": "235",
+   "name": "Holy Quran Radio",
    "runs": 1,
-   "why": "variant HTTPError"
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "KIIOLD104.us@SD": {
+   "chno": "851",
+   "name": "KIIO-LD 10.4",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 503: Service Unavailable"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -546,6 +546,12 @@
    "chno": "3772",
    "name": "LBFD RTV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LittleGuyanaTV.us@SD": {
+   "chno": "1042",
+   "name": "Little Guyana TV",
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LittoralFMTV.fr@SD": {
@@ -560,14 +566,8 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LollywoodHDTV.cd@SD": {
-   "chno": "1151",
-   "name": "Lollywood HD TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "MTV.de@SD": {
-   "chno": "1223",
+   "chno": "1222",
    "name": "MTV (Germany)",
    "runs": 1,
    "why": "frozen"
@@ -680,6 +680,18 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RadioTeleFullGospel.ht@SD": {
+   "chno": "1151",
+   "name": "Radio Tele Full Gospel",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "RadioTeleHit.ht@SD": {
+   "chno": "1153",
+   "name": "Radio Tele Hit",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RakutenTVComedyMovies.es@Finland": {
    "chno": "3865",
    "name": "Rakuten TV Comedy Movies Finland",
@@ -746,18 +758,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "TV1.rw@SD": {
-   "chno": "1305",
-   "name": "TV1 (Rwanda)",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "TeleBoston.us@SD": {
-   "chno": "672",
-   "name": "Tele Boston",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TelePam.us@SD": {
    "chno": "1160",
    "name": "Tele Pam",
@@ -795,5 +795,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-11-06T14:37:31"
+ "last_run": "2026-11-07T14:37:39"
 }
