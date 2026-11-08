@@ -108,12 +108,6 @@
    "since": "2026-11-03",
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "Evtele.cg@SD": {
-   "chno": "1172",
-   "name": "Ev-tele",
-   "since": "2026-11-08",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "FRBC4700001XG": {
    "chno": "1072",
    "name": "Génération Sitcoms",
@@ -258,12 +252,6 @@
    "since": "2026-10-29",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "NidaeAlIslamRadio.sa@SD": {
-   "chno": "243",
-   "name": "Nidae AlIslam Radio",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "NorCastWeather.us@HD": {
    "chno": "561",
    "name": "NorCast Weather",
@@ -286,6 +274,12 @@
    "chno": "1698",
    "name": "QVC UK Ⓢ",
    "since": "2026-10-27",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RadioTeleHit.ht@SD": {
+   "chno": "1153",
+   "name": "Radio Tele Hit",
+   "since": "2026-11-08",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVComedyMovies.es@Finland": {
@@ -386,18 +380,6 @@
   }
  },
  "failing": {
-  "30AGolfKingdom.us@SD": {
-   "chno": "590",
-   "name": "30A Golf Kingdom",
-   "runs": 1,
-   "why": "variant RemoteDisconnected"
-  },
-  "30AInvestmentPitch.us@SD": {
-   "chno": "510",
-   "name": "30A Investment Pitch",
-   "runs": 1,
-   "why": "variant RemoteDisconnected"
-  },
   "ABC.us@WMARTV": {
    "chno": "963",
    "name": "ABC WMAR-TV",
@@ -452,6 +434,30 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "AsharqRadio.sa@SD": {
+   "chno": "230",
+   "name": "Asharq Radio",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CANTV19.us@SD": {
+   "chno": "973",
+   "name": "CAN TV19",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CANTV21.us@SD": {
+   "chno": "974",
+   "name": "CAN TV21",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CANTV36.us@SD": {
+   "chno": "976",
+   "name": "CAN TV36",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
@@ -471,9 +477,9 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "ChandelTV.tg@SD": {
-   "chno": "1186",
+   "chno": "1184",
    "name": "Chandel TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "D3TV.ml@SD": {
@@ -489,9 +495,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DRTVInternational.cg@SD": {
-   "chno": "1174",
+   "chno": "1172",
    "name": "DRTV International",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DiyaTV.us@SD": {
@@ -518,29 +524,11 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "EbS.be@SD": {
-   "chno": "1085",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
   "EstrellaTV.us@WMBCTV": {
    "chno": "643",
    "name": "Estrella TV WMBC-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
-  },
-  "Evtele.cg@SD": {
-   "chno": "1172",
-   "name": "Ev-tele",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "1359",
-   "name": "FORT TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -553,12 +541,6 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
-  },
-  "ForYouTV.cm@SD": {
-   "chno": "1135",
-   "name": "For You TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -584,28 +566,10 @@
    "runs": 3,
    "why": "frozen"
   },
-  "HolyQuranRadio.sa@SD": {
-   "chno": "235",
-   "name": "Holy Quran Radio",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "HopeChannelInterAmericaEnglish.us@SD": {
-   "chno": "933",
-   "name": "Hope Channel Inter-America English",
-   "runs": 1,
-   "why": "TimeoutError: The read operation timed out"
-  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "KernCountyTV.us@SD": {
-   "chno": "548",
-   "name": "Kern County TV",
-   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LBFDRTV.cd@SD": {
@@ -635,7 +599,7 @@
   "MNT.us@WWORTV": {
    "chno": "1001",
    "name": "MNT WWOR-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
   },
   "MasterChefsAcademyTV.uk@HD": {
@@ -716,12 +680,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "NidaeAlIslamRadio.sa@SD": {
-   "chno": "243",
-   "name": "Nidae AlIslam Radio",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "NorCastWeather.us@HD": {
    "chno": "561",
    "name": "NorCast Weather",
@@ -746,10 +704,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RadioTeleGinen.ht@SD": {
+   "chno": "1152",
+   "name": "Radio Tele Ginen",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RadioTeleHit.ht@SD": {
-   "chno": "1154",
+   "chno": "1153",
    "name": "Radio Tele Hit",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVComedyMovies.es@Finland": {
@@ -818,6 +782,18 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "TV1.rw@SD": {
+   "chno": "1303",
+   "name": "TV1 (Rwanda)",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "TVFamille.mq@SD": {
+   "chno": "1165",
+   "name": "TV Famille",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "TelePam.us@SD": {
    "chno": "1160",
    "name": "Tele Pam",
@@ -847,13 +823,7 @@
    "name": "Universal Crime",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "WWONTVChannel48.us@SD": {
-   "chno": "688",
-   "name": "WWON-TV Channel 48",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-08T02:37:54"
+ "last_run": "2026-11-08T14:37:33"
 }
