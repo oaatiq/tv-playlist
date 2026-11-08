@@ -72,6 +72,12 @@
    "since": "2026-10-23",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "D3TV.ml@SD": {
+   "chno": "1166",
+   "name": "D3 TV",
+   "since": "2026-11-08",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "DBSTV.lc@SD": {
    "chno": "1311",
    "name": "DBS TV",
@@ -101,6 +107,12 @@
    "name": "Duck Dynasty",
    "since": "2026-11-03",
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
+  },
+  "Evtele.cg@SD": {
+   "chno": "1172",
+   "name": "Ev-tele",
+   "since": "2026-11-08",
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -148,6 +160,12 @@
    "chno": "3772",
    "name": "LBFD RTV",
    "since": "2026-10-18",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LittleGuyanaTV.us@SD": {
+   "chno": "1042",
+   "name": "Little Guyana TV",
+   "since": "2026-11-08",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LittoralFMTV.fr@SD": {
@@ -348,12 +366,6 @@
    "since": "2026-10-13",
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "TeleZoukla.mq@SD": {
-   "chno": "1171",
-   "name": "Tele Zoukla",
-   "since": "2026-11-05",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TerraMaterWILD.de@English": {
    "chno": "1648",
    "name": "Terra Mater WILD English",
@@ -374,6 +386,18 @@
   }
  },
  "failing": {
+  "30AGolfKingdom.us@SD": {
+   "chno": "590",
+   "name": "30A Golf Kingdom",
+   "runs": 1,
+   "why": "variant RemoteDisconnected"
+  },
+  "30AInvestmentPitch.us@SD": {
+   "chno": "510",
+   "name": "30A Investment Pitch",
+   "runs": 1,
+   "why": "variant RemoteDisconnected"
+  },
   "ABC.us@WMARTV": {
    "chno": "963",
    "name": "ABC WMAR-TV",
@@ -446,16 +470,28 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "ChandelTV.tg@SD": {
+   "chno": "1186",
+   "name": "Chandel TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "D3TV.ml@SD": {
-   "chno": "1165",
+   "chno": "1166",
    "name": "D3 TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DBSTV.lc@SD": {
    "chno": "1311",
    "name": "DBS TV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "DRTVInternational.cg@SD": {
+   "chno": "1174",
+   "name": "DRTV International",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DiyaTV.us@SD": {
@@ -482,10 +518,28 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "EbS.be@SD": {
+   "chno": "1085",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "EstrellaTV.us@WMBCTV": {
+   "chno": "643",
+   "name": "Estrella TV WMBC-TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 401: Unauthorized"
+  },
   "Evtele.cg@SD": {
-   "chno": "1171",
+   "chno": "1172",
    "name": "Ev-tele",
-   "runs": 2,
+   "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "FORTTV.ug@SD": {
+   "chno": "1359",
+   "name": "FORT TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
@@ -499,6 +553,12 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
+  },
+  "ForYouTV.cm@SD": {
+   "chno": "1135",
+   "name": "For You TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -527,19 +587,25 @@
   "HolyQuranRadio.sa@SD": {
    "chno": "235",
    "name": "Holy Quran Radio",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "KIIOLD104.us@SD": {
-   "chno": "851",
-   "name": "KIIO-LD 10.4",
+  "HopeChannelInterAmericaEnglish.us@SD": {
+   "chno": "933",
+   "name": "Hope Channel Inter-America English",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 503: Service Unavailable"
+   "why": "TimeoutError: The read operation timed out"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "KernCountyTV.us@SD": {
+   "chno": "548",
+   "name": "Kern County TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LBFDRTV.cd@SD": {
@@ -551,7 +617,7 @@
   "LittleGuyanaTV.us@SD": {
    "chno": "1042",
    "name": "Little Guyana TV",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LittoralFMTV.fr@SD": {
@@ -566,11 +632,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "MTV.de@SD": {
-   "chno": "1222",
-   "name": "MTV (Germany)",
+  "MNT.us@WWORTV": {
+   "chno": "1001",
+   "name": "MNT WWOR-TV",
    "runs": 1,
-   "why": "frozen"
+   "why": "HTTPError: HTTP Error 401: Unauthorized"
   },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
@@ -680,16 +746,10 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "RadioTeleFullGospel.ht@SD": {
-   "chno": "1151",
-   "name": "Radio Tele Full Gospel",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
   "RadioTeleHit.ht@SD": {
-   "chno": "1153",
+   "chno": "1154",
    "name": "Radio Tele Hit",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVComedyMovies.es@Finland": {
@@ -770,12 +830,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "TeleZoukla.mq@SD": {
-   "chno": "1171",
-   "name": "Tele Zoukla",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TerraMaterWILD.de@English": {
    "chno": "1648",
    "name": "Terra Mater WILD English",
@@ -793,7 +847,13 @@
    "name": "Universal Crime",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "WWONTVChannel48.us@SD": {
+   "chno": "688",
+   "name": "WWON-TV Channel 48",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-07T14:37:39"
+ "last_run": "2026-11-08T02:37:54"
 }
