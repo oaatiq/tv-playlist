@@ -54,6 +54,24 @@
    "since": "2026-10-30",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "CANTV19.us@SD": {
+   "chno": "974",
+   "name": "CAN TV19",
+   "since": "2026-11-09",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CANTV21.us@SD": {
+   "chno": "975",
+   "name": "CAN TV21",
+   "since": "2026-11-09",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CANTV36.us@SD": {
+   "chno": "977",
+   "name": "CAN TV36",
+   "since": "2026-11-09",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
@@ -64,12 +82,6 @@
    "chno": "798",
    "name": "CBS KMTV-TV",
    "since": "2026-10-29",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ChandelTV.tg@SD": {
-   "chno": "1185",
-   "name": "Chandel TV",
-   "since": "2026-11-09",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "D3TV.ml@SD": {
@@ -392,6 +404,36 @@
   }
  },
  "failing": {
+  "3ABNEnglish.us@SD": {
+   "chno": "913",
+   "name": "3ABN English",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "3ABNFrench.us@SD": {
+   "chno": "914",
+   "name": "3ABN French",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "3ABNKids.us@SD": {
+   "chno": "757",
+   "name": "3ABN Kids",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "3ABNPraiseHimMusicNetwork.us@SD": {
+   "chno": "799",
+   "name": "3ABN Praise Him Music Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "3ABNProclaimNetwork.us@SD": {
+   "chno": "915",
+   "name": "3ABN Proclaim! Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
   "ABC.us@WMARTV": {
    "chno": "963",
    "name": "ABC WMAR-TV",
@@ -449,37 +491,37 @@
   "BetterHealthTV.us@SD": {
    "chno": "879",
    "name": "Better Health TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "runs": 2,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "BetterLifeNatureChannel.us@SD": {
    "chno": "801",
    "name": "Better Life Nature Channel",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "runs": 2,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "BetterLifeTV.us@SD": {
    "chno": "919",
    "name": "Better Life TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "runs": 2,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "CANTV19.us@SD": {
    "chno": "974",
    "name": "CAN TV19",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CANTV21.us@SD": {
    "chno": "975",
    "name": "CAN TV21",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CANTV36.us@SD": {
    "chno": "977",
    "name": "CAN TV36",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
@@ -494,17 +536,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "Canaf54TV.uk@SD": {
-   "chno": "500",
-   "name": "Canaf54 TV",
+  "CameraSmileTV.us@SD": {
+   "chno": "640",
+   "name": "Camera Smile TV",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
-  "ChandelTV.tg@SD": {
-   "chno": "1185",
-   "name": "Chandel TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+  "CelebritySceneTV.us@SD": {
+   "chno": "1037",
+   "name": "Celebrity Scene TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "D3TV.ml@SD": {
    "chno": "1166",
@@ -523,6 +565,18 @@
    "name": "DRTV International",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "DareToDreamNetwork.us@SD": {
+   "chno": "924",
+   "name": "Dare To Dream Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "DellaTV.it@HD": {
+   "chno": "1240",
+   "name": "DellaTV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "DiyaTV.us@SD": {
    "chno": "2356",
@@ -548,23 +602,17 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "EbS.be@SD": {
-   "chno": "1085",
-   "name": "EbS",
+  "EBS.us@HD": {
+   "chno": "1216",
+   "name": "EBS HD",
    "runs": 1,
-   "why": "frozen"
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
    "name": "Estrella TV WMBC-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
-  },
-  "Evtele.cg@SD": {
-   "chno": "1171",
-   "name": "Ev-tele",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -596,23 +644,53 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
+  "GexTV.cr@HD": {
+   "chno": "1202",
+   "name": "Gex TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "GreaterLoveTV.us@SD": {
+   "chno": "933",
+   "name": "Greater Love TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
   },
-  "HollyWire.us@SD": {
-   "chno": "548",
-   "name": "HollyWire",
+  "HarmonyGospelMusicTV.us@SD": {
+   "chno": "804",
+   "name": "Harmony Gospel Music TV",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 502: Bad Gateway"
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
-  "InooroTV.ke@SD": {
-   "chno": "1252",
-   "name": "Inooro TV",
+  "HollyWire.us@SD": {
+   "chno": "549",
+   "name": "HollyWire",
+   "runs": 2,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "HomebaseTV.za@SD": {
+   "chno": "1319",
+   "name": "Homebase TV",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 403: Forbidden"
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "JBS.us@SD": {
+   "chno": "939",
+   "name": "JBS",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "JeddahRadio.sa@SD": {
+   "chno": "237",
+   "name": "Jeddah Radio",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -625,6 +703,12 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LaVozdeJesusHD.do@HD": {
+   "chno": "1208",
+   "name": "La Voz de Jesus HD",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "LittleGuyanaTV.us@SD": {
    "chno": "1042",
@@ -655,6 +739,12 @@
    "name": "Master Chefs Academy TV",
    "runs": 3,
    "why": "frozen"
+  },
+  "MiracleTV.uk@SD": {
+   "chno": "492",
+   "name": "Miracle TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
@@ -734,17 +824,35 @@
    "runs": 3,
    "why": "variant HTTP 200"
   },
+  "NuViewTV.za@SD": {
+   "chno": "1315",
+   "name": "NuView TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
   "OANPlus.us@KPVMLD": {
    "chno": "1866",
    "name": "OAN Plus KPVM-LD",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "PanafricanMediaTV.cm@SD": {
-   "chno": "1136",
-   "name": "Panafrican Media TV",
+  "OmideIranTV.us@SD": {
+   "chno": "1228",
+   "name": "Omid e Iran TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "PanafricanMediaTV.cm@SD": {
+   "chno": "1135",
+   "name": "Panafrican Media TV",
+   "runs": 2,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "PayvandTV.us@SD": {
+   "chno": "568",
+   "name": "Payvand TV (United States)",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "QVCStyleUK.uk": {
    "chno": "1697",
@@ -757,6 +865,18 @@
    "name": "QVC UK Ⓢ",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "ROVTV.za@SD": {
+   "chno": "1321",
+   "name": "ROV TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "RadiantTV.us@SD": {
+   "chno": "948",
+   "name": "RadiantTV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "RadioTeleHit.ht@SD": {
    "chno": "1153",
@@ -800,6 +920,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "SGTN49.us@SD": {
+   "chno": "1051",
+   "name": "SGTN-49",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
   "SMetroTV.us@HD": {
    "chno": "2367",
    "name": "S Metro TV",
@@ -812,6 +938,18 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "SUMtvEnglish.us@SD": {
+   "chno": "826",
+   "name": "SUMtv English",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "T18.fr@HD": {
+   "chno": "189",
+   "name": "T18",
+   "runs": 1,
+   "why": "frozen"
+  },
   "TBNArmenia.us@SD": {
    "chno": "1061",
    "name": "TBN Armenia",
@@ -823,6 +961,168 @@
    "name": "TR24 Television",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "TVSBowlingNetwork.us@SD": {
+   "chno": "618",
+   "name": "TVS Bowling Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSBoxing.us@SD": {
+   "chno": "619",
+   "name": "TVS Boxing",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSCipherNetwork.us@SD": {
+   "chno": "678",
+   "name": "TVS Cipher Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSClassicMovies.us@SD": {
+   "chno": "717",
+   "name": "TVS Classic Movies",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSClassicSports.us@SD": {
+   "chno": "620",
+   "name": "TVS Classic Sports",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSComedyNetwork.us@SD": {
+   "chno": "679",
+   "name": "TVS Comedy Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSConsumerDirect.us@SD": {
+   "chno": "911",
+   "name": "TVS Consumer Direct",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSDriveInMovie.us@SD": {
+   "chno": "718",
+   "name": "TVS Drive In Movie",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSFamilyChannel.us@SD": {
+   "chno": "795",
+   "name": "TVS Family Channel",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSFlashbackNetwork.us@SD": {
+   "chno": "680",
+   "name": "TVS Flashback Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSHiTops.us@SD": {
+   "chno": "796",
+   "name": "TVS Hi Tops",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSHollywoodHistory.us@SD": {
+   "chno": "865",
+   "name": "TVS Hollywood History",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSMusicNetwork.us@SD": {
+   "chno": "827",
+   "name": "TVS Music Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSNostalgia.us@SD": {
+   "chno": "681",
+   "name": "TVS Nostalgia",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSNostalgiaMovies.us@SD": {
+   "chno": "719",
+   "name": "TVS Nostalgia Movies",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSPetParadeNetwork.us@SD": {
+   "chno": "912",
+   "name": "TVS Pet Parade Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSPinballNetwork.us@SD": {
+   "chno": "621",
+   "name": "TVS Pinball Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSQuizShowNetwork.us@SD": {
+   "chno": "682",
+   "name": "TVS Quiz Show Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSSelectNetwork.us@SD": {
+   "chno": "1060",
+   "name": "TVS Select Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSSportsBureau.us@SD": {
+   "chno": "622",
+   "name": "TVS Sports Bureau",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSTalkNetwork.us@SD": {
+   "chno": "683",
+   "name": "TVS Talk Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSTallyHo.us@SD": {
+   "chno": "684",
+   "name": "TVS Tally Ho",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSTavern.us@SD": {
+   "chno": "685",
+   "name": "TVS Tavern",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSTurbo.us@SD": {
+   "chno": "623",
+   "name": "TVS Turbo",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSVintageNetwork.us@SD": {
+   "chno": "686",
+   "name": "TVS Vintage Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSWesternMovie.us@SD": {
+   "chno": "720",
+   "name": "TVS Western Movie",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TVSWomenSports.us@SD": {
+   "chno": "624",
+   "name": "TVS Women Sports",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "TelePam.us@SD": {
    "chno": "1160",
@@ -842,6 +1142,30 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "TheLoop.us@SD": {
+   "chno": "749",
+   "name": "The Loop",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "ThePointTelevsionNetwork.us@SD": {
+   "chno": "950",
+   "name": "The Point Televsion Network",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TomAndJerry.do@HD": {
+   "chno": "1207",
+   "name": "Tom And Jerry",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "TurismoHD.do@HD": {
+   "chno": "1206",
+   "name": "Turismo HD",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -854,12 +1178,24 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "ZIZTV.kn@SD": {
-   "chno": "1307",
-   "name": "ZIZ TV",
+  "WATCDT571.us@HD": {
+   "chno": "1026",
+   "name": "WATC-DT 57.1",
    "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "WLMB.us@SD": {
+   "chno": "954",
+   "name": "WLMB",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
+  },
+  "theDoveTV.us@SD": {
+   "chno": "952",
+   "name": "theDove TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   }
  },
- "last_run": "2026-11-09T02:37:36"
+ "last_run": "2026-11-09T14:37:27"
 }
