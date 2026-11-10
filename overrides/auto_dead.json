@@ -78,6 +78,12 @@
    "since": "2026-11-02",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "DellaTV.it@HD": {
+   "chno": "1241",
+   "name": "DellaTV",
+   "since": "2026-11-10",
+   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
   "DiyaTV.us@SD": {
    "chno": "2356",
    "name": "Diya TV",
@@ -138,6 +144,12 @@
    "since": "2026-11-04",
    "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
+  "GexTV.cr@HD": {
+   "chno": "1203",
+   "name": "Gex TV",
+   "since": "2026-11-10",
+   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
@@ -155,6 +167,12 @@
    "name": "LBFD RTV",
    "since": "2026-10-18",
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LaVozdeJesusHD.do@HD": {
+   "chno": "1209",
+   "name": "La Voz de Jesus HD",
+   "since": "2026-11-10",
+   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "LittleGuyanaTV.us@SD": {
    "chno": "1042",
@@ -342,12 +360,6 @@
    "since": "2026-10-26",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "TBNArmenia.us@SD": {
-   "chno": "1061",
-   "name": "TBN Armenia",
-   "since": "2026-10-31",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TR24Television.cm@SD": {
    "chno": "1140",
    "name": "TR24 Television",
@@ -372,6 +384,18 @@
    "since": "2026-10-21",
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "TomAndJerry.do@HD": {
+   "chno": "1208",
+   "name": "Tom And Jerry",
+   "since": "2026-11-10",
+   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
+  "TurismoHD.do@HD": {
+   "chno": "1207",
+   "name": "Turismo HD",
+   "since": "2026-11-10",
+   "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -386,18 +410,6 @@
   }
  },
  "failing": {
-  "30AInvestmentPitch.us@SD": {
-   "chno": "512",
-   "name": "30A Investment Pitch",
-   "runs": 1,
-   "why": "variant RemoteDisconnected"
-  },
-  "30ATelevisionChannel.us@SD": {
-   "chno": "630",
-   "name": "30A Television Channel",
-   "runs": 1,
-   "why": "variant RemoteDisconnected"
-  },
   "ABC.us@WMARTV": {
    "chno": "963",
    "name": "ABC WMAR-TV",
@@ -455,7 +467,7 @@
   "AlWoustaTV.ae@SD": {
    "chno": "263",
    "name": "Al Wousta TV",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "CBS.us@KCCI": {
@@ -483,9 +495,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DellaTV.it@HD": {
-   "chno": "1238",
+   "chno": "1241",
    "name": "DellaTV",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "DiyaTV.us@SD": {
@@ -511,12 +523,6 @@
    "name": "Duck Dynasty",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
-  },
-  "EbS.be@SD": {
-   "chno": "1081",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
   },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
@@ -555,22 +561,22 @@
    "why": "URLError: <urlopen error [Errno -2] Name does not resolve>"
   },
   "GexTV.cr@HD": {
-   "chno": "1200",
+   "chno": "1203",
    "name": "Gex TV",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
+  "GreatCommissionTV.ke@SD": {
+   "chno": "1249",
+   "name": "Great Commission TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
-  },
-  "JeddahRadio.sa@SD": {
-   "chno": "237",
-   "name": "Jeddah Radio",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -585,9 +591,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "LaVozdeJesusHD.do@HD": {
-   "chno": "1206",
+   "chno": "1209",
    "name": "La Voz de Jesus HD",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "LittleGuyanaTV.us@SD": {
@@ -613,6 +619,12 @@
    "name": "MNT WWOR-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
+  },
+  "MahaasinTV.tz@SD": {
+   "chno": "1334",
+   "name": "Mahaasin TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
@@ -711,9 +723,9 @@
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "Power1017FM.aw@SD": {
-   "chno": "1189",
+   "chno": "1192",
    "name": "Power 101.7 FM",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "QVCStyleUK.uk": {
@@ -729,8 +741,14 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RHTGuadeloupe.gp@SD": {
-   "chno": "1140",
+   "chno": "1142",
    "name": "RHT Guadeloupe",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "RadioTeleGinen.ht@SD": {
+   "chno": "1151",
+   "name": "Radio Tele Ginen",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -764,6 +782,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RakutenTVTopMovies.es@UK": {
+   "chno": "376",
+   "name": "Rakuten TV Top Movies UK",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 504: Gateway Timeout"
+  },
   "RashidAlMajed.sa@SD": {
    "chno": "1239",
    "name": "Rashid AlMajed",
@@ -788,17 +812,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "TBNArmenia.us@SD": {
-   "chno": "1061",
-   "name": "TBN Armenia",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TR24Television.cm@SD": {
    "chno": "1140",
    "name": "TR24 Television",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "TV1.rw@SD": {
+   "chno": "1302",
+   "name": "TV1 (Rwanda)",
+   "runs": 1,
+   "why": "frozen"
   },
   "TelePam.us@SD": {
    "chno": "1160",
@@ -819,15 +843,15 @@
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "TomAndJerry.do@HD": {
-   "chno": "1205",
+   "chno": "1208",
    "name": "Tom And Jerry",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "TurismoHD.do@HD": {
-   "chno": "1204",
+   "chno": "1207",
    "name": "Turismo HD",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "UniversalComedy.us@SD": {
@@ -843,5 +867,5 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   }
  },
- "last_run": "2026-11-10T02:37:23"
+ "last_run": "2026-11-10T14:37:25"
 }
