@@ -27,6 +27,8 @@ keys on the number — the guide matches on `tvg-id`, the health check remembers
 
 SNRT's EasyBroadcast streams need a token on every playlist request, and that token expires after one hour, so a static link stops working. The Worker fetches and renews the token. It serves only the small `.m3u8` playlists; the video segments come straight from the CDN. Télé Maroc's signed Cloudflare Stream link expires after about 12 hours, so the Worker resolves a fresh one from telemaroc.tv.
 
+Makkah Live (Saudi Al Quran Al Kareem TV, `aloula.sba.sa/en/live/quran`) signs its playlist with a token that lives about 12 seconds. `/aloula/quran.m3u8` asks the site's player API for a fresh one on each tune-in and redirects the box to it; the 24-hour token the box then receives is tied to its own User-Agent, which is why this is a redirect and not a proxy.
+
 ## The `/h/` header routes
 
 XCIPTV ignores `#EXTVLCOPT`, so channels whose CDN checks a `Referer` or `User-Agent` can't carry the header in the playlist. The Worker attaches it instead, and the player sees a plain URL.
@@ -81,6 +83,6 @@ See [RUNBOOK.md](RUNBOOK.md) for step-by-step procedures — rebuilding, editing
 reaching the boxes, adding this playlist to another XCIPTV device, and diagnosing a channel that
 will not play. See [BUILD-DURABILITY.md](BUILD-DURABILITY.md) for what lives in the overrides and why.
 
-**Worker:** run `cd worker && npx wrangler deploy`.
+**Worker:** deployed by GitHub (`.github/workflows/deploy-worker.yml`) whenever `worker/` changes on `main`, or on demand from the Actions tab. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. By hand: `cd worker && npx wrangler deploy`.
 
 2M and Al Maghribia HD (labelled "(backup)") are third-party re-streams from Net Sat AB, Sweden, and may disappear without notice. 2M sits just before 2M Monde because the Globecast 2M Monde feed stutters on the box while this one runs at a steady 25 fps, about 20 s behind live.

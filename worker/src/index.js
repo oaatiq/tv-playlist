@@ -8,6 +8,10 @@
 //
 // Télé Maroc's Cloudflare Stream URL is signed (JWT in the path, ~12 h). /telemaroc.m3u8
 // resolves it from telemaroc.tv the same way the Catch-up TV & More add-on does and redirects.
+//
+// Aloula (Saudi Broadcasting Authority, aloula.sba.sa) signs its master playlist with an
+// Akamai token that lives about 12 seconds. /aloula/<slug>.m3u8 asks the site's own player
+// API for a fresh one on every tune-in and redirects to the signed master.
 
 const CDN = 'https://cdn.live.easybroadcast.io/abr_corp/';
 const FEEDS_API = 'https://snrtlive.atlashoster.net/api/feeds-by-category?lang=fr&category=3';
@@ -111,6 +115,14 @@ const FAILOVER = {
     'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist.m3u8',
     'https://cdn.live.easybroadcast.io/abr_corp/83_medi1tv-afrique_tm7tu45/playlist_dvr.m3u8',
   ],
+};
+
+// slug -> channel id on aloula.faulio.com (GET /api/v1/channels lists them; `url` is the
+// slug in https://aloula.sba.sa/en/live/<slug>). The other Aloula TV channels in the
+// playlist come from Shahid's CDN on fixed URLs and do not need this.
+const ALOULA_API = 'https://aloula.faulio.com/api/v1.1/channels/';
+const ALOULA = {
+  'quran': 7, // Al Quran Al Kareem TV - Masjid al-Haram, Makkah, live 24 h
 };
 
 const tokens = new Map(); // event -> { q, until }
@@ -250,6 +262,33 @@ async function teleMarocUrl() {
   return url;
 }
 
+// The player API returns .../playlist_dvr.m3u8?hdnts=exp=<now + 9..12 s>~acl=/<path>/*~hmac=...
+// Fetched with that short token, the master lists its variants with a second token in the
+// *path* (hdntl=exp=<now + 24 h>), and the variant and its segments need nothing else.
+//
+// A redirect, not a proxy, and it has to be: that 24 h token is bound to the User-Agent
+// that asked for the master. Measured 2026-11-12 - master and variant fetched with the
+// same UA 200, with different UAs 403, both ways round. A master fetched here would hand
+// the box variant URLs only this Worker's UA can open. So the box is sent to the signed
+// master and fetches it itself, well inside the short token's life, and playlists and
+// video go straight from the CDN to the box; this Worker is not asked again until the
+// next tune-in. Each tune-in mints its own 24 h, so nothing is cached. A box left on the
+// channel past 24 h gets a 403 on the variant and has to re-open the channel.
+//
+// playlist.m3u8 rather than the API's playlist_dvr.m3u8: same renditions under the same
+// acl (1080p/480p/360p), without the hours-long rewind window the box would re-download
+// every 4 seconds. Master -> variant -> segment all 200 on 2026-11-12.
+async function aloula(slug) {
+  const api = await fetch(ALOULA_API + ALOULA[slug] + '/player', { headers: { 'User-Agent': UA, Accept: 'application/json' } });
+  if (!api.ok) throw new Error('aloula player API ' + api.status);
+  const hls = ((await api.json()).streams || {}).hls;
+  if (!hls || typeof hls !== 'string') throw new Error('aloula player API: no hls stream');
+  return new Response(null, { // not Response.redirect: this must never be cached
+    status: 302,
+    headers: { location: hls.replace('/playlist_dvr.m3u8', '/playlist.m3u8'), 'cache-control': 'no-store' },
+  });
+}
+
 // Every URI in a proxied channel's playlists is routed back through here, because the
 // CDN checks the header on segments too. `u` is restricted to the channel's own hosts
 // so this can't be used as an open proxy.
@@ -307,6 +346,8 @@ export default {
           + 'p/chunks.m3u8?' + (await token(event)), 302);
       }
       if (pathname === '/telemaroc.m3u8') return Response.redirect(await teleMarocUrl(), 302);
+      m = pathname.match(/^\/aloula\/([a-z0-9-]+)\.m3u8$/);
+      if (m && ALOULA[m[1]]) return await aloula(m[1]);
       m = pathname.match(/^\/f\/([a-z0-9-]+)\.m3u8$/);
       if (m && FAILOVER[m[1]]) return await failover(m[1]);
       m = pathname.match(/^\/h\/([a-z0-9-]+)\.m3u8$/);
@@ -320,7 +361,8 @@ export default {
       if (pathname === '/') {
         const list = Object.keys(SNRT).map((s) => `/snrt/${s}.m3u8`).concat('/telemaroc.m3u8')
           .concat(Object.keys(PROXY).map((s) => `/h/${s}.m3u8`))
-          .concat(Object.keys(FAILOVER).map((s) => `/f/${s}.m3u8`));
+          .concat(Object.keys(FAILOVER).map((s) => `/f/${s}.m3u8`))
+          .concat(Object.keys(ALOULA).map((s) => `/aloula/${s}.m3u8`));
         return new Response(list.join('\n') + '\n', { headers: { 'content-type': 'text/plain' } });
       }
       return new Response('not found\n', { status: 404 });
