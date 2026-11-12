@@ -1,5 +1,41 @@
 {
  "dead": {
+  "30AGolfKingdom.us@SD": {
+   "chno": "591",
+   "name": "30A Golf Kingdom",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
+  "30AInvestmentPitch.us@SD": {
+   "chno": "511",
+   "name": "30A Investment Pitch",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
+  "30ALuxeLifeDiscovered.us@SD": {
+   "chno": "869",
+   "name": "30A Luxe Life Discovered",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
+  "30ATelevisionChannel.us@SD": {
+   "chno": "629",
+   "name": "30A Television Channel",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
+  "30ATheBeachShow.us@SD": {
+   "chno": "870",
+   "name": "30A The Beach Show",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
+  "30AWeLoveCars.us@SD": {
+   "chno": "871",
+   "name": "30A We Love Cars",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
   "ABC.us@WMARTV": {
    "chno": "963",
    "name": "ABC WMAR-TV",
@@ -36,23 +72,11 @@
    "since": "2026-10-16",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfrocultureTV.ci@SD": {
-   "chno": "1141",
-   "name": "Afroculture TV",
-   "since": "2026-11-06",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
    "since": "2026-10-13",
    "why": "frozen"
-  },
-  "AlRiyadhRadio.sa@SD": {
-   "chno": "225",
-   "name": "Al Riyadh Radio",
-   "since": "2026-10-30",
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
    "chno": "2292",
@@ -216,6 +240,12 @@
    "since": "2026-10-13",
    "why": "variant HTTPError"
   },
+  "MonteCarloDigitalTelevision.fr@HD": {
+   "chno": "177",
+   "name": "Monte Carlo Digital Television",
+   "since": "2026-11-12",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "MoozLove.ro@SD": {
    "chno": "3954",
    "name": "Mooz Love",
@@ -372,6 +402,12 @@
    "since": "2026-10-26",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "ScreenDreams.us@SD": {
+   "chno": "808",
+   "name": "Screen Dreams",
+   "since": "2026-11-12",
+   "why": "variant HTTPError"
+  },
   "TR24Television.cm@SD": {
    "chno": "1140",
    "name": "TR24 Television",
@@ -423,39 +459,39 @@
  },
  "failing": {
   "30AGolfKingdom.us@SD": {
-   "chno": "592",
+   "chno": "591",
    "name": "30A Golf Kingdom",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "30AInvestmentPitch.us@SD": {
-   "chno": "512",
+   "chno": "511",
    "name": "30A Investment Pitch",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "30ALuxeLifeDiscovered.us@SD": {
-   "chno": "870",
+   "chno": "869",
    "name": "30A Luxe Life Discovered",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "30ATelevisionChannel.us@SD": {
-   "chno": "630",
+   "chno": "629",
    "name": "30A Television Channel",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "30ATheBeachShow.us@SD": {
-   "chno": "871",
+   "chno": "870",
    "name": "30A The Beach Show",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "30AWeLoveCars.us@SD": {
-   "chno": "872",
+   "chno": "871",
    "name": "30A We Love Cars",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "ABC.us@WMARTV": {
@@ -494,23 +530,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfrocultureTV.ci@SD": {
-   "chno": "1141",
-   "name": "Afroculture TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
    "runs": 3,
    "why": "frozen"
-  },
-  "AlRiyadhRadio.sa@SD": {
-   "chno": "225",
-   "name": "Al Riyadh Radio",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
    "chno": "2292",
@@ -522,6 +546,18 @@
    "chno": "798",
    "name": "CBS KMTV-TV",
    "runs": 3,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "CBSNewsMiami.us@SD": {
+   "chno": "527",
+   "name": "CBS News Miami",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "ChandelTV.tg@SD": {
+   "chno": "1183",
+   "name": "Chandel TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "D3TV.ml@SD": {
@@ -566,17 +602,29 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "Esaie45Tele.cg@SD": {
-   "chno": "1171",
-   "name": "Esaie 45 Tele",
+  "EbS.be@SD": {
+   "chno": "1084",
+   "name": "EbS",
    "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
+   "why": "frozen"
   },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
    "name": "Estrella TV WMBC-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
+  },
+  "Europe1TV.fr@HD": {
+   "chno": "37",
+   "name": "Europe 1 TV",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "Evtele.cg@SD": {
+   "chno": "1169",
+   "name": "Ev-tele",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -589,6 +637,12 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
+  },
+  "FaithUK.uk@SD": {
+   "chno": "487",
+   "name": "Faith UK",
+   "runs": 1,
+   "why": "variant HTTPError"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -619,12 +673,6 @@
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
-  },
-  "IsaacTV.pk@SD": {
-   "chno": "1270",
-   "name": "Isaac TV",
-   "runs": 1,
-   "why": "variant HTTPError"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -674,6 +722,24 @@
    "runs": 3,
    "why": "frozen"
   },
+  "Medi1TVArabic.ma": {
+   "chno": "12",
+   "name": "Medi1 Arabic",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "Medi1TVMaghreb.ma": {
+   "chno": "11",
+   "name": "Medi1 Maghreb",
+   "runs": 1,
+   "why": "frozen"
+  },
+  "Medi1TVMaghreb.ma@SD": {
+   "chno": "21",
+   "name": "Medi1TV Maghreb (alt)",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "MiracleTVPlus.ci@SD": {
    "chno": "3799",
    "name": "Miracle TV+",
@@ -689,7 +755,7 @@
   "MonteCarloDigitalTelevision.fr@HD": {
    "chno": "177",
    "name": "Monte Carlo Digital Television",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MoozLove.ro@SD": {
@@ -789,9 +855,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RadioTeleGinen.ht@SD": {
-   "chno": "1152",
+   "chno": "1151",
    "name": "Radio Tele Ginen",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RadioTeleHit.ht@SD": {
@@ -836,6 +902,12 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
+  "SBNTV.us@SD": {
+   "chno": "948",
+   "name": "SBN TV",
+   "runs": 1,
+   "why": "frozen"
+  },
   "SCorbyTV.us@HD": {
    "chno": "2093",
    "name": "S Corby TV",
@@ -855,15 +927,15 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ScreenDreams.us@SD": {
-   "chno": "809",
+   "chno": "808",
    "name": "Screen Dreams",
-   "runs": 2,
+   "runs": 3,
    "why": "variant HTTPError"
   },
   "SkyNewsWeather.uk@SD": {
    "chno": "296",
    "name": "Sky News Weather",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TR24Television.cm@SD": {
@@ -913,7 +985,13 @@
    "name": "Universal Crime",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "WWONTVChannel48.us@SD": {
+   "chno": "688",
+   "name": "WWON-TV Channel 48",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-11T14:37:45"
+ "last_run": "2026-11-12T02:37:40"
 }
