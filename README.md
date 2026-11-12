@@ -27,7 +27,7 @@ keys on the number — the guide matches on `tvg-id`, the health check remembers
 
 SNRT's EasyBroadcast streams need a token on every playlist request, and that token expires after one hour, so a static link stops working. The Worker fetches and renews the token. It serves only the small `.m3u8` playlists; the video segments come straight from the CDN. Télé Maroc's signed Cloudflare Stream link expires after about 12 hours, so the Worker resolves a fresh one from telemaroc.tv.
 
-Makkah Live (Saudi Al Quran Al Kareem TV, `aloula.sba.sa/en/live/quran`) signs its playlist with a token that lives about 12 seconds. `/aloula/quran.m3u8` asks the site's player API for a fresh one on each tune-in and redirects the box to it; the 24-hour token the box then receives is tied to its own User-Agent, which is why this is a redirect and not a proxy.
+Makkah Live (Saudi Al Quran Al Kareem TV, `aloula.sba.sa/en/live/quran`) signs its playlist with a token that lives about 12 seconds. Madinah Live (Al Sunnah Al Nabawiyah TV, `/aloula/sunna.m3u8`) works the same way. `/aloula/quran.m3u8` asks the site's player API for a fresh one on each tune-in and redirects the box to it; the 24-hour token the box then receives is tied to its own User-Agent, which is why this is a redirect and not a proxy.
 
 ## The `/h/` header routes
 
