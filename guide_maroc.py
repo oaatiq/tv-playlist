@@ -13,6 +13,8 @@ Sources, per channel, in order; the first that answers wins:
   * aljazeera.com  Al Jazeera's own schedule page: a week or more in one request per channel
   * tv.sfr.fr      SFR's web guide, one file a day for all its channels (French titles)
   * orange.fr      Orange's guide API, one channel a day at a time (French titles)
+  * prayer         no request at all: the five daily prayers at Makkah or Madinah, calculated,
+                   for the two mosque channels, which no source has a schedule of (below)
 They are the ones iptv-org/epg uses for these channels (sites/<site>/<site>.config.js there),
 redone here with the standard library alone, because this runs on the router, which has
 python3 and nothing else.
@@ -35,6 +37,7 @@ import gzip
 import html
 import io
 import json
+import math
 import os
 import re
 import sys
@@ -111,6 +114,20 @@ SHAHID = [
     ('Tarab.sa@SD', 'Tarab', '49922763510387'),
 ]
 CHANNELS += [{'id': i, 'name': n, 'sources': [('shahid', s)]} for i, n, s in SHAHID]
+
+# The two mosque channels: Masjid al-Haram and Masjid an-Nabawi, live round the clock. Nobody
+# publishes a schedule of them. Checked 2026-11-12: Shahid lists both and answers "schedule not
+# available" for every day; EPGShare's AE1 has "Saudi Quran TV HD" and "Saudi Sunna TV HD"
+# carrying Cartoon Network's programmes (the same schedule as five other channels), and an
+# "en: Saudi Quran" that is one title in four-hour blocks. What is actually on is known all the
+# same - the five prayers - so the guide is calculated from the sun (the `prayer` source below).
+# Shahid is asked first: should it ever have the real schedule, that wins by itself.
+CHANNELS += [
+    {'id': 'AlQuranAlKareemTV.sa@SD', 'name': 'Makkah Live',
+     'sources': [('shahid', '946946'), ('prayer', 'makkah')]},
+    {'id': 'AlSunnahAlNabawiyahTV.sa@SD', 'name': 'Madinah Live',
+     'sources': [('shahid', '946942'), ('prayer', 'madinah')]},
+]
 
 KEEP_PAST_HOURS = 12
 DAYS = 2                    # today and tomorrow
@@ -361,7 +378,98 @@ def aljazeera(site_id, ctx):
     return aljazeera_parse(data, 'en' if site == 'aje' else 'ar')
 
 
-SOURCES = {'snrt': snrt, 'shahid': shahid, 'aljazeera': aljazeera, 'sfr': sfr, 'orange': orange}
+# ---------- prayer times, calculated ----------
+
+# (latitude, longitude, the mosque, the city) - Saudi Arabia is on UTC+3 all year.
+MOSQUES = {'makkah': (21.4225, 39.8262, 'Masjid al-Haram', 'Makkah'),
+           'madinah': (24.4672, 39.6111, 'Masjid an-Nabawi', 'Madinah')}
+SAUDI_UTC = 3
+PRAYERS = [('fajr', 'Fajr', 45), ('dhuhr', 'Dhuhr', 40), ('asr', 'Asr', 40),
+           ('maghrib', 'Maghrib', 35), ('isha', 'Isha', 45)]     # key, name, minutes shown
+
+
+def hijri_month(date):
+    """The month of the Islamic year, by the arithmetic (tabular) calendar: a day or two from
+    the sighted one at worst. Only used to know whether it is Ramadan (month 9)."""
+    days = date.toordinal() - 227015                    # days since 1 Muharram AH 1
+    cycle, rest = divmod(days, 10631)                    # 30 years
+    year = 0
+    for year in range(30):
+        length = 355 if (11 * (year + 1) + 14) % 30 < 11 else 354
+        if rest < length:
+            break
+        rest -= length
+    month = 0
+    for month in range(12):
+        length = 30 if month % 2 == 0 or (month == 11 and (11 * (year + 1) + 14) % 30 < 11) else 29
+        if rest < length:
+            break
+        rest -= length
+    return month + 1
+
+
+def prayer_times(date, lat, lng):
+    """-> {'fajr': seconds since 1970, ...} for that local day, the way the Umm al-Qura calendar
+    does it: Fajr with the sun 18.5 degrees under the horizon, Dhuhr when it crosses the
+    meridian, Asr when a shadow is its object's length longer than at noon, Maghrib at sunset,
+    Isha 90 minutes after Maghrib (120 in Ramadan). The sun's position is the low-precision
+    formula of the Astronomical Almanac, good to a fraction of a minute until 2050."""
+    rad, deg = math.radians, math.degrees
+    # days since 2000-01-01 12:00 UTC, at local noon
+    d = date.toordinal() - datetime.date(2000, 1, 1).toordinal() - lng / 360.0
+    g = rad((357.529 + 0.98560028 * d) % 360)
+    q = (280.459 + 0.98564736 * d) % 360
+    L = rad((q + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g)) % 360)
+    e = rad(23.439 - 0.00000036 * d)
+    ra = deg(math.atan2(math.cos(e) * math.sin(L), math.cos(L))) % 360 / 15.0
+    decl = math.asin(math.sin(e) * math.sin(L))
+    eqt = q / 15.0 - ra
+    eqt -= 24 * round(eqt / 24.0)                        # hours, a quarter of an hour at most
+    noon = 12 + SAUDI_UTC - lng / 15.0 - eqt             # local clock time of the meridian
+
+    def arc(altitude):                                   # hours from noon to that altitude
+        x = (math.sin(rad(altitude)) - math.sin(rad(lat)) * math.sin(decl)) / (
+            math.cos(rad(lat)) * math.cos(decl))
+        return deg(math.acos(x)) / 15.0
+    asr_altitude = deg(math.atan(1.0 / (1.0 + math.tan(abs(rad(lat) - decl)))))
+    maghrib = noon + arc(-0.833)
+    hours = {'fajr': noon - arc(-18.5), 'dhuhr': noon, 'asr': noon + arc(asr_altitude),
+             'maghrib': maghrib, 'isha': maghrib + (2.0 if hijri_month(date) == 9 else 1.5)}
+    midnight = (datetime.datetime(date.year, date.month, date.day, tzinfo=datetime.timezone.utc).timestamp()
+                - SAUDI_UTC * 3600)
+    return {k: midnight + round(h * 60) * 60 for k, h in hours.items()}
+
+
+def prayer(site_id, ctx):
+    """A schedule for a channel that shows a mosque all day: each prayer from its adhan, and
+    the live picture in between, saying which prayer is next and when. Nothing is fetched."""
+    lat, lng, mosque, city = MOSQUES[site_id]
+    local = datetime.timezone(datetime.timedelta(hours=SAUDI_UTC))
+    clock = lambda t: datetime.datetime.fromtimestamp(t, local).strftime('%H:%M')
+    note = ('Prayer times are calculated for %s (Umm al-Qura method), not taken from the '
+            'broadcaster; they can be a minute or two out.' % city)
+    first = datetime.datetime.strptime(ctx['days'][0], '%Y%m%d').date()
+    events = []                                          # (start, stop, name), in order
+    for n in range(-1, len(ctx['days']) + 1):            # a day either side: the nights join up
+        date = first + datetime.timedelta(days=n)
+        times = prayer_times(date, lat, lng)
+        for key, name, minutes in PRAYERS:
+            if key == 'dhuhr' and date.weekday() == 4:   # Friday: the sermon, then the prayer
+                name, minutes = "Jumu'ah", 60
+            events.append((times[key], times[key] + minutes * 60, name))
+    out = []
+    for (start, stop, name), (next_start, _, next_name) in zip(events, events[1:]):
+        out.append({'start': start, 'stop': stop, 'title': '%s prayer - %s' % (name, mosque), 'lang': 'en',
+                    'desc': '%s adhan at %s %s time. %s' % (name, clock(start), city, note),
+                    'category': 'Religion'})
+        out.append({'start': stop, 'stop': next_start, 'title': 'Live from %s' % mosque, 'lang': 'en',
+                    'desc': 'Next: %s at %s %s time. %s' % (next_name, clock(next_start), city, note),
+                    'category': 'Religion'})
+    return out
+
+
+SOURCES = {'snrt': snrt, 'shahid': shahid, 'aljazeera': aljazeera, 'sfr': sfr, 'orange': orange,
+           'prayer': prayer}
 
 
 def placeholder(programmes):
@@ -390,7 +498,8 @@ def fetch_all(now):
             # A source that answers with nothing current is no better than one that fails.
             got = [p for p in got if p['stop'] > now - KEEP_PAST_HOURS * 3600]
             # SFR's blocks are one title all day; Shahid's and Al Jazeera's real channels repeat theirs
-            if site not in ('shahid', 'aljazeera') and placeholder(got):
+            # (and `prayer` shows the same live picture between prayers, which is what is on)
+            if site not in ('shahid', 'aljazeera', 'prayer') and placeholder(got):
                 log('  %-22s %-6s only a placeholder ("%s")' % (ch['id'], site, got[0]['title'][:40]))
                 continue
             if any(p['stop'] > now for p in got):
