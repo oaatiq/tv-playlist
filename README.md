@@ -83,6 +83,6 @@ See [RUNBOOK.md](RUNBOOK.md) for step-by-step procedures — rebuilding, editing
 reaching the boxes, adding this playlist to another XCIPTV device, and diagnosing a channel that
 will not play. See [BUILD-DURABILITY.md](BUILD-DURABILITY.md) for what lives in the overrides and why.
 
-**Worker:** run `cd worker && npx wrangler deploy`.
+**Worker:** deployed by GitHub (`.github/workflows/deploy-worker.yml`) whenever `worker/` changes on `main`, or on demand from the Actions tab. It needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets. By hand: `cd worker && npx wrangler deploy`.
 
 2M and Al Maghribia HD (labelled "(backup)") are third-party re-streams from Net Sat AB, Sweden, and may disappear without notice. 2M sits just before 2M Monde because the Globecast 2M Monde feed stutters on the box while this one runs at a steady 25 fps, about 20 s behind live.
