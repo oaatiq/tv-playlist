@@ -123,6 +123,7 @@ const FAILOVER = {
 const ALOULA_API = 'https://aloula.faulio.com/api/v1.1/channels/';
 const ALOULA = {
   'quran': 7, // Al Quran Al Kareem TV - Masjid al-Haram, Makkah, live 24 h
+  'sunna': 6, // Al Sunnah Al Nabawiyah TV - Masjid an-Nabawi, Madinah, live 24 h
 };
 
 const tokens = new Map(); // event -> { q, until }
