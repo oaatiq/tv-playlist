@@ -66,28 +66,10 @@
    "since": "2026-11-13",
    "why": "frozen"
   },
-  "ChannelS.bd@SD": {
-   "chno": "1175",
-   "name": "Channel S (Bangladesh)",
-   "since": "2026-11-15",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ChannelS.uk@SD": {
-   "chno": "1176",
-   "name": "Channel S (United Kingdom)",
-   "since": "2026-11-15",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "D3TV.ml@SD": {
    "chno": "1166",
    "name": "D3 TV",
    "since": "2026-11-08",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DBSTV.lc@SD": {
-   "chno": "1311",
-   "name": "DBS TV",
-   "since": "2026-11-02",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DellaTV.it@HD": {
@@ -390,12 +372,6 @@
    "since": "2026-11-13",
    "why": "not a playlist"
   },
-  "SkyNewsWeather.uk@SD": {
-   "chno": "296",
-   "name": "Sky News Weather",
-   "since": "2026-11-12",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "TR24Television.cm@SD": {
    "chno": "1140",
    "name": "TR24 Television",
@@ -602,42 +578,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "ATXN1.us@SD": {
-   "chno": "503",
-   "name": "ATXN1",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "ATXN2.us@SD": {
-   "chno": "504",
-   "name": "ATXN2",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "ATXN3.us@SD": {
-   "chno": "820",
-   "name": "ATXN3",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "AWE.us@SD": {
-   "chno": "1017",
-   "name": "AWE",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AWEInternational.us@SD": {
-   "chno": "1018",
-   "name": "AWE International",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AXNCEE.es@Romania": {
-   "chno": "1265",
-   "name": "AXN CEE Romania",
-   "runs": 1,
-   "why": "frozen"
-  },
   "AbdulmajeedAbdullah.sa@SD": {
    "chno": "1210",
    "name": "Abdulmajeed Abdullah",
@@ -650,47 +590,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfricanewsEnglish.fr@SD": {
-   "chno": "1056",
-   "name": "Africanews English",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AfricanewsFrench.fr@SD": {
-   "chno": "1057",
-   "name": "Africanews French",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "AfroMagicChannel.ci@SD": {
    "chno": "3796",
    "name": "Afro Magic Channel",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AkaalChannel.uk@SD": {
-   "chno": "474",
-   "name": "Akaal Channel",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "AkiliKids.ke@SD": {
-   "chno": "1215",
+   "chno": "1217",
    "name": "Akili Kids!",
-   "runs": 1,
+   "runs": 2,
    "why": "variant HTTPError"
-  },
-  "AlArabyTV.qa@SD": {
-   "chno": "265",
-   "name": "Al Araby TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AlArabyTV2.qa@SD": {
-   "chno": "266",
-   "name": "Al Araby TV 2",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
@@ -698,167 +608,95 @@
    "runs": 3,
    "why": "frozen"
   },
-  "AlQuranAlKareemTV.sa@SD": {
-   "chno": "237",
-   "name": "Makkah Live",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AlSharqiyaMinKabla.ae@SD": {
-   "chno": "251",
-   "name": "Al Sharqiya Min Kabla",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AlSunnahAlNabawiyahTV.sa@SD": {
-   "chno": "238",
-   "name": "Madinah Live",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AlWoustaTV.ae@SD": {
-   "chno": "252",
-   "name": "Al Wousta TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AlYaumTV.ae@SD": {
-   "chno": "253",
-   "name": "Al Yaum TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AlkhuzamaRadio.sa@SD": {
-   "chno": "214",
-   "name": "Alkhuzama Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AmazingFactsTV.us@SD": {
-   "chno": "903",
-   "name": "Amazing Facts TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AngelTV.in@Indonesia": {
-   "chno": "1196",
-   "name": "Angel TV Indonesia",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AsharqDocumentary.sa@SD": {
-   "chno": "217",
-   "name": "Asharq Documentary",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "AsharqRadio.sa@SD": {
-   "chno": "218",
-   "name": "Asharq Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "AusbizTV.au": {
    "chno": "1060",
    "name": "Ausbiz",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "BBCNews.uk": {
-   "chno": "274",
-   "name": "BBC News",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "BBCNews.uk@Africa": {
-   "chno": "1059",
-   "name": "BBC News Africa",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "BFMAlsace.fr@SD": {
    "chno": "191",
    "name": "BFM Alsace",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMBusiness.fr@SD": {
    "chno": "184",
    "name": "BFM Business",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMCotedAzur.fr@SD": {
    "chno": "192",
    "name": "BFM Cote d'Azur",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMDICIAlpesduSud.fr@SD": {
    "chno": "193",
    "name": "BFM DICI Alpes du Sud",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMDICIHauteProvence.fr@SD": {
    "chno": "194",
    "name": "BFM DICI Haute-Provence",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMGrandLille.fr@SD": {
    "chno": "195",
    "name": "BFM Grand Lille",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMGrandLittoral.fr@SD": {
    "chno": "196",
    "name": "BFM Grand Littoral",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMLyon.fr@SD": {
    "chno": "197",
    "name": "BFM Lyon",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMMarseille.fr@SD": {
    "chno": "198",
    "name": "BFM Marseille",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMNormandie.fr@SD": {
    "chno": "199",
    "name": "BFM Normandie",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMTV.fr@SD": {
    "chno": "183",
    "name": "BFM TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMTechCo.fr@SD": {
    "chno": "30",
    "name": "BFM Tech & Co",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMVar.fr@SD": {
    "chno": "200",
    "name": "BFM Var",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "BratTV.us@SD": {
-   "chno": "747",
-   "name": "Brat TV",
+  "BPXTVRadio.us@SD": {
+   "chno": "1125",
+   "name": "BPX TV Radio",
    "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
    "chno": "2292",
@@ -878,65 +716,17 @@
    "runs": 3,
    "why": "frozen"
   },
-  "CNBCArabiya.ae@SD": {
-   "chno": "254",
-   "name": "CNBC Arabiya",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "ChandelTV.tg@SD": {
-   "chno": "1159",
+   "chno": "1161",
    "name": "Chandel TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ChannelS.bd@SD": {
-   "chno": "1175",
-   "name": "Channel S (Bangladesh)",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ChannelS.uk@SD": {
-   "chno": "1176",
-   "name": "Channel S (United Kingdom)",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "CineSony.us@SD": {
-   "chno": "684",
-   "name": "Cine Sony",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "ClassicArtsShowcase.us@SD": {
-   "chno": "1095",
-   "name": "Classic Arts Showcase",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "ClubbingTV.us@UK": {
-   "chno": "408",
-   "name": "Clubbing TV UK",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "D3TV.ml@SD": {
    "chno": "1166",
    "name": "D3 TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DBSTV.lc@SD": {
-   "chno": "1311",
-   "name": "DBS TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "DW.de@Arabic": {
-   "chno": "205",
-   "name": "DW Arabic",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "DellaTV.it@HD": {
    "chno": "1241",
@@ -962,17 +752,17 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "EbS.be@SD": {
+   "chno": "1069",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
    "name": "Estrella TV WMBC-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
-  },
-  "FORTTV.ug@SD": {
-   "chno": "1324",
-   "name": "FORT TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -992,29 +782,11 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "FlowersTVUSA.us@SD": {
-   "chno": "831",
-   "name": "Flowers TV USA",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "Fox.us@KCPQ": {
    "chno": "990",
    "name": "Fox (United States) KCPQ",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "FoxNewsRadio.us@SD": {
-   "chno": "530",
-   "name": "Fox News Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "France24.fr@English": {
-   "chno": "1069",
-   "name": "France 24 English",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
   },
   "Francophonie24.fr@SD": {
    "chno": "1145",
@@ -1040,23 +812,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "GreatEntertainmentTelevision.us@SD": {
-   "chno": "636",
-   "name": "Great Entertainment Television",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
    "runs": 3,
    "why": "frozen"
-  },
-  "HolyQuranRadio.sa@SD": {
-   "chno": "223",
-   "name": "Holy Quran Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "ImpactNetwork.us@SD": {
    "chno": "638",
@@ -1064,29 +824,11 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "IsaacTV.pk@SD": {
-   "chno": "1242",
-   "name": "Isaac TV",
-   "runs": 1,
-   "why": "variant HTTPError"
-  },
-  "JustforLaughsGags.us@SD": {
-   "chno": "640",
-   "name": "Just for Laughs Gags",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "KozoomTV.fr@SD": {
-   "chno": "48",
-   "name": "Kozoom TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "LBFDRTV.cd@SD": {
    "chno": "3772",
@@ -1094,35 +836,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "LCP.fr@SD": {
-   "chno": "38",
-   "name": "LCP",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "LLBNHisWord.us@SD": {
-   "chno": "929",
-   "name": "LLBN His Word",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "LaVozdeJesusHD.do@HD": {
    "chno": "1209",
    "name": "La Voz de Jesus HD",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
-  "LacrosseTV.us@SD": {
-   "chno": "589",
-   "name": "Lacrosse TV",
+  "LauraDaveMediaTV.cm@SD": {
+   "chno": "1114",
+   "name": "Laura Dave Media TV",
    "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "LawCrime.us@SD": {
-   "chno": "838",
-   "name": "Law & Crime",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
+   "why": "frozen"
   },
   "LittleGuyanaTV.us@SD": {
    "chno": "1042",
@@ -1142,40 +866,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "MBCAmerica.us@SD": {
-   "chno": "792",
-   "name": "MBC America",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "MNT.us@WWORTV": {
    "chno": "1002",
    "name": "MNT WWOR-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
   },
-  "MTA4Africa.uk@SD": {
-   "chno": "480",
-   "name": "MTA4 Africa",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "MTA5Africa.uk@SD": {
-   "chno": "481",
-   "name": "MTA5 Africa",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "MTA8America.uk@SD": {
-   "chno": "482",
-   "name": "MTA8 America",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "MTV.de@SD": {
-   "chno": "1190",
+   "chno": "1192",
    "name": "MTV (Germany)",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "MasterChefsAcademyTV.uk@HD": {
@@ -1226,24 +926,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "NBCLX.us@SD": {
-   "chno": "646",
-   "name": "NBCLX",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "NOST.us@SD": {
-   "chno": "699",
-   "name": "NOST",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "NTDTVEnglish.us@UK": {
-   "chno": "284",
-   "name": "NTD TV English UK",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "NWEconomie.tg@SD": {
    "chno": "3823",
    "name": "NW Economie",
@@ -1268,12 +950,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
-  "NauticalChannel.it@SD": {
-   "chno": "1202",
-   "name": "Nautical Channel",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "NaxcivanTV.az@SD": {
    "chno": "3839",
    "name": "Naxcivan TV",
@@ -1286,89 +962,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "NewsmaxTV.us@SD": {
-   "chno": "546",
-   "name": "Newsmax TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "NidaeAlIslamRadio.sa@SD": {
-   "chno": "231",
-   "name": "Nidae AlIslam Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "NorCastWeather.us@HD": {
    "chno": "549",
    "name": "NorCast Weather",
-   "runs": 1,
+   "runs": 2,
    "why": "variant HTTP 200"
-  },
-  "NoursatEnglish.lb@SD": {
-   "chno": "1222",
-   "name": "Noursat English",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "PanafricanMediaTV.cm@SD": {
    "chno": "1132",
    "name": "Panafrican Media TV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
-  },
-  "PanjabTV.uk@SD": {
-   "chno": "484",
-   "name": "Panjab TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "PascoTV.us@SD": {
-   "chno": "555",
-   "name": "Pasco TV",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 502: Bad Gateway"
-  },
-  "Pulse95Radio.ae@SD": {
-   "chno": "1329",
-   "name": "Pulse95 Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QVC.uk@SD": {
-   "chno": "464",
-   "name": "QVC (United Kingdom)",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QVC.us@SD": {
-   "chno": "886",
-   "name": "QVC (United States)",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QVC3.us@SD": {
-   "chno": "888",
-   "name": "QVC3",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QVCBeauty.uk@SD": {
-   "chno": "465",
-   "name": "QVC Beauty",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QVCExtra.uk@SD": {
-   "chno": "466",
-   "name": "QVC Extra",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QVCStyle.uk@SD": {
-   "chno": "467",
-   "name": "QVC Style (United Kingdom)",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "QVCStyleUK.uk": {
    "chno": "1697",
@@ -1382,40 +986,16 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "QatarTVTheHolyQuran.qa@HD": {
-   "chno": "273",
-   "name": "Qatar TV The Holy Quran",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "QatarTelevision.qa@SD": {
-   "chno": "271",
-   "name": "Qatar Television",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "QatarTelevision2.qa@SD": {
-   "chno": "272",
-   "name": "Qatar Television 2",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "RadioTeleFullGospel.ht@SD": {
-   "chno": "1126",
-   "name": "Radio Tele Full Gospel",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "RadioTelePuissance.us@SD": {
-   "chno": "1129",
+   "chno": "1130",
    "name": "Radio Tele Puissance",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "RakutenTVActionMovies.es@UK": {
    "chno": "361",
    "name": "Rakuten TV Action Movies UK",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVComedyMovies.es@Finland": {
@@ -1448,29 +1028,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 504: Gateway Timeout"
   },
-  "RallyTV.us@SD": {
-   "chno": "596",
-   "name": "Rally TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "RashidAlMajed.sa@SD": {
    "chno": "1239",
    "name": "Rashid AlMajed",
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "RedBullTV.at@SD": {
-   "chno": "1084",
-   "name": "Red Bull TV SD",
+  "RiddimHopeTV.tt@SD": {
+   "chno": "1322",
+   "name": "Riddim & Hope TV",
    "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "RightNowTV.us@SD": {
-   "chno": "597",
-   "name": "Right Now TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "SCorbyTV.us@HD": {
    "chno": "2093",
@@ -1490,71 +1058,17 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "SaudiaRadio.sa@SD": {
-   "chno": "234",
-   "name": "Saudia Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "ScreenDreams.us@SD": {
    "chno": "808",
    "name": "Screen Dreams",
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "Sharjah2.ae@SD": {
-   "chno": "259",
-   "name": "Sharjah 2",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "SharjahRadio.ae@SD": {
-   "chno": "260",
-   "name": "Sharjah Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "SharjahRadioQuran.ae@SD": {
-   "chno": "261",
-   "name": "Sharjah Radio Quran",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "SharjahTV.ae@SD": {
-   "chno": "262",
-   "name": "Sharjah TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
   "ShemarooBollywood.us@SD": {
    "chno": "1047",
    "name": "Shemaroo Bollywood",
    "runs": 3,
    "why": "not a playlist"
-  },
-  "SilkWay.kz@SD": {
-   "chno": "1214",
-   "name": "Silk Way",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "SkyNewsWeather.uk@SD": {
-   "chno": "296",
-   "name": "Sky News Weather",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "SwerveSports.us@SD": {
-   "chno": "603",
-   "name": "Swerve Sports",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "TJC.uk@SD": {
-   "chno": "472",
-   "name": "TJC",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   },
   "TR24Television.cm@SD": {
    "chno": "1140",
@@ -1586,23 +1100,11 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "TheWordNetwork.us@SD": {
-   "chno": "936",
-   "name": "The Word Network",
+  "TheIslamicNetwork.tt@SD": {
+   "chno": "1324",
+   "name": "The Islamic Network",
    "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "TiVi5Monde.fr@SD": {
-   "chno": "176",
-   "name": "TiVi5 Monde",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "TjilTV.na@SD": {
-   "chno": "1231",
-   "name": "Tjil TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TomAndJerry.do@HD": {
    "chno": "1208",
@@ -1748,186 +1250,6 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
-  "US1800003BG": {
-   "chno": "627",
-   "name": "Bravo Vault",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US1800004S5": {
-   "chno": "1020",
-   "name": "Caso Cerrado",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US18000133I": {
-   "chno": "632",
-   "name": "E! Keeping Up",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US2500008CV": {
-   "chno": "717",
-   "name": "BET x Tyler Perry Drama",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US3400003HI": {
-   "chno": "752",
-   "name": "ducktv",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US400221W2": {
-   "chno": "598",
-   "name": "Scripps Sports Network",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US4500002UB": {
-   "chno": "758",
-   "name": "Mattel Jr.",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US700010XK": {
-   "chno": "742",
-   "name": "Witness to Justice",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "US700012OU": {
-   "chno": "794",
-   "name": "Ocean Vibes",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USAJ30000122O": {
-   "chno": "698",
-   "name": "NEW KMOVIES",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USAJ3504704A": {
-   "chno": "848",
-   "name": "The Pet Collective",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBA2300001S8": {
-   "chno": "777",
-   "name": "The LEGO Channel",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBA3000041ZP": {
-   "chno": "693",
-   "name": "Movie Hub",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBA3400003IP": {
-   "chno": "839",
-   "name": "Love Nature 4K",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBA3800004EL": {
-   "chno": "789",
-   "name": "Fireplace Vibes",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBB11000015Q": {
-   "chno": "760",
-   "name": "Moonbug",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBB1900004J9": {
-   "chno": "778",
-   "name": "Toon Goggles",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBB3200001MG": {
-   "chno": "734",
-   "name": "REELZ Famous & Infamous",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBB40000028E": {
-   "chno": "882",
-   "name": "NBC LX Home",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBC3600013PC": {
-   "chno": "764",
-   "name": "PBS Kids",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3300021KV": {
-   "chno": "803",
-   "name": "Stingray Hot Country",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3500008IJ": {
-   "chno": "799",
-   "name": "Stingray Flashback 70s",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3500010MT": {
-   "chno": "802",
-   "name": "Stingray Hip Hop",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3500011J3": {
-   "chno": "798",
-   "name": "Stingray Easy Listening",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD35000149S": {
-   "chno": "804",
-   "name": "Stingray Nothin' But 90s",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD35000180U": {
-   "chno": "796",
-   "name": "Stingray Classic Rock",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3500022DN": {
-   "chno": "800",
-   "name": "Stingray Greatest Hits",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3500025GS": {
-   "chno": "797",
-   "name": "Stingray DJAZZ",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD3500036HP": {
-   "chno": "694",
-   "name": "Movie Hub West",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
-  "USBD42000073E": {
-   "chno": "712",
-   "name": "60 Days In by A&E",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "UniversalComedy.us@SD": {
    "chno": "2026",
    "name": "Universal Comedy",
@@ -1939,31 +1261,7 @@
    "name": "Universal Crime",
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "VoATV.us@SD": {
-   "chno": "572",
-   "name": "VoA TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "WION.in@SD": {
-   "chno": "1076",
-   "name": "WION",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "WatarRadio.ae@SD": {
-   "chno": "264",
-   "name": "Watar Radio",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
-  },
-  "YachtingTV.cz@SD": {
-   "chno": "1179",
-   "name": "Yachting TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error [Errno 101] Network unreachable>"
   }
  },
- "last_run": "2026-11-17T15:08:03"
+ "last_run": "2026-11-18T02:37:27"
 }
