@@ -330,6 +330,12 @@
    "since": "2026-10-14",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RakutenTVComedyMovies.es@UK": {
+   "chno": "362",
+   "name": "Rakuten TV Comedy Movies UK",
+   "since": "2026-11-19",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RakutenTVDramaMovies.es@Finland": {
    "chno": "3866",
    "name": "Rakuten TV Drama Movies Finland",
@@ -389,6 +395,12 @@
    "name": "Shemaroo Bollywood",
    "since": "2026-11-13",
    "why": "not a playlist"
+  },
+  "TBNArmenia.us@SD": {
+   "chno": "1040",
+   "name": "TBN Armenia",
+   "since": "2026-11-19",
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TR24Television.cm@SD": {
    "chno": "1140",
@@ -579,21 +591,21 @@
  },
  "failing": {
   "ABC.us@KGTV": {
-   "chno": "942",
+   "chno": "943",
    "name": "ABC KGTV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ABC.us@KOATTV": {
-   "chno": "945",
+   "chno": "946",
    "name": "ABC KOAT-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ABC.us@WISNTV": {
-   "chno": "949",
+   "chno": "950",
    "name": "ABC WISN-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ABC.us@WMARTV": {
@@ -635,7 +647,7 @@
   "AfrocultureTV.ci@SD": {
    "chno": "1136",
    "name": "Afroculture TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AlGhadTV.eg@SD": {
@@ -649,12 +661,6 @@
    "name": "Ausbiz",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
-  },
-  "CAM10TV.cm@SD": {
-   "chno": "1112",
-   "name": "CAM 10 TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "CBS.us@KCCI": {
    "chno": "2292",
@@ -704,22 +710,22 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "EbS.be@SD": {
-   "chno": "1068",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
    "name": "Estrella TV WMBC-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
   },
-  "FORTTV.ug@SD": {
-   "chno": "1326",
-   "name": "FORT TV",
+  "Evtele.cg@SD": {
+   "chno": "1145",
+   "name": "Ev-tele",
    "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "FORTTV.ug@SD": {
+   "chno": "1327",
+   "name": "FORT TV",
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
@@ -765,27 +771,27 @@
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "GodStandsKidsClubTV.pk@English": {
-   "chno": "1238",
+   "chno": "1239",
    "name": "God Stands Kids Club TV",
-   "runs": 1,
+   "runs": 2,
    "why": "not a playlist"
   },
   "GodStandsTV.pk@English": {
-   "chno": "1241",
+   "chno": "1242",
    "name": "God Stands TV English",
-   "runs": 1,
+   "runs": 2,
    "why": "not a playlist"
   },
   "GodStandsTV.pk@Main": {
-   "chno": "1240",
+   "chno": "1241",
    "name": "God Stands TV",
-   "runs": 1,
+   "runs": 2,
    "why": "not a playlist"
   },
   "GordonRamsaysHellsKitchen.us@SD": {
-   "chno": "873",
+   "chno": "874",
    "name": "Gordon Ramsay's Hell's Kitchen",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "GreatCommissionTV.ke@SD": {
@@ -800,23 +806,23 @@
    "runs": 3,
    "why": "frozen"
   },
-  "JohnnyCarsonTV.us@SD": {
-   "chno": "727",
-   "name": "Johnny Carson TV",
+  "IsaacTV.pk@SD": {
+   "chno": "1244",
+   "name": "Isaac TV",
    "runs": 1,
+   "why": "variant HTTPError"
+  },
+  "JohnnyCarsonTV.us@SD": {
+   "chno": "728",
+   "name": "Johnny Carson TV",
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "KNXVTV611.us@HD": {
-   "chno": "982",
+   "chno": "983",
    "name": "KNXV-TV 61.1",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "KTOO360TV.us@KTOOTV": {
-   "chno": "984",
-   "name": "KTOO 360TV KTOO-TV",
-   "runs": 1,
-   "why": "variant HTTP 200"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -829,6 +835,12 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "LCP.fr@SD": {
+   "chno": "38",
+   "name": "LCP",
+   "runs": 1,
+   "why": "frozen"
   },
   "LaVozdeJesusHD.do@HD": {
    "chno": "1209",
@@ -866,6 +878,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
   },
+  "MTV.de@SD": {
+   "chno": "1192",
+   "name": "MTV (Germany)",
+   "runs": 1,
+   "why": "frozen"
+  },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
    "name": "Master Chefs Academy TV",
@@ -883,12 +901,6 @@
    "name": "Mohammed Abdo",
    "runs": 3,
    "why": "variant HTTPError"
-  },
-  "MonacoInfo.mc@SD": {
-   "chno": "1144",
-   "name": "Monaco Info",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "MonteCarloDigitalTelevision.fr@HD": {
    "chno": "177",
@@ -921,33 +933,33 @@
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
   "NBC.us@KSBW": {
-   "chno": "989",
+   "chno": "990",
    "name": "NBC KSBW",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NBC.us@KSBY": {
-   "chno": "990",
+   "chno": "991",
    "name": "NBC KSBY",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NBC.us@WBALTV": {
-   "chno": "993",
+   "chno": "994",
    "name": "NBC WBAL-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NBC.us@WGAL": {
-   "chno": "995",
+   "chno": "996",
    "name": "NBC WGAL",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NBC.us@WGBATV": {
-   "chno": "996",
+   "chno": "997",
    "name": "NBC WGBA-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "NWEconomie.tg@SD": {
@@ -992,17 +1004,17 @@
    "runs": 3,
    "why": "variant HTTP 200"
   },
-  "OTV.lb@SD": {
-   "chno": "1224",
-   "name": "OTV (Lebanon)",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "PanafricanMediaTV.cm@SD": {
    "chno": "1132",
    "name": "Panafrican Media TV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
+  "Power1017FM.aw@SD": {
+   "chno": "1168",
+   "name": "Power 101.7 FM",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "QVCStyleUK.uk": {
    "chno": "1697",
@@ -1017,14 +1029,14 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RCTV3.us@SD": {
-   "chno": "1031",
+   "chno": "1032",
    "name": "RCTV3",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
-  "RHTGuadeloupe.gp@SD": {
-   "chno": "1118",
-   "name": "RHT Guadeloupe",
+  "RadioTeleGinen.ht@SD": {
+   "chno": "1127",
+   "name": "Radio Tele Ginen",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -1049,7 +1061,7 @@
   "RakutenTVComedyMovies.es@UK": {
    "chno": "362",
    "name": "Rakuten TV Comedy Movies UK",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVDramaMovies.es@Finland": {
@@ -1109,7 +1121,7 @@
   "ScrippsNews.us@SD": {
    "chno": "562",
    "name": "Scripps News",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "ShemarooBollywood.us@SD": {
@@ -1119,15 +1131,15 @@
    "why": "not a playlist"
   },
   "TBNArmenia.us@SD": {
-   "chno": "1039",
+   "chno": "1040",
    "name": "TBN Armenia",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TMZ.us@SD": {
-   "chno": "663",
+   "chno": "664",
    "name": "TMZ",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TR24Television.cm@SD": {
@@ -1141,6 +1153,12 @@
    "name": "TSTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "TVFamille.mq@SD": {
+   "chno": "1139",
+   "name": "TV Famille",
+   "runs": 1,
+   "why": "TimeoutError: The read operation timed out"
   },
   "TelePam.us@SD": {
    "chno": "1160",
@@ -1159,6 +1177,12 @@
    "name": "Terra Mater WILD English",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
+  },
+  "TheIslamicNetwork.tt@SD": {
+   "chno": "1325",
+   "name": "The Islamic Network",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TomAndJerry.do@HD": {
    "chno": "1208",
@@ -1299,9 +1323,9 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "TrueCrimeNetwork.us@WCVBTV": {
-   "chno": "738",
+   "chno": "739",
    "name": "True Crime Network WCVB-TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TurismoHD.do@HD": {
@@ -1323,11 +1347,11 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "WantedDeadorAlive.us@SD": {
-   "chno": "673",
+   "chno": "674",
    "name": "Wanted: Dead or Alive",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-19T02:37:19"
+ "last_run": "2026-11-19T14:37:17"
 }
