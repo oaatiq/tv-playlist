@@ -102,6 +102,12 @@
    "since": "2026-11-10",
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
+  "DeluxeDance.de@SD": {
+   "chno": "1172",
+   "name": "Deluxe Dance",
+   "since": "2026-11-21",
+   "why": "frozen"
+  },
   "DocumentaryPlus.us@International": {
    "chno": "1127",
    "name": "Documentary+ International",
@@ -444,6 +450,12 @@
    "since": "2026-10-14",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "RakutenTVDramaMovies.es@UK": {
+   "chno": "362",
+   "name": "Rakuten TV Drama Movies UK",
+   "since": "2026-11-21",
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "RakutenTVFamilyMovies.es@Finland": {
    "chno": "3868",
    "name": "Rakuten TV Family Movies Finland",
@@ -485,12 +497,6 @@
    "name": "S Play Event",
    "since": "2026-10-26",
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ScreenDreams.us@SD": {
-   "chno": "808",
-   "name": "Screen Dreams",
-   "since": "2026-11-12",
-   "why": "variant HTTPError"
   },
   "ScrippsNews.us@SD": {
    "chno": "561",
@@ -782,6 +788,12 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "CAM10TV.cm@SD": {
+   "chno": "1097",
+   "name": "CAM 10 TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "CBS.us@KCCI": {
    "chno": "2292",
    "name": "CBS KCCI",
@@ -800,6 +812,12 @@
    "runs": 3,
    "why": "frozen"
   },
+  "Canaf54TV.uk@SD": {
+   "chno": "487",
+   "name": "Canaf54 TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "D3TV.ml@SD": {
    "chno": "1166",
    "name": "D3 TV",
@@ -813,15 +831,15 @@
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "DeluxeDance.de@SD": {
-   "chno": "1173",
+   "chno": "1172",
    "name": "Deluxe Dance",
-   "runs": 2,
+   "runs": 3,
    "why": "frozen"
   },
   "DerTV.uk@SD": {
    "chno": "488",
    "name": "Der TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DocumentaryPlus.us@International": {
@@ -842,11 +860,23 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
+  "EbS.be@SD": {
+   "chno": "1053",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
+  },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
    "name": "Estrella TV WMBC-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
+  },
+  "Evtele.cg@SD": {
+   "chno": "1126",
+   "name": "Ev-tele",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "FRBC4700001XG": {
    "chno": "1072",
@@ -938,12 +968,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "KaloopyTV.us@SD": {
-   "chno": "874",
-   "name": "Kaloopy TV",
-   "runs": 1,
-   "why": "URLError: <urlopen error timed out>"
-  },
   "KassouaTV.bj@SD": {
    "chno": "3760",
    "name": "KassouaTV",
@@ -955,12 +979,6 @@
    "name": "LBFD RTV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "LCP.fr@SD": {
-   "chno": "38",
-   "name": "LCP",
-   "runs": 1,
-   "why": "frozen"
   },
   "LaVozdeJesusHD.do@HD": {
    "chno": "1209",
@@ -997,6 +1015,12 @@
    "name": "MNT WWOR-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
+  },
+  "MTV.de@SD": {
+   "chno": "1173",
+   "name": "MTV (Germany)",
+   "runs": 1,
+   "why": "frozen"
   },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
@@ -1181,7 +1205,7 @@
   "RakutenTVDramaMovies.es@UK": {
    "chno": "362",
    "name": "Rakuten TV Drama Movies UK",
-   "runs": 2,
+   "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RakutenTVFamilyMovies.es@Finland": {
@@ -1225,12 +1249,6 @@
    "name": "S Play Event",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "ScreenDreams.us@SD": {
-   "chno": "808",
-   "name": "Screen Dreams",
-   "runs": 3,
-   "why": "variant HTTPError"
   },
   "ScrippsNews.us@SD": {
    "chno": "561",
@@ -1449,5 +1467,5 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-20T14:37:17"
+ "last_run": "2026-11-21T02:37:19"
 }
