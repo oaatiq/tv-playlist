@@ -438,18 +438,6 @@
    "since": "2026-10-26",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "SFGovTV.us@SD": {
-   "chno": "559",
-   "name": "SFGovTV",
-   "since": "2026-11-22",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "SFGovTV2.us@SD": {
-   "chno": "1019",
-   "name": "SFGovTV2",
-   "since": "2026-11-22",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "SMetroTV.us@HD": {
    "chno": "2367",
    "name": "S Metro TV",
@@ -484,12 +472,6 @@
    "chno": "1140",
    "name": "TR24 Television",
    "since": "2026-11-03",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "TVFamille.mq@SD": {
-   "chno": "1121",
-   "name": "TV Famille",
-   "since": "2026-11-20",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TelePam.us@SD": {
@@ -722,28 +704,10 @@
    "runs": 3,
    "why": "variant HTTPError"
   },
-  "AceTV.us@KCKSLD": {
-   "chno": "616",
-   "name": "Ace TV KCKS-LD",
-   "runs": 1,
-   "why": "frozen"
-  },
-  "AceTV.us@SD": {
-   "chno": "615",
-   "name": "Ace TV",
-   "runs": 1,
-   "why": "frozen"
-  },
   "AdinkraTV.gh@SD": {
    "chno": "3876",
    "name": "Adinkra TV",
    "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "AfrikInfoTV.gn@SD": {
-   "chno": "1103",
-   "name": "Afrik Info TV",
-   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "AfroMagicChannel.ci@SD": {
@@ -773,79 +737,79 @@
   "BFMAlsace.fr@SD": {
    "chno": "191",
    "name": "BFM Alsace",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMBusiness.fr@SD": {
    "chno": "184",
    "name": "BFM Business",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMCotedAzur.fr@SD": {
    "chno": "192",
    "name": "BFM Cote d'Azur",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMDICIAlpesduSud.fr@SD": {
    "chno": "193",
    "name": "BFM DICI Alpes du Sud",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMDICIHauteProvence.fr@SD": {
    "chno": "194",
    "name": "BFM DICI Haute-Provence",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMGrandLille.fr@SD": {
    "chno": "195",
    "name": "BFM Grand Lille",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMGrandLittoral.fr@SD": {
    "chno": "196",
    "name": "BFM Grand Littoral",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMLyon.fr@SD": {
    "chno": "197",
    "name": "BFM Lyon",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMMarseille.fr@SD": {
    "chno": "198",
    "name": "BFM Marseille",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMNormandie.fr@SD": {
    "chno": "199",
    "name": "BFM Normandie",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMTV.fr@SD": {
    "chno": "183",
    "name": "BFM TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMTechCo.fr@SD": {
    "chno": "30",
    "name": "BFM Tech & Co",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "BFMVar.fr@SD": {
    "chno": "200",
    "name": "BFM Var",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "CBS.us@KCCI": {
@@ -869,6 +833,12 @@
   "Canaf54TV.uk@SD": {
    "chno": "486",
    "name": "Canaf54 TV",
+   "runs": 2,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "ChandelTV.tg@SD": {
+   "chno": "1140",
+   "name": "Chandel TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -883,12 +853,6 @@
    "name": "DellaTV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
-  },
-  "DerTV.uk@SD": {
-   "chno": "487",
-   "name": "Der TV",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DocumentaryPlus.us@International": {
    "chno": "1127",
@@ -907,6 +871,12 @@
    "name": "Duck Dynasty",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
+  },
+  "EbS.be@SD": {
+   "chno": "1051",
+   "name": "EbS",
+   "runs": 1,
+   "why": "frozen"
   },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
@@ -957,9 +927,9 @@
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "GreatCommissionTV.ke@SD": {
-   "chno": "1198",
+   "chno": "1201",
    "name": "Great Commission TV",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "HardKnocksFightingChampionship.pl@SD": {
@@ -1142,17 +1112,17 @@
    "runs": 3,
    "why": "variant HTTP 200"
   },
+  "POPWorldTV.es@SD": {
+   "chno": "1282",
+   "name": "POP World TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
   "PanafricanMediaTV.cm@SD": {
    "chno": "1132",
    "name": "Panafrican Media TV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
-  },
-  "PointeTV.ag@SD": {
-   "chno": "1144",
-   "name": "Pointe TV",
-   "runs": 2,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "QVCStyleUK.uk": {
    "chno": "1697",
@@ -1238,18 +1208,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "SFGovTV.us@SD": {
-   "chno": "559",
-   "name": "SFGovTV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "SFGovTV2.us@SD": {
-   "chno": "1019",
-   "name": "SFGovTV2",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "SMetroTV.us@HD": {
    "chno": "2367",
    "name": "S Metro TV",
@@ -1289,13 +1247,13 @@
   "TVCBenin.bj@SD": {
    "chno": "1091",
    "name": "TVC Benin",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "TVFamille.mq@SD": {
-   "chno": "1121",
-   "name": "TV Famille",
-   "runs": 3,
+  "TalkinLiveClassicsTV.us@SD": {
+   "chno": "653",
+   "name": "Talkin Live Classics TV",
+   "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "TelePam.us@SD": {
@@ -1483,7 +1441,25 @@
    "name": "Wanted: Dead or Alive",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "XPTV1.es@SD": {
+   "chno": "1284",
+   "name": "XPTV1",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "XPTV2.es@SD": {
+   "chno": "1280",
+   "name": "XPTV2",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "XPTVUS.es@SD": {
+   "chno": "1281",
+   "name": "XPTV US",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "last_run": "2026-11-23T14:37:20"
+ "last_run": "2026-11-24T02:37:21"
 }
