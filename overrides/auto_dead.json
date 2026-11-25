@@ -54,12 +54,6 @@
    "since": "2026-10-16",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfrocultureTV.ci@SD": {
-   "chno": "1134",
-   "name": "Afroculture TV",
-   "since": "2026-11-20",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
@@ -166,12 +160,6 @@
    "chno": "873",
    "name": "Gordon Ramsay's Hell's Kitchen",
    "since": "2026-11-20",
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "GreatCommissionTV.ke@SD": {
-   "chno": "1204",
-   "name": "Great Commission TV",
-   "since": "2026-11-24",
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "HardKnocksFightingChampionship.pl@SD": {
@@ -671,6 +659,12 @@
    "name": "Wanted: Dead or Alive",
    "since": "2026-11-20",
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "ZeeOne.uk@UK": {
+   "chno": "347",
+   "name": "Zee One",
+   "since": "2026-11-25",
+   "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   }
  },
  "failing": {
@@ -704,6 +698,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
+  "ABNAfrica.us@SD": {
+   "chno": "894",
+   "name": "ABN Africa",
+   "runs": 1,
+   "why": "frozen"
+  },
   "ADOTV.bj@SD": {
    "chno": "3759",
    "name": "ADO TV",
@@ -711,9 +711,9 @@
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
   "AWEInternational.us@SD": {
-   "chno": "1003",
+   "chno": "1002",
    "name": "AWE International",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "AbdulmajeedAbdullah.sa@SD": {
@@ -734,18 +734,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "AfrocultureTV.ci@SD": {
-   "chno": "1134",
-   "name": "Afroculture TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "AkiliKids.ke@SD": {
-   "chno": "1201",
-   "name": "Akili Kids!",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "AlGhadTV.eg@SD": {
    "chno": "1260",
    "name": "Al Ghad TV",
@@ -757,6 +745,12 @@
    "name": "Ausbiz",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
+  },
+  "BizzTV.tt@SD": {
+   "chno": "1306",
+   "name": "Bizz TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 502: Bad Gateway"
   },
   "CBS.us@KCCI": {
    "chno": "2292",
@@ -776,17 +770,17 @@
    "runs": 3,
    "why": "frozen"
   },
+  "CNews.fr@SD": {
+   "chno": "33",
+   "name": "CNews",
+   "runs": 1,
+   "why": "frozen"
+  },
   "CanalPlus.fr": {
    "chno": "182",
    "name": "Canal+",
-   "runs": 1,
+   "runs": 2,
    "why": "HTTPError: HTTP Error 403: Forbidden"
-  },
-  "ChandelTV.tg@SD": {
-   "chno": "1143",
-   "name": "Chandel TV",
-   "runs": 1,
-   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "D3TV.ml@SD": {
    "chno": "1166",
@@ -799,6 +793,12 @@
    "name": "DellaTV",
    "runs": 3,
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
+  },
+  "Diaspora24.sn@SD": {
+   "chno": "1131",
+   "name": "Diaspora 24",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "DocumentaryPlus.us@International": {
    "chno": "1127",
@@ -818,21 +818,15 @@
    "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   },
-  "EbS.be@SD": {
-   "chno": "1053",
-   "name": "EbS",
-   "runs": 1,
-   "why": "frozen"
-  },
   "EstrellaTV.us@WMBCTV": {
    "chno": "644",
    "name": "Estrella TV WMBC-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
   },
-  "Evtele.cg@SD": {
-   "chno": "1129",
-   "name": "Ev-tele",
+  "FORTTV.ug@SD": {
+   "chno": "1311",
+   "name": "FORT TV",
    "runs": 1,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
@@ -847,6 +841,12 @@
    "name": "Alerte à Malibu",
    "runs": 3,
    "why": "frozen"
+  },
+  "ForYouTV.cm@SD": {
+   "chno": "1094",
+   "name": "For You TV",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "Fox.us@KCPQ": {
    "chno": "990",
@@ -878,12 +878,6 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
   },
-  "GreatCommissionTV.ke@SD": {
-   "chno": "1204",
-   "name": "Great Commission TV",
-   "runs": 3,
-   "why": "HTTPError: HTTP Error 404: Not Found"
-  },
   "HardKnocksFightingChampionship.pl@SD": {
    "chno": "3935",
    "name": "Hard Knocks Fighting Championship",
@@ -901,6 +895,12 @@
    "name": "KNXV-TV 61.1",
    "runs": 3,
    "why": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "KaloopyTV.us@SD": {
+   "chno": "873",
+   "name": "Kaloopy TV",
+   "runs": 1,
+   "why": "URLError: <urlopen error timed out>"
   },
   "KassouaTV.bj@SD": {
    "chno": "3760",
@@ -921,9 +921,9 @@
    "why": "URLError: <urlopen error [Errno 111] Connection refused>"
   },
   "LauraDaveMediaTV.cm@SD": {
-   "chno": "1098",
+   "chno": "1097",
    "name": "Laura Dave Media TV",
-   "runs": 1,
+   "runs": 2,
    "why": "frozen"
   },
   "LittleGuyanaTV.us@SD": {
@@ -949,12 +949,6 @@
    "name": "MNT WWOR-TV",
    "runs": 3,
    "why": "HTTPError: HTTP Error 401: Unauthorized"
-  },
-  "MTV.de@SD": {
-   "chno": "1176",
-   "name": "MTV (Germany)",
-   "runs": 1,
-   "why": "frozen"
   },
   "MasterChefsAcademyTV.uk@HD": {
    "chno": "1129",
@@ -1099,6 +1093,12 @@
    "name": "RCTV3",
    "runs": 3,
    "why": "frozen"
+  },
+  "RadioTeleGinen.ht@SD": {
+   "chno": "1111",
+   "name": "Radio Tele Ginen",
+   "runs": 1,
+   "why": "HTTPError: HTTP Error 404: Not Found"
   },
   "RadioTelePuissance.us@SD": {
    "chno": "1131",
@@ -1388,6 +1388,12 @@
    "runs": 3,
    "why": "HTTPError: HTTP Error 403: Forbidden"
   },
+  "WVVHCD181.us@HD": {
+   "chno": "999",
+   "name": "WVVH-CD 18.1",
+   "runs": 1,
+   "why": "variant HTTPError"
+  },
   "WantedDeadorAlive.us@SD": {
    "chno": "673",
    "name": "Wanted: Dead or Alive",
@@ -1397,9 +1403,9 @@
   "ZeeOne.uk@UK": {
    "chno": "347",
    "name": "Zee One",
-   "runs": 2,
+   "runs": 3,
    "why": "URLError: <urlopen error [Errno -5] Name has no usable address>"
   }
  },
- "last_run": "2026-11-25T02:37:16"
+ "last_run": "2026-11-25T14:37:45"
 }
